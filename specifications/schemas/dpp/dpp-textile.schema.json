@@ -1,0 +1,538 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/dpp/dpp-textile.schema.json",
+  "title": "Galileo DPP Textile Schema",
+  "description": "Digital Product Passport schema for textile and apparel products. Extends dpp-core with fiber composition, care instructions, and textile-specific certifications.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "dpp-core.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "fiberComposition",
+        "careInstructions"
+      ],
+      "properties": {
+        "fiberComposition": {
+          "description": "Detailed fiber composition (must sum to 100%)",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/FiberComponent"
+          }
+        },
+        "careInstructions": {
+          "description": "Care and maintenance instructions with ISO symbols",
+          "$ref": "#/definitions/CareInstructions"
+        },
+        "textileCertifications": {
+          "description": "Textile-specific certifications (GOTS, OEKO-TEX, etc.)",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TextileCertification"
+          }
+        },
+        "garmentType": {
+          "description": "Type of garment or textile product",
+          "type": "string",
+          "examples": ["jacket", "dress", "scarf", "shirt", "trousers", "accessory"]
+        },
+        "fabricConstruction": {
+          "description": "Fabric construction method",
+          "$ref": "#/definitions/FabricConstruction"
+        },
+        "finishTreatments": {
+          "description": "Applied finish treatments",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FinishTreatment"
+          }
+        },
+        "sizing": {
+          "description": "Sizing information",
+          "$ref": "#/definitions/TextileSizing"
+        },
+        "countryOfManufacture": {
+          "description": "Country where garment was assembled (may differ from countryOfOrigin for materials)",
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "collection": {
+          "description": "Fashion collection reference",
+          "$ref": "#/definitions/Collection"
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "FiberComponent": {
+      "type": "object",
+      "description": "Individual fiber in composition",
+      "required": ["@type", "fiberType", "percentage"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "FiberComponent"
+        },
+        "fiberType": {
+          "type": "string",
+          "description": "Fiber type name",
+          "examples": [
+            "silk",
+            "wool",
+            "cashmere",
+            "cotton",
+            "linen",
+            "viscose",
+            "polyester",
+            "nylon",
+            "elastane",
+            "mohair",
+            "alpaca",
+            "camel",
+            "angora"
+          ]
+        },
+        "percentage": {
+          "type": "integer",
+          "description": "Percentage of total (all must sum to 100)",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "fiberOrigin": {
+          "type": "string",
+          "description": "Country of fiber origin in ISO 3166-1 alpha-3",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "fiberGrade": {
+          "type": "string",
+          "description": "Quality grade of fiber",
+          "examples": ["Grade A", "Extra Fine", "Super 150s", "6A Mulberry"]
+        },
+        "organic": {
+          "type": "boolean",
+          "description": "Whether fiber is certified organic"
+        },
+        "recycled": {
+          "type": "boolean",
+          "description": "Whether fiber is from recycled sources"
+        },
+        "recycledPercentage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percentage of this fiber that is recycled"
+        },
+        "certificationScheme": {
+          "type": "string",
+          "examples": ["GOTS", "RWS", "RCS", "GRS", "OCS"]
+        },
+        "animalWelfare": {
+          "type": "string",
+          "description": "Animal welfare certification if applicable",
+          "examples": ["RWS", "ZQ", "SFA", "Nativa"]
+        },
+        "micronage": {
+          "type": "number",
+          "description": "Fiber fineness in microns (for wool/cashmere)",
+          "minimum": 0
+        }
+      }
+    },
+    "CareInstructions": {
+      "type": "object",
+      "description": "Care instructions with ASTM D5489 / ISO 3758 symbols",
+      "required": ["@type", "washingSymbol", "dryingSymbol"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CareInstructions"
+        },
+        "washingSymbol": {
+          "type": "string",
+          "description": "ISO 3758 washing symbol code",
+          "enum": [
+            "wash-95",
+            "wash-60",
+            "wash-50",
+            "wash-40",
+            "wash-30",
+            "wash-40-gentle",
+            "wash-30-gentle",
+            "wash-40-very-gentle",
+            "wash-30-very-gentle",
+            "hand-wash",
+            "do-not-wash"
+          ]
+        },
+        "washingTemperature": {
+          "type": "integer",
+          "description": "Maximum washing temperature in Celsius"
+        },
+        "dryingSymbol": {
+          "type": "string",
+          "description": "ISO 3758 drying symbol code",
+          "enum": [
+            "tumble-dry-normal-high",
+            "tumble-dry-normal-low",
+            "tumble-dry-gentle-low",
+            "do-not-tumble-dry",
+            "line-dry",
+            "drip-dry",
+            "dry-flat",
+            "dry-in-shade"
+          ]
+        },
+        "ironingSymbol": {
+          "type": "string",
+          "description": "ISO 3758 ironing symbol code",
+          "enum": [
+            "iron-high",
+            "iron-medium",
+            "iron-low",
+            "iron-no-steam",
+            "do-not-iron"
+          ]
+        },
+        "ironingTemperature": {
+          "type": "integer",
+          "description": "Maximum ironing temperature in Celsius"
+        },
+        "bleachingSymbol": {
+          "type": "string",
+          "description": "ISO 3758 bleaching symbol code",
+          "enum": [
+            "bleach-allowed",
+            "non-chlorine-bleach",
+            "do-not-bleach"
+          ]
+        },
+        "professionalCareSymbol": {
+          "type": "string",
+          "description": "ISO 3758 professional care symbol code",
+          "enum": [
+            "dry-clean-any",
+            "dry-clean-petroleum",
+            "dry-clean-pce",
+            "dry-clean-gentle",
+            "wet-clean",
+            "wet-clean-gentle",
+            "do-not-dry-clean",
+            "do-not-wet-clean"
+          ]
+        },
+        "additionalInstructions": {
+          "type": "string",
+          "description": "Additional care notes"
+        },
+        "professionalRecommended": {
+          "type": "boolean",
+          "description": "Professional cleaning recommended"
+        },
+        "specialHandling": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["store folded", "avoid direct sunlight", "use garment bag"]]
+        }
+      }
+    },
+    "TextileCertification": {
+      "type": "object",
+      "description": "Textile-specific certification",
+      "required": ["@type", "scheme", "certified"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "TextileCertification"
+        },
+        "scheme": {
+          "type": "string",
+          "description": "Certification scheme",
+          "enum": [
+            "GOTS",
+            "OEKO-TEX-100",
+            "OEKO-TEX-STEP",
+            "OEKO-TEX-STeP",
+            "OEKO-TEX-MADE-IN-GREEN",
+            "bluesign",
+            "GRS",
+            "RCS",
+            "OCS",
+            "RWS",
+            "RDS",
+            "FSC",
+            "ZDHC",
+            "Cradle2Cradle",
+            "EU-Ecolabel"
+          ]
+        },
+        "certified": {
+          "type": "boolean"
+        },
+        "certificateNumber": {
+          "type": "string"
+        },
+        "certifiedBy": {
+          "type": "string",
+          "description": "Certification body name"
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date"
+        },
+        "validUntil": {
+          "type": "string",
+          "format": "date"
+        },
+        "level": {
+          "type": "string",
+          "description": "Certification level if applicable",
+          "examples": ["Standard 100", "Class I", "Gold", "Platinum"]
+        },
+        "certificateUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "FabricConstruction": {
+      "type": "object",
+      "description": "How the fabric is constructed",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "FabricConstruction"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "woven",
+            "knit",
+            "non-woven",
+            "lace",
+            "crochet",
+            "embroidered",
+            "felted"
+          ]
+        },
+        "weaveType": {
+          "type": "string",
+          "description": "For woven fabrics",
+          "examples": ["plain", "twill", "satin", "jacquard", "dobby", "herringbone"]
+        },
+        "knitType": {
+          "type": "string",
+          "description": "For knit fabrics",
+          "examples": ["jersey", "rib", "interlock", "pique", "fleece", "terry"]
+        },
+        "fabricWeight": {
+          "type": "number",
+          "description": "Weight in g/m2 or oz/yd2"
+        },
+        "weightUnit": {
+          "type": "string",
+          "enum": ["g/m2", "oz/yd2"]
+        },
+        "threadCount": {
+          "type": "integer",
+          "description": "Thread count per inch (for woven)"
+        },
+        "gauge": {
+          "type": "string",
+          "description": "Knitting gauge (for knit)"
+        }
+      }
+    },
+    "FinishTreatment": {
+      "type": "object",
+      "description": "Applied finish or treatment",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "FinishTreatment"
+        },
+        "treatment": {
+          "type": "string",
+          "examples": [
+            "water-repellent",
+            "stain-resistant",
+            "anti-wrinkle",
+            "anti-static",
+            "UV-protection",
+            "antimicrobial",
+            "flame-retardant",
+            "mercerized",
+            "sanforized",
+            "enzyme-washed",
+            "stone-washed"
+          ]
+        },
+        "chemical": {
+          "type": "string",
+          "description": "Chemical used if applicable"
+        },
+        "pfasFree": {
+          "type": "boolean",
+          "description": "Free from PFAS chemicals"
+        },
+        "durability": {
+          "type": "string",
+          "enum": ["permanent", "semi-permanent", "temporary"]
+        },
+        "rechargeable": {
+          "type": "boolean",
+          "description": "Can treatment be renewed"
+        }
+      }
+    },
+    "TextileSizing": {
+      "type": "object",
+      "description": "Sizing information",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "TextileSizing"
+        },
+        "sizeLabel": {
+          "type": "string",
+          "description": "Size as labeled",
+          "examples": ["XS", "S", "M", "L", "XL", "36", "38", "40", "42", "44"]
+        },
+        "sizingSystem": {
+          "type": "string",
+          "enum": ["EU", "US", "UK", "FR", "IT", "JP", "CN", "universal"]
+        },
+        "measurements": {
+          "type": "object",
+          "description": "Actual measurements in cm",
+          "properties": {
+            "chest": { "type": "number" },
+            "waist": { "type": "number" },
+            "hips": { "type": "number" },
+            "length": { "type": "number" },
+            "sleeveLength": { "type": "number" },
+            "inseam": { "type": "number" },
+            "shoulders": { "type": "number" }
+          }
+        },
+        "fitType": {
+          "type": "string",
+          "enum": ["slim", "regular", "relaxed", "oversized", "tailored"]
+        }
+      }
+    },
+    "Collection": {
+      "type": "object",
+      "description": "Fashion collection reference",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Collection"
+        },
+        "name": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string",
+          "examples": ["SS24", "FW24", "Pre-Fall 2024", "Resort 2025"]
+        },
+        "year": {
+          "type": "integer"
+        },
+        "designer": {
+          "type": "string"
+        },
+        "showDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "showLocation": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "@context": [
+        "https://vocab.galileoprotocol.io/contexts/galileo.jsonld",
+        "https://vocab.galileoprotocol.io/contexts/luxury.jsonld"
+      ],
+      "@type": "IndividualProduct",
+      "@id": "did:galileo:01:03612345678901:21:CH2024SS001",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "gtin",
+        "value": "03612345678901"
+      },
+      "serialNumber": "CH2024SS001",
+      "name": "Silk Twill Scarf - Les Cles",
+      "brand": {
+        "@type": "Brand",
+        "@id": "did:galileo:brand:hermes",
+        "name": "Hermes"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Hermes Textiles"
+      },
+      "productionDate": "2024-02-10",
+      "countryOfOrigin": "FRA",
+      "garmentType": "scarf",
+      "fiberComposition": [
+        {
+          "@type": "FiberComponent",
+          "fiberType": "silk",
+          "percentage": 100,
+          "fiberOrigin": "CHN",
+          "fiberGrade": "6A Mulberry",
+          "organic": false,
+          "recycled": false
+        }
+      ],
+      "careInstructions": {
+        "@type": "CareInstructions",
+        "washingSymbol": "do-not-wash",
+        "dryingSymbol": "do-not-tumble-dry",
+        "ironingSymbol": "iron-low",
+        "bleachingSymbol": "do-not-bleach",
+        "professionalCareSymbol": "dry-clean-petroleum",
+        "professionalRecommended": true,
+        "specialHandling": ["store rolled", "avoid perfume contact"]
+      },
+      "materialComposition": [
+        {
+          "@type": "MaterialComponent",
+          "material": "Silk",
+          "percentage": 100,
+          "origin": "CHN",
+          "certified": true,
+          "certificationScheme": "OEKO-TEX"
+        }
+      ],
+      "carbonFootprint": {
+        "@type": "CarbonFootprint",
+        "totalCO2e": 2.8,
+        "unit": "kgCO2e",
+        "scope": ["cradle-to-gate"],
+        "methodology": "ISO14067"
+      },
+      "repairInstructions": {
+        "@type": "RepairGuide",
+        "guideUrl": "https://www.hermes.com/care/silk",
+        "availableLanguages": ["en", "fr"],
+        "repairabilityIndex": 7.0
+      },
+      "complianceDeclaration": {
+        "@type": "ComplianceDeclaration",
+        "regulation": "ESPR 2024/1781",
+        "compliant": true,
+        "declarationDate": "2024-02-10"
+      }
+    }
+  ]
+}

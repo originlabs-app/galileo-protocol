@@ -1,0 +1,442 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/extensions/terroir-provenance.schema.json",
+  "title": "Galileo Terroir Provenance Schema",
+  "description": "Extension schema for geographic origin authentication via isotopic analysis. Uses stable isotope ratios to verify the claimed geographic origin of materials through comparison with reference databases. Applicable to leather, textiles, precious metals, and gemstones.",
+  "type": "object",
+  "required": [
+    "@type",
+    "materialType",
+    "geographicOrigin",
+    "isotopicSignature"
+  ],
+  "properties": {
+    "@type": {
+      "description": "Must be TerroirAuthentication",
+      "type": "string",
+      "const": "TerroirAuthentication"
+    },
+    "@id": {
+      "description": "Unique identifier for this terroir authentication record",
+      "type": "string",
+      "format": "uri"
+    },
+    "materialType": {
+      "description": "Type of material being authenticated",
+      "type": "string",
+      "enum": [
+        "leather",
+        "textile",
+        "cotton",
+        "silk",
+        "wool",
+        "cashmere",
+        "precious_metal",
+        "gold",
+        "silver",
+        "platinum",
+        "gemstone",
+        "diamond",
+        "colored_stone",
+        "pearl",
+        "wood",
+        "ivory_substitute"
+      ]
+    },
+    "geographicOrigin": {
+      "description": "Claimed geographic origin being verified",
+      "$ref": "#/definitions/GeographicOrigin"
+    },
+    "isotopicSignature": {
+      "description": "Measured isotopic values",
+      "$ref": "#/definitions/IsotopicMeasurement"
+    },
+    "verificationResult": {
+      "description": "Result of origin verification",
+      "$ref": "#/definitions/VerificationResult"
+    },
+    "referenceDatabase": {
+      "description": "Reference database used for comparison",
+      "type": "string",
+      "enum": [
+        "ORITAIN",
+        "ISOORIGIN",
+        "GEOTRACES",
+        "ISOSCAPE",
+        "PROPRIETARY",
+        "GALILEO_REF"
+      ]
+    },
+    "referenceDatabaseVersion": {
+      "description": "Version of the reference database",
+      "type": "string"
+    },
+    "analysisDate": {
+      "description": "Date of isotopic analysis",
+      "type": "string",
+      "format": "date-time"
+    },
+    "laboratoryId": {
+      "description": "DID of the laboratory that performed analysis",
+      "type": "string",
+      "pattern": "^did:galileo:(issuer|verifier):[a-z0-9\\-]{1,80}$"
+    },
+    "laboratoryName": {
+      "description": "Name of the analyzing laboratory",
+      "type": "string"
+    },
+    "accreditation": {
+      "description": "Laboratory accreditation information",
+      "type": "object",
+      "properties": {
+        "standard": {
+          "type": "string",
+          "enum": ["ISO17025", "GLP"]
+        },
+        "accreditationBody": {
+          "type": "string"
+        },
+        "certificateNumber": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        }
+      }
+    },
+    "sampleId": {
+      "description": "Laboratory sample identifier",
+      "type": "string"
+    },
+    "sampleDescription": {
+      "description": "Description of sample taken for analysis",
+      "type": "string"
+    },
+    "sampleMass": {
+      "description": "Mass of sample in milligrams",
+      "type": "number",
+      "minimum": 0
+    },
+    "samplingLocation": {
+      "description": "Location on product where sample was taken",
+      "type": "string"
+    },
+    "samplingMethod": {
+      "description": "Method used to obtain sample",
+      "type": "string",
+      "enum": [
+        "micro_drill",
+        "fiber_extraction",
+        "laser_ablation",
+        "solution",
+        "non_destructive"
+      ]
+    },
+    "chainOfCustody": {
+      "description": "Sample chain of custody documentation",
+      "type": "string",
+      "format": "uri"
+    },
+    "additionalMarkers": {
+      "description": "Additional chemical markers analyzed",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AdditionalMarker"
+      }
+    },
+    "notes": {
+      "description": "Additional notes from analyst",
+      "type": "string",
+      "maxLength": 2000
+    }
+  },
+  "definitions": {
+    "GeographicOrigin": {
+      "type": "object",
+      "description": "Geographic origin specification",
+      "required": ["country"],
+      "properties": {
+        "country": {
+          "description": "Country in ISO 3166-1 alpha-3 format",
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "region": {
+          "description": "Administrative region within country",
+          "type": "string"
+        },
+        "specificArea": {
+          "description": "Specific geographic area (valley, mine, ranch, etc.)",
+          "type": "string"
+        },
+        "protectedDesignation": {
+          "description": "Protected geographic indication if applicable",
+          "type": "string"
+        },
+        "latitude": {
+          "description": "Latitude of origin (if known)",
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "description": "Longitude of origin (if known)",
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "altitude": {
+          "description": "Altitude in meters (if relevant)",
+          "type": "number"
+        }
+      }
+    },
+    "IsotopicMeasurement": {
+      "type": "object",
+      "description": "Measured stable isotope ratios",
+      "required": ["method"],
+      "properties": {
+        "method": {
+          "description": "Analytical method used",
+          "type": "string",
+          "enum": [
+            "IRMS",
+            "EA_IRMS",
+            "GC_IRMS",
+            "LC_IRMS",
+            "SIMS",
+            "LA_ICP_MS",
+            "MC_ICP_MS",
+            "TIMS"
+          ]
+        },
+        "instrumentModel": {
+          "description": "Instrument model used",
+          "type": "string"
+        },
+        "referenceStandards": {
+          "description": "Reference standards used for calibration",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "delta13C": {
+          "description": "Carbon isotope ratio (delta 13C, per mil vs. VPDB)",
+          "type": "number"
+        },
+        "delta13C_uncertainty": {
+          "description": "Uncertainty on delta 13C (1 sigma)",
+          "type": "number",
+          "minimum": 0
+        },
+        "delta15N": {
+          "description": "Nitrogen isotope ratio (delta 15N, per mil vs. AIR)",
+          "type": "number"
+        },
+        "delta15N_uncertainty": {
+          "description": "Uncertainty on delta 15N (1 sigma)",
+          "type": "number",
+          "minimum": 0
+        },
+        "delta18O": {
+          "description": "Oxygen isotope ratio (delta 18O, per mil vs. VSMOW)",
+          "type": "number"
+        },
+        "delta18O_uncertainty": {
+          "description": "Uncertainty on delta 18O (1 sigma)",
+          "type": "number",
+          "minimum": 0
+        },
+        "delta34S": {
+          "description": "Sulfur isotope ratio (delta 34S, per mil vs. VCDT)",
+          "type": "number"
+        },
+        "delta34S_uncertainty": {
+          "description": "Uncertainty on delta 34S (1 sigma)",
+          "type": "number",
+          "minimum": 0
+        },
+        "delta2H": {
+          "description": "Hydrogen isotope ratio (delta 2H/D, per mil vs. VSMOW)",
+          "type": "number"
+        },
+        "delta2H_uncertainty": {
+          "description": "Uncertainty on delta 2H (1 sigma)",
+          "type": "number",
+          "minimum": 0
+        },
+        "strontiumRatio": {
+          "description": "Strontium isotope ratio (87Sr/86Sr)",
+          "type": "number"
+        },
+        "strontiumRatio_uncertainty": {
+          "description": "Uncertainty on Sr ratio (2 sigma)",
+          "type": "number",
+          "minimum": 0
+        },
+        "leadRatios": {
+          "description": "Lead isotope ratios for metals/gemstones",
+          "$ref": "#/definitions/LeadIsotopes"
+        }
+      }
+    },
+    "LeadIsotopes": {
+      "type": "object",
+      "description": "Lead isotope ratios",
+      "properties": {
+        "ratio_206_204": {
+          "description": "206Pb/204Pb ratio",
+          "type": "number"
+        },
+        "ratio_207_204": {
+          "description": "207Pb/204Pb ratio",
+          "type": "number"
+        },
+        "ratio_208_204": {
+          "description": "208Pb/204Pb ratio",
+          "type": "number"
+        },
+        "ratio_207_206": {
+          "description": "207Pb/206Pb ratio",
+          "type": "number"
+        },
+        "ratio_208_206": {
+          "description": "208Pb/206Pb ratio",
+          "type": "number"
+        }
+      }
+    },
+    "VerificationResult": {
+      "type": "object",
+      "description": "Origin verification result",
+      "required": ["status", "confidenceLevel"],
+      "properties": {
+        "status": {
+          "description": "Verification status",
+          "type": "string",
+          "enum": [
+            "VERIFIED",
+            "INCONSISTENT",
+            "INCONCLUSIVE",
+            "INSUFFICIENT_DATA"
+          ]
+        },
+        "confidenceLevel": {
+          "description": "Statistical confidence level (0-1)",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "matchedRegions": {
+          "description": "Regions matching the isotopic signature",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "region": { "type": "string" },
+              "probability": { "type": "number" }
+            }
+          }
+        },
+        "mahalanobisDistance": {
+          "description": "Mahalanobis distance from reference population",
+          "type": "number"
+        },
+        "pValue": {
+          "description": "P-value for origin assignment",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "exclusionList": {
+          "description": "Regions excluded by isotopic signature",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verificationNotes": {
+          "description": "Notes explaining the verification result",
+          "type": "string"
+        }
+      }
+    },
+    "AdditionalMarker": {
+      "type": "object",
+      "description": "Additional chemical or elemental marker",
+      "properties": {
+        "marker": {
+          "description": "Marker name or element",
+          "type": "string"
+        },
+        "value": {
+          "description": "Measured value",
+          "type": "number"
+        },
+        "unit": {
+          "description": "Unit of measurement",
+          "type": "string"
+        },
+        "uncertainty": {
+          "description": "Measurement uncertainty",
+          "type": "number"
+        },
+        "diagnostic": {
+          "description": "Whether this marker is diagnostic for origin",
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "@type": "TerroirAuthentication",
+      "@id": "urn:galileo:terroir:2024-HK2024A001-origin001",
+      "materialType": "leather",
+      "geographicOrigin": {
+        "country": "FRA",
+        "region": "Auvergne-Rhone-Alpes",
+        "specificArea": "Haute-Loire"
+      },
+      "isotopicSignature": {
+        "method": "EA_IRMS",
+        "instrumentModel": "Thermo Delta V Plus",
+        "referenceStandards": ["USGS40", "USGS41", "IAEA-CH-6"],
+        "delta13C": -22.5,
+        "delta13C_uncertainty": 0.2,
+        "delta15N": 6.8,
+        "delta15N_uncertainty": 0.3,
+        "delta34S": 8.2,
+        "delta34S_uncertainty": 0.4
+      },
+      "verificationResult": {
+        "status": "VERIFIED",
+        "confidenceLevel": 0.94,
+        "matchedRegions": [
+          { "region": "Central France", "probability": 0.94 },
+          { "region": "Northern Spain", "probability": 0.03 }
+        ],
+        "mahalanobisDistance": 1.8,
+        "pValue": 0.06,
+        "exclusionList": ["South America", "Asia", "Africa"]
+      },
+      "referenceDatabase": "ORITAIN",
+      "referenceDatabaseVersion": "2024.1",
+      "analysisDate": "2024-03-10T14:30:00Z",
+      "laboratoryId": "did:galileo:verifier:oritain",
+      "laboratoryName": "Oritain Global Limited",
+      "accreditation": {
+        "standard": "ISO17025",
+        "accreditationBody": "IANZ",
+        "certificateNumber": "1135",
+        "scope": "Stable isotope analysis"
+      },
+      "sampleId": "ORI-2024-78234",
+      "sampleDescription": "Leather fiber sample from interior lining",
+      "sampleMass": 2.5,
+      "samplingLocation": "Interior pocket lining",
+      "samplingMethod": "fiber_extraction"
+    }
+  ]
+}

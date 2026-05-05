@@ -1,0 +1,430 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/events/event-base.schema.json",
+  "title": "Galileo Event Base Schema",
+  "description": "Common EPCIS 2.0 event structure with Galileo extensions for luxury product lifecycle events. All event types extend this base schema per GS1 EPCIS 2.0 JSON-LD binding with CBV 2.0 vocabulary.",
+  "type": "object",
+  "required": [
+    "@context",
+    "type",
+    "eventID",
+    "eventTime",
+    "eventTimeZoneOffset",
+    "bizStep",
+    "disposition",
+    "readPoint"
+  ],
+  "properties": {
+    "@context": {
+      "description": "JSON-LD context including EPCIS 2.0 and Galileo vocabulary",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "contains": {
+        "const": "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld"
+      },
+      "minItems": 2,
+      "default": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ]
+    },
+    "type": {
+      "description": "EPCIS 2.0 event type",
+      "type": "string",
+      "enum": ["ObjectEvent", "TransactionEvent", "TransformationEvent"]
+    },
+    "eventID": {
+      "description": "Unique event identifier in RFC 6920 ni: URI format with SHA-256 hash",
+      "type": "string",
+      "pattern": "^ni:///sha-256;[a-f0-9]{64}(\\?ver=CBV2\\.0)?$"
+    },
+    "eventTime": {
+      "description": "Event timestamp in ISO 8601 format with timezone",
+      "type": "string",
+      "format": "date-time"
+    },
+    "eventTimeZoneOffset": {
+      "description": "Timezone offset from UTC in +/-HH:MM format",
+      "type": "string",
+      "pattern": "^[+-]\\d{2}:\\d{2}$"
+    },
+    "action": {
+      "description": "EPCIS action type (required for ObjectEvent and TransactionEvent, not for TransformationEvent)",
+      "type": "string",
+      "enum": ["ADD", "OBSERVE", "DELETE"]
+    },
+    "bizStep": {
+      "description": "Business step from CBV 2.0 vocabulary",
+      "type": "string",
+      "pattern": "^cbv:BizStep-.+$"
+    },
+    "disposition": {
+      "description": "Disposition state from CBV 2.0 vocabulary",
+      "type": "string",
+      "pattern": "^cbv:Disp-.+$"
+    },
+    "readPoint": {
+      "description": "Location where event was recorded",
+      "$ref": "#/definitions/ReadPoint"
+    },
+    "bizLocation": {
+      "description": "Business location context for the event",
+      "$ref": "#/definitions/BizLocation"
+    },
+    "epcList": {
+      "description": "List of EPCs (required for ObjectEvent and TransactionEvent)",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EPC"
+      },
+      "minItems": 1
+    },
+    "inputEPCList": {
+      "description": "Input EPCs for transformation events",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EPC"
+      },
+      "minItems": 1
+    },
+    "outputEPCList": {
+      "description": "Output EPCs for transformation events",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/EPC"
+      },
+      "minItems": 1
+    },
+    "bizTransactionList": {
+      "description": "Business transaction references",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BizTransaction"
+      }
+    },
+    "sourceList": {
+      "description": "Source parties for transaction events",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Source"
+      }
+    },
+    "destinationList": {
+      "description": "Destination parties for transaction events",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Destination"
+      }
+    },
+    "ilmd": {
+      "description": "Instance/Lot Master Data - immutable attributes set at event time",
+      "type": "object",
+      "additionalProperties": true
+    },
+    "errorDeclaration": {
+      "description": "Error declaration for correcting previous events",
+      "$ref": "#/definitions/ErrorDeclaration"
+    },
+    "certificationInfo": {
+      "description": "Certification information attached to the event",
+      "$ref": "#/definitions/CertificationInfo"
+    },
+    "sensorElementList": {
+      "description": "Sensor data captured during event",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SensorElement"
+      }
+    },
+    "galileo:dppContentHash": {
+      "description": "SHA-256 hash of the linked DPP document for integrity verification",
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "galileo:productDID": {
+      "description": "did:galileo reference to the product",
+      "type": "string",
+      "pattern": "^did:galileo:(01|8006|8010|253):\\d{8,14}(:21:[A-Za-z0-9\\-\\.]{1,20})?$"
+    },
+    "galileo:eventSignature": {
+      "description": "Cryptographic signature of the event for non-repudiation",
+      "$ref": "#/definitions/EventSignature"
+    }
+  },
+  "definitions": {
+    "EPC": {
+      "description": "Electronic Product Code in GS1 Digital Link URI format",
+      "type": "string",
+      "pattern": "^https://id\\.gs1\\.org/01/\\d{14}/21/[A-Za-z0-9\\-\\.]{1,20}$"
+    },
+    "ReadPoint": {
+      "type": "object",
+      "description": "Physical location where event occurred",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "description": "Location identifier in SGLN URN format",
+          "type": "string",
+          "pattern": "^urn:epc:id:sgln:\\d+\\.\\d+\\..+$"
+        },
+        "galileo:facilityDID": {
+          "description": "Galileo DID for the facility",
+          "type": "string",
+          "pattern": "^did:galileo:facility:[a-z0-9\\-]{1,80}$"
+        },
+        "geo:lat": {
+          "description": "Latitude coordinate",
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "geo:long": {
+          "description": "Longitude coordinate",
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        }
+      }
+    },
+    "BizLocation": {
+      "type": "object",
+      "description": "Business context location (may differ from readPoint)",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^urn:epc:id:sgln:\\d+\\.\\d+\\..+$"
+        }
+      }
+    },
+    "BizTransaction": {
+      "type": "object",
+      "description": "Business transaction reference",
+      "required": ["type", "bizTransaction"],
+      "properties": {
+        "type": {
+          "description": "CBV business transaction type",
+          "type": "string",
+          "enum": [
+            "cbv:BTT-po",
+            "cbv:BTT-desadv",
+            "cbv:BTT-inv",
+            "cbv:BTT-pedigree",
+            "cbv:BTT-prodorder",
+            "cbv:BTT-rma",
+            "cbv:BTT-bol"
+          ]
+        },
+        "bizTransaction": {
+          "description": "Transaction identifier URN",
+          "type": "string",
+          "pattern": "^urn:"
+        }
+      }
+    },
+    "Source": {
+      "type": "object",
+      "description": "Source party for ownership transfer",
+      "required": ["type", "source"],
+      "properties": {
+        "type": {
+          "description": "CBV source/destination type",
+          "type": "string",
+          "enum": [
+            "cbv:SDT-owning_party",
+            "cbv:SDT-possessing_party",
+            "cbv:SDT-location"
+          ]
+        },
+        "source": {
+          "description": "Source party identifier (DID or PGLN)",
+          "type": "string"
+        }
+      }
+    },
+    "Destination": {
+      "type": "object",
+      "description": "Destination party for ownership transfer",
+      "required": ["type", "destination"],
+      "properties": {
+        "type": {
+          "description": "CBV source/destination type",
+          "type": "string",
+          "enum": [
+            "cbv:SDT-owning_party",
+            "cbv:SDT-possessing_party",
+            "cbv:SDT-location"
+          ]
+        },
+        "destination": {
+          "description": "Destination party identifier (DID or PGLN)",
+          "type": "string"
+        }
+      }
+    },
+    "ErrorDeclaration": {
+      "type": "object",
+      "description": "Declaration that a previous event contained errors",
+      "required": ["declarationTime"],
+      "properties": {
+        "declarationTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reason": {
+          "type": "string",
+          "description": "CBV error reason code",
+          "enum": [
+            "cbv:ER-incorrect_data",
+            "cbv:ER-did_not_occur"
+          ]
+        },
+        "correctiveEventIDs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^ni:///sha-256;[a-f0-9]{64}"
+          }
+        }
+      }
+    },
+    "CertificationInfo": {
+      "type": "object",
+      "description": "Certification or attestation attached to event",
+      "properties": {
+        "certificationStandard": {
+          "type": "string"
+        },
+        "certificationAgency": {
+          "type": "string"
+        },
+        "certificationValue": {
+          "type": "string"
+        },
+        "certificationIdentification": {
+          "type": "string"
+        }
+      }
+    },
+    "SensorElement": {
+      "type": "object",
+      "description": "Sensor measurement data",
+      "properties": {
+        "sensorMetadata": {
+          "type": "object",
+          "properties": {
+            "time": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "deviceID": {
+              "type": "string"
+            },
+            "deviceMetadata": {
+              "type": "string"
+            }
+          }
+        },
+        "sensorReport": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              },
+              "uom": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "EventSignature": {
+      "type": "object",
+      "description": "Cryptographic signature for event integrity and non-repudiation",
+      "required": ["type", "created", "verificationMethod", "proofValue"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Signature suite (PQC-ready)",
+          "enum": ["Ed25519Signature2020", "MLDSASignature2024", "JsonWebSignature2020"]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verificationMethod": {
+          "type": "string",
+          "description": "DID URL to verification key"
+        },
+        "proofPurpose": {
+          "type": "string",
+          "default": "assertionMethod"
+        },
+        "proofValue": {
+          "type": "string",
+          "description": "Base64-encoded signature value"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "type": { "const": "ObjectEvent" } }
+      },
+      "then": {
+        "required": ["action", "epcList"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "TransactionEvent" } }
+      },
+      "then": {
+        "required": ["action", "epcList", "sourceList", "destinationList"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "TransformationEvent" } }
+      },
+      "then": {
+        "required": ["inputEPCList", "outputEPCList"],
+        "not": {
+          "required": ["action"]
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "ObjectEvent",
+      "eventID": "ni:///sha-256;a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2?ver=CBV2.0",
+      "eventTime": "2024-03-15T10:30:00.000Z",
+      "eventTimeZoneOffset": "+01:00",
+      "action": "ADD",
+      "bizStep": "cbv:BizStep-commissioning",
+      "disposition": "cbv:Disp-active",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:0614141.12345.0"
+      },
+      "epcList": [
+        "https://id.gs1.org/01/09506000134352/21/HK2024A001"
+      ],
+      "galileo:productDID": "did:galileo:01:09506000134352:21:HK2024A001",
+      "galileo:dppContentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

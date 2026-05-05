@@ -1,0 +1,21 @@
+# Auto-detect text files and normalize line endings
+* text=auto
+
+# Mark generated files (excluded from GitHub language stats and diffs)
+package-lock.json linguist-generated
+website/package-lock.json linguist-generated
+*.tsbuildinfo linguist-generated
+
+# Mark documentation
+*.md linguist-documentation
+specifications/**/*.md linguist-documentation
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary

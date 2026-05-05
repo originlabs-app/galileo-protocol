@@ -1,0 +1,33 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Wait for Vercel Preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.3
+        id: vercel-preview
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
+          check_interval: 5
+        continue-on-error: true
+
+      - name: Audit URLs with Lighthouse
+        if: steps.vercel-preview.outcome == 'success'
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            ${{ steps.vercel-preview.outputs.url }}
+            ${{ steps.vercel-preview.outputs.url }}/docs
+            ${{ steps.vercel-preview.outputs.url }}/blog
+          budgetPath: ./website/lighthouse-budget.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true

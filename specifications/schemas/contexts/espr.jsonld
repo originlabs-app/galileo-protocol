@@ -1,0 +1,287 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@import": "https://vocab.galileoprotocol.io/contexts/galileo.jsonld",
+
+    "espr": "https://vocab.galileoprotocol.io/espr/",
+    "iso14067": "https://www.iso.org/standard/71206.html#",
+    "eu-espr": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1781#",
+
+    "CarbonFootprint": {
+      "@id": "espr:CarbonFootprint",
+      "@context": {
+        "totalCO2e": {
+          "@id": "espr:totalCO2e",
+          "@type": "xsd:decimal"
+        },
+        "unit": {
+          "@id": "espr:unit",
+          "@type": "xsd:string"
+        },
+        "scope": {
+          "@id": "espr:scope",
+          "@container": "@set"
+        },
+        "methodology": {
+          "@id": "espr:methodology",
+          "@type": "@id"
+        },
+        "calculationDate": {
+          "@id": "espr:calculationDate",
+          "@type": "xsd:date"
+        },
+        "verificationDate": {
+          "@id": "espr:verificationDate",
+          "@type": "xsd:date"
+        },
+        "verifier": {
+          "@id": "espr:verifier",
+          "@type": "@id"
+        },
+        "validUntil": {
+          "@id": "espr:validUntil",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "RepairGuide": {
+      "@id": "espr:RepairGuide",
+      "@context": {
+        "guideUrl": {
+          "@id": "espr:guideUrl",
+          "@type": "@id"
+        },
+        "availableLanguages": {
+          "@id": "espr:availableLanguages",
+          "@container": "@set"
+        },
+        "repairabilityIndex": {
+          "@id": "espr:repairabilityIndex",
+          "@type": "xsd:decimal"
+        },
+        "repairCenters": {
+          "@id": "espr:repairCenters",
+          "@container": "@set"
+        },
+        "spareParts": {
+          "@id": "espr:spareParts",
+          "@type": "@id"
+        },
+        "sparePartsAvailability": {
+          "@id": "espr:sparePartsAvailability",
+          "@type": "xsd:string"
+        },
+        "estimatedLifespan": {
+          "@id": "espr:estimatedLifespan",
+          "@type": "xsd:duration"
+        },
+        "maintenanceSchedule": {
+          "@id": "espr:maintenanceSchedule",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "ComplianceDeclaration": {
+      "@id": "espr:ComplianceDeclaration",
+      "@context": {
+        "regulation": {
+          "@id": "espr:regulation",
+          "@type": "xsd:string"
+        },
+        "regulationUri": {
+          "@id": "espr:regulationUri",
+          "@type": "@id"
+        },
+        "compliant": {
+          "@id": "espr:compliant",
+          "@type": "xsd:boolean"
+        },
+        "declarationDate": {
+          "@id": "espr:declarationDate",
+          "@type": "xsd:date"
+        },
+        "validUntil": {
+          "@id": "espr:validUntil",
+          "@type": "xsd:date"
+        },
+        "notifiedBody": {
+          "@id": "espr:notifiedBody",
+          "@type": "@id"
+        },
+        "notifiedBodyId": {
+          "@id": "espr:notifiedBodyId",
+          "@type": "xsd:string"
+        },
+        "certificateNumber": {
+          "@id": "espr:certificateNumber",
+          "@type": "xsd:string"
+        },
+        "certificateUrl": {
+          "@id": "espr:certificateUrl",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "MaterialComponent": {
+      "@id": "espr:MaterialComponent",
+      "@context": {
+        "material": {
+          "@id": "espr:material",
+          "@type": "xsd:string"
+        },
+        "percentage": {
+          "@id": "espr:percentage",
+          "@type": "xsd:integer"
+        },
+        "origin": {
+          "@id": "espr:origin",
+          "@type": "xsd:string"
+        },
+        "certified": {
+          "@id": "espr:certified",
+          "@type": "xsd:boolean"
+        },
+        "certificationBody": {
+          "@id": "espr:certificationBody",
+          "@type": "@id"
+        },
+        "certificationScheme": {
+          "@id": "espr:certificationScheme",
+          "@type": "xsd:string"
+        },
+        "recycledContent": {
+          "@id": "espr:recycledContent",
+          "@type": "xsd:integer"
+        },
+        "hazardousSubstances": {
+          "@id": "espr:hazardousSubstances",
+          "@type": "xsd:boolean"
+        },
+        "reachCompliant": {
+          "@id": "espr:reachCompliant",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "DurabilityInfo": {
+      "@id": "espr:DurabilityInfo",
+      "@context": {
+        "expectedLifespan": {
+          "@id": "espr:expectedLifespan",
+          "@type": "xsd:duration"
+        },
+        "warrantyPeriod": {
+          "@id": "espr:warrantyPeriod",
+          "@type": "xsd:duration"
+        },
+        "testingStandard": {
+          "@id": "espr:testingStandard",
+          "@type": "xsd:string"
+        },
+        "cyclesBeforeFailure": {
+          "@id": "espr:cyclesBeforeFailure",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "RecyclingInfo": {
+      "@id": "espr:RecyclingInfo",
+      "@context": {
+        "recyclable": {
+          "@id": "espr:recyclable",
+          "@type": "xsd:boolean"
+        },
+        "recyclabilityRate": {
+          "@id": "espr:recyclabilityRate",
+          "@type": "xsd:decimal"
+        },
+        "disassemblyInstructions": {
+          "@id": "espr:disassemblyInstructions",
+          "@type": "@id"
+        },
+        "takeBackProgram": {
+          "@id": "espr:takeBackProgram",
+          "@type": "@id"
+        },
+        "circularityScore": {
+          "@id": "espr:circularityScore",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "SubstanceOfConcern": {
+      "@id": "espr:SubstanceOfConcern",
+      "@context": {
+        "substanceName": {
+          "@id": "espr:substanceName",
+          "@type": "xsd:string"
+        },
+        "casNumber": {
+          "@id": "espr:casNumber",
+          "@type": "xsd:string"
+        },
+        "concentration": {
+          "@id": "espr:concentration",
+          "@type": "xsd:decimal"
+        },
+        "location": {
+          "@id": "espr:location",
+          "@type": "xsd:string"
+        },
+        "svhcListed": {
+          "@id": "espr:svhcListed",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "EnergyLabel": {
+      "@id": "espr:EnergyLabel",
+      "@context": {
+        "energyClass": {
+          "@id": "espr:energyClass",
+          "@type": "xsd:string"
+        },
+        "energyConsumption": {
+          "@id": "espr:energyConsumption",
+          "@type": "xsd:decimal"
+        },
+        "labelImageUrl": {
+          "@id": "espr:labelImageUrl",
+          "@type": "@id"
+        },
+        "eprelId": {
+          "@id": "espr:eprelId",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "ScopeType": {
+      "@id": "espr:ScopeType",
+      "@context": {
+        "scope1": "espr:Scope1",
+        "scope2": "espr:Scope2",
+        "scope3": "espr:Scope3",
+        "cradle-to-gate": "espr:CradleToGate",
+        "cradle-to-grave": "espr:CradleToGrave"
+      }
+    },
+
+    "ISO14067Methodology": {
+      "@id": "iso14067:Methodology"
+    },
+    "GHGProtocol": {
+      "@id": "espr:GHGProtocol"
+    },
+    "PEF": {
+      "@id": "espr:ProductEnvironmentalFootprint"
+    }
+  }
+}

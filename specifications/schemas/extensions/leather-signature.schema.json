@@ -1,0 +1,299 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/extensions/leather-signature.schema.json",
+  "title": "Galileo Leather Signature Schema",
+  "description": "Extension schema for leather goods provenance verification via DNA tagging and spectral analysis. Enables authentication from raw hide to finished product with full tannery traceability.",
+  "type": "object",
+  "required": [
+    "@type",
+    "tanneryCertified",
+    "tanneryId",
+    "hideOrigin",
+    "dnaMarkerRef",
+    "verificationMethod"
+  ],
+  "properties": {
+    "@type": {
+      "description": "Must be LeatherSignature",
+      "type": "string",
+      "const": "LeatherSignature"
+    },
+    "@id": {
+      "description": "Unique identifier for this leather signature record",
+      "type": "string",
+      "format": "uri"
+    },
+    "tanneryCertified": {
+      "description": "Whether the tannery is certified by an accredited body (e.g., LWG)",
+      "type": "boolean"
+    },
+    "tanneryId": {
+      "description": "DID of the tannery facility",
+      "type": "string",
+      "pattern": "^did:galileo:facility:[a-z0-9\\-]{1,80}$"
+    },
+    "tanneryName": {
+      "description": "Human-readable tannery name",
+      "type": "string",
+      "minLength": 1
+    },
+    "tanneryCertification": {
+      "description": "Tannery certification details",
+      "$ref": "#/definitions/TanneryCertification"
+    },
+    "hideOrigin": {
+      "description": "Country of origin for the raw hide in ISO 3166-1 alpha-3",
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "hideRegion": {
+      "description": "Specific region within the country (optional)",
+      "type": "string"
+    },
+    "animalSpecies": {
+      "description": "Species of animal the leather is from",
+      "type": "string",
+      "enum": [
+        "bovine",
+        "ovine",
+        "caprine",
+        "equine",
+        "porcine",
+        "cervine",
+        "crocodilian",
+        "python",
+        "ostrich",
+        "exotic_other"
+      ]
+    },
+    "breedInfo": {
+      "description": "Specific breed information (optional)",
+      "type": "string"
+    },
+    "tanningProcess": {
+      "description": "Primary tanning method used",
+      "type": "string",
+      "enum": [
+        "vegetable",
+        "chrome",
+        "combination",
+        "aldehyde",
+        "alum",
+        "brain",
+        "synthetic"
+      ]
+    },
+    "tanningDuration": {
+      "description": "Duration of tanning process in days",
+      "type": "integer",
+      "minimum": 1
+    },
+    "dnaMarkerRef": {
+      "description": "Reference ID for DNA marker from authentication provider",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "dnaSequenceHash": {
+      "description": "SHA-256 hash of the DNA sequence data (for privacy)",
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "markerType": {
+      "description": "Type of DNA marker technology used",
+      "type": "string",
+      "enum": [
+        "synthetic_DNA",
+        "botanical_DNA",
+        "intrinsic_DNA",
+        "combined"
+      ]
+    },
+    "verificationMethod": {
+      "description": "Laboratory method used to verify the DNA marker",
+      "type": "string",
+      "enum": [
+        "PCR_AMPLIFICATION",
+        "NEXT_GEN_SEQUENCING",
+        "QPCR",
+        "DIGITAL_PCR",
+        "LAMP"
+      ]
+    },
+    "applicationMethod": {
+      "description": "How the DNA marker was applied to the leather",
+      "type": "string",
+      "enum": [
+        "spray",
+        "immersion",
+        "ink_transfer",
+        "embedded_fiber"
+      ]
+    },
+    "applicationStage": {
+      "description": "Stage in leather production when marker was applied",
+      "type": "string",
+      "enum": [
+        "raw_hide",
+        "wet_blue",
+        "crust",
+        "finished",
+        "cut_piece"
+      ]
+    },
+    "applicationDate": {
+      "description": "Date when DNA marker was applied",
+      "type": "string",
+      "format": "date"
+    },
+    "spectralSignature": {
+      "description": "Optional spectral fingerprint of the leather",
+      "$ref": "spectral-fingerprint.schema.json"
+    },
+    "supplierChain": {
+      "description": "Upstream supply chain participants",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SupplyChainParticipant"
+      }
+    },
+    "batchId": {
+      "description": "Tannery batch/lot identifier",
+      "type": "string"
+    },
+    "gradeAtTannery": {
+      "description": "Quality grade assigned by tannery",
+      "type": "string"
+    },
+    "thickness": {
+      "description": "Leather thickness in millimeters",
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 10
+    },
+    "colorCode": {
+      "description": "Tannery color code/name",
+      "type": "string"
+    },
+    "finishType": {
+      "description": "Surface finish applied",
+      "type": "string",
+      "enum": [
+        "aniline",
+        "semi_aniline",
+        "pigmented",
+        "patent",
+        "suede",
+        "nubuck",
+        "embossed"
+      ]
+    }
+  },
+  "definitions": {
+    "TanneryCertification": {
+      "type": "object",
+      "description": "Tannery certification details",
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "description": "Certification scheme name",
+          "enum": [
+            "LWG_GOLD",
+            "LWG_SILVER",
+            "LWG_BRONZE",
+            "ICEC",
+            "OEKO_TEX_LEATHER",
+            "NATURLEDER",
+            "ISO14001"
+          ]
+        },
+        "certificateNumber": {
+          "type": "string"
+        },
+        "auditor": {
+          "type": "string"
+        },
+        "auditDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "validUntil": {
+          "type": "string",
+          "format": "date"
+        },
+        "score": {
+          "type": "number",
+          "description": "Audit score (if applicable)"
+        }
+      }
+    },
+    "SupplyChainParticipant": {
+      "type": "object",
+      "description": "Participant in the leather supply chain",
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "farm",
+            "abattoir",
+            "hide_trader",
+            "tannery",
+            "finishing_house",
+            "cutting_house"
+          ]
+        },
+        "participantId": {
+          "type": "string",
+          "description": "DID or identifier of participant"
+        },
+        "name": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "certified": {
+          "type": "boolean"
+        },
+        "certificationScheme": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "@type": "LeatherSignature",
+      "@id": "urn:galileo:leather:2024-HK2024A001-hide001",
+      "tanneryCertified": true,
+      "tanneryId": "did:galileo:facility:tanneries-du-puy",
+      "tanneryName": "Tanneries du Puy",
+      "tanneryCertification": {
+        "scheme": "LWG_GOLD",
+        "certificateNumber": "LWG-2024-12345",
+        "auditDate": "2024-01-15",
+        "validUntil": "2026-01-15",
+        "score": 92
+      },
+      "hideOrigin": "FRA",
+      "hideRegion": "Auvergne",
+      "animalSpecies": "bovine",
+      "breedInfo": "Charolais",
+      "tanningProcess": "vegetable",
+      "tanningDuration": 45,
+      "dnaMarkerRef": "ADS-LX-2024-78234",
+      "dnaSequenceHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "markerType": "synthetic_DNA",
+      "verificationMethod": "PCR_AMPLIFICATION",
+      "applicationMethod": "spray",
+      "applicationStage": "crust",
+      "applicationDate": "2024-02-01",
+      "batchId": "TDP-2024-TOGO-GOLD-001",
+      "gradeAtTannery": "Premier Choix",
+      "thickness": 1.4,
+      "colorCode": "Gold-37",
+      "finishType": "semi_aniline"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+---
+title: "Live Base Sepolia Mint Verified"
+date: "2026-05-04"
+author: "Galileo Core Team"
+excerpt: "Galileo has verified a live constructor-path mint on Base Sepolia and aligned the public roadmap around the remaining identity role administration before full API-driven minting."
+tags:
+  - release
+  - blockchain
+  - base
+  - open-source
+published: true
+---
+
+## Live Mint Evidence
+
+Galileo has now verified a real Base Sepolia mint against the deployed ERC-3643 contract set. This confirms that the deployed token can mint on-chain and that the public deployment manifest is aligned with the current testnet state.
+
+Public evidence:
+
+- **Minting wallet:** `0xf9e9633D6f23dEa639B64c5A16b5BB22636599B9`
+- **GalileoToken:** `0x11ef46e76ae5fbd0b14e29ac7b1fd93ad5ea01f9`
+- **GalileoCompliance:** `0x688e071B5C7C09c7A9aA6fF0fdd204AD8a7a95Ee`
+- **Mint transaction:** [`0x9cca203f8c3d988ac79bd5ea5c17cfd23a76d0d1393f32e0fb0f82875ccbc026`](https://sepolia.basescan.org/tx/0x9cca203f8c3d988ac79bd5ea5c17cfd23a76d0d1393f32e0fb0f82875ccbc026)
+
+The current verified path is intentionally narrow: it proves the on-chain minting capability before expanding the dashboard/API workflow into a full role-gated production flow.
+
+---
+
+## What Remains Before Full API Minting
+
+The next blockchain gate is identity role administration. Operators still need to grant the minting wallet the minimum roles required to operate the identity infrastructure:
+
+- `REGISTRY_ADMIN_ROLE` on `GalileoTrustedIssuersRegistry`
+- `AGENT_ROLE` on `GalileoIdentityRegistry`
+
+Once these grants are executed, the identity setup can be re-run from the minting wallet and the API path can move from simulated minting to a real, compliance-checked Base Sepolia transaction.
+
+---
+
+## Public Repository Hygiene
+
+The open-source readiness pass is complete. The repository documentation now separates public evidence from private operator material:
+
+- Public addresses, contract addresses, and transaction hashes are documented.
+- Local environment files remain ignored by Git.
+- Mnemonics and private keys are not documented in the website, roadmap, changelog, or Git-tracked files.
+- Wallet recovery material must stay in an offline backup or password manager, never in a prompt, chat, public note, or repository file.
+
+This keeps the project useful for public review without exposing operational secrets.
+
+---
+
+## Next Milestones
+
+The immediate roadmap is now focused on finishing role administration, running the full API-driven mint, and validating the product flow in a browser from dashboard creation through QR scanner verification.
+
+After that, the next larger product goal is enterprise readiness: multi-tenant workspace hardening, webhook delivery history, richer audit exports, API key management, and a clearer brand onboarding path.

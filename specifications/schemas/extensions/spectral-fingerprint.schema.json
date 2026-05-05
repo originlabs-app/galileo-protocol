@@ -1,0 +1,329 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/extensions/spectral-fingerprint.schema.json",
+  "title": "Galileo Spectral Fingerprint Schema",
+  "description": "Extension schema for material authentication via spectroscopic methods including NIR, Raman, and FTIR spectroscopy. Enables non-destructive verification of material composition and authenticity.",
+  "type": "object",
+  "required": [
+    "@type",
+    "method",
+    "wavelengthRange",
+    "referenceHash",
+    "captureDate"
+  ],
+  "properties": {
+    "@type": {
+      "description": "Must be SpectralSignature",
+      "type": "string",
+      "const": "SpectralSignature"
+    },
+    "@id": {
+      "description": "Unique identifier for this spectral signature record",
+      "type": "string",
+      "format": "uri"
+    },
+    "method": {
+      "description": "Spectroscopic method used",
+      "type": "string",
+      "enum": [
+        "NIR_SPECTROSCOPY",
+        "RAMAN_SPECTROSCOPY",
+        "FTIR",
+        "UV_VIS",
+        "XRF",
+        "LIBS"
+      ]
+    },
+    "methodDetails": {
+      "description": "Additional method-specific parameters",
+      "$ref": "#/definitions/MethodDetails"
+    },
+    "wavelengthRange": {
+      "description": "Wavelength range of spectral capture (e.g., '900-2500nm', '400-4000cm-1')",
+      "type": "string",
+      "pattern": "^[0-9]+\\-[0-9]+(nm|cm-1|um)$"
+    },
+    "resolution": {
+      "description": "Spectral resolution (e.g., '4cm-1', '1nm')",
+      "type": "string"
+    },
+    "referenceHash": {
+      "description": "SHA-256 hash of the reference spectral data",
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "spectralDataUri": {
+      "description": "URI to full spectral data file (JCAMP-DX or similar)",
+      "type": "string",
+      "format": "uri"
+    },
+    "captureDate": {
+      "description": "Date/time when spectral signature was captured",
+      "type": "string",
+      "format": "date-time"
+    },
+    "instrumentModel": {
+      "description": "Model of spectroscopic instrument used",
+      "type": "string"
+    },
+    "instrumentManufacturer": {
+      "description": "Manufacturer of the instrument",
+      "type": "string"
+    },
+    "instrumentSerialNumber": {
+      "description": "Serial number of the instrument",
+      "type": "string"
+    },
+    "calibrationRef": {
+      "description": "Reference to instrument calibration record",
+      "type": "string"
+    },
+    "calibrationDate": {
+      "description": "Date of last instrument calibration",
+      "type": "string",
+      "format": "date"
+    },
+    "calibrationStandard": {
+      "description": "Calibration standard used",
+      "type": "string"
+    },
+    "measurementConditions": {
+      "description": "Environmental conditions during measurement",
+      "$ref": "#/definitions/MeasurementConditions"
+    },
+    "samplePreparation": {
+      "description": "How the sample was prepared for measurement",
+      "type": "string",
+      "enum": [
+        "none_in_situ",
+        "cleaned",
+        "polished",
+        "cut_section",
+        "dissolved",
+        "ground"
+      ]
+    },
+    "measurementLocation": {
+      "description": "Physical location on the product where measurement was taken",
+      "type": "string"
+    },
+    "numberOfScans": {
+      "description": "Number of scans averaged for final spectrum",
+      "type": "integer",
+      "minimum": 1
+    },
+    "signalToNoise": {
+      "description": "Signal-to-noise ratio of the measurement",
+      "type": "number",
+      "minimum": 0
+    },
+    "peakIdentification": {
+      "description": "Key peaks identified in the spectrum",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SpectralPeak"
+      }
+    },
+    "materialClassification": {
+      "description": "Material classification based on spectral analysis",
+      "$ref": "#/definitions/MaterialClassification"
+    },
+    "matchingThreshold": {
+      "description": "Correlation threshold for positive match (0-1)",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "laboratoryId": {
+      "description": "DID of the laboratory that performed the analysis",
+      "type": "string",
+      "pattern": "^did:galileo:(issuer|verifier):[a-z0-9\\-]{1,80}$"
+    },
+    "analystId": {
+      "description": "Identifier of the analyst who performed measurement",
+      "type": "string"
+    },
+    "notes": {
+      "description": "Additional notes about the measurement",
+      "type": "string",
+      "maxLength": 2000
+    }
+  },
+  "definitions": {
+    "MethodDetails": {
+      "type": "object",
+      "description": "Method-specific parameters",
+      "properties": {
+        "laserWavelength": {
+          "type": "string",
+          "description": "Laser wavelength for Raman (e.g., '785nm', '532nm')"
+        },
+        "laserPower": {
+          "type": "string",
+          "description": "Laser power for Raman (e.g., '50mW')"
+        },
+        "integrationTime": {
+          "type": "string",
+          "description": "Integration/exposure time (e.g., '10s')"
+        },
+        "aperture": {
+          "type": "string",
+          "description": "Aperture size for FTIR"
+        },
+        "detector": {
+          "type": "string",
+          "description": "Detector type used"
+        },
+        "optics": {
+          "type": "string",
+          "description": "Optical configuration (e.g., 'ATR', 'transmission', 'reflectance')"
+        }
+      }
+    },
+    "MeasurementConditions": {
+      "type": "object",
+      "description": "Environmental conditions during measurement",
+      "properties": {
+        "temperature": {
+          "type": "number",
+          "description": "Temperature in Celsius"
+        },
+        "humidity": {
+          "type": "number",
+          "description": "Relative humidity percentage",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "atmosphereControl": {
+          "type": "string",
+          "enum": ["ambient", "nitrogen_purge", "vacuum", "inert_gas"]
+        }
+      }
+    },
+    "SpectralPeak": {
+      "type": "object",
+      "description": "Identified peak in spectrum",
+      "properties": {
+        "position": {
+          "type": "number",
+          "description": "Peak position (wavenumber or wavelength)"
+        },
+        "unit": {
+          "type": "string",
+          "enum": ["cm-1", "nm", "um"]
+        },
+        "intensity": {
+          "type": "number",
+          "description": "Peak intensity (absorbance or transmission)"
+        },
+        "assignment": {
+          "type": "string",
+          "description": "Chemical/structural assignment"
+        },
+        "diagnostic": {
+          "type": "boolean",
+          "description": "Whether this is a diagnostic peak for authentication"
+        }
+      }
+    },
+    "MaterialClassification": {
+      "type": "object",
+      "description": "Material classification from spectral analysis",
+      "properties": {
+        "primaryMaterial": {
+          "type": "string",
+          "description": "Primary material identified"
+        },
+        "subType": {
+          "type": "string",
+          "description": "Material sub-type or grade"
+        },
+        "confidence": {
+          "type": "number",
+          "description": "Classification confidence (0-1)",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "alternativeMaterials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "material": { "type": "string" },
+              "confidence": { "type": "number" }
+            }
+          }
+        },
+        "adulterantsDetected": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Any adulterants or unexpected materials detected"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "method": { "const": "RAMAN_SPECTROSCOPY" } }
+      },
+      "then": {
+        "properties": {
+          "methodDetails": {
+            "required": ["laserWavelength"]
+          }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "@type": "SpectralSignature",
+      "@id": "urn:galileo:spectral:2024-HK2024A001-spec001",
+      "method": "NIR_SPECTROSCOPY",
+      "wavelengthRange": "900-2500nm",
+      "resolution": "4nm",
+      "referenceHash": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+      "captureDate": "2024-03-15T11:00:00Z",
+      "instrumentModel": "FOSS DS2500",
+      "instrumentManufacturer": "FOSS",
+      "calibrationRef": "CAL-2024-001",
+      "calibrationDate": "2024-01-01",
+      "measurementConditions": {
+        "temperature": 22.5,
+        "humidity": 45,
+        "atmosphereControl": "ambient"
+      },
+      "samplePreparation": "none_in_situ",
+      "measurementLocation": "exterior_front_panel",
+      "numberOfScans": 32,
+      "signalToNoise": 12500,
+      "peakIdentification": [
+        {
+          "position": 1720,
+          "unit": "nm",
+          "intensity": 0.85,
+          "assignment": "C-H stretch (collagen)",
+          "diagnostic": true
+        },
+        {
+          "position": 2100,
+          "unit": "nm",
+          "intensity": 0.72,
+          "assignment": "O-H combination",
+          "diagnostic": true
+        }
+      ],
+      "materialClassification": {
+        "primaryMaterial": "Bovine Leather",
+        "subType": "Togo Grain",
+        "confidence": 0.96,
+        "adulterantsDetected": []
+      },
+      "matchingThreshold": 0.95,
+      "laboratoryId": "did:galileo:verifier:smx-technology"
+    }
+  ]
+}

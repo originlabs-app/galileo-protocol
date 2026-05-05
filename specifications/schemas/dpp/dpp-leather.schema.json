@@ -1,0 +1,702 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/dpp/dpp-leather.schema.json",
+  "title": "Galileo DPP Leather Schema",
+  "description": "Digital Product Passport schema for leather goods. Extends dpp-core with leather type, tannery origin, hide grade, and leather-specific fields for bags, accessories, and small leather goods.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "dpp-core.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "leatherType",
+        "tanneryOrigin"
+      ],
+      "properties": {
+        "leatherType": {
+          "description": "Type of leather used",
+          "$ref": "#/definitions/LeatherType"
+        },
+        "tanneryOrigin": {
+          "description": "Tannery information and origin",
+          "$ref": "#/definitions/TanneryOrigin"
+        },
+        "finishType": {
+          "description": "Leather finish applied",
+          "$ref": "#/definitions/LeatherFinish"
+        },
+        "hideGrade": {
+          "description": "Quality grade of the hide",
+          "type": "string",
+          "enum": ["A+", "A", "B", "C"],
+          "description": "A+ = flawless, A = minor natural marks, B = visible marks, C = standard"
+        },
+        "productCategory": {
+          "description": "Type of leather good",
+          "type": "string",
+          "examples": [
+            "handbag",
+            "wallet",
+            "belt",
+            "luggage",
+            "briefcase",
+            "card-holder",
+            "key-holder",
+            "passport-cover",
+            "watch-strap",
+            "shoes",
+            "gloves"
+          ]
+        },
+        "hardwareDetails": {
+          "description": "Metal hardware specifications",
+          "$ref": "#/definitions/HardwareDetails"
+        },
+        "liningDetails": {
+          "description": "Interior lining information",
+          "$ref": "#/definitions/LiningDetails"
+        },
+        "stitchingDetails": {
+          "description": "Stitching specifications",
+          "$ref": "#/definitions/StitchingDetails"
+        },
+        "edgeFinishing": {
+          "description": "Edge finishing method",
+          "$ref": "#/definitions/EdgeFinishing"
+        },
+        "closureType": {
+          "description": "Type of closure mechanism",
+          "type": "string",
+          "examples": [
+            "turn-lock",
+            "flap",
+            "zipper",
+            "snap",
+            "magnetic",
+            "buckle",
+            "drawstring",
+            "clasp"
+          ]
+        },
+        "compartments": {
+          "description": "Interior compartment details",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Compartment"
+          }
+        },
+        "stampingDetails": {
+          "description": "Brand stamping and marking",
+          "$ref": "#/definitions/StampingDetails"
+        },
+        "leatherCertifications": {
+          "description": "Leather-specific certifications",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LeatherCertification"
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "LeatherType": {
+      "type": "object",
+      "description": "Leather type specification",
+      "required": ["@type", "leatherName", "animalSource"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "LeatherType"
+        },
+        "leatherName": {
+          "type": "string",
+          "description": "Commercial leather name",
+          "examples": [
+            "Togo",
+            "Clemence",
+            "Epsom",
+            "Box",
+            "Swift",
+            "Barenia",
+            "Chevre",
+            "Ostrich",
+            "Crocodile Porosus",
+            "Crocodile Niloticus",
+            "Alligator",
+            "Python",
+            "Lizard",
+            "Saffiano",
+            "Caviar",
+            "Lambskin"
+          ]
+        },
+        "animalSource": {
+          "type": "string",
+          "enum": [
+            "bovine",
+            "calf",
+            "goat",
+            "sheep",
+            "lamb",
+            "deer",
+            "ostrich",
+            "crocodile",
+            "alligator",
+            "python",
+            "lizard",
+            "fish"
+          ]
+        },
+        "hideOriginCountry": {
+          "type": "string",
+          "description": "Country where hide was sourced",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "tanningMethod": {
+          "type": "string",
+          "enum": [
+            "vegetable",
+            "chrome",
+            "combination",
+            "brain",
+            "alum",
+            "synthetic"
+          ]
+        },
+        "grainType": {
+          "type": "string",
+          "enum": [
+            "full-grain",
+            "top-grain",
+            "corrected-grain",
+            "split",
+            "bonded"
+          ]
+        },
+        "thickness": {
+          "type": "number",
+          "description": "Leather thickness in mm",
+          "minimum": 0
+        },
+        "suppleness": {
+          "type": "string",
+          "enum": ["rigid", "structured", "medium", "soft", "very-soft"]
+        },
+        "scratchResistance": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "exoticCITES": {
+          "type": "boolean",
+          "description": "CITES permit required for exotic leather"
+        },
+        "citesPermitNumber": {
+          "type": "string",
+          "description": "CITES permit number if applicable"
+        }
+      }
+    },
+    "TanneryOrigin": {
+      "type": "object",
+      "description": "Tannery information",
+      "required": ["@type", "country"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "TanneryOrigin"
+        },
+        "tanneryDID": {
+          "type": "string",
+          "description": "Tannery DID if registered",
+          "pattern": "^did:galileo:(brand|retailer|issuer|artisan|verifier|customer|regulator|facility|technician|supplier|inspector|operator|recycler|marketplace|workshop|associate|official):[a-z0-9\\-]{1,80}$"
+        },
+        "tanneryName": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "description": "Tannery country in ISO 3166-1 alpha-3",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "region": {
+          "type": "string",
+          "description": "Specific region known for tanning (e.g., Tuscany, Fes)"
+        },
+        "tanningProcess": {
+          "type": "string",
+          "description": "Specific tanning process used"
+        },
+        "processDuration": {
+          "type": "string",
+          "description": "Duration of tanning process"
+        },
+        "waterTreatment": {
+          "type": "boolean",
+          "description": "Has water treatment facility"
+        },
+        "certifications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["LWG Gold", "ISO 14001", "Consorzio Vera Pelle"]]
+        }
+      }
+    },
+    "LeatherFinish": {
+      "type": "object",
+      "description": "Leather finish details",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "LeatherFinish"
+        },
+        "finishType": {
+          "type": "string",
+          "enum": [
+            "natural",
+            "aniline",
+            "semi-aniline",
+            "pigmented",
+            "patent",
+            "nubuck",
+            "suede",
+            "embossed",
+            "printed",
+            "metallic",
+            "pearlized",
+            "matte",
+            "glazed"
+          ]
+        },
+        "colorName": {
+          "type": "string",
+          "description": "Commercial color name"
+        },
+        "colorCode": {
+          "type": "string",
+          "description": "Internal color reference code"
+        },
+        "dyeType": {
+          "type": "string",
+          "enum": ["aniline-dye", "pigment-dye", "natural", "undyed"]
+        },
+        "patina": {
+          "type": "boolean",
+          "description": "Will develop patina over time"
+        },
+        "coatingLayers": {
+          "type": "integer",
+          "description": "Number of protective coating layers"
+        },
+        "waterResistant": {
+          "type": "boolean"
+        }
+      }
+    },
+    "HardwareDetails": {
+      "type": "object",
+      "description": "Metal hardware specifications",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "HardwareDetails"
+        },
+        "material": {
+          "type": "string",
+          "examples": [
+            "palladium",
+            "gold-plated",
+            "rose-gold-plated",
+            "brushed-gold",
+            "ruthenium",
+            "silver",
+            "brass",
+            "stainless-steel",
+            "gunmetal"
+          ]
+        },
+        "platingThickness": {
+          "type": "string",
+          "description": "Plating thickness (e.g., 18k gold 3 micron)"
+        },
+        "finish": {
+          "type": "string",
+          "enum": ["polished", "brushed", "matte", "hammered", "engraved"]
+        },
+        "nickelFree": {
+          "type": "boolean",
+          "description": "Compliant with EU nickel regulation"
+        },
+        "engraving": {
+          "type": "string",
+          "description": "Hardware engraving details"
+        },
+        "lockType": {
+          "type": "string",
+          "examples": ["kelly-lock", "birkin-lock", "S-lock", "CC-lock", "interlocking-G"]
+        },
+        "keysIncluded": {
+          "type": "boolean"
+        },
+        "keyCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "LiningDetails": {
+      "type": "object",
+      "description": "Interior lining specifications",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "LiningDetails"
+        },
+        "material": {
+          "type": "string",
+          "examples": [
+            "chevre",
+            "agneau",
+            "lambskin",
+            "suede",
+            "canvas",
+            "silk",
+            "cotton",
+            "microfiber",
+            "alcantara"
+          ]
+        },
+        "color": {
+          "type": "string"
+        },
+        "branded": {
+          "type": "boolean",
+          "description": "Has brand logo/pattern"
+        },
+        "removable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "StitchingDetails": {
+      "type": "object",
+      "description": "Stitching specifications",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "StitchingDetails"
+        },
+        "technique": {
+          "type": "string",
+          "enum": [
+            "saddle-stitch",
+            "machine-stitch",
+            "hand-stitch",
+            "blind-stitch",
+            "overlock"
+          ]
+        },
+        "threadMaterial": {
+          "type": "string",
+          "examples": ["linen", "polyester", "silk", "nylon"]
+        },
+        "threadColor": {
+          "type": "string"
+        },
+        "stitchesPerCm": {
+          "type": "number",
+          "description": "Stitch density per centimeter"
+        },
+        "contrastStitching": {
+          "type": "boolean"
+        }
+      }
+    },
+    "EdgeFinishing": {
+      "type": "object",
+      "description": "Edge finishing method",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "EdgeFinishing"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "painted",
+            "burnished",
+            "folded",
+            "raw",
+            "bound",
+            "turned",
+            "waxed"
+          ]
+        },
+        "coatLayers": {
+          "type": "integer",
+          "description": "Number of edge paint layers"
+        },
+        "color": {
+          "type": "string"
+        },
+        "handFinished": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Compartment": {
+      "type": "object",
+      "description": "Interior compartment",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Compartment"
+        },
+        "type": {
+          "type": "string",
+          "examples": [
+            "main",
+            "zip-pocket",
+            "slip-pocket",
+            "card-slot",
+            "phone-pocket",
+            "pen-holder",
+            "coin-compartment"
+          ]
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "dimensions": {
+          "type": "object",
+          "properties": {
+            "width": { "type": "number" },
+            "height": { "type": "number" },
+            "depth": { "type": "number" }
+          }
+        }
+      }
+    },
+    "StampingDetails": {
+      "type": "object",
+      "description": "Brand stamping and marking",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "StampingDetails"
+        },
+        "brandStamp": {
+          "type": "string",
+          "description": "Main brand stamp"
+        },
+        "madeInStamp": {
+          "type": "string",
+          "description": "Country of manufacture stamp"
+        },
+        "artisanMark": {
+          "type": "string",
+          "description": "Craftsman's identification mark"
+        },
+        "dateCode": {
+          "type": "string",
+          "description": "Production date code"
+        },
+        "dateCodeLocation": {
+          "type": "string",
+          "description": "Where date code is located"
+        },
+        "serialLocation": {
+          "type": "string",
+          "description": "Where serial number is stamped"
+        },
+        "blindStamp": {
+          "type": "boolean",
+          "description": "Is stamp blind (no ink/foil)"
+        },
+        "stampingMethod": {
+          "type": "string",
+          "enum": ["hot-stamp", "blind-stamp", "foil-stamp", "laser-engraved", "embossed"]
+        }
+      }
+    },
+    "LeatherCertification": {
+      "type": "object",
+      "description": "Leather-specific certification",
+      "required": ["@type", "scheme", "certified"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "LeatherCertification"
+        },
+        "scheme": {
+          "type": "string",
+          "enum": [
+            "LWG-Gold",
+            "LWG-Silver",
+            "LWG-Bronze",
+            "LWG-Audited",
+            "CITES",
+            "Consorzio-Vera-Pelle-Italiana",
+            "Pelle-Conciata-al-Vegetale-Toscana",
+            "Organic-Leather",
+            "Bio-Preferred",
+            "Leather-Naturally"
+          ]
+        },
+        "certified": {
+          "type": "boolean"
+        },
+        "certificateNumber": {
+          "type": "string"
+        },
+        "auditDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "validUntil": {
+          "type": "string",
+          "format": "date"
+        },
+        "certificateUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "@context": [
+        "https://vocab.galileoprotocol.io/contexts/galileo.jsonld",
+        "https://vocab.galileoprotocol.io/contexts/luxury.jsonld"
+      ],
+      "@type": "IndividualProduct",
+      "@id": "did:galileo:01:09506000134352:21:BK2024A001",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "gtin",
+        "value": "09506000134352"
+      },
+      "serialNumber": "BK2024A001",
+      "name": "Birkin 25 Togo Gold",
+      "brand": {
+        "@type": "Brand",
+        "@id": "did:galileo:brand:hermes",
+        "name": "Hermes"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Hermes Sellier"
+      },
+      "productionDate": "2024-03-15",
+      "countryOfOrigin": "FRA",
+      "productCategory": "handbag",
+      "leatherType": {
+        "@type": "LeatherType",
+        "leatherName": "Togo",
+        "animalSource": "calf",
+        "hideOriginCountry": "FRA",
+        "tanningMethod": "chrome",
+        "grainType": "full-grain",
+        "thickness": 1.2,
+        "suppleness": "soft",
+        "scratchResistance": "high"
+      },
+      "tanneryOrigin": {
+        "@type": "TanneryOrigin",
+        "tanneryName": "Tanneries du Puy",
+        "country": "FRA",
+        "certifications": ["LWG Gold"]
+      },
+      "finishType": {
+        "@type": "LeatherFinish",
+        "finishType": "semi-aniline",
+        "colorName": "Gold",
+        "colorCode": "37",
+        "patina": true
+      },
+      "hideGrade": "A",
+      "hardwareDetails": {
+        "@type": "HardwareDetails",
+        "material": "gold-plated",
+        "platingThickness": "18k 3 micron",
+        "finish": "polished",
+        "nickelFree": true,
+        "lockType": "birkin-lock",
+        "keysIncluded": true,
+        "keyCount": 2
+      },
+      "liningDetails": {
+        "@type": "LiningDetails",
+        "material": "chevre",
+        "branded": false
+      },
+      "stitchingDetails": {
+        "@type": "StitchingDetails",
+        "technique": "saddle-stitch",
+        "threadMaterial": "linen",
+        "stitchesPerCm": 5,
+        "contrastStitching": false
+      },
+      "edgeFinishing": {
+        "@type": "EdgeFinishing",
+        "method": "painted",
+        "coatLayers": 6,
+        "handFinished": true
+      },
+      "materialComposition": [
+        {
+          "@type": "MaterialComponent",
+          "material": "Togo Leather",
+          "percentage": 85,
+          "origin": "FRA",
+          "certified": true,
+          "certificationScheme": "LWG Gold"
+        },
+        {
+          "@type": "MaterialComponent",
+          "material": "Gold-Plated Hardware",
+          "percentage": 10,
+          "origin": "FRA"
+        },
+        {
+          "@type": "MaterialComponent",
+          "material": "Chevre Lining",
+          "percentage": 5,
+          "origin": "FRA"
+        }
+      ],
+      "carbonFootprint": {
+        "@type": "CarbonFootprint",
+        "totalCO2e": 45.2,
+        "unit": "kgCO2e",
+        "scope": ["scope1", "scope2", "scope3"],
+        "methodology": "ISO14067"
+      },
+      "repairInstructions": {
+        "@type": "RepairGuide",
+        "guideUrl": "https://www.hermes.com/care/leather",
+        "availableLanguages": ["en", "fr", "zh", "ja"],
+        "repairabilityIndex": 9.5
+      },
+      "complianceDeclaration": {
+        "@type": "ComplianceDeclaration",
+        "regulation": "ESPR 2024/1781",
+        "compliant": true,
+        "declarationDate": "2024-03-15"
+      },
+      "artisanAttribution": {
+        "@type": "ArtisanAttribution",
+        "artisanDID": "did:galileo:artisan:maitre-a-7842",
+        "artisanPseudonym": "Maitre A",
+        "craft": "leather work",
+        "workshopLocation": "Pantin",
+        "masteryLevel": "master"
+      }
+    }
+  ]
+}

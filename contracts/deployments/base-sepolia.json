@@ -1,0 +1,102 @@
+{
+  "environment": "base-sepolia",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "status": "deployed",
+  "deployedAt": "2026-05-04T15:00:22.815Z",
+  "deployer": "0x313e107daA12c7c1867a7002744EaC15B2109D42",
+  "rpc": {
+    "envVar": "BASE_SEPOLIA_RPC_URL"
+  },
+  "explorer": {
+    "name": "Basescan",
+    "baseUrl": "https://sepolia.basescan.org",
+    "txPath": "/tx/",
+    "addressPath": "/address/"
+  },
+  "issuance": {
+    "model": "per-product-token",
+    "tokenContract": "GalileoToken",
+    "description": "Infrastructure addresses are canonical. Each product is issued as its own GalileoToken deployment rather than sharing one pilot-wide token address."
+  },
+  "infrastructure": {
+    "accessControl": "0xd460785a19c68251b4a7823107db2595a7e95d6d",
+    "claimTopicsRegistry": "0x819ea517923541c23d1b564dd52da84f0376eba2",
+    "trustedIssuersRegistry": "0xe29c4be15b77ca9c4a77fb316106cc29b337c07c",
+    "identityRegistryStorage": "0xf0c89aa8dc11cb91be9ba0531f7f66445003e468",
+    "identityRegistry": "0x98eab0e9a3af0c5952ee55bb4b8ba78b3b114bc2",
+    "compliance": "0xdf8b39f4105c5217280186104b588c1f0a08da62",
+    "brandAuthorizationModule": "0x29794bbe41b81f3a92428fcff474bf2b4bfedd33",
+    "cpoCertificationModule": "0x34a64a3f4f7c7b442c0476a2053522a585487984",
+    "jurisdictionModule": "0x02c1ba96f09942290153065aae4f2af499c94d89",
+    "sanctionsModule": "0x563de2eb3c414cd981f966a5a34b9f3a8131de24",
+    "serviceCenterModule": "0x38a32b7b2d7310ff94c688eb00e21410007fa3d0"
+  },
+  "exampleToken": {
+    "address": "0x0Eb8764115147Cea9299815ba18bc4724925Afcd",
+    "note": "Example GalileoToken deployed by Deploy.s.sol. Actual product tokens are deployed individually by the minting service."
+  },
+  "latestLiveMintVerification": {
+    "verifiedAt": "2026-05-04T00:00:00.000Z",
+    "deployer": "0xf9e9633D6f23dEa639B64c5A16b5BB22636599B9",
+    "bridgeTxHash": "0xc60dfe60b6373188dac0588141b2a5f27918a694a8a107a2cb6d330b1c5d381f",
+    "mintTxHash": "0x9cca203f8c3d988ac79bd5ea5c17cfd23a76d0d1393f32e0fb0f82875ccbc026",
+    "tokenAddress": "0x11ef46e76ae5fbd0b14e29ac7b1fd93ad5ea01f9",
+    "complianceAddress": "0x688e071B5C7C09c7A9aA6fF0fdd204AD8a7a95Ee",
+    "productDID": "did:galileo:01:09780306406157:21:TEST-MINT-001",
+    "gtin": "09780306406157",
+    "serialNumber": "TEST-MINT-001",
+    "verification": {
+      "balanceOfDeployer": "1",
+      "totalSupply": "1",
+      "complianceBound": true,
+      "paused": true
+    },
+    "notes": "Live constructor-path mint verified on Base Sepolia. The generated minting wallet is not an admin on the pre-existing identity infrastructure, so post-deployment identity registry writes require the original infra admin or role transfer."
+  },
+  "identityAdminHandoff": {
+    "status": "not_required_redeployed_under_minting_wallet",
+    "auditedAt": "2026-05-04T15:00:22.815Z",
+    "originalAdmin": "0x313e107daA12c7c1867a7002744EaC15B2109D42",
+    "targetMintingWallet": "0x313e107daA12c7c1867a7002744EaC15B2109D42",
+    "notes": "Base Sepolia testnet identity infrastructure was redeployed because the previous original admin key was unavailable. The minting wallet is now the infra admin."
+  },
+  "latestIdentityInfrastructureRedeploy": {
+    "deployedAt": "2026-05-04T15:00:22.815Z",
+    "deployer": "0x313e107daA12c7c1867a7002744EaC15B2109D42",
+    "reason": "testnet recovery after original admin key became unavailable",
+    "txHashes": {
+      "accessControl": "0x581cad036332d6a52f3fef0a03c2b8180b4f032ab8d21cc14103d66814fda9db",
+      "claimTopicsRegistry": "0x527589a7e1f2ad2323bf84a12cbf59a508591f484d899a77506c88f4a3da257f",
+      "trustedIssuersRegistry": "0x84e03e1497d0667e8d04e3c9f3770c927803b7d22ddaa51dc9c2a6d5363f24e2",
+      "identityRegistryStorage": "0x3d51e60fca9f34e42fdfe543fdae6ccc704ee2ad4832d8805a4e0660097fc6dd",
+      "identityRegistry": "0xd07376f68367d65690ac4de51256f1efb009832486547d8d7c2ad747dfca7fbc",
+      "compliance": "0x5381db141070e24cb500c553838d6cda3e6beff184c858547dcf932de4b32067",
+      "brandAuthorizationModule": "0x0c8eba8494050780754d06f81a1fa5c8397c4d1bba56f3ed767a9ef075deeed2",
+      "cpoCertificationModule": "0x98af4befd18f09e18a98683954ab40f50c468a7dca4c09fcda6c444426be0911",
+      "jurisdictionModule": "0xb4f4841f4f18cd043c43f54c6650d29ecab94d1abfd8412656b65abd27734d78",
+      "sanctionsModule": "0xc7a330ee222216ac42f32968a1bbc6df447455518d9a2df234b01cec357e810d",
+      "serviceCenterModule": "0x87151af2c2c50508e9b7059fa28bc672aaf4d68ea1560de171962f73425cffbf",
+      "identityRegistry.grantRole": "0x7e88853816eb28393cf43a03729ee32829471faa18d7da1e966a16425f09bea2",
+      "identityRegistryStorage.bindIdentityRegistry": "0x03e8a154ea25fd63e02a8dc869addab7c5140115f77ff76b9d44b7de670d57d0",
+      "claimTopicsRegistry.addClaimTopic": "0xcd9bc5bd60281197781b75884b4dd5273ea29b6a426344f5fb8c189cbbf85d5e",
+      "brandAuthorizationModule.setRequireRetailerForPrimarySale": "0xac158c03dd9b27b200e7061890cd8f95bc5c26ee3903d9f4dc7d61f58e0060d8",
+      "brandAuthorizationModule.setAllowPeerToPeer": "0x1d6cc2caad7eec96020b763eb396186a68b702f0e6211b97445be45129ea1186",
+      "sanctionsModule.setStrictMode": "0xac8c02bcf8272c904ea936c89190c910c8a9e5ea176f7815f52c66c53e0ea5a2",
+      "compliance.addModule": "0x5851b63f3a5027703850a2013dd8e3e630c37ee57d394e2bbfd8b567fd9690dd"
+    },
+    "verification": {
+      "identityRegistryStorageBound": true,
+      "claimTopicsRegistered": [
+        "97974457912371371093284430929807675253151432376532717489581563864751976596208"
+      ],
+      "complianceModules": [
+        "0x29794bbE41B81F3A92428FcFF474BF2B4BfedD33",
+        "0x34a64A3f4F7c7b442c0476A2053522a585487984",
+        "0x02c1bA96f09942290153065Aae4F2AF499c94d89",
+        "0x563DE2eb3c414CD981F966A5a34b9F3A8131de24",
+        "0x38a32B7b2D7310ff94C688Eb00E21410007Fa3d0"
+      ]
+    }
+  }
+}

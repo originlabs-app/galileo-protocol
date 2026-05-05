@@ -1,0 +1,69 @@
+name: Feature Request
+description: Propose a new feature or improvement
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For significant specification changes, please follow the [RFC process](../../governance/rfcs/README.md).
+        Check the [roadmap](../../ROADMAP.md) first — your idea may already be planned.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of the proposed feature
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: What problem does this solve? Who benefits?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: How would you like this to work?
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative approaches you've considered
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - API (Fastify)
+        - Dashboard (B2B portal)
+        - Scanner (PWA)
+        - Blockchain / Smart Contracts
+        - Token Economy (T1/LEOX)
+        - Specification / Standards
+        - Documentation
+        - Governance
+        - Security / Compliance
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Roadmap Phase
+      description: Which phase does this relate to?
+      options:
+        - Phase 2 — Blockchain Live
+        - Phase 3 — Enterprise Ready
+        - Phase 4 — Token Economy
+        - Phase 5 — Scale & Compliance
+        - Not phase-specific
+    validations:
+      required: false

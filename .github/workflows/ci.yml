@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  apps:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: galileo
+          POSTGRES_PASSWORD: galileo_dev
+          POSTGRES_DB: galileo_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U galileo"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://galileo:galileo_dev@localhost:5432/galileo_test
+      DATABASE_URL_TEST: postgresql://galileo:galileo_dev@localhost:5432/galileo_test
+      JWT_SECRET: ci-test-jwt-secret-at-least-32-characters-long
+      JWT_REFRESH_SECRET: ci-test-jwt-refresh-secret-at-least-32-chars
+      CORS_ORIGIN: http://localhost:3000
+      NEXT_PUBLIC_API_URL: http://localhost:4000
+      NEXT_PUBLIC_RESOLVER_BASE_URL: http://localhost:4000
+      NODE_ENV: test
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma client
+        run: pnpm --filter @galileo/api exec prisma generate
+
+      - name: Public release audit
+        run: pnpm security:public-audit
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Push Prisma schema to database
+        run: pnpm --filter @galileo/api exec prisma db push
+
+      - name: Test
+        run: pnpm test
+
+      - name: Install Playwright browsers
+        run: pnpm --filter @galileo/dashboard exec playwright install --with-deps chromium
+
+      - name: Build dashboard
+        run: pnpm --filter @galileo/dashboard build
+
+      - name: E2E tests
+        run: pnpm --filter @galileo/dashboard test:e2e
+
+  contracts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Build and test contracts
+        working-directory: contracts
+        run: forge build && forge test -vvv
+
+  website:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        working-directory: website
+        run: npm ci
+
+      - name: Lint
+        working-directory: website
+        run: npm run lint
+
+      - name: Build
+        working-directory: website
+        run: npm run build

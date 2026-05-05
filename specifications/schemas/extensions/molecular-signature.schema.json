@@ -1,0 +1,241 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/extensions/molecular-signature.schema.json",
+  "title": "Galileo Molecular Authentication Schema",
+  "description": "Extension schema for molecular-level authentication of luxury products. Supports DNA tagging, spectral fingerprinting, and isotopic analysis for ultra-high provenance verification. This schema is an optional extension to DPP documents.",
+  "type": "object",
+  "required": [
+    "@type",
+    "signatureType",
+    "provider",
+    "signatureDate"
+  ],
+  "properties": {
+    "@context": {
+      "description": "JSON-LD context including molecular vocabulary",
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "https://vocab.galileoprotocol.io/contexts/molecular.jsonld"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "contains": {
+            "const": "https://vocab.galileoprotocol.io/contexts/molecular.jsonld"
+          }
+        }
+      ]
+    },
+    "@type": {
+      "description": "Must be MolecularAuthentication",
+      "type": "string",
+      "const": "MolecularAuthentication"
+    },
+    "@id": {
+      "description": "Unique identifier for this molecular authentication record",
+      "type": "string",
+      "format": "uri"
+    },
+    "signatureType": {
+      "description": "Type of molecular authentication method used",
+      "type": "string",
+      "enum": ["DNA_TAGGANT", "SPECTRAL", "ISOTOPIC", "COMBINED"]
+    },
+    "provider": {
+      "description": "DID of the authentication provider (ISO 17025 accredited lab)",
+      "type": "string",
+      "pattern": "^did:galileo:(issuer|verifier):[a-z0-9\\-]{1,80}$"
+    },
+    "providerName": {
+      "description": "Human-readable name of the authentication provider",
+      "type": "string",
+      "minLength": 1
+    },
+    "signatureDate": {
+      "description": "Date/time when molecular signature was captured",
+      "type": "string",
+      "format": "date-time"
+    },
+    "validUntil": {
+      "description": "Expiration date of the molecular authentication",
+      "type": "string",
+      "format": "date"
+    },
+    "certificateRef": {
+      "description": "Reference to authentication certificate document",
+      "type": "string",
+      "format": "uri"
+    },
+    "accreditation": {
+      "description": "Laboratory accreditation information",
+      "$ref": "#/definitions/Accreditation"
+    },
+    "leatherProvenance": {
+      "description": "Leather-specific DNA/spectral signature (for leather goods)",
+      "$ref": "leather-signature.schema.json"
+    },
+    "spectralFingerprint": {
+      "description": "Spectroscopic fingerprint data",
+      "$ref": "spectral-fingerprint.schema.json"
+    },
+    "terroirData": {
+      "description": "Geographic origin authentication via isotopic analysis",
+      "$ref": "terroir-provenance.schema.json"
+    },
+    "verificationHistory": {
+      "description": "History of verification checks against this signature",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/VerificationRecord"
+      }
+    },
+    "confidenceScore": {
+      "description": "Overall confidence score for authentication (0-1)",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "notes": {
+      "description": "Additional notes from authentication provider",
+      "type": "string",
+      "maxLength": 2000
+    }
+  },
+  "definitions": {
+    "Accreditation": {
+      "type": "object",
+      "description": "Laboratory accreditation details",
+      "properties": {
+        "standard": {
+          "type": "string",
+          "description": "Accreditation standard",
+          "enum": ["ISO17025", "ISO17065", "GLP", "GCLP"]
+        },
+        "accreditationBody": {
+          "type": "string",
+          "description": "Name of accrediting body"
+        },
+        "certificateNumber": {
+          "type": "string",
+          "description": "Accreditation certificate number"
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Scope of accreditation"
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date"
+        },
+        "validUntil": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "VerificationRecord": {
+      "type": "object",
+      "description": "Record of a verification check",
+      "required": ["verificationDate", "result"],
+      "properties": {
+        "verificationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verifier": {
+          "type": "string",
+          "description": "DID of verifying party"
+        },
+        "result": {
+          "type": "string",
+          "enum": ["MATCH", "NO_MATCH", "INCONCLUSIVE", "ERROR"]
+        },
+        "matchScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "method": {
+          "type": "string",
+          "description": "Verification method used"
+        },
+        "location": {
+          "type": "string",
+          "description": "Verification location"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "signatureType": { "const": "DNA_TAGGANT" } }
+      },
+      "then": {
+        "required": ["leatherProvenance"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "signatureType": { "const": "SPECTRAL" } }
+      },
+      "then": {
+        "required": ["spectralFingerprint"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "signatureType": { "const": "ISOTOPIC" } }
+      },
+      "then": {
+        "required": ["terroirData"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "signatureType": { "const": "COMBINED" } }
+      },
+      "then": {
+        "anyOf": [
+          { "required": ["leatherProvenance"] },
+          { "required": ["spectralFingerprint"] },
+          { "required": ["terroirData"] }
+        ]
+      }
+    }
+  ],
+  "examples": [
+    {
+      "@context": "https://vocab.galileoprotocol.io/contexts/molecular.jsonld",
+      "@type": "MolecularAuthentication",
+      "@id": "urn:galileo:molecular:2024-HK2024A001-001",
+      "signatureType": "DNA_TAGGANT",
+      "provider": "did:galileo:verifier:applied-dna-sciences",
+      "providerName": "Applied DNA Sciences",
+      "signatureDate": "2024-03-15T10:30:00Z",
+      "validUntil": "2034-03-15",
+      "accreditation": {
+        "standard": "ISO17025",
+        "accreditationBody": "A2LA",
+        "certificateNumber": "3256.01",
+        "validFrom": "2023-01-01",
+        "validUntil": "2026-01-01"
+      },
+      "leatherProvenance": {
+        "@type": "LeatherSignature",
+        "tanneryCertified": true,
+        "tanneryId": "did:galileo:facility:tanneries-du-puy",
+        "hideOrigin": "FRA",
+        "dnaMarkerRef": "ADS-LX-2024-78234",
+        "verificationMethod": "PCR_AMPLIFICATION"
+      },
+      "confidenceScore": 0.99
+    }
+  ]
+}

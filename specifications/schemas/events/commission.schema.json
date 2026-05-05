@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/events/commission.schema.json",
+  "title": "Galileo Commission Event Schema",
+  "description": "ObjectEvent for unique identifier assignment. Distinct from creation event - commission event captures the assignment of digital identity (DID, NFC tag, QR code) to an already-manufactured product. Used when ID assignment happens separately from manufacturing.",
+  "allOf": [
+    {
+      "$ref": "event-base.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "@context",
+    "type",
+    "eventID",
+    "eventTime",
+    "eventTimeZoneOffset",
+    "action",
+    "bizStep",
+    "disposition",
+    "readPoint",
+    "epcList",
+    "ilmd"
+  ],
+  "properties": {
+    "type": {
+      "const": "ObjectEvent"
+    },
+    "action": {
+      "const": "ADD",
+      "description": "ADD indicates assignment of new identifier"
+    },
+    "bizStep": {
+      "const": "cbv:BizStep-commissioning",
+      "description": "Commissioning step marks ID assignment"
+    },
+    "disposition": {
+      "const": "cbv:Disp-active",
+      "description": "Product confirmed active with digital identity"
+    },
+    "epcList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^https://id\\.gs1\\.org/01/\\d{14}/21/[A-Za-z0-9\\-\\.]{1,20}$"
+      },
+      "minItems": 1,
+      "maxItems": 1,
+      "description": "Single EPC for the commissioned product in GS1 Digital Link format"
+    },
+    "ilmd": {
+      "type": "object",
+      "description": "Instance Master Data for commission context",
+      "required": [
+        "galileo:commissioningFacility"
+      ],
+      "properties": {
+        "galileo:commissioningFacility": {
+          "type": "string",
+          "description": "Facility DID where commissioning occurred",
+          "pattern": "^did:galileo:facility:[a-z0-9\\-]{1,80}$"
+        },
+        "galileo:nfcTagId": {
+          "type": "string",
+          "description": "NFC chip identifier if embedded",
+          "pattern": "^[A-Fa-f0-9]{14,32}$"
+        },
+        "galileo:nfcTagType": {
+          "type": "string",
+          "description": "NFC tag technology type",
+          "enum": ["NTAG213", "NTAG215", "NTAG216", "NTAG424DNA", "ST25TV", "ICODESLIX"]
+        },
+        "galileo:qrCodeRef": {
+          "type": "string",
+          "description": "Reference to QR code if physical QR assigned",
+          "format": "uri"
+        },
+        "galileo:rfidEpc": {
+          "type": "string",
+          "description": "RFID EPC if using RFID tag",
+          "pattern": "^urn:epc:id:sgtin:\\d+\\.\\d+\\.[A-Za-z0-9]+$"
+        },
+        "galileo:physicalLinkType": {
+          "type": "string",
+          "description": "Type of physical digital link attached to product",
+          "enum": ["nfc_embedded", "nfc_tag", "qr_label", "rfid_tag", "laser_engraved", "none"]
+        },
+        "galileo:physicalLinkLocation": {
+          "type": "string",
+          "description": "Where on the product the digital link is located",
+          "enum": ["interior", "exterior", "packaging", "hangtag", "documentation", "hidden"]
+        },
+        "galileo:commissionOperator": {
+          "type": "string",
+          "description": "Operator DID who performed commissioning",
+          "pattern": "^did:galileo:operator:[a-z0-9\\-]{1,80}$"
+        },
+        "galileo:verificationPerformed": {
+          "type": "boolean",
+          "description": "Whether NFC/QR was verified to work after attachment"
+        },
+        "galileo:originalProductionEventId": {
+          "type": "string",
+          "description": "Reference to creation event if this is post-manufacturing commissioning",
+          "pattern": "^ni:///sha-256;[a-f0-9]{64}"
+        }
+      },
+      "additionalProperties": true
+    },
+    "galileo:productDID": {
+      "type": "string",
+      "description": "The Galileo DID now assigned to this product",
+      "pattern": "^did:galileo:(01|8006|8010|253):\\d{8,14}(:21:[A-Za-z0-9\\-\\.]{1,20})?$"
+    },
+    "galileo:dppContentHash": {
+      "type": "string",
+      "description": "SHA-256 hash of linked DPP document if available",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "examples": [
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "ObjectEvent",
+      "eventID": "ni:///sha-256;c2d4e6f8a0b2c4d6e8f0a2b4c6d8e0f2a4b6c8d0e2f4a6b8c0d2e4f6a8b0c2d4?ver=CBV2.0",
+      "eventTime": "2024-03-16T09:15:00.000Z",
+      "eventTimeZoneOffset": "+01:00",
+      "action": "ADD",
+      "bizStep": "cbv:BizStep-commissioning",
+      "disposition": "cbv:Disp-active",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:3014178.00002.0",
+        "galileo:facilityDID": "did:galileo:facility:hermes-distribution-paris"
+      },
+      "epcList": [
+        "https://id.gs1.org/01/09506000134352/21/HK2024A001"
+      ],
+      "ilmd": {
+        "galileo:commissioningFacility": "did:galileo:facility:hermes-distribution-paris",
+        "galileo:nfcTagId": "04A2B3C4D5E6F7",
+        "galileo:nfcTagType": "NTAG424DNA",
+        "galileo:physicalLinkType": "nfc_embedded",
+        "galileo:physicalLinkLocation": "interior",
+        "galileo:commissionOperator": "did:galileo:operator:tech-8472",
+        "galileo:verificationPerformed": true,
+        "galileo:originalProductionEventId": "ni:///sha-256;b5bb9d8014a0f9b1d61e21e796d78dcc1ae0c12f89ca3b4a5f5e9c3f28b0d6a1"
+      },
+      "galileo:productDID": "did:galileo:01:09506000134352:21:HK2024A001",
+      "galileo:dppContentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

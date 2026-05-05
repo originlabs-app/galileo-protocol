@@ -1,0 +1,538 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/events/repair.schema.json",
+  "title": "Galileo Repair/MRO Event Schema",
+  "description": "TransformationEvent for repair, maintenance, and restoration operations. Captures service history including parts replacement, technician attribution, and warranty status. Uses same EPC in inputEPCList and outputEPCList for non-destructive repairs per EPCIS 2.0 specification.",
+  "allOf": [
+    {
+      "$ref": "event-base.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "@context",
+    "type",
+    "eventID",
+    "eventTime",
+    "eventTimeZoneOffset",
+    "bizStep",
+    "disposition",
+    "readPoint",
+    "inputEPCList",
+    "outputEPCList",
+    "ilmd",
+    "galileo:serviceHistory"
+  ],
+  "properties": {
+    "type": {
+      "const": "TransformationEvent"
+    },
+    "bizStep": {
+      "const": "cbv:BizStep-repairing",
+      "description": "Repairing step marks service/maintenance operation"
+    },
+    "disposition": {
+      "const": "cbv:Disp-active",
+      "description": "Product returns to active state after repair"
+    },
+    "inputEPCList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^https://id\\.gs1\\.org/01/\\d{14}/21/[A-Za-z0-9\\-\\.]{1,20}$"
+      },
+      "minItems": 1,
+      "maxItems": 1,
+      "description": "Product EPC entering repair (same as output for non-destructive repair)"
+    },
+    "outputEPCList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^https://id\\.gs1\\.org/01/\\d{14}/21/[A-Za-z0-9\\-\\.]{1,20}$"
+      },
+      "minItems": 1,
+      "maxItems": 1,
+      "description": "Product EPC after repair (same as input for non-destructive repair)"
+    },
+    "ilmd": {
+      "type": "object",
+      "description": "Instance Master Data capturing repair context",
+      "required": [
+        "galileo:repairType",
+        "galileo:repairDescription",
+        "galileo:technicianId",
+        "galileo:serviceOrderRef"
+      ],
+      "properties": {
+        "galileo:repairType": {
+          "type": "string",
+          "description": "Category of repair work performed",
+          "enum": [
+            "leather_reconditioning",
+            "hardware_replacement",
+            "movement_service",
+            "glass_replacement",
+            "strap_replacement",
+            "full_restoration",
+            "cleaning_polish",
+            "structural_repair",
+            "waterproofing",
+            "relining",
+            "edge_repair",
+            "color_restoration",
+            "zipper_replacement",
+            "bezel_replacement",
+            "crown_replacement",
+            "dial_restoration",
+            "case_refinishing",
+            "bracelet_service",
+            "preventive_maintenance"
+          ]
+        },
+        "galileo:repairDescription": {
+          "type": "string",
+          "description": "Detailed description of work performed",
+          "minLength": 10,
+          "maxLength": 5000
+        },
+        "galileo:technicianId": {
+          "type": "string",
+          "description": "Pseudonymous technician DID for privacy-preserving attribution",
+          "pattern": "^did:galileo:technician:[a-z0-9\\-]{1,80}$"
+        },
+        "galileo:technicianCertifications": {
+          "type": "array",
+          "description": "Relevant certifications held by technician",
+          "items": {
+            "type": "string"
+          }
+        },
+        "galileo:partsReplaced": {
+          "type": "array",
+          "description": "Parts replaced during repair",
+          "items": {
+            "type": "object",
+            "required": ["partType", "partNumber", "origin"],
+            "properties": {
+              "partType": {
+                "type": "string",
+                "description": "Type of part (e.g., clasp, buckle, crown, crystal)"
+              },
+              "partNumber": {
+                "type": "string",
+                "description": "Manufacturer part number"
+              },
+              "origin": {
+                "type": "string",
+                "description": "Part origin",
+                "enum": ["oem_new", "oem_refurbished", "third_party_new", "third_party_refurbished", "salvage", "custom_made"]
+              },
+              "supplierDID": {
+                "type": "string",
+                "description": "Supplier DID for traceability",
+                "pattern": "^did:galileo:supplier:[a-z0-9\\-]{1,80}$"
+              },
+              "material": {
+                "type": "string"
+              },
+              "serial": {
+                "type": "string",
+                "description": "Part serial number if applicable"
+              },
+              "warrantyIncluded": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "galileo:serviceOrderRef": {
+          "type": "string",
+          "description": "Service order identifier",
+          "minLength": 1
+        },
+        "galileo:serviceCenter": {
+          "type": "string",
+          "description": "Service center DID",
+          "pattern": "^did:galileo:(brand|workshop|facility):[a-z0-9\\-]{1,80}$"
+        },
+        "galileo:serviceCenterName": {
+          "type": "string"
+        },
+        "galileo:serviceCenterType": {
+          "type": "string",
+          "description": "Type of service center",
+          "enum": ["brand_authorized", "brand_owned", "independent_certified", "independent", "specialist"]
+        },
+        "galileo:serviceStartDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date product received for service"
+        },
+        "galileo:serviceCompletionDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date service completed"
+        },
+        "galileo:serviceDuration": {
+          "type": "string",
+          "description": "Service duration in ISO 8601 format",
+          "pattern": "^P(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(\\.\\d+)?S)?)?$"
+        },
+        "galileo:laborHours": {
+          "type": "number",
+          "description": "Total labor hours",
+          "minimum": 0
+        },
+        "galileo:qualityControlPassed": {
+          "type": "boolean",
+          "description": "Whether post-repair QC was passed"
+        },
+        "galileo:qcInspectorId": {
+          "type": "string",
+          "pattern": "^did:galileo:inspector:[a-z0-9\\-]{1,80}$"
+        },
+        "galileo:testingPerformed": {
+          "type": "array",
+          "description": "Tests performed after repair",
+          "items": {
+            "type": "object",
+            "properties": {
+              "testType": {
+                "type": "string",
+                "enum": [
+                  "water_resistance",
+                  "accuracy_timing",
+                  "power_reserve",
+                  "magnetization",
+                  "stress_test",
+                  "visual_inspection",
+                  "functional_test",
+                  "leather_quality",
+                  "hardware_function"
+                ]
+              },
+              "result": {
+                "type": "string",
+                "enum": ["pass", "fail", "within_spec", "exceeds_spec"]
+              },
+              "value": {
+                "type": "string",
+                "description": "Measured value if applicable"
+              },
+              "specification": {
+                "type": "string",
+                "description": "Specification tested against"
+              }
+            }
+          }
+        },
+        "galileo:beforePhotos": {
+          "type": "array",
+          "description": "Documentation photos before repair",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "galileo:afterPhotos": {
+          "type": "array",
+          "description": "Documentation photos after repair",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "galileo:serviceHistory": {
+      "type": "object",
+      "description": "Service history tracking",
+      "required": ["serviceNumber", "warrantyStatus"],
+      "properties": {
+        "serviceNumber": {
+          "type": "integer",
+          "description": "Nth service for this product (1 = first service)",
+          "minimum": 1
+        },
+        "previousServices": {
+          "type": "array",
+          "description": "Event IDs of prior service events",
+          "items": {
+            "type": "string",
+            "pattern": "^ni:///sha-256;[a-f0-9]{64}"
+          }
+        },
+        "warrantyStatus": {
+          "type": "string",
+          "description": "Warranty status at time of service",
+          "enum": [
+            "in_warranty",
+            "out_of_warranty",
+            "extended_warranty",
+            "service_warranty",
+            "goodwill"
+          ]
+        },
+        "warrantyClaimNumber": {
+          "type": "string",
+          "description": "Warranty claim reference if applicable"
+        },
+        "recommendedNextService": {
+          "type": "string",
+          "format": "date",
+          "description": "Recommended date for next service"
+        },
+        "serviceInterval": {
+          "type": "string",
+          "description": "Recommended service interval in ISO 8601 duration",
+          "pattern": "^P(\\d+Y)?(\\d+M)?$"
+        },
+        "lifetimeServiceCount": {
+          "type": "integer",
+          "description": "Total number of services in product lifetime",
+          "minimum": 1
+        }
+      }
+    },
+    "galileo:repairWarranty": {
+      "type": "object",
+      "description": "Warranty for the repair work performed",
+      "properties": {
+        "warrantyProvided": {
+          "type": "boolean"
+        },
+        "warrantyDuration": {
+          "type": "string",
+          "pattern": "^P(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?$"
+        },
+        "warrantyStartDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "warrantyCoverage": {
+          "type": "string",
+          "description": "What the repair warranty covers"
+        },
+        "warrantyTermsUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "galileo:costCategory": {
+      "type": "string",
+      "description": "Cost category for the repair (no actual amounts)",
+      "enum": [
+        "warranty_covered",
+        "goodwill",
+        "minor_service",
+        "standard_service",
+        "major_service",
+        "full_restoration",
+        "estimate_required"
+      ]
+    },
+    "galileo:customerApproval": {
+      "type": "object",
+      "description": "Customer approval for repair work",
+      "properties": {
+        "approvalDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "approvalMethod": {
+          "type": "string",
+          "enum": ["in_person", "phone", "email", "app", "automatic"]
+        },
+        "quotationRef": {
+          "type": "string"
+        }
+      }
+    },
+    "galileo:productDID": {
+      "type": "string",
+      "pattern": "^did:galileo:(01|8006|8010|253):\\d{8,14}(:21:[A-Za-z0-9\\-\\.]{1,20})?$"
+    }
+  },
+  "examples": [
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "TransformationEvent",
+      "eventID": "ni:///sha-256;c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5?ver=CBV2.0",
+      "eventTime": "2026-04-10T16:00:00.000Z",
+      "eventTimeZoneOffset": "+01:00",
+      "bizStep": "cbv:BizStep-repairing",
+      "disposition": "cbv:Disp-active",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:3014178.00050.0",
+        "galileo:facilityDID": "did:galileo:facility:hermes-spa-faubourg"
+      },
+      "inputEPCList": [
+        "https://id.gs1.org/01/09506000134352/21/HK2024A001"
+      ],
+      "outputEPCList": [
+        "https://id.gs1.org/01/09506000134352/21/HK2024A001"
+      ],
+      "ilmd": {
+        "galileo:repairType": "leather_reconditioning",
+        "galileo:repairDescription": "Complete leather reconditioning including deep cleaning, nourishing treatment, corner restoration, and edge repainting. Minor scratches buffed. Hardware polished.",
+        "galileo:technicianId": "did:galileo:technician:spa-maitre-4521",
+        "galileo:technicianCertifications": ["Hermes Leather Master", "LWG Specialist"],
+        "galileo:partsReplaced": [],
+        "galileo:serviceOrderRef": "SPA-2026-08421",
+        "galileo:serviceCenter": "did:galileo:brand:hermes",
+        "galileo:serviceCenterName": "Hermes Spa - Faubourg Saint-Honore",
+        "galileo:serviceCenterType": "brand_owned",
+        "galileo:serviceStartDate": "2026-04-01",
+        "galileo:serviceCompletionDate": "2026-04-10",
+        "galileo:serviceDuration": "P9D",
+        "galileo:laborHours": 4.5,
+        "galileo:qualityControlPassed": true,
+        "galileo:qcInspectorId": "did:galileo:inspector:hermes-qc-7812",
+        "galileo:testingPerformed": [
+          {
+            "testType": "leather_quality",
+            "result": "exceeds_spec"
+          },
+          {
+            "testType": "hardware_function",
+            "result": "pass"
+          }
+        ]
+      },
+      "galileo:serviceHistory": {
+        "serviceNumber": 1,
+        "previousServices": [],
+        "warrantyStatus": "in_warranty",
+        "recommendedNextService": "2028-04-10",
+        "serviceInterval": "P2Y",
+        "lifetimeServiceCount": 1
+      },
+      "galileo:repairWarranty": {
+        "warrantyProvided": true,
+        "warrantyDuration": "P6M",
+        "warrantyStartDate": "2026-04-10",
+        "warrantyCoverage": "Reconditioning work performed",
+        "warrantyTermsUrl": "https://www.hermes.com/spa-warranty"
+      },
+      "galileo:costCategory": "warranty_covered",
+      "galileo:productDID": "did:galileo:01:09506000134352:21:HK2024A001"
+    },
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "TransformationEvent",
+      "eventID": "ni:///sha-256;d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6?ver=CBV2.0",
+      "eventTime": "2029-08-20T11:30:00.000Z",
+      "eventTimeZoneOffset": "+02:00",
+      "bizStep": "cbv:BizStep-repairing",
+      "disposition": "cbv:Disp-active",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:7610001.00001.0",
+        "galileo:facilityDID": "did:galileo:facility:patek-geneva-service"
+      },
+      "inputEPCList": [
+        "https://id.gs1.org/01/07610001000012/21/PP2020N001"
+      ],
+      "outputEPCList": [
+        "https://id.gs1.org/01/07610001000012/21/PP2020N001"
+      ],
+      "ilmd": {
+        "galileo:repairType": "movement_service",
+        "galileo:repairDescription": "Complete movement overhaul. Disassembly, ultrasonic cleaning, inspection of all components, replacement of mainspring and worn wheels, lubrication with Patek Philippe approved oils, timing regulation, water resistance restoration.",
+        "galileo:technicianId": "did:galileo:technician:patek-horloger-2847",
+        "galileo:technicianCertifications": ["WOSTEP Master", "Patek Philippe Certified Horloger"],
+        "galileo:partsReplaced": [
+          {
+            "partType": "mainspring",
+            "partNumber": "PP-5711-MS-001",
+            "origin": "oem_new",
+            "supplierDID": "did:galileo:supplier:patek-parts",
+            "material": "Nivaflex NM",
+            "warrantyIncluded": true
+          },
+          {
+            "partType": "third_wheel",
+            "partNumber": "PP-5711-TW-002",
+            "origin": "oem_new",
+            "supplierDID": "did:galileo:supplier:patek-parts",
+            "warrantyIncluded": true
+          },
+          {
+            "partType": "gaskets",
+            "partNumber": "PP-5711-GSK-SET",
+            "origin": "oem_new",
+            "supplierDID": "did:galileo:supplier:patek-parts",
+            "warrantyIncluded": true
+          }
+        ],
+        "galileo:serviceOrderRef": "PPGS-2029-14872",
+        "galileo:serviceCenter": "did:galileo:brand:patek-philippe",
+        "galileo:serviceCenterName": "Patek Philippe Geneva Service Center",
+        "galileo:serviceCenterType": "brand_owned",
+        "galileo:serviceStartDate": "2029-06-15",
+        "galileo:serviceCompletionDate": "2029-08-20",
+        "galileo:serviceDuration": "P2M5D",
+        "galileo:laborHours": 24,
+        "galileo:qualityControlPassed": true,
+        "galileo:qcInspectorId": "did:galileo:inspector:patek-qc-master",
+        "galileo:testingPerformed": [
+          {
+            "testType": "accuracy_timing",
+            "result": "within_spec",
+            "value": "+2s/day",
+            "specification": "-3/+2 s/day COSC"
+          },
+          {
+            "testType": "water_resistance",
+            "result": "pass",
+            "value": "120m",
+            "specification": "120m"
+          },
+          {
+            "testType": "power_reserve",
+            "result": "exceeds_spec",
+            "value": "48h",
+            "specification": "45h minimum"
+          },
+          {
+            "testType": "magnetization",
+            "result": "pass",
+            "value": "< 5 Gauss"
+          }
+        ]
+      },
+      "galileo:serviceHistory": {
+        "serviceNumber": 2,
+        "previousServices": [
+          "ni:///sha-256;a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"
+        ],
+        "warrantyStatus": "out_of_warranty",
+        "recommendedNextService": "2034-08-20",
+        "serviceInterval": "P5Y",
+        "lifetimeServiceCount": 2
+      },
+      "galileo:repairWarranty": {
+        "warrantyProvided": true,
+        "warrantyDuration": "P2Y",
+        "warrantyStartDate": "2029-08-20",
+        "warrantyCoverage": "Movement and water resistance",
+        "warrantyTermsUrl": "https://www.patek.com/service-warranty"
+      },
+      "galileo:costCategory": "major_service",
+      "galileo:customerApproval": {
+        "approvalDate": "2029-06-20",
+        "approvalMethod": "email",
+        "quotationRef": "PPGS-Q-2029-14872"
+      },
+      "galileo:productDID": "did:galileo:01:07610001000012:21:PP2020N001"
+    }
+  ]
+}

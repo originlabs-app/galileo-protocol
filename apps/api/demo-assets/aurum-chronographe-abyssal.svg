@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Aurum Chronographe Abyssal</title>
+  <desc id="desc">Luxury watch demo asset with dark enamel dial and platinum bezel.</desc>
+  <rect width="1200" height="900" fill="#071013"/>
+  <rect x="80" y="80" width="1040" height="740" rx="28" fill="#0f1d21" stroke="#d8bd79" stroke-width="4"/>
+  <circle cx="600" cy="450" r="250" fill="#101820" stroke="#ece4d0" stroke-width="26"/>
+  <circle cx="600" cy="450" r="205" fill="#061114" stroke="#d8bd79" stroke-width="6"/>
+  <circle cx="515" cy="430" r="48" fill="#0f1d21" stroke="#d8bd79" stroke-width="5"/>
+  <circle cx="690" cy="430" r="48" fill="#0f1d21" stroke="#d8bd79" stroke-width="5"/>
+  <circle cx="600" cy="545" r="42" fill="#0f1d21" stroke="#d8bd79" stroke-width="5"/>
+  <path d="M600 450 600 310" stroke="#ece4d0" stroke-width="10" stroke-linecap="round"/>
+  <path d="M600 450 720 490" stroke="#d8bd79" stroke-width="8" stroke-linecap="round"/>
+  <path d="M445 198 755 198" stroke="#ece4d0" stroke-width="42" stroke-linecap="round"/>
+  <path d="M445 702 755 702" stroke="#ece4d0" stroke-width="42" stroke-linecap="round"/>
+  <text x="600" y="785" fill="#ece4d0" font-family="Georgia, serif" font-size="42" text-anchor="middle">Aurum Chronographe Abyssal</text>
+</svg>

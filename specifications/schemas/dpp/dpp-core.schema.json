@@ -1,0 +1,786 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/dpp/dpp-core.schema.json",
+  "title": "Galileo DPP Core Schema",
+  "description": "Digital Product Passport core schema with ESPR 2024/1781 mandatory fields. Uses Schema.org IndividualProduct as base vocabulary extended with Galileo namespace.",
+  "type": "object",
+  "required": [
+    "@context",
+    "@type",
+    "@id",
+    "identifier",
+    "serialNumber",
+    "name",
+    "brand",
+    "manufacturer",
+    "productionDate",
+    "countryOfOrigin",
+    "materialComposition",
+    "carbonFootprint",
+    "repairInstructions",
+    "complianceDeclaration"
+  ],
+  "properties": {
+    "@context": {
+      "description": "JSON-LD context including Galileo vocabulary",
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "https://vocab.galileoprotocol.io/contexts/galileo.jsonld"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "contains": {
+            "const": "https://vocab.galileoprotocol.io/contexts/galileo.jsonld"
+          }
+        }
+      ]
+    },
+    "@type": {
+      "description": "Must be IndividualProduct per Schema.org vocabulary",
+      "type": "string",
+      "const": "IndividualProduct"
+    },
+    "@id": {
+      "description": "did:galileo DID URI for this specific product instance",
+      "type": "string",
+      "pattern": "^did:galileo:(01|8006|8010|253):\\d{8,14}(:21:[A-Za-z0-9\\-\\.]{1,20})?$"
+    },
+    "identifier": {
+      "description": "GTIN identifier as Schema.org PropertyValue",
+      "$ref": "#/definitions/GTINIdentifier"
+    },
+    "serialNumber": {
+      "description": "Unique serial number for this product instance",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "name": {
+      "description": "Product name",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "description": {
+      "description": "Product description",
+      "type": "string",
+      "maxLength": 5000
+    },
+    "brand": {
+      "description": "Brand information with DID reference",
+      "$ref": "#/definitions/Brand"
+    },
+    "manufacturer": {
+      "description": "Manufacturing organization details",
+      "$ref": "#/definitions/Organization"
+    },
+    "productionDate": {
+      "description": "Date of production in ISO 8601 format",
+      "type": "string",
+      "format": "date"
+    },
+    "countryOfOrigin": {
+      "description": "Country of origin in ISO 3166-1 alpha-3 format",
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "materialComposition": {
+      "description": "ESPR mandatory: Array of material components with percentages (must sum to 100)",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/MaterialComponent"
+      }
+    },
+    "carbonFootprint": {
+      "description": "ESPR mandatory: Carbon footprint data per ISO 14067",
+      "$ref": "#/definitions/CarbonFootprint"
+    },
+    "repairInstructions": {
+      "description": "ESPR mandatory: Repair and maintenance information",
+      "$ref": "#/definitions/RepairGuide"
+    },
+    "complianceDeclaration": {
+      "description": "ESPR mandatory: Regulatory compliance declaration",
+      "$ref": "#/definitions/ComplianceDeclaration"
+    },
+    "image": {
+      "description": "Product image URL",
+      "type": "string",
+      "format": "uri"
+    },
+    "url": {
+      "description": "Product information page URL",
+      "type": "string",
+      "format": "uri"
+    },
+    "model": {
+      "description": "Model name or number",
+      "type": "string"
+    },
+    "color": {
+      "description": "Product color",
+      "type": "string"
+    },
+    "size": {
+      "description": "Product size",
+      "type": "string"
+    },
+    "weight": {
+      "description": "Product weight",
+      "$ref": "#/definitions/QuantitativeValue"
+    },
+    "dimensions": {
+      "description": "Product dimensions",
+      "$ref": "#/definitions/Dimensions"
+    },
+    "category": {
+      "description": "Product category",
+      "type": "string"
+    },
+    "artisanAttribution": {
+      "description": "Craftsperson attribution (optional, for handcrafted items)",
+      "$ref": "#/definitions/ArtisanAttribution"
+    },
+    "craftsmanshipDetails": {
+      "description": "Details about craftsmanship techniques and quality",
+      "$ref": "#/definitions/CraftsmanshipDetails"
+    },
+    "limitedEdition": {
+      "description": "Limited edition information if applicable",
+      "$ref": "#/definitions/LimitedEdition"
+    },
+    "provenanceGrade": {
+      "description": "Provenance documentation quality grade",
+      "$ref": "#/definitions/ProvenanceGrade"
+    },
+    "additionalProperty": {
+      "description": "Additional custom properties",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PropertyValue"
+      }
+    }
+  },
+  "definitions": {
+    "GTINIdentifier": {
+      "type": "object",
+      "description": "GTIN identifier in Schema.org PropertyValue format",
+      "required": ["@type", "propertyID", "value"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PropertyValue"
+        },
+        "propertyID": {
+          "type": "string",
+          "const": "gtin"
+        },
+        "value": {
+          "type": "string",
+          "description": "14-digit GTIN per GS1 Digital Link 1.6.0",
+          "pattern": "^\\d{14}$"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "GS1 Digital Link URL"
+        }
+      }
+    },
+    "Brand": {
+      "type": "object",
+      "description": "Brand with DID reference",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Brand"
+        },
+        "@id": {
+          "type": "string",
+          "description": "Brand DID (did:galileo:brand:name)",
+          "pattern": "^did:galileo:brand:[a-z0-9\\-]{1,80}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "logo": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "Organization": {
+      "type": "object",
+      "description": "Organization (manufacturer, certifier, etc.)",
+      "required": ["@type", "name"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Organization"
+        },
+        "@id": {
+          "type": "string",
+          "description": "Organization DID",
+          "pattern": "^did:galileo:(brand|retailer|issuer|artisan|verifier|customer|regulator|facility|technician|supplier|inspector|operator|recycler|marketplace|workshop|associate|official):[a-z0-9\\-]{1,80}$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "legalName": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/PostalAddress"
+        },
+        "vatID": {
+          "type": "string"
+        },
+        "duns": {
+          "type": "string",
+          "pattern": "^\\d{9}$"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "PostalAddress": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PostalAddress"
+        },
+        "streetAddress": {
+          "type": "string"
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "addressRegion": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "addressCountry": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      }
+    },
+    "MaterialComponent": {
+      "type": "object",
+      "description": "ESPR material composition component",
+      "required": ["@type", "material", "percentage"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "MaterialComponent"
+        },
+        "material": {
+          "type": "string",
+          "description": "Material name (e.g., leather, silk, gold)",
+          "minLength": 1
+        },
+        "percentage": {
+          "type": "integer",
+          "description": "Percentage of total composition (0-100, all must sum to 100)",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "origin": {
+          "type": "string",
+          "description": "Country of origin in ISO 3166-1 alpha-3",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "certified": {
+          "type": "boolean",
+          "description": "Whether this material is certified sustainable"
+        },
+        "certificationScheme": {
+          "type": "string",
+          "description": "Certification scheme name (e.g., GOTS, FSC, LWG)"
+        },
+        "certificationBody": {
+          "type": "string",
+          "description": "Certifying organization"
+        },
+        "recycledContent": {
+          "type": "integer",
+          "description": "Percentage of recycled content within this material",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "hazardousSubstances": {
+          "type": "boolean",
+          "description": "Contains substances of concern per REACH/SVHC"
+        }
+      }
+    },
+    "CarbonFootprint": {
+      "type": "object",
+      "description": "ESPR carbon footprint data per ISO 14067",
+      "required": ["@type", "totalCO2e", "unit", "scope", "methodology"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CarbonFootprint"
+        },
+        "totalCO2e": {
+          "type": "number",
+          "description": "Total carbon footprint value",
+          "minimum": 0
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit of measurement",
+          "enum": ["kgCO2e", "tCO2e", "gCO2e"]
+        },
+        "scope": {
+          "type": "array",
+          "description": "GHG Protocol scopes included",
+          "items": {
+            "type": "string",
+            "enum": ["scope1", "scope2", "scope3", "cradle-to-gate", "cradle-to-grave"]
+          },
+          "minItems": 1
+        },
+        "methodology": {
+          "type": "string",
+          "description": "Calculation methodology reference",
+          "enum": ["ISO14067", "GHGProtocol", "PEF", "PEFCR"]
+        },
+        "methodologyVersion": {
+          "type": "string"
+        },
+        "calculationDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "verificationDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "verifier": {
+          "$ref": "#/definitions/Organization"
+        },
+        "validUntil": {
+          "type": "string",
+          "format": "date"
+        },
+        "breakdown": {
+          "type": "object",
+          "description": "Optional breakdown by lifecycle stage",
+          "properties": {
+            "rawMaterials": { "type": "number", "minimum": 0 },
+            "manufacturing": { "type": "number", "minimum": 0 },
+            "transport": { "type": "number", "minimum": 0 },
+            "use": { "type": "number", "minimum": 0 },
+            "endOfLife": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "RepairGuide": {
+      "type": "object",
+      "description": "ESPR repair and maintenance information",
+      "required": ["@type", "guideUrl", "availableLanguages", "repairabilityIndex"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "RepairGuide"
+        },
+        "guideUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to repair/maintenance documentation"
+        },
+        "availableLanguages": {
+          "type": "array",
+          "description": "ISO 639-1 language codes",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]{2}$"
+          },
+          "minItems": 1
+        },
+        "repairabilityIndex": {
+          "type": "number",
+          "description": "Repairability score on 1-10 scale (10 = most repairable)",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "repairCenters": {
+          "type": "array",
+          "description": "Authorized repair service locations",
+          "items": {
+            "$ref": "#/definitions/RepairCenter"
+          }
+        },
+        "spareParts": {
+          "type": "object",
+          "properties": {
+            "available": {
+              "type": "boolean"
+            },
+            "availabilityPeriod": {
+              "type": "string",
+              "description": "ISO 8601 duration for spare parts availability"
+            },
+            "catalogUrl": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "estimatedLifespan": {
+          "type": "string",
+          "description": "ISO 8601 duration (e.g., P10Y for 10 years)"
+        },
+        "maintenanceSchedule": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MaintenanceItem"
+          }
+        },
+        "warrantyInfo": {
+          "$ref": "#/definitions/WarrantyInfo"
+        }
+      }
+    },
+    "RepairCenter": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "$ref": "#/definitions/PostalAddress" },
+        "url": { "type": "string", "format": "uri" },
+        "phone": { "type": "string" },
+        "authorized": { "type": "boolean" }
+      }
+    },
+    "MaintenanceItem": {
+      "type": "object",
+      "properties": {
+        "action": { "type": "string" },
+        "interval": { "type": "string", "description": "ISO 8601 duration" },
+        "professional": { "type": "boolean", "description": "Requires professional service" }
+      }
+    },
+    "WarrantyInfo": {
+      "type": "object",
+      "properties": {
+        "duration": { "type": "string", "description": "ISO 8601 duration" },
+        "type": { "type": "string", "enum": ["manufacturer", "extended", "lifetime"] },
+        "coverage": { "type": "string" },
+        "termsUrl": { "type": "string", "format": "uri" }
+      }
+    },
+    "ComplianceDeclaration": {
+      "type": "object",
+      "description": "ESPR regulatory compliance declaration",
+      "required": ["@type", "regulation", "compliant", "declarationDate"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ComplianceDeclaration"
+        },
+        "regulation": {
+          "type": "string",
+          "description": "Regulation reference (e.g., ESPR 2024/1781)"
+        },
+        "regulationUri": {
+          "type": "string",
+          "format": "uri",
+          "description": "Official regulation URI"
+        },
+        "compliant": {
+          "type": "boolean",
+          "description": "Compliance status"
+        },
+        "declarationDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "validUntil": {
+          "type": "string",
+          "format": "date"
+        },
+        "notifiedBody": {
+          "$ref": "#/definitions/Organization"
+        },
+        "notifiedBodyId": {
+          "type": "string",
+          "description": "EU Notified Body identification number"
+        },
+        "certificateNumber": {
+          "type": "string"
+        },
+        "certificateUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "additionalRegulations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "regulation": { "type": "string" },
+              "compliant": { "type": "boolean" },
+              "certificateNumber": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "QuantitativeValue": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "QuantitativeValue"
+        },
+        "value": {
+          "type": "number"
+        },
+        "unitCode": {
+          "type": "string",
+          "description": "UN/CEFACT unit code"
+        },
+        "unitText": {
+          "type": "string"
+        }
+      }
+    },
+    "Dimensions": {
+      "type": "object",
+      "properties": {
+        "length": { "$ref": "#/definitions/QuantitativeValue" },
+        "width": { "$ref": "#/definitions/QuantitativeValue" },
+        "height": { "$ref": "#/definitions/QuantitativeValue" }
+      }
+    },
+    "PropertyValue": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PropertyValue"
+        },
+        "propertyID": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {}
+      },
+      "required": ["@type", "name", "value"]
+    },
+    "ArtisanAttribution": {
+      "type": "object",
+      "description": "Craftsperson attribution supporting pseudonymous DIDs",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ArtisanAttribution"
+        },
+        "artisanDID": {
+          "type": "string",
+          "description": "Artisan DID (did:galileo:artisan:pseudonym)",
+          "pattern": "^did:galileo:artisan:[a-z0-9\\-]{1,80}$"
+        },
+        "artisanPseudonym": {
+          "type": "string",
+          "description": "Public pseudonym preserving privacy"
+        },
+        "craft": {
+          "type": "string",
+          "description": "Type of craft (e.g., leather work, horology)"
+        },
+        "signature": {
+          "type": "string",
+          "description": "Artisan's signature or mark identifier"
+        },
+        "workshopLocation": {
+          "type": "string",
+          "description": "Workshop region (not specific address for privacy)"
+        },
+        "masteryLevel": {
+          "type": "string",
+          "enum": ["apprentice", "journeyman", "craftsman", "master", "maitre_artisan", "mof"]
+        },
+        "attributionDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "CraftsmanshipDetails": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CraftsmanshipDetails"
+        },
+        "techniques": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "hoursOfWork": {
+          "type": "number",
+          "minimum": 0
+        },
+        "handmadePercentage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "qualityGrade": {
+          "type": "string"
+        },
+        "inspectionDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "LimitedEdition": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "LimitedEdition"
+        },
+        "editionName": {
+          "type": "string"
+        },
+        "editionNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "totalEditionSize": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "releaseDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "certificateNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "ProvenanceGrade": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ProvenanceGrade"
+        },
+        "grade": {
+          "type": "string",
+          "enum": ["museum_piece", "collector", "excellent", "good", "standard"]
+        },
+        "assessmentDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "assessor": {
+          "$ref": "#/definitions/Organization"
+        },
+        "confidenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "@context": "https://vocab.galileoprotocol.io/contexts/galileo.jsonld",
+      "@type": "IndividualProduct",
+      "@id": "did:galileo:01:09506000134352:21:HK2024A001",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "gtin",
+        "value": "09506000134352"
+      },
+      "serialNumber": "HK2024A001",
+      "name": "Birkin 25 Togo Gold",
+      "brand": {
+        "@type": "Brand",
+        "@id": "did:galileo:brand:hermes",
+        "name": "Hermes"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Hermes Sellier",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "FRA"
+        }
+      },
+      "productionDate": "2024-03-15",
+      "countryOfOrigin": "FRA",
+      "materialComposition": [
+        {
+          "@type": "MaterialComponent",
+          "material": "Togo Leather",
+          "percentage": 85,
+          "origin": "FRA",
+          "certified": true,
+          "certificationScheme": "LWG Gold"
+        },
+        {
+          "@type": "MaterialComponent",
+          "material": "Gold-Plated Hardware",
+          "percentage": 10,
+          "origin": "FRA"
+        },
+        {
+          "@type": "MaterialComponent",
+          "material": "Chevre Lining",
+          "percentage": 5,
+          "origin": "FRA"
+        }
+      ],
+      "carbonFootprint": {
+        "@type": "CarbonFootprint",
+        "totalCO2e": 45.2,
+        "unit": "kgCO2e",
+        "scope": ["scope1", "scope2", "scope3"],
+        "methodology": "ISO14067",
+        "calculationDate": "2024-01-01",
+        "verificationDate": "2024-01-15"
+      },
+      "repairInstructions": {
+        "@type": "RepairGuide",
+        "guideUrl": "https://www.hermes.com/care/leather",
+        "availableLanguages": ["en", "fr", "zh", "ja"],
+        "repairabilityIndex": 9.5
+      },
+      "complianceDeclaration": {
+        "@type": "ComplianceDeclaration",
+        "regulation": "ESPR 2024/1781",
+        "compliant": true,
+        "declarationDate": "2024-03-15"
+      }
+    }
+  ]
+}

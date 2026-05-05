@@ -1,0 +1,77 @@
+---
+title: "Production Deployment: Dashboard, Scanner & Infrastructure Updates"
+date: "2026-03-22"
+author: "Galileo Core Team"
+excerpt: "The Galileo dashboard and scanner are now live on Vercel. This update covers the production deployment fixes, Cloudflare R2 storage, and the new automated changelog pipeline."
+tags:
+  - release
+  - deployment
+  - infrastructure
+  - patch
+published: true
+---
+
+## What's New
+
+Today we shipped several production deployment fixes and infrastructure updates that bring the full Galileo stack online.
+
+---
+
+## Apps Now Live
+
+Both the B2B dashboard and the consumer scanner PWA are now deployed and publicly accessible:
+
+- **Dashboard** — [galileo-dashboard.vercel.app](https://galileo-dashboard.vercel.app) — brand admin portal for product lifecycle management
+- **Scanner PWA** — [galileo-scanner.vercel.app](https://galileo-scanner.vercel.app) — consumer QR verification app
+
+The API on Railway was already live. This completes the full deployment of all three apps.
+
+---
+
+## Fixes
+
+### Prisma 7 ESM Import Compatibility
+
+Prisma 7 generates ESM files that require explicit `.js` extensions on all imports. The production build pipeline now patches these automatically via a `postbuild` script in the API Dockerfile, ensuring clean startup without `ERR_MODULE_NOT_FOUND` errors.
+
+### Dockerfile Path Fix
+
+The `contracts/deployments` directory is now correctly copied to `/app` in the multi-stage Docker build. Previously, a misconfigured path prevented contract ABI resolution at runtime.
+
+### Database Migrations
+
+Prisma migrations have been applied to the Railway production database. The `Product`, `ProductPassport`, `ProductEvent`, and all related tables are now in sync with the schema.
+
+---
+
+## Infrastructure
+
+### Cloudflare R2 Storage
+
+Product image uploads are now persisted to Cloudflare R2. Previously the API ran in `local` mode, meaning uploads were lost on container restart. R2 provides permanent, geo-distributed storage without egress fees.
+
+### Basescan API Key
+
+Contract verification on Base Sepolia is now enabled, allowing ABIs and source code to be verified publicly on Basescan for transparency.
+
+---
+
+## Automated Changelog Pipeline
+
+This release introduces the automated versioning and changelog system:
+
+- **`@changesets/cli`** — tracks changes per commit in `.changeset/` files
+- **`@changesets/changelog-github`** — formats changelogs with GitHub PR references
+- **GitHub Actions `release.yml`** — on push to `main`, automatically creates/updates a "Version Packages" PR; when merged, publishes the GitHub Release and generates a blog post
+
+Future releases will be tracked automatically through this pipeline.
+
+---
+
+## Git Maintenance
+
+Orphaned local worktrees have been removed, reducing repository overhead.
+
+---
+
+*Questions or issues? Open a GitHub issue or check the [documentation](/docs).*

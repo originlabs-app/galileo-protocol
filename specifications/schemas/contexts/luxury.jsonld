@@ -1,0 +1,423 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@import": "https://vocab.galileoprotocol.io/contexts/galileo.jsonld",
+
+    "luxury": "https://vocab.galileoprotocol.io/luxury/",
+    "gs1": "https://gs1.org/voc/",
+
+    "ArtisanAttribution": {
+      "@id": "luxury:ArtisanAttribution",
+      "@context": {
+        "artisanDID": {
+          "@id": "luxury:artisanDID",
+          "@type": "@id"
+        },
+        "artisanPseudonym": {
+          "@id": "luxury:artisanPseudonym",
+          "@type": "xsd:string"
+        },
+        "craft": {
+          "@id": "luxury:craft",
+          "@type": "xsd:string"
+        },
+        "signature": {
+          "@id": "luxury:signature",
+          "@type": "xsd:string"
+        },
+        "workshopLocation": {
+          "@id": "luxury:workshopLocation",
+          "@type": "xsd:string"
+        },
+        "yearsExperience": {
+          "@id": "luxury:yearsExperience",
+          "@type": "xsd:integer"
+        },
+        "masteryLevel": {
+          "@id": "luxury:masteryLevel",
+          "@type": "xsd:string"
+        },
+        "attributionDate": {
+          "@id": "luxury:attributionDate",
+          "@type": "xsd:date"
+        },
+        "verifiable": {
+          "@id": "luxury:verifiable",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "CraftsmanshipDetails": {
+      "@id": "luxury:CraftsmanshipDetails",
+      "@context": {
+        "techniques": {
+          "@id": "luxury:techniques",
+          "@container": "@set"
+        },
+        "hoursOfWork": {
+          "@id": "luxury:hoursOfWork",
+          "@type": "xsd:decimal"
+        },
+        "toolsUsed": {
+          "@id": "luxury:toolsUsed",
+          "@container": "@set"
+        },
+        "handmadePercentage": {
+          "@id": "luxury:handmadePercentage",
+          "@type": "xsd:integer"
+        },
+        "qualityGrade": {
+          "@id": "luxury:qualityGrade",
+          "@type": "xsd:string"
+        },
+        "inspectionDate": {
+          "@id": "luxury:inspectionDate",
+          "@type": "xsd:date"
+        },
+        "inspector": {
+          "@id": "luxury:inspector",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "LimitedEdition": {
+      "@id": "luxury:LimitedEdition",
+      "@context": {
+        "editionName": {
+          "@id": "luxury:editionName",
+          "@type": "xsd:string"
+        },
+        "editionNumber": {
+          "@id": "luxury:editionNumber",
+          "@type": "xsd:integer"
+        },
+        "totalEditionSize": {
+          "@id": "luxury:totalEditionSize",
+          "@type": "xsd:integer"
+        },
+        "releaseDate": {
+          "@id": "luxury:releaseDate",
+          "@type": "xsd:date"
+        },
+        "commemorates": {
+          "@id": "luxury:commemorates",
+          "@type": "xsd:string"
+        },
+        "certificateNumber": {
+          "@id": "luxury:certificateNumber",
+          "@type": "xsd:string"
+        },
+        "artistCollaboration": {
+          "@id": "luxury:artistCollaboration",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "TerriorProvenance": {
+      "@id": "luxury:TerriorProvenance",
+      "@context": {
+        "region": {
+          "@id": "luxury:region",
+          "@type": "xsd:string"
+        },
+        "country": {
+          "@id": "luxury:country",
+          "@type": "xsd:string"
+        },
+        "appellation": {
+          "@id": "luxury:appellation",
+          "@type": "xsd:string"
+        },
+        "protectedDesignation": {
+          "@id": "luxury:protectedDesignation",
+          "@type": "xsd:boolean"
+        },
+        "geographicIndicator": {
+          "@id": "luxury:geographicIndicator",
+          "@type": "xsd:string"
+        },
+        "coordinates": {
+          "@id": "luxury:coordinates",
+          "@type": "xsd:string"
+        },
+        "altitude": {
+          "@id": "luxury:altitude",
+          "@type": "xsd:decimal"
+        },
+        "harvestDate": {
+          "@id": "luxury:harvestDate",
+          "@type": "xsd:date"
+        },
+        "vintage": {
+          "@id": "luxury:vintage",
+          "@type": "xsd:gYear"
+        }
+      }
+    },
+
+    "ProvenanceGrade": {
+      "@id": "luxury:ProvenanceGrade",
+      "@context": {
+        "grade": {
+          "@id": "luxury:grade",
+          "@type": "xsd:string"
+        },
+        "gradeDefinitions": {
+          "museum_piece": {
+            "@id": "luxury:MuseumPiece",
+            "description": "Exceptional piece with complete documented history, suitable for museum exhibition"
+          },
+          "collector": {
+            "@id": "luxury:Collector",
+            "description": "Highly desirable with verified ownership chain and excellent condition documentation"
+          },
+          "excellent": {
+            "@id": "luxury:Excellent",
+            "description": "Well-documented provenance with minor gaps, professionally verified"
+          },
+          "good": {
+            "@id": "luxury:Good",
+            "description": "Reasonable provenance documentation with some verifiable history"
+          },
+          "standard": {
+            "@id": "luxury:Standard",
+            "description": "Basic provenance from brand registration onward"
+          }
+        },
+        "assessmentDate": {
+          "@id": "luxury:assessmentDate",
+          "@type": "xsd:date"
+        },
+        "assessor": {
+          "@id": "luxury:assessor",
+          "@type": "@id"
+        },
+        "confidenceScore": {
+          "@id": "luxury:confidenceScore",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+
+    "Heirloom": {
+      "@id": "luxury:Heirloom",
+      "@context": {
+        "generationsOwned": {
+          "@id": "luxury:generationsOwned",
+          "@type": "xsd:integer"
+        },
+        "familyLineage": {
+          "@id": "luxury:familyLineage",
+          "@type": "xsd:string"
+        },
+        "inheritanceDate": {
+          "@id": "luxury:inheritanceDate",
+          "@type": "xsd:date"
+        },
+        "historicalSignificance": {
+          "@id": "luxury:historicalSignificance",
+          "@type": "xsd:string"
+        },
+        "previousOwners": {
+          "@id": "luxury:previousOwners",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "AuthenticationDetails": {
+      "@id": "luxury:AuthenticationDetails",
+      "@context": {
+        "authenticatedBy": {
+          "@id": "luxury:authenticatedBy",
+          "@type": "@id"
+        },
+        "authenticationDate": {
+          "@id": "luxury:authenticationDate",
+          "@type": "xsd:date"
+        },
+        "authenticationMethod": {
+          "@id": "luxury:authenticationMethod",
+          "@type": "xsd:string"
+        },
+        "confidenceLevel": {
+          "@id": "luxury:confidenceLevel",
+          "@type": "xsd:decimal"
+        },
+        "certificateId": {
+          "@id": "luxury:certificateId",
+          "@type": "xsd:string"
+        },
+        "molecularMatch": {
+          "@id": "luxury:molecularMatch",
+          "@type": "xsd:boolean"
+        },
+        "physicalInspection": {
+          "@id": "luxury:physicalInspection",
+          "@type": "xsd:boolean"
+        },
+        "documentVerification": {
+          "@id": "luxury:documentVerification",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "ValuationRecord": {
+      "@id": "luxury:ValuationRecord",
+      "@context": {
+        "valuationDate": {
+          "@id": "luxury:valuationDate",
+          "@type": "xsd:date"
+        },
+        "appraiser": {
+          "@id": "luxury:appraiser",
+          "@type": "@id"
+        },
+        "valuationType": {
+          "@id": "luxury:valuationType",
+          "@type": "xsd:string"
+        },
+        "currency": {
+          "@id": "luxury:currency",
+          "@type": "xsd:string"
+        },
+        "lowEstimate": {
+          "@id": "luxury:lowEstimate",
+          "@type": "xsd:decimal"
+        },
+        "highEstimate": {
+          "@id": "luxury:highEstimate",
+          "@type": "xsd:decimal"
+        },
+        "methodology": {
+          "@id": "luxury:methodology",
+          "@type": "xsd:string"
+        }
+      }
+    },
+
+    "ConditionReport": {
+      "@id": "luxury:ConditionReport",
+      "@context": {
+        "reportDate": {
+          "@id": "luxury:reportDate",
+          "@type": "xsd:date"
+        },
+        "inspector": {
+          "@id": "luxury:inspector",
+          "@type": "@id"
+        },
+        "overallCondition": {
+          "@id": "luxury:overallCondition",
+          "@type": "xsd:string"
+        },
+        "structuralIntegrity": {
+          "@id": "luxury:structuralIntegrity",
+          "@type": "xsd:string"
+        },
+        "cosmeticCondition": {
+          "@id": "luxury:cosmeticCondition",
+          "@type": "xsd:string"
+        },
+        "functionalStatus": {
+          "@id": "luxury:functionalStatus",
+          "@type": "xsd:string"
+        },
+        "restorationHistory": {
+          "@id": "luxury:restorationHistory",
+          "@container": "@list"
+        },
+        "recommendations": {
+          "@id": "luxury:recommendations",
+          "@type": "xsd:string"
+        },
+        "photoDocumentation": {
+          "@id": "luxury:photoDocumentation",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "ServiceHistory": {
+      "@id": "luxury:ServiceHistory",
+      "@context": {
+        "serviceDate": {
+          "@id": "luxury:serviceDate",
+          "@type": "xsd:date"
+        },
+        "serviceProvider": {
+          "@id": "luxury:serviceProvider",
+          "@type": "@id"
+        },
+        "serviceType": {
+          "@id": "luxury:serviceType",
+          "@type": "xsd:string"
+        },
+        "partsReplaced": {
+          "@id": "luxury:partsReplaced",
+          "@container": "@set"
+        },
+        "warrantyApplied": {
+          "@id": "luxury:warrantyApplied",
+          "@type": "xsd:boolean"
+        },
+        "certifiedService": {
+          "@id": "luxury:certifiedService",
+          "@type": "xsd:boolean"
+        },
+        "nextServiceDue": {
+          "@id": "luxury:nextServiceDue",
+          "@type": "xsd:date"
+        }
+      }
+    },
+
+    "MasteryLevel": {
+      "@id": "luxury:MasteryLevel",
+      "@context": {
+        "levels": {
+          "apprentice": "luxury:Apprentice",
+          "journeyman": "luxury:Journeyman",
+          "craftsman": "luxury:Craftsman",
+          "master": "luxury:Master",
+          "maitre_artisan": "luxury:MaitreArtisan",
+          "meilleur_ouvrier_france": "luxury:MOF"
+        }
+      }
+    },
+
+    "CraftTechnique": {
+      "@id": "luxury:CraftTechnique",
+      "@context": {
+        "techniqueName": {
+          "@id": "luxury:techniqueName",
+          "@type": "xsd:string"
+        },
+        "traditionalName": {
+          "@id": "luxury:traditionalName",
+          "@type": "xsd:string"
+        },
+        "origin": {
+          "@id": "luxury:origin",
+          "@type": "xsd:string"
+        },
+        "centuriesOld": {
+          "@id": "luxury:centuriesOld",
+          "@type": "xsd:integer"
+        },
+        "protected": {
+          "@id": "luxury:protected",
+          "@type": "xsd:boolean"
+        },
+        "masteryRequired": {
+          "@id": "luxury:masteryRequired",
+          "@type": "xsd:string"
+        }
+      }
+    }
+  }
+}

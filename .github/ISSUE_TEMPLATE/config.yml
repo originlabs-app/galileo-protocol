@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security Vulnerability
+    url: https://github.com/originlabs-app/galileo-luxury-standard/security/policy
+    about: Please report security vulnerabilities privately. Do not open a public issue.
+  - name: Question
+    url: https://github.com/originlabs-app/galileo-luxury-standard/discussions
+    about: Ask questions and discuss the standard in GitHub Discussions.

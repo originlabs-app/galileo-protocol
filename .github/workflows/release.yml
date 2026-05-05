@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  github-release:
+    name: GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+
+          NOTES_FILE="release/${TAG_NAME}/RELEASE-NOTES.md"
+          if [ ! -f "$NOTES_FILE" ]; then
+            NOTES_FILE="CHANGELOG.md"
+          fi
+
+          if gh release view "$TAG_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release edit "$TAG_NAME" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "Galileo Protocol ${TAG_NAME}" \
+              --notes-file "$NOTES_FILE" \
+              --verify-tag
+          else
+            gh release create "$TAG_NAME" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "Galileo Protocol ${TAG_NAME}" \
+              --notes-file "$NOTES_FILE" \
+              --verify-tag
+          fi

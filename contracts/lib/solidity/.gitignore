@@ -1,0 +1,25 @@
+# Logs
+logs
+*.log
+
+# Coverage
+coverage
+
+# Dependencies
+node_modules
+
+# Build
+build/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea
+.vscode
+
+# Artifacts
+artifacts
+coverage.json
+cache
+typechain-types

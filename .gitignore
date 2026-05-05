@@ -1,0 +1,83 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+out/
+.next/
+
+# Turborepo
+.turbo/
+
+# Environment
+.env
+.env.*
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+!.env.example
+!.env.*.example
+!**/.env.example
+!**/.env.*.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Internal dev artifacts (not for public)
+.factory/
+.codex/
+.claude/
+.cursor/
+.windsurf/
+planning/
+.planning/
+docs/references/agent-missions/
+docs/investor-demo-pack/
+docs/investor-dogfood/
+docs/exec-plans/
+docs/plans/
+docs/screenshots/
+dogfood-output/
+docs/PILOT_DEMO_ROOM*.md
+docs/*HANDOFF*.md
+
+# Debug artifacts
+*-full.png
+/*.pdf
+
+# Tools
+.playwright-mcp/
+
+# Security
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+*.mobileprovision
+id_rsa*
+id_ed25519*
+
+# Uploads (local storage fallback)
+uploads/
+
+# Misc
+.vercel
+*.tsbuildinfo

@@ -1,0 +1,395 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/extensions/artisan-attribution.schema.json",
+  "title": "Galileo Artisan Attribution Schema",
+  "description": "Extension schema for craftsperson attribution with GDPR-compliant privacy controls. Supports pseudonymous artisan DIDs with optional public profile linkage, enabling traceability without mandatory PII exposure. Artisans maintain full control over their public visibility.",
+  "type": "object",
+  "required": [
+    "@type",
+    "artisanDID",
+    "attributionType",
+    "productionDate"
+  ],
+  "properties": {
+    "@type": {
+      "description": "Must be ArtisanAttribution",
+      "type": "string",
+      "const": "ArtisanAttribution"
+    },
+    "@id": {
+      "description": "Unique identifier for this attribution record",
+      "type": "string",
+      "format": "uri"
+    },
+    "artisanDID": {
+      "description": "Pseudonymous DID for the artisan (did:galileo:artisan:xxx)",
+      "type": "string",
+      "pattern": "^did:galileo:artisan:[a-z0-9\\-]{1,80}$"
+    },
+    "attributionType": {
+      "description": "Role of artisan in production",
+      "type": "string",
+      "enum": [
+        "sole_maker",
+        "lead_artisan",
+        "contributor",
+        "finisher",
+        "quality_inspector",
+        "master_supervisor"
+      ]
+    },
+    "productionDate": {
+      "description": "Date of artisan's work on this product",
+      "type": "string",
+      "format": "date"
+    },
+    "productionDateRange": {
+      "description": "Date range if work spanned multiple days",
+      "$ref": "#/definitions/DateRange"
+    },
+    "publicProfile": {
+      "description": "Whether artisan has opted into public profile visibility",
+      "type": "boolean",
+      "default": false
+    },
+    "publicName": {
+      "description": "Public display name (only if publicProfile=true)",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "publicBio": {
+      "description": "Short public biography (only if publicProfile=true)",
+      "type": "string",
+      "maxLength": 500
+    },
+    "profileUrl": {
+      "description": "URL to public artisan profile page (only if publicProfile=true)",
+      "type": "string",
+      "format": "uri"
+    },
+    "profilePhoto": {
+      "description": "URL to profile photo (only if publicProfile=true)",
+      "type": "string",
+      "format": "uri"
+    },
+    "specialization": {
+      "description": "Artisan's craft specialization",
+      "type": "string",
+      "enum": [
+        "leather_work",
+        "watchmaking",
+        "jewelry",
+        "textile",
+        "embroidery",
+        "engraving",
+        "enameling",
+        "gem_setting",
+        "metalwork",
+        "woodwork",
+        "lacquer",
+        "porcelain",
+        "glass",
+        "saddlery",
+        "millinery",
+        "tailoring",
+        "shoemaking",
+        "other"
+      ]
+    },
+    "specializationDetail": {
+      "description": "Detailed specialization description",
+      "type": "string",
+      "maxLength": 200
+    },
+    "masteryLevel": {
+      "description": "Recognized level of mastery",
+      "type": "string",
+      "enum": [
+        "apprentice",
+        "journeyman",
+        "craftsman",
+        "senior_craftsman",
+        "master",
+        "maitre_artisan",
+        "mof",
+        "living_treasure"
+      ]
+    },
+    "masteryLevelCertifier": {
+      "description": "Organization that certified mastery level",
+      "type": "string"
+    },
+    "yearsExperience": {
+      "description": "Years of experience in craft (optional, privacy-sensitive)",
+      "type": "integer",
+      "minimum": 0
+    },
+    "atelier": {
+      "description": "Facility DID where artisan works",
+      "type": "string",
+      "pattern": "^did:galileo:facility:[a-z0-9\\-]{1,80}$"
+    },
+    "atelierName": {
+      "description": "Human-readable atelier name",
+      "type": "string"
+    },
+    "atelierLocation": {
+      "description": "General geographic area of atelier (not precise address)",
+      "type": "string"
+    },
+    "workDescription": {
+      "description": "Description of specific work performed on this product",
+      "type": "string",
+      "maxLength": 1000
+    },
+    "hoursContributed": {
+      "description": "Hours of work contributed to this product",
+      "type": "number",
+      "minimum": 0
+    },
+    "techniques": {
+      "description": "Specific techniques used by this artisan",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "signature": {
+      "description": "Artisan's signature or maker's mark",
+      "$ref": "#/definitions/ArtisanSignature"
+    },
+    "attestation": {
+      "description": "Cryptographic attestation of attribution",
+      "$ref": "#/definitions/Attestation"
+    },
+    "teamAttribution": {
+      "description": "Additional team members who contributed",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/TeamMember"
+      }
+    },
+    "privacyConsent": {
+      "description": "Privacy consent record (internal use)",
+      "$ref": "#/definitions/PrivacyConsent"
+    }
+  },
+  "definitions": {
+    "DateRange": {
+      "type": "object",
+      "description": "Date range for multi-day work",
+      "required": ["startDate", "endDate"],
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "ArtisanSignature": {
+      "type": "object",
+      "description": "Artisan's physical signature or mark on product",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "initials",
+            "symbol",
+            "stamp",
+            "engraving",
+            "hidden_mark",
+            "digital_only"
+          ]
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of mark on product"
+        },
+        "markReference": {
+          "type": "string",
+          "description": "Reference identifier for registered mark"
+        },
+        "imageHash": {
+          "type": "string",
+          "description": "SHA-256 hash of mark image",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "Attestation": {
+      "type": "object",
+      "description": "Cryptographic attestation of attribution",
+      "required": ["type", "created", "verificationMethod", "proofValue"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["Ed25519Signature2020", "MLDSASignature2024"]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verificationMethod": {
+          "type": "string",
+          "description": "DID URL to artisan's verification key"
+        },
+        "proofPurpose": {
+          "type": "string",
+          "default": "assertionMethod"
+        },
+        "proofValue": {
+          "type": "string",
+          "description": "Base64-encoded signature value"
+        }
+      }
+    },
+    "TeamMember": {
+      "type": "object",
+      "description": "Additional team member attribution",
+      "required": ["artisanDID", "role"],
+      "properties": {
+        "artisanDID": {
+          "type": "string",
+          "pattern": "^did:galileo:artisan:[a-z0-9\\-]{1,80}$"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "contributor",
+            "assistant",
+            "specialist",
+            "finisher",
+            "inspector"
+          ]
+        },
+        "contribution": {
+          "type": "string",
+          "description": "Description of contribution"
+        },
+        "publicProfile": {
+          "type": "boolean",
+          "default": false
+        },
+        "publicName": {
+          "type": "string"
+        }
+      }
+    },
+    "PrivacyConsent": {
+      "type": "object",
+      "description": "GDPR-compliant privacy consent record",
+      "properties": {
+        "consentGiven": {
+          "type": "boolean",
+          "description": "Whether consent for public profile was given"
+        },
+        "consentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "consentVersion": {
+          "type": "string",
+          "description": "Version of privacy policy consented to"
+        },
+        "consentMethod": {
+          "type": "string",
+          "enum": ["written", "electronic", "verbal_recorded"]
+        },
+        "withdrawalDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date consent was withdrawn (if applicable)"
+        },
+        "dataRetentionPeriod": {
+          "type": "string",
+          "description": "ISO 8601 duration for data retention"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "publicProfile": { "const": true } }
+      },
+      "then": {
+        "required": ["publicName"]
+      }
+    },
+    {
+      "if": {
+        "properties": { "publicProfile": { "const": false } }
+      },
+      "then": {
+        "properties": {
+          "publicName": false,
+          "publicBio": false,
+          "profileUrl": false,
+          "profilePhoto": false
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "@type": "ArtisanAttribution",
+      "@id": "urn:galileo:artisan-attr:2024-HK2024A001-maker",
+      "artisanDID": "did:galileo:artisan:maitre-xyz-7834",
+      "attributionType": "sole_maker",
+      "productionDate": "2024-03-15",
+      "publicProfile": true,
+      "publicName": "Jean-Pierre M.",
+      "publicBio": "Maitre artisan with 35 years experience in fine leather goods. Meilleur Ouvrier de France 2015.",
+      "specialization": "leather_work",
+      "specializationDetail": "Birkin and Kelly bag construction",
+      "masteryLevel": "mof",
+      "masteryLevelCertifier": "Societe Nationale des Meilleurs Ouvriers de France",
+      "atelier": "did:galileo:facility:hermes-pantin",
+      "atelierName": "Hermes Atelier de Pantin",
+      "atelierLocation": "Ile-de-France, France",
+      "workDescription": "Complete construction including cutting, stitching, edge finishing, and hardware installation",
+      "hoursContributed": 18.5,
+      "techniques": [
+        "saddle_stitch",
+        "edge_painting",
+        "hand_cutting",
+        "sanglon_assembly"
+      ],
+      "signature": {
+        "type": "stamp",
+        "location": "Interior clochette leather",
+        "markReference": "JPM-2015-MOF-42"
+      },
+      "attestation": {
+        "type": "Ed25519Signature2020",
+        "created": "2024-03-15T16:00:00Z",
+        "verificationMethod": "did:galileo:artisan:maitre-xyz-7834#key-1",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "z3MvGcVxzRzzpKF..."
+      }
+    },
+    {
+      "@type": "ArtisanAttribution",
+      "@id": "urn:galileo:artisan-attr:2024-HK2024A001-anon",
+      "artisanDID": "did:galileo:artisan:anon-craftsman-9921",
+      "attributionType": "sole_maker",
+      "productionDate": "2024-03-15",
+      "publicProfile": false,
+      "specialization": "leather_work",
+      "masteryLevel": "craftsman",
+      "atelier": "did:galileo:facility:hermes-pantin",
+      "atelierLocation": "Ile-de-France, France",
+      "hoursContributed": 18.5,
+      "signature": {
+        "type": "hidden_mark",
+        "location": "Interior construction",
+        "markReference": "ANON-2024-9921"
+      }
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  BRAND_ADMIN
+  OPERATOR
+  VIEWER
+}
+
+enum ProductStatus {
+  DRAFT
+  MINTING
+  ACTIVE
+  TRANSFERRED
+  RECALLED
+}
+
+enum EventType {
+  CREATED
+  UPDATED
+  MINTED
+  TRANSFERRED
+  VERIFIED
+  RECALLED
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  passwordHash  String
+  role          Role     @default(VIEWER)
+  brandId       String?
+  refreshToken  String?
+  walletAddress String?  @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  brand  Brand?         @relation(fields: [brandId], references: [id])
+  events ProductEvent[]
+
+  @@index([email])
+  @@index([brandId])
+}
+
+model Brand {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  did       String   @unique
+  cpoEmail  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users                User[]
+  products             Product[]
+  webhookSubscriptions WebhookSubscription[]
+
+  @@index([slug])
+}
+
+model Product {
+  id            String        @id @default(cuid())
+  gtin          String
+  serialNumber  String
+  did           String        @unique
+  name          String
+  description   String?
+  category      String
+  status        ProductStatus @default(DRAFT)
+  brandId       String
+  walletAddress String?
+  imageUrl      String?
+  imageCid      String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  brand    Brand            @relation(fields: [brandId], references: [id])
+  passport ProductPassport?
+  events   ProductEvent[]
+
+  @@unique([gtin, serialNumber])
+  @@index([brandId])
+  @@index([status])
+  @@index([gtin])
+}
+
+model ProductPassport {
+  id           String    @id @default(cuid())
+  productId    String    @unique
+  digitalLink  String
+  metadata     Json      @default("{}")
+  txHash       String?
+  tokenAddress String?
+  chainId      Int?
+  mintedAt     DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  product Product @relation(fields: [productId], references: [id])
+}
+
+model ProductEvent {
+  id          String    @id @default(cuid())
+  productId   String
+  type        EventType
+  data        Json      @default("{}")
+  performedBy String?
+  createdAt   DateTime  @default(now())
+
+  product   Product @relation(fields: [productId], references: [id])
+  performer User?   @relation(fields: [performedBy], references: [id])
+
+  @@index([productId])
+  @@index([performedBy])
+  @@index([type])
+}
+
+model WebhookSubscription {
+  id        String   @id @default(cuid())
+  brandId   String
+  url       String
+  secret    String
+  events    String[]
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  brand     Brand             @relation(fields: [brandId], references: [id])
+  deliveries WebhookDelivery[]
+
+  @@index([brandId])
+}
+
+model WebhookDelivery {
+  id            String    @id @default(cuid())
+  webhookId     String
+  eventType     String
+  payload       Json
+  status        String    @default("pending")
+  attempts      Int       @default(0)
+  lastError     String?
+  nextAttemptAt DateTime  @default(now())
+  lastAttemptAt DateTime?
+  createdAt     DateTime  @default(now())
+
+  subscription WebhookSubscription @relation(fields: [webhookId], references: [id], onDelete: Cascade)
+
+  @@index([webhookId])
+  @@index([status, nextAttemptAt])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actor      String?
+  action     String
+  resource   String
+  resourceId String?
+  metadata   Json     @default("{}")
+  ip         String?
+  createdAt  DateTime @default(now())
+
+  @@index([actor])
+  @@index([resource])
+  @@index([createdAt])
+}

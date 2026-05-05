@@ -1,0 +1,189 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@base": "https://vocab.galileoprotocol.io/molecular/",
+
+    "galileo": "https://vocab.galileoprotocol.io/",
+    "molecular": "https://vocab.galileoprotocol.io/molecular/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "did": "https://www.w3.org/ns/did#",
+
+    "id": "@id",
+    "type": "@type",
+
+    "MolecularAuthentication": "molecular:MolecularAuthentication",
+    "LeatherSignature": "molecular:LeatherSignature",
+    "SpectralSignature": "molecular:SpectralSignature",
+    "TerroirAuthentication": "molecular:TerroirAuthentication",
+    "IsotopicMeasurement": "molecular:IsotopicMeasurement",
+    "GeographicOrigin": "molecular:GeographicOrigin",
+
+    "signatureType": {
+      "@id": "molecular:signatureType",
+      "@type": "xsd:string"
+    },
+    "provider": {
+      "@id": "molecular:authProvider",
+      "@type": "@id"
+    },
+    "providerName": {
+      "@id": "molecular:providerName",
+      "@type": "xsd:string"
+    },
+    "verificationMethod": {
+      "@id": "molecular:verificationMethod",
+      "@type": "xsd:string"
+    },
+    "signatureDate": {
+      "@id": "molecular:signatureDate",
+      "@type": "xsd:dateTime"
+    },
+    "validUntil": {
+      "@id": "molecular:validUntil",
+      "@type": "xsd:date"
+    },
+    "certificateRef": {
+      "@id": "molecular:certificateRef",
+      "@type": "@id"
+    },
+
+    "dnaMarkerRef": {
+      "@id": "molecular:dnaMarkerRef",
+      "@type": "xsd:string"
+    },
+    "dnaSequenceHash": {
+      "@id": "molecular:dnaSequenceHash",
+      "@type": "xsd:string"
+    },
+    "markerType": {
+      "@id": "molecular:markerType",
+      "@type": "xsd:string"
+    },
+
+    "spectralHash": {
+      "@id": "molecular:spectralHash",
+      "@type": "xsd:string"
+    },
+    "spectralMethod": {
+      "@id": "molecular:spectralMethod",
+      "@type": "xsd:string"
+    },
+    "wavelengthRange": {
+      "@id": "molecular:wavelengthRange",
+      "@type": "xsd:string"
+    },
+    "captureDate": {
+      "@id": "molecular:captureDate",
+      "@type": "xsd:dateTime"
+    },
+    "instrumentModel": {
+      "@id": "molecular:instrumentModel",
+      "@type": "xsd:string"
+    },
+    "calibrationRef": {
+      "@id": "molecular:calibrationRef",
+      "@type": "xsd:string"
+    },
+
+    "isotopicSignature": {
+      "@id": "molecular:isotopicSignature",
+      "@type": "@id"
+    },
+    "isotopicMethod": {
+      "@id": "molecular:isotopicMethod",
+      "@type": "xsd:string"
+    },
+    "delta13C": {
+      "@id": "molecular:delta13C",
+      "@type": "xsd:decimal"
+    },
+    "delta15N": {
+      "@id": "molecular:delta15N",
+      "@type": "xsd:decimal"
+    },
+    "delta18O": {
+      "@id": "molecular:delta18O",
+      "@type": "xsd:decimal"
+    },
+    "delta34S": {
+      "@id": "molecular:delta34S",
+      "@type": "xsd:decimal"
+    },
+    "delta2H": {
+      "@id": "molecular:delta2H",
+      "@type": "xsd:decimal"
+    },
+    "strontiumRatio": {
+      "@id": "molecular:strontiumRatio",
+      "@type": "xsd:decimal"
+    },
+
+    "leatherProvenance": {
+      "@id": "molecular:leatherProvenance",
+      "@type": "@id"
+    },
+    "tanneryCertified": {
+      "@id": "molecular:tanneryCertified",
+      "@type": "xsd:boolean"
+    },
+    "tanneryId": {
+      "@id": "molecular:tanneryId",
+      "@type": "@id"
+    },
+    "hideOrigin": {
+      "@id": "molecular:hideOrigin",
+      "@type": "xsd:string"
+    },
+    "animalSpecies": {
+      "@id": "molecular:animalSpecies",
+      "@type": "xsd:string"
+    },
+    "tanningProcess": {
+      "@id": "molecular:tanningProcess",
+      "@type": "xsd:string"
+    },
+
+    "terroirData": {
+      "@id": "molecular:terroirData",
+      "@type": "@id"
+    },
+    "materialType": {
+      "@id": "molecular:materialType",
+      "@type": "xsd:string"
+    },
+    "geographicOrigin": {
+      "@id": "molecular:geographicOrigin",
+      "@type": "@id"
+    },
+    "country": {
+      "@id": "molecular:country",
+      "@type": "xsd:string"
+    },
+    "region": {
+      "@id": "molecular:region",
+      "@type": "xsd:string"
+    },
+    "specificArea": {
+      "@id": "molecular:specificArea",
+      "@type": "xsd:string"
+    },
+    "confidenceLevel": {
+      "@id": "molecular:confidenceLevel",
+      "@type": "xsd:decimal"
+    },
+    "referenceDatabase": {
+      "@id": "molecular:referenceDatabase",
+      "@type": "xsd:string"
+    },
+
+    "spectralFingerprint": {
+      "@id": "molecular:spectralFingerprint",
+      "@type": "@id"
+    },
+    "referenceHash": {
+      "@id": "molecular:referenceHash",
+      "@type": "xsd:string"
+    }
+  }
+}

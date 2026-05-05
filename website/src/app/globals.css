@@ -1,0 +1,1527 @@
+@import "tailwindcss";
+
+/* ============================================
+   DEEP OCEAN — Design System 2026
+   Galileo Protocol
+   "Abysse" — The definitive protocol aesthetic
+   ============================================ */
+
+:root {
+  /* =========================================
+     Deep Ocean Color System
+     ========================================= */
+
+  /* Ocean Depth Gradient (Hero → Footer) */
+  --ocean-surface: #87CEEB;     /* Sky/surface - 0m */
+  --ocean-shallow: #3A8CB8;     /* Shallow water */
+  --ocean-epipelagic: #0a3c64;  /* Epipelagic - 0-200m */
+  --ocean-mesopelagic: #062840; /* Mesopelagic - 200-1000m */
+  --ocean-bathypelagic: #041c30; /* Bathypelagic - 1000-4000m */
+  --ocean-abyssal: #021020;     /* Abyssal - 4000-6000m */
+  --ocean-hadal: #000810;       /* Hadal - 6000m+ */
+  --ocean-void: #000000;        /* Pure black - footer */
+
+  /* Bioluminescent Accents (Primary) */
+  --cyan-primary: #00FFFF;      /* Cyan bioluminescent */
+  --emerald-primary: #00FF88;   /* Emerald bioluminescent */
+  --cyan-dim: #22D3EE;          /* Cyan 400 */
+  --emerald-dim: #34D399;       /* Emerald 400 */
+
+  /* Feature Colors (Accent) */
+  --feature-cyan: #00FFFF;      /* Digital Identity */
+  --feature-emerald: #00FF88;   /* Provenance */
+  --feature-blue: #4488FF;      /* Verification */
+  --feature-magenta: #FF00FF;   /* Transfer */
+
+  /* Treasure Reveal (Gold) - Sparingly */
+  --gold-primary: #D4AF37;      /* Antique gold */
+  --gold-light: #FFD700;        /* Brilliant gold */
+  --gold-champagne: #F5E6C8;    /* Champagne */
+  --gold-dark: #B8860B;         /* Dark gold */
+
+  /* Legacy aliases (backward compatibility) */
+  --antique-gold: var(--gold-primary);
+  --antique-gold-dim: var(--gold-dark);
+  --champagne: var(--gold-champagne);
+
+  /* Background Stack - Deep Ocean Depth */
+  --void: #000000;              /* True black */
+  --obsidian: #000810;          /* Primary canvas (hadal) */
+  --graphite: #021020;          /* Card backgrounds (abyssal) */
+  --slate: #041c30;             /* Elevated surfaces (bathypelagic) */
+  --smoke: #062840;             /* Highest elevation (mesopelagic) */
+
+  /* Legacy aliases */
+  --obsidian-surface: var(--graphite);
+  --obsidian-elevated: var(--slate);
+  --obsidian-border: var(--smoke);
+
+  /* Text Colors - White opacity scale */
+  --text-primary: #FFFFFF;      /* 100% - Titles */
+  --text-secondary: rgba(255, 255, 255, 0.7);  /* 70% - Body */
+  --text-tertiary: rgba(255, 255, 255, 0.4);   /* 40% - Descriptions */
+  --text-muted: rgba(255, 255, 255, 0.3);      /* 30% - Subtle */
+
+  /* Legacy text aliases */
+  --platinum: var(--text-primary);
+  --silver: var(--text-secondary);
+  --pewter: var(--text-tertiary);
+  --platinum-dim: var(--text-secondary);
+
+  /* Technical Highlights */
+  --ice: #E8F4F8;
+  --precision-blue: var(--cyan-primary);
+  --precision-blue-dim: var(--cyan-dim);
+
+  /* Status Colors */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+
+  /* Typography */
+  --font-outfit: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-satoshi: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  --font-mono: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Spacing */
+  --section-padding: clamp(4rem, 10vw, 8rem);
+
+  /* Effects */
+  --glass-blur: 24px;
+  --glass-bg: rgba(2, 4, 8, 0.9);
+  --border-hairline: 0.5px solid rgba(255, 255, 255, 0.05);
+  --border-subtle: 1px solid rgba(255, 255, 255, 0.08);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* =========================================
+     Deep Ocean Motion
+     ========================================= */
+
+  /* Easing Curves */
+  --ease-precision: cubic-bezier(0.16, 1, 0.3, 1);    /* Smooth deceleration */
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);     /* Content reveals */
+  --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);    /* Micro-interactions */
+
+  /* Animation Durations */
+  --duration-layout: 300ms;
+  --duration-color: 150ms;
+  --duration-reveal: 1000ms;    /* Slower for ocean feel */
+  --stagger-delay: 100ms;       /* Wider stagger for elegance */
+}
+
+@theme inline {
+  /* Ocean Depth */
+  --color-ocean-surface: var(--ocean-surface);
+  --color-ocean-shallow: var(--ocean-shallow);
+  --color-ocean-epipelagic: var(--ocean-epipelagic);
+  --color-ocean-mesopelagic: var(--ocean-mesopelagic);
+  --color-ocean-bathypelagic: var(--ocean-bathypelagic);
+  --color-ocean-abyssal: var(--ocean-abyssal);
+  --color-ocean-hadal: var(--ocean-hadal);
+  --color-ocean-void: var(--ocean-void);
+
+  /* Background Stack */
+  --color-void: var(--void);
+  --color-obsidian: var(--obsidian);
+  --color-graphite: var(--graphite);
+  --color-slate: var(--slate);
+  --color-smoke: var(--smoke);
+
+  /* Legacy aliases */
+  --color-obsidian-surface: var(--obsidian-surface);
+  --color-obsidian-elevated: var(--obsidian-elevated);
+
+  /* Bioluminescent Accents */
+  --color-cyan-primary: var(--cyan-primary);
+  --color-emerald-primary: var(--emerald-primary);
+  --color-cyan-dim: var(--cyan-dim);
+  --color-emerald-dim: var(--emerald-dim);
+
+  /* Feature Colors */
+  --color-feature-cyan: var(--feature-cyan);
+  --color-feature-emerald: var(--feature-emerald);
+  --color-feature-blue: var(--feature-blue);
+  --color-feature-magenta: var(--feature-magenta);
+
+  /* Gold (Treasure) */
+  --color-gold: var(--gold-primary);
+  --color-gold-light: var(--gold-light);
+  --color-gold-champagne: var(--gold-champagne);
+  --color-gold-dark: var(--gold-dark);
+
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
+
+  /* Legacy Text */
+  --color-platinum: var(--platinum);
+  --color-silver: var(--silver);
+  --color-pewter: var(--pewter);
+
+  /* Technical */
+  --color-ice: var(--ice);
+  --color-blue: var(--precision-blue);
+
+  /* Typography */
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-satoshi);
+  --font-mono: var(--font-mono);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ocean-void);
+  color: var(--text-primary);
+  font-family: var(--font-satoshi);
+  font-weight: 400;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Swiss-Luxe Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h4 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
+
+/* Display Headlines - Cormorant Garamond Light for Hero */
+.display-headline {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+
+/* Heritage Italic Accent */
+.italic-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+/* Selection */
+::selection {
+  background: var(--cyan-primary);
+  color: var(--obsidian);
+}
+
+/* ============================================
+   OCEAN BACKGROUND — Deep Ocean Gradient
+   ============================================ */
+
+.spatial-background,
+.ocean-background {
+  background-color: var(--ocean-hadal);
+  background-image:
+    /* Bioluminescent glow - subtle cyan */
+    radial-gradient(ellipse 80% 50% at 30% 20%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
+    /* Emerald undertone - bottom */
+    radial-gradient(ellipse 60% 40% at 70% 80%, rgba(0, 255, 136, 0.02) 0%, transparent 50%),
+    /* Depth gradient overlay */
+    linear-gradient(180deg, var(--ocean-abyssal) 0%, var(--ocean-hadal) 50%, var(--ocean-void) 100%);
+}
+
+/* Hero gradient (sky to ocean) */
+.ocean-hero-gradient {
+  background: linear-gradient(180deg, var(--ocean-surface) 0%, var(--ocean-epipelagic) 30%, var(--ocean-bathypelagic) 70%, var(--ocean-hadal) 100%);
+}
+
+/* ============================================
+   ANGLE GLOW — Subtle Corner Highlight
+   "Éclat" not "Néon"
+   ============================================ */
+
+.angle-glow {
+  position: relative;
+  border-radius: 16px;
+  background: var(--obsidian-surface);
+}
+
+.angle-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from 45deg,
+    transparent 0deg,
+    rgba(0, 255, 255, 0.4) 20deg,
+    transparent 50deg,
+    transparent 180deg,
+    rgba(0, 255, 255, 0.4) 200deg,
+    transparent 230deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.angle-glow:hover::before {
+  opacity: 1;
+}
+
+/* Ambient variant: always visible but subtle */
+.angle-glow-ambient::before {
+  opacity: 0.25;
+}
+
+.angle-glow-ambient:hover::before {
+  opacity: 0.8;
+}
+
+/* Blue variant for tech elements */
+.angle-glow-blue::before {
+  background: conic-gradient(
+    from 45deg,
+    transparent 0deg,
+    rgba(0, 163, 255, 0.4) 20deg,
+    transparent 50deg,
+    transparent 180deg,
+    rgba(0, 163, 255, 0.4) 200deg,
+    transparent 230deg
+  );
+}
+
+/* ============================================
+   MICRO-HAPTIC — Button Feedback
+   ============================================ */
+
+.button-haptic {
+  transition: transform 0.1s ease-out;
+}
+
+.button-haptic:active {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button-haptic:active {
+    transform: none;
+  }
+}
+
+/* ============================================
+   LIQUID GLASS — Mouse-Tracking Light
+   ============================================ */
+
+.liquid-glass {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.04) 0%,
+    transparent 40%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.liquid-glass:hover::after {
+  opacity: 1;
+}
+
+/* ============================================
+   FLOATING ANIMATIONS — Hero Visual
+   ============================================ */
+
+@keyframes float-slow {
+  0%, 100% { transform: rotate(-6deg) translateX(2rem) translateY(-1rem); }
+  50% { transform: rotate(-6deg) translateX(2rem) translateY(-1.5rem); }
+}
+
+@keyframes float-medium {
+  0%, 100% { transform: rotate(3deg) translateX(-1rem) translateY(0); }
+  50% { transform: rotate(3deg) translateX(-1rem) translateY(-0.5rem); }
+}
+
+@keyframes float-fast {
+  0%, 100% { transform: rotate(-3deg) translateY(2rem); }
+  50% { transform: rotate(-3deg) translateY(1.5rem); }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 5s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast {
+    animation: none;
+  }
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--obsidian);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--obsidian-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--platinum-dim);
+}
+
+/* ============================================
+   GLASS CARD
+   ============================================ */
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: var(--border-hairline);
+  border-radius: 12px;
+}
+
+/* ============================================
+   GRADIENT TEXT
+   ============================================ */
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--antique-gold) 0%, #F5D77E 50%, var(--antique-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-hero {
+  background: linear-gradient(90deg, var(--antique-gold) 0%, var(--platinum) 50%, var(--antique-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Bioluminescent gradient text */
+.text-gradient-bioluminescent {
+  background: linear-gradient(180deg, var(--cyan-primary) 0%, var(--emerald-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-bioluminescent-h {
+  background: linear-gradient(90deg, var(--cyan-primary) 0%, var(--emerald-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   GLOWS
+   ============================================ */
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(0, 163, 255, 0.3);
+}
+
+.glow-gold {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ============================================
+   PRECISION HERITAGE — Signature Visual Elements
+   ============================================ */
+
+/* Precision Lines
+   Ultra-thin (0.5px) gold lines that appear on hover
+   Suggests engineering blueprints and technical precision */
+.precision-line {
+  position: relative;
+}
+
+.precision-line::before,
+.precision-line::after {
+  content: '';
+  position: absolute;
+  background: linear-gradient(90deg, transparent, var(--cyan-dim), transparent);
+  transition: opacity var(--duration-color) var(--ease-precision),
+              transform var(--duration-layout) var(--ease-precision);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.precision-line::before {
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 0.5px;
+  transform: scaleX(0.5);
+}
+
+.precision-line::after {
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 0.5px;
+  transform: scaleX(0.5);
+}
+
+.precision-line:hover::before,
+.precision-line:hover::after {
+  opacity: 0.6;
+  transform: scaleX(1);
+}
+
+/* Vertical variant */
+.precision-line-vertical::before,
+.precision-line-vertical::after {
+  width: 0.5px;
+  height: auto;
+  top: 10%;
+  bottom: 10%;
+  left: auto;
+  right: auto;
+  background: linear-gradient(180deg, transparent, var(--cyan-dim), transparent);
+  transform: scaleY(0.5);
+}
+
+.precision-line-vertical::before { left: 0; }
+.precision-line-vertical::after { right: 0; }
+
+.precision-line-vertical:hover::before,
+.precision-line-vertical:hover::after {
+  transform: scaleY(1);
+}
+
+/* Halo Glow
+   Subtle ambient light around important elements
+   Not a drop shadow — a presence */
+.halo-glow {
+  position: relative;
+}
+
+.halo-glow::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 255, 255, 0.08) 0%,
+    rgba(0, 255, 255, 0.04) 30%,
+    transparent 70%
+  );
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity var(--duration-layout) var(--ease-precision);
+}
+
+.halo-glow-gold::before {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(212, 175, 55, 0.12) 0%,
+    rgba(245, 230, 200, 0.06) 30%,
+    transparent 70%
+  );
+}
+
+.halo-glow-blue::before {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 163, 255, 0.1) 0%,
+    rgba(0, 163, 255, 0.04) 30%,
+    transparent 70%
+  );
+}
+
+/* Intensify on hover */
+.halo-glow:hover::before {
+  opacity: 1.5;
+}
+
+/* Material Depth
+   Cards feel like floating on different planes
+   Layered gradients create depth illusion */
+.material-depth {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    var(--slate) 0%,
+    var(--graphite) 50%,
+    var(--obsidian) 100%
+  );
+  border: 1px solid rgba(168, 168, 179, 0.08);
+  border-radius: 16px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition: transform var(--duration-layout) var(--ease-precision),
+              box-shadow var(--duration-layout) var(--ease-precision);
+}
+
+.material-depth:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 16px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Icon Halo
+   Bioluminescent glow behind feature icons
+   Intensifies on hover for "living light" effect */
+.icon-halo {
+  position: relative;
+}
+
+.icon-halo::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    var(--halo-color, rgba(0, 255, 255, 0.15)) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 500ms var(--ease-precision);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.icon-halo:hover::before,
+.group:hover .icon-halo::before {
+  opacity: 1;
+}
+
+/* Corner Accents
+   24px L-shaped corner marks on cards
+   Color transitions from dim to full on hover */
+.corner-accent-tl,
+.corner-accent-br {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transition: border-color 500ms var(--ease-precision);
+  pointer-events: none;
+}
+
+.corner-accent-tl {
+  top: 0;
+  left: 0;
+  border-left: 1px solid var(--accent-color, rgba(0, 255, 255, 0.3));
+  border-top: 1px solid var(--accent-color, rgba(0, 255, 255, 0.3));
+}
+
+.corner-accent-br {
+  bottom: 0;
+  right: 0;
+  border-right: 1px solid var(--accent-color, rgba(0, 255, 255, 0.3));
+  border-bottom: 1px solid var(--accent-color, rgba(0, 255, 255, 0.3));
+}
+
+/* Bottom Accent Line
+   Gradient line that expands from 25% to 100% on hover */
+.bottom-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 25%;
+  background: linear-gradient(90deg, var(--accent-color, var(--cyan-primary)), transparent);
+  transition: width 500ms var(--ease-precision),
+              background 500ms var(--ease-precision);
+  pointer-events: none;
+}
+
+.group:hover .bottom-accent-line,
+*:hover > .bottom-accent-line {
+  width: 100%;
+}
+
+/* Grain Texture
+   Subtle animated grain using CSS noise filter
+   Adds organic texture to surfaces */
+.grain-texture {
+  position: relative;
+}
+
+.grain-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  border-radius: inherit;
+  animation: grainShift 8s steps(10) infinite;
+}
+
+@keyframes grainShift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -2%); }
+  20% { transform: translate(1%, 2%); }
+  30% { transform: translate(-1%, 1%); }
+  40% { transform: translate(2%, -1%); }
+  50% { transform: translate(-2%, 2%); }
+  60% { transform: translate(1%, -2%); }
+  70% { transform: translate(-1%, -1%); }
+  80% { transform: translate(2%, 1%); }
+  90% { transform: translate(-1%, 2%); }
+}
+
+/* Reduced motion for signature elements */
+@media (prefers-reduced-motion: reduce) {
+  .precision-line::before,
+  .precision-line::after {
+    transition: opacity var(--duration-color) ease;
+    transform: scaleX(1);
+  }
+
+  .precision-line-vertical::before,
+  .precision-line-vertical::after {
+    transform: scaleY(1);
+  }
+
+  .material-depth {
+    transition: none;
+  }
+
+  .material-depth:hover {
+    transform: none;
+  }
+
+  .grain-texture::after {
+    animation: none;
+  }
+}
+
+/* ============================================
+   BORDER UTILITIES
+   ============================================ */
+
+.border-hairline {
+  border: var(--border-hairline);
+}
+
+.border-subtle {
+  border: var(--border-subtle);
+}
+
+/* ============================================
+   ANIMATED UNDERLINE
+   ============================================ */
+
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--cyan-primary);
+  transition: width var(--transition-smooth);
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Center-Draw Underline — draws symmetrically from center outward */
+.underline-center-draw {
+  position: relative;
+}
+
+.underline-center-draw::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyan-dim), var(--emerald-dim));
+  transition: width var(--duration-layout) var(--ease-precision),
+              left var(--duration-layout) var(--ease-precision);
+  transform: translateX(-50%);
+}
+
+.underline-center-draw:hover::after {
+  width: 100%;
+  left: 50%;
+}
+
+/* Legacy gold variant */
+.underline-center-draw-gold::after {
+  background: var(--gold-primary);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn-primary {
+  background: var(--antique-gold);
+  color: var(--obsidian);
+  font-family: var(--font-satoshi);
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: #E5C04A;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--platinum);
+  font-family: var(--font-satoshi);
+  font-weight: 500;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(229, 229, 229, 0.2);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: var(--platinum);
+  background: rgba(229, 229, 229, 0.05);
+}
+
+/* Abysse Primary Button - Bioluminescent gradient */
+.btn-abysse {
+  position: relative;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-satoshi);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: black;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.btn-abysse::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--cyan-dim), var(--emerald-dim));
+  opacity: 0.9;
+  transition: opacity var(--transition-fast);
+}
+
+.btn-abysse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--cyan-primary), var(--emerald-primary));
+  opacity: 0;
+  filter: blur(16px);
+  transition: opacity var(--transition-fast);
+}
+
+.btn-abysse:hover::before {
+  opacity: 1;
+}
+
+.btn-abysse:hover::after {
+  opacity: 1;
+}
+
+.btn-abysse span {
+  position: relative;
+  z-index: 10;
+}
+
+/* Abysse Secondary Button - Outline */
+.btn-abysse-secondary {
+  padding: 0.875rem 2rem;
+  font-family: var(--font-satoshi);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-abysse-secondary:hover {
+  color: var(--cyan-dim);
+  border-color: rgba(0, 255, 255, 0.5);
+  background: rgba(0, 255, 255, 0.05);
+}
+
+/* ============================================
+   CODE BLOCK
+   ============================================ */
+
+.code-block {
+  background: var(--obsidian-elevated);
+  border: var(--border-subtle);
+  border-radius: 8px;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.code-block code {
+  color: var(--precision-blue);
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   SPEC BADGES
+   ============================================ */
+
+.spec-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.spec-badge-standard {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.spec-badge-active {
+  background: rgba(0, 163, 255, 0.1);
+  color: var(--precision-blue);
+  border: 1px solid rgba(0, 163, 255, 0.2);
+}
+
+.spec-badge-draft {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.section {
+  padding: var(--section-padding) 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin-inline: auto;
+  /* Important: avoid `padding: 0 ...` shorthand which would reset `padding-top`
+     and override Tailwind utilities like `pt-40` (this file is loaded after Tailwind). */
+  padding-inline: 1.5rem;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Precision Heritage Animations */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealText {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 0 50px rgba(212, 175, 55, 0.2);
+  }
+}
+
+@keyframes sonarPing {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp var(--duration-reveal) var(--ease-reveal) forwards;
+  opacity: 0;
+}
+
+.animate-reveal {
+  animation: revealText var(--duration-reveal) var(--ease-reveal) forwards;
+  overflow: hidden;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s var(--ease-precision) infinite;
+}
+
+/* Staggered children - use with data-index attribute or nth-child */
+.animate-stagger > *:nth-child(1) { animation-delay: calc(var(--stagger-delay) * 0); }
+.animate-stagger > *:nth-child(2) { animation-delay: calc(var(--stagger-delay) * 1); }
+.animate-stagger > *:nth-child(3) { animation-delay: calc(var(--stagger-delay) * 2); }
+.animate-stagger > *:nth-child(4) { animation-delay: calc(var(--stagger-delay) * 3); }
+.animate-stagger > *:nth-child(5) { animation-delay: calc(var(--stagger-delay) * 4); }
+.animate-stagger > *:nth-child(6) { animation-delay: calc(var(--stagger-delay) * 5); }
+
+/* Reduced motion support for all Precision Heritage animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-pulse-glow {
+    animation: none;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+
+  .animate-stagger > * {
+    animation-delay: 0s !important;
+  }
+}
+
+/* ============================================
+   DOCUMENTATION PROSE
+   ============================================ */
+
+.prose {
+  max-width: 65ch;
+  color: var(--platinum);
+  font-family: var(--font-satoshi);
+}
+
+.prose h1 {
+  font-family: var(--font-outfit);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--platinum);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.prose h2 {
+  font-family: var(--font-outfit);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--platinum);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(229, 229, 229, 0.1);
+}
+
+.prose h3 {
+  font-family: var(--font-outfit);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--platinum);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h4 {
+  font-family: var(--font-outfit);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--platinum);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  margin: 1.25rem 0;
+  line-height: 1.75;
+  color: var(--platinum-dim);
+}
+
+.prose strong {
+  color: var(--platinum);
+  font-weight: 600;
+}
+
+.prose a {
+  color: var(--precision-blue);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.prose a:hover {
+  color: var(--cyan-primary);
+  text-decoration: underline;
+}
+
+.prose code:not(pre code) {
+  background: var(--obsidian-elevated);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-family: var(--font-mono);
+  color: var(--precision-blue);
+}
+
+.prose pre {
+  background: var(--obsidian-elevated);
+  border: 1px solid rgba(229, 229, 229, 0.08);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose pre code {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin: 1.25rem 0;
+  color: var(--platinum-dim);
+}
+
+.prose li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.prose li::marker {
+  color: var(--cyan-primary);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--cyan-primary);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: var(--platinum-dim);
+  font-style: italic;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid rgba(229, 229, 229, 0.1);
+  margin: 2rem 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.prose th, .prose td {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(229, 229, 229, 0.1);
+  text-align: left;
+}
+
+.prose th {
+  background: var(--obsidian-surface);
+  font-weight: 600;
+  color: var(--platinum);
+}
+
+.prose td {
+  color: var(--platinum-dim);
+}
+
+.prose img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+/* Callout boxes */
+.prose .callout {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  border-left: 4px solid;
+}
+
+.prose .callout-info {
+  background: rgba(0, 163, 255, 0.1);
+  border-color: var(--precision-blue);
+}
+
+.prose .callout-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: var(--warning);
+}
+
+.prose .callout-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: var(--success);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 3rem;
+  }
+}
+
+/* ============================================
+   BLOG PROSE ENHANCEMENTS
+   Visually distinct from documentation
+   ============================================ */
+
+.prose-blog {
+  max-width: 70ch;
+}
+
+/* Cyan list markers for blog */
+.prose-blog ul li::marker,
+.prose-blog ol li::marker {
+  color: var(--cyan-primary);
+}
+
+/* H2 with subtle gold underline */
+.prose-blog h2 {
+  position: relative;
+  padding-bottom: 0.75rem;
+  border-bottom: none;
+}
+
+.prose-blog h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan-primary), transparent);
+}
+
+/* Strong text in cyan */
+.prose-blog strong {
+  color: var(--cyan-primary);
+}
+
+/* Blockquotes with Cormorant font and cyan border */
+.prose-blog blockquote {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-style: italic;
+  border-left: 3px solid var(--cyan-primary);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  color: var(--platinum);
+  background: rgba(0, 255, 255, 0.03);
+  padding: 1.5rem;
+  padding-left: 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.prose-blog blockquote p {
+  margin: 0;
+  color: var(--platinum);
+}
+
+/* HR with gradient separator */
+.prose-blog hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cyan-primary) 20%,
+    var(--cyan-primary) 80%,
+    transparent
+  );
+  margin: 3rem 0;
+  opacity: 0.5;
+}
+
+/* Blog callout boxes with cyan accent */
+.prose-blog .callout {
+  background: rgba(0, 255, 255, 0.05);
+  border-left: 4px solid var(--cyan-primary);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 8px 8px 0;
+  margin: 2rem 0;
+}
+
+.prose-blog .callout p {
+  margin: 0;
+  color: var(--platinum);
+}
+
+/* Code blocks in blog */
+.prose-blog pre {
+  background: var(--obsidian-elevated);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+/* Inline code in blog */
+.prose-blog code:not(pre code) {
+  background: rgba(0, 255, 255, 0.1);
+  color: var(--cyan-primary);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+/* Links in blog - cyan hover */
+.prose-blog a {
+  color: var(--precision-blue);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  border-bottom: 1px solid transparent;
+}
+
+.prose-blog a:hover {
+  color: var(--cyan-primary);
+  border-bottom-color: var(--cyan-primary);
+  text-decoration: none;
+}
+
+/* Tables in blog */
+.prose-blog table {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+.prose-blog th {
+  background: rgba(0, 255, 255, 0.08);
+  color: var(--cyan-primary);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+.prose-blog td {
+  border-color: rgba(229, 229, 229, 0.05);
+}
+
+/* First paragraph emphasis */
+.prose-blog > p:first-of-type {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--platinum);
+}
+
+/* ============================================
+   GOVERNANCE — Charter Document Styling
+   ============================================ */
+
+/* Mission Frame — Bioluminescent precision lines for charter document feel */
+.mission-frame {
+  position: relative;
+}
+
+.mission-frame::before,
+.mission-frame::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  width: 0.5px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--cyan-primary),
+    transparent
+  );
+  opacity: 0.6;
+}
+
+.mission-frame::before {
+  left: 0;
+}
+
+.mission-frame::after {
+  right: 0;
+}
+
+/* Timeline Node — Horological watch movement styling */
+.timeline-node {
+  position: relative;
+  transition: transform 0.2s var(--ease-precision),
+              box-shadow 0.2s var(--ease-precision);
+}
+
+.timeline-node::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 0.5px solid currentColor;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-precision);
+}
+
+.timeline-node:hover::before {
+  opacity: 0.3;
+}
+
+/* Council Seat — SVG seat styling by type */
+.council-seat {
+  transition: transform 0.2s var(--ease-precision);
+  transform-origin: center;
+}
+
+.council-seat:hover {
+  transform: scale(1.1);
+}
+
+.council-seat-vacant {
+  stroke-dasharray: 3 3;
+  opacity: 0.5;
+}
+
+.council-seat-filled {
+  stroke-dasharray: none;
+  opacity: 1;
+}
+
+/* Veto Callout — Cyan left border accent */
+.veto-callout {
+  position: relative;
+  overflow: hidden;
+}
+
+.veto-callout::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(
+    to bottom,
+    var(--cyan-primary),
+    var(--emerald-primary),
+    var(--cyan-primary)
+  );
+}
+
+/* Governance Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-node,
+  .council-seat {
+    transition: none;
+  }
+
+  .timeline-node:hover,
+  .council-seat:hover {
+    transform: none;
+  }
+}

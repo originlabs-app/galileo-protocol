@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Aurum Sac Meridian</title>
+  <desc id="desc">Luxury handbag demo asset with structured leather body and gold hardware.</desc>
+  <rect width="1200" height="900" fill="#0b1110"/>
+  <rect x="90" y="90" width="1020" height="720" rx="24" fill="#16211d" stroke="#d8bd79" stroke-width="4"/>
+  <path d="M385 355 C390 230 810 230 815 355" fill="none" stroke="#d8bd79" stroke-width="28" stroke-linecap="round"/>
+  <path d="M300 350 H900 L850 720 H350 Z" fill="#34231e" stroke="#d8bd79" stroke-width="8"/>
+  <path d="M340 405 H860" stroke="#6f4938" stroke-width="22"/>
+  <path d="M385 350 V720 M815 350 V720" stroke="#6f4938" stroke-width="10"/>
+  <rect x="545" y="432" width="110" height="72" rx="10" fill="#d8bd79"/>
+  <rect x="575" y="454" width="50" height="28" rx="5" fill="#34231e"/>
+  <text x="600" y="785" fill="#ece4d0" font-family="Georgia, serif" font-size="44" text-anchor="middle">Aurum Sac Meridian</text>
+</svg>

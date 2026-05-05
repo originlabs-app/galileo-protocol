@@ -1,0 +1,12 @@
+[build]
+builder = "DOCKERFILE"
+# Dockerfile lives in apps/api/ but build context must be repo root
+# so all COPY paths (packages/shared, contracts/) resolve correctly
+dockerfilePath = "apps/api/Dockerfile"
+
+[deploy]
+startCommand = "node dist/main.js"
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10

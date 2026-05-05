@@ -1,0 +1,3 @@
+name,gtin,serialNumber,category,description,materials
+Good Product 1773144453582,4006381333931,ERR453582A1,Watches,,
+Bad GTIN 1773144453582,0000000000001,ERR453582B2,Watches,,

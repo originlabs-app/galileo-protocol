@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-cormorant);
+}
+
+:root {
+  --background: oklch(0.087 0.010 284.115);
+  --foreground: oklch(0.926 0.005 78.297);
+  --card: oklch(0.147 0.011 285.007);
+  --card-foreground: oklch(0.926 0.005 78.297);
+  --primary: oklch(0.905 0.155 194.769);
+  --primary-foreground: oklch(0.087 0.010 284.115);
+  --muted: oklch(0.228 0.038 282.932);
+  --muted-foreground: oklch(0.686 0.000 89.876);
+  --success: oklch(0.876 0.228 152.550);
+  --success-foreground: oklch(0.087 0.010 284.115);
+  --border: oklch(1 0 0 / 10%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    background: #020204;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    background:
+      linear-gradient(180deg, #021020 0%, #000810 52%, #000000 100%);
+  }
+
+  a,
+  button,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.scanner-ocean-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(10, 60, 100, 0.35) 0%, rgba(2, 16, 32, 0.88) 44%, rgba(0, 0, 0, 0.98) 100%);
+}
+
+.scanner-ocean-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(105deg, transparent 0 12%, rgba(255, 255, 255, 0.052) 13%, transparent 15% 36%, rgba(0, 255, 255, 0.045) 37%, transparent 39% 100%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 88px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 88px);
+  opacity: 0.72;
+  mask-image: linear-gradient(180deg, black 0%, black 72%, transparent 100%);
+}
+
+.scanner-ocean-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 4%, rgba(0, 255, 255, 0.16), transparent 30%),
+    radial-gradient(circle at 76% 10%, rgba(0, 255, 136, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(135, 206, 235, 0.08), transparent 20%);
+  opacity: 0.66;
+}

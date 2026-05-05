@@ -1,0 +1,307 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/events/decommission.schema.json",
+  "title": "Galileo Decommission Event Schema",
+  "description": "ObjectEvent for end-of-life tracking. Captures product decommissioning due to destruction, recycling, theft, loss, or recall. Terminates the active lifecycle of the product identifier while preserving provenance history.",
+  "allOf": [
+    {
+      "$ref": "event-base.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "@context",
+    "type",
+    "eventID",
+    "eventTime",
+    "eventTimeZoneOffset",
+    "action",
+    "bizStep",
+    "disposition",
+    "readPoint",
+    "epcList",
+    "ilmd"
+  ],
+  "properties": {
+    "type": {
+      "const": "ObjectEvent"
+    },
+    "action": {
+      "const": "DELETE",
+      "description": "DELETE indicates removal of product from active circulation"
+    },
+    "bizStep": {
+      "const": "cbv:BizStep-decommissioning",
+      "description": "Decommissioning step marks end of product lifecycle"
+    },
+    "disposition": {
+      "type": "string",
+      "description": "Final disposition state",
+      "enum": [
+        "cbv:Disp-destroyed",
+        "cbv:Disp-recalled",
+        "cbv:Disp-stolen"
+      ]
+    },
+    "epcList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^https://id\\.gs1\\.org/01/\\d{14}/21/[A-Za-z0-9\\-\\.]{1,20}$"
+      },
+      "minItems": 1,
+      "maxItems": 1,
+      "description": "Single EPC for the decommissioned product"
+    },
+    "ilmd": {
+      "type": "object",
+      "description": "Instance Master Data capturing decommission context",
+      "required": [
+        "galileo:decommissionReason"
+      ],
+      "properties": {
+        "galileo:decommissionReason": {
+          "type": "string",
+          "description": "Reason for product decommissioning",
+          "enum": [
+            "end_of_life_recycling",
+            "theft",
+            "loss",
+            "destruction",
+            "recall",
+            "counterfeit_discovered",
+            "irreparable_damage",
+            "customer_request"
+          ]
+        },
+        "galileo:recyclingPartner": {
+          "type": "string",
+          "description": "Recycling partner DID if applicable",
+          "pattern": "^did:galileo:recycler:[a-z0-9\\-]{1,80}$"
+        },
+        "galileo:materialsRecovered": {
+          "type": "array",
+          "description": "Materials recovered during recycling/destruction",
+          "items": {
+            "type": "object",
+            "required": ["material", "weight"],
+            "properties": {
+              "material": {
+                "type": "string",
+                "description": "Material type recovered"
+              },
+              "weight": {
+                "type": "number",
+                "description": "Weight in grams",
+                "minimum": 0
+              },
+              "weightUnit": {
+                "type": "string",
+                "default": "g",
+                "enum": ["g", "kg", "oz"]
+              },
+              "disposition": {
+                "type": "string",
+                "description": "What happened to recovered material",
+                "enum": ["recycled", "repurposed", "disposed", "donated", "stored"]
+              },
+              "recyclingCertificate": {
+                "type": "string",
+                "description": "Certificate reference for verified recycling"
+              }
+            }
+          }
+        },
+        "galileo:destructionCertificate": {
+          "type": "string",
+          "description": "Certificate of destruction reference"
+        },
+        "galileo:destructionWitness": {
+          "type": "string",
+          "description": "DID of authorized witness to destruction",
+          "pattern": "^did:galileo:(verifier|official):[a-z0-9\\-]{1,80}$"
+        },
+        "galileo:policeReport": {
+          "type": "object",
+          "description": "Police report details for theft/loss",
+          "properties": {
+            "reportNumber": {
+              "type": "string"
+            },
+            "jurisdiction": {
+              "type": "string"
+            },
+            "reportDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "contactAuthority": {
+              "type": "string"
+            }
+          }
+        },
+        "galileo:recallInfo": {
+          "type": "object",
+          "description": "Product recall information if applicable",
+          "properties": {
+            "recallId": {
+              "type": "string"
+            },
+            "recallReason": {
+              "type": "string"
+            },
+            "recallDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "regulatoryAuthority": {
+              "type": "string"
+            },
+            "publicNoticeUrl": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "galileo:lastKnownOwner": {
+          "type": "string",
+          "description": "Anonymized hash of last known owner for stolen/lost items",
+          "pattern": "^did:galileo:customer:anon-[a-f0-9]{64}$"
+        },
+        "galileo:lastKnownLocation": {
+          "type": "object",
+          "description": "Last known location (city level for privacy)",
+          "properties": {
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        },
+        "galileo:productAge": {
+          "type": "string",
+          "description": "Product age at decommission in ISO 8601 duration",
+          "pattern": "^P(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?$"
+        },
+        "galileo:totalOwners": {
+          "type": "integer",
+          "description": "Total number of owners over product lifetime",
+          "minimum": 1
+        },
+        "galileo:totalRepairs": {
+          "type": "integer",
+          "description": "Total number of repair events over product lifetime",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "galileo:productDID": {
+      "type": "string",
+      "description": "The Galileo DID being decommissioned (DID remains for provenance, marked inactive)",
+      "pattern": "^did:galileo:(01|8006|8010|253):\\d{8,14}(:21:[A-Za-z0-9\\-\\.]{1,20})?$"
+    },
+    "galileo:didDeactivated": {
+      "type": "boolean",
+      "description": "Whether the DID was marked as deactivated (not deleted per provenance requirements)",
+      "default": true
+    },
+    "galileo:nfcDisabled": {
+      "type": "boolean",
+      "description": "Whether embedded NFC was disabled/destroyed"
+    }
+  },
+  "examples": [
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "ObjectEvent",
+      "eventID": "ni:///sha-256;d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2?ver=CBV2.0",
+      "eventTime": "2034-06-20T11:00:00.000Z",
+      "eventTimeZoneOffset": "+01:00",
+      "action": "DELETE",
+      "bizStep": "cbv:BizStep-decommissioning",
+      "disposition": "cbv:Disp-destroyed",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:3014178.00010.0",
+        "galileo:facilityDID": "did:galileo:facility:hermes-recycling-center"
+      },
+      "epcList": [
+        "https://id.gs1.org/01/09506000134352/21/HK2024A001"
+      ],
+      "ilmd": {
+        "galileo:decommissionReason": "end_of_life_recycling",
+        "galileo:recyclingPartner": "did:galileo:recycler:maison-recycle",
+        "galileo:materialsRecovered": [
+          {
+            "material": "Togo Leather",
+            "weight": 450,
+            "weightUnit": "g",
+            "disposition": "repurposed",
+            "recyclingCertificate": "MREC-2034-08472"
+          },
+          {
+            "material": "Gold-Plated Hardware",
+            "weight": 120,
+            "weightUnit": "g",
+            "disposition": "recycled",
+            "recyclingCertificate": "MREC-2034-08473"
+          }
+        ],
+        "galileo:destructionCertificate": "HDEST-2034-0042",
+        "galileo:destructionWitness": "did:galileo:verifier:hermes-quality",
+        "galileo:productAge": "P10Y3M",
+        "galileo:totalOwners": 3,
+        "galileo:totalRepairs": 2
+      },
+      "galileo:productDID": "did:galileo:01:09506000134352:21:HK2024A001",
+      "galileo:didDeactivated": true,
+      "galileo:nfcDisabled": true
+    },
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "ObjectEvent",
+      "eventID": "ni:///sha-256;e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3?ver=CBV2.0",
+      "eventTime": "2025-09-15T16:30:00.000Z",
+      "eventTimeZoneOffset": "+02:00",
+      "action": "DELETE",
+      "bizStep": "cbv:BizStep-decommissioning",
+      "disposition": "cbv:Disp-stolen",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:3014178.00020.0"
+      },
+      "epcList": [
+        "https://id.gs1.org/01/09506000134999/21/KE2024B042"
+      ],
+      "ilmd": {
+        "galileo:decommissionReason": "theft",
+        "galileo:policeReport": {
+          "reportNumber": "PO-75-2025-84721",
+          "jurisdiction": "Paris Police Prefecture",
+          "reportDate": "2025-09-15",
+          "contactAuthority": "Brigade de Repression du Banditisme"
+        },
+        "galileo:lastKnownOwner": "did:galileo:customer:anon-a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+        "galileo:lastKnownLocation": {
+          "city": "Paris",
+          "country": "FRA",
+          "date": "2025-09-14"
+        }
+      },
+      "galileo:productDID": "did:galileo:01:09506000134999:21:KE2024B042",
+      "galileo:didDeactivated": true
+    }
+  ]
+}

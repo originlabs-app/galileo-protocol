@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Aurum Lunettes Horizon</title>
+  <desc id="desc">Luxury eyewear demo asset with titanium frames and horizon lenses.</desc>
+  <rect width="1200" height="900" fill="#071013"/>
+  <rect x="90" y="90" width="1020" height="720" rx="24" fill="#111c1c" stroke="#d8bd79" stroke-width="4"/>
+  <path d="M175 390 C270 330 355 340 455 390" fill="none" stroke="#d8bd79" stroke-width="16" stroke-linecap="round"/>
+  <path d="M745 390 C845 340 930 330 1025 390" fill="none" stroke="#d8bd79" stroke-width="16" stroke-linecap="round"/>
+  <rect x="260" y="350" width="285" height="170" rx="70" fill="#0d2a31" stroke="#ece4d0" stroke-width="16"/>
+  <rect x="655" y="350" width="285" height="170" rx="70" fill="#0d2a31" stroke="#ece4d0" stroke-width="16"/>
+  <path d="M545 430 C580 405 620 405 655 430" fill="none" stroke="#ece4d0" stroke-width="16" stroke-linecap="round"/>
+  <path d="M300 435 H505 M695 435 H900" stroke="#d8bd79" stroke-width="6"/>
+  <path d="M315 475 C365 440 430 525 500 465 M700 475 C750 440 815 525 885 465" fill="none" stroke="#9fb0b5" stroke-width="5"/>
+  <text x="600" y="785" fill="#ece4d0" font-family="Georgia, serif" font-size="44" text-anchor="middle">Aurum Lunettes Horizon</text>
+</svg>

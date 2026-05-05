@@ -1,0 +1,56 @@
+{
+  "name": "@galileo/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "prisma generate && tsc",
+    "postbuild": "node scripts/fix-prisma-esm.mjs",
+    "start": "node dist/main.js",
+    "test": "vitest run --no-file-parallelism --maxWorkers=1",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "seed:demo": "tsx prisma/seed-demo-dataset.ts",
+    "check:demo-dataset": "tsx prisma/check-demo-dataset.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1004.0",
+    "@fastify/cookie": "11.0.2",
+    "@fastify/cors": "11.2.0",
+    "@fastify/helmet": "^13.0.2",
+    "@fastify/jwt": "10.0.0",
+    "@fastify/multipart": "^9.4.0",
+    "@fastify/rate-limit": "^10.3.0",
+    "@fastify/swagger": "9.7.0",
+    "@fastify/swagger-ui": "5.2.5",
+    "@galileo/shared": "workspace:*",
+    "@prisma/adapter-pg": "7.4.2",
+    "@prisma/client": "7.4.2",
+    "@sentry/node": "^10.42.0",
+    "bcrypt": "6.0.0",
+    "dotenv": "17.3.1",
+    "fastify": "5.7.4",
+    "fastify-plugin": "5.1.0",
+    "multiformats": "^13.4.2",
+    "pg": "8.19.0",
+    "prisma": "7.4.2",
+    "qrcode": "1.5.4",
+    "viem": "2.46.3",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/bcrypt": "6.0.0",
+    "@types/pg": "8.18.0",
+    "@types/qrcode": "1.5.6",
+    "eslint": "10.0.2",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.56.1",
+    "vitest": "4.0.18"
+  }
+}

@@ -1,0 +1,14 @@
+# Default owners for everything
+* @originlabs-app/core
+
+# Specifications require TSC review
+/specifications/ @originlabs-app/core
+
+# Governance documents
+/governance/ @originlabs-app/core
+
+# Website
+/website/ @originlabs-app/core
+
+# CI/CD and GitHub config
+/.github/ @originlabs-app/core

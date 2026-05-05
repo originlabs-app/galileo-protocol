@@ -1,0 +1,453 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.galileoprotocol.io/resolver/linkset/v1.0.0/schema.json",
+  "title": "Galileo GS1 Linkset Response Schema",
+  "description": "JSON Schema for GS1 linkset responses per IETF RFC 9264 with Galileo extensions. Defines the structure returned by the Galileo resolver for link type requests.",
+  "type": "object",
+  "required": ["@context", "linkset"],
+  "properties": {
+    "@context": {
+      "description": "JSON-LD context defining vocabulary prefixes for link relation types",
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "https://www.w3.org/ns/json-ld#context"
+        },
+        {
+          "type": "object",
+          "required": ["@vocab"],
+          "properties": {
+            "@vocab": {
+              "type": "string",
+              "const": "http://www.iana.org/assignments/relation/",
+              "description": "Default vocabulary for IANA link relations"
+            },
+            "anchor": {
+              "type": "string",
+              "const": "@id",
+              "description": "Maps anchor to JSON-LD @id"
+            },
+            "href": {
+              "type": "string",
+              "const": "@id",
+              "description": "Maps href to JSON-LD @id"
+            },
+            "linkset": {
+              "type": "string",
+              "const": "@graph",
+              "description": "Maps linkset array to JSON-LD @graph"
+            },
+            "gs1": {
+              "type": "string",
+              "const": "https://gs1.org/voc/",
+              "description": "GS1 vocabulary namespace for standard link types"
+            },
+            "galileo": {
+              "type": "string",
+              "const": "https://vocab.galileoprotocol.io/",
+              "description": "Galileo vocabulary namespace for custom link types"
+            }
+          },
+          "additionalProperties": {
+            "type": "string",
+            "format": "uri",
+            "description": "Additional vocabulary namespace prefixes"
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "type": "string", "format": "uri" },
+              { "type": "object" }
+            ]
+          },
+          "description": "Array of context definitions for extended vocabularies"
+        }
+      ]
+    },
+    "linkset": {
+      "description": "Array of linkset objects, each representing links for a single anchor resource",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/LinksetEntry"
+      }
+    }
+  },
+  "$defs": {
+    "LinksetEntry": {
+      "type": "object",
+      "description": "A linkset entry containing an anchor and its associated links",
+      "required": ["anchor"],
+      "properties": {
+        "anchor": {
+          "type": "string",
+          "format": "uri",
+          "description": "The GS1 Digital Link URI identifying the product",
+          "pattern": "^https://id\\.galileo\\.luxury/(01|8006|8010|253)/",
+          "examples": [
+            "https://id.galileoprotocol.io/01/09506000134352/21/ABC123"
+          ]
+        },
+        "itemDescription": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Human-readable description of the product",
+          "examples": ["Birkin 25 Togo Gold"]
+        },
+        "https://gs1.org/voc/defaultLink": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Default target when no specific link type requested. REQUIRED for all products."
+        },
+        "https://gs1.org/voc/pip": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Product Information Page - public product details and specifications"
+        },
+        "https://gs1.org/voc/sustainabilityInfo": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Sustainability information including carbon footprint and environmental data"
+        },
+        "https://gs1.org/voc/instructions": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Care instructions, usage guidelines, and maintenance information"
+        },
+        "https://gs1.org/voc/regulatoryInfo": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Regulatory compliance information and declarations"
+        },
+        "https://gs1.org/voc/traceability": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Supply chain traceability and EPCIS event history"
+        },
+        "https://gs1.org/voc/certificationInfo": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Product certifications and third-party attestations"
+        },
+        "https://gs1.org/voc/recipeInfo": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Product recipes, formulations, or detailed composition"
+        },
+        "https://gs1.org/voc/hasRetailers": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Authorized retailers and points of purchase"
+        },
+        "https://gs1.org/voc/smartLabel": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "SmartLabel digital product label content"
+        },
+        "https://vocab.galileoprotocol.io/authenticity": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Authenticity verification proof and status. Access: Public."
+        },
+        "https://vocab.galileoprotocol.io/internalDPP": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Complete Digital Product Passport with all fields. Access: Brand only (authenticated)."
+        },
+        "https://vocab.galileoprotocol.io/auditTrail": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Complete audit trail and ownership history. Access: Brand/Regulator (authenticated)."
+        },
+        "https://vocab.galileoprotocol.io/serviceInfo": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Service and repair information. Access: Authorized service centers."
+        },
+        "https://vocab.galileoprotocol.io/technicalSpec": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Technical specifications for repair/service. Access: Authorized service centers."
+        },
+        "https://vocab.galileoprotocol.io/complianceDPP": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "ESPR mandatory fields only for compliance verification. Access: Regulators."
+        },
+        "https://vocab.galileoprotocol.io/espr": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "ESPR compliance bundle with all required data. Access: Regulators."
+        },
+        "https://vocab.galileoprotocol.io/provenance": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Provenance information including origin and chain of custody"
+        },
+        "https://vocab.galileoprotocol.io/repairHistory": {
+          "$ref": "#/$defs/LinkArray",
+          "description": "Complete repair and service history. Access: Brand/Service centers."
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/LinkArray",
+        "description": "Additional link types not explicitly defined in the schema"
+      }
+    },
+    "LinkArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Link"
+      },
+      "description": "Array of links for a specific relation type. Multiple links allow for language variants or alternative representations."
+    },
+    "Link": {
+      "type": "object",
+      "description": "A single link target with optional metadata",
+      "required": ["href"],
+      "properties": {
+        "href": {
+          "type": "string",
+          "format": "uri",
+          "description": "Target URL of the linked resource",
+          "examples": [
+            "https://resolver.galileoprotocol.io/dpp/09506000134352/ABC123",
+            "https://resolver.galileoprotocol.io/pip/09506000134352/ABC123"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Human-readable title for the link",
+          "examples": ["Digital Product Passport", "Product Information"]
+        },
+        "hreflang": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z]{2,4})?$",
+              "description": "Single BCP 47 language tag"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z]{2,4})?$"
+              },
+              "description": "Array of BCP 47 language tags"
+            }
+          ],
+          "description": "Language(s) of the target resource",
+          "examples": [["en", "fr", "zh"], "en"]
+        },
+        "type": {
+          "type": "string",
+          "description": "MIME type of the target resource",
+          "examples": [
+            "application/ld+json",
+            "application/json",
+            "text/html",
+            "application/pdf"
+          ]
+        },
+        "context": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["consumer", "brand", "regulator", "service_center"]
+          },
+          "description": "Galileo extension: Access contexts for which this link is available. Omit for public access.",
+          "examples": [["brand", "regulator"], ["service_center"]]
+        },
+        "auth": {
+          "type": "string",
+          "enum": ["none", "jwt", "vc"],
+          "default": "none",
+          "description": "Galileo extension: Authentication method required to access this link"
+        },
+        "rel": {
+          "type": "string",
+          "format": "uri",
+          "description": "Explicit relation type if different from parent property name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LinkTypeShortForm": {
+      "type": "string",
+      "description": "Short form link type identifiers for query parameters",
+      "enum": [
+        "gs1:pip",
+        "gs1:sustainabilityInfo",
+        "gs1:instructions",
+        "gs1:regulatoryInfo",
+        "gs1:traceability",
+        "gs1:certificationInfo",
+        "gs1:recipeInfo",
+        "gs1:hasRetailers",
+        "gs1:defaultLink",
+        "gs1:smartLabel",
+        "galileo:authenticity",
+        "galileo:internalDPP",
+        "galileo:auditTrail",
+        "galileo:serviceInfo",
+        "galileo:technicalSpec",
+        "galileo:complianceDPP",
+        "galileo:espr",
+        "galileo:provenance",
+        "galileo:repairHistory",
+        "linkset"
+      ]
+    }
+  },
+  "examples": [
+    {
+      "@context": {
+        "@vocab": "http://www.iana.org/assignments/relation/",
+        "anchor": "@id",
+        "href": "@id",
+        "linkset": "@graph",
+        "gs1": "https://gs1.org/voc/",
+        "galileo": "https://vocab.galileoprotocol.io/"
+      },
+      "linkset": [
+        {
+          "anchor": "https://id.galileoprotocol.io/01/09506000134352/21/ABC123",
+          "itemDescription": "Birkin 25 Togo Gold",
+          "https://gs1.org/voc/defaultLink": [
+            {
+              "href": "https://resolver.galileoprotocol.io/dpp/09506000134352/ABC123",
+              "title": "Digital Product Passport",
+              "type": "application/ld+json"
+            }
+          ],
+          "https://gs1.org/voc/pip": [
+            {
+              "href": "https://resolver.galileoprotocol.io/pip/09506000134352/ABC123",
+              "hreflang": ["en", "fr", "zh"],
+              "title": "Product Information",
+              "type": "text/html"
+            }
+          ],
+          "https://gs1.org/voc/sustainabilityInfo": [
+            {
+              "href": "https://resolver.galileoprotocol.io/sustainability/09506000134352/ABC123",
+              "title": "Sustainability Data",
+              "type": "application/ld+json"
+            }
+          ],
+          "https://gs1.org/voc/instructions": [
+            {
+              "href": "https://resolver.galileoprotocol.io/care/09506000134352/ABC123",
+              "hreflang": ["en"],
+              "title": "Care Instructions",
+              "type": "application/pdf"
+            },
+            {
+              "href": "https://resolver.galileoprotocol.io/care/09506000134352/ABC123?lang=fr",
+              "hreflang": ["fr"],
+              "title": "Instructions d'entretien",
+              "type": "application/pdf"
+            }
+          ],
+          "https://vocab.galileoprotocol.io/authenticity": [
+            {
+              "href": "https://resolver.galileoprotocol.io/verify/09506000134352/ABC123",
+              "title": "Authenticity Verification",
+              "type": "application/ld+json"
+            }
+          ],
+          "https://gs1.org/voc/traceability": [
+            {
+              "href": "https://resolver.galileoprotocol.io/events/09506000134352/ABC123",
+              "title": "Lifecycle Events",
+              "type": "application/ld+json",
+              "context": ["brand", "regulator"],
+              "auth": "jwt"
+            }
+          ],
+          "https://vocab.galileoprotocol.io/internalDPP": [
+            {
+              "href": "https://resolver.galileoprotocol.io/internal/dpp/09506000134352/ABC123",
+              "title": "Complete Digital Product Passport",
+              "type": "application/ld+json",
+              "context": ["brand"],
+              "auth": "jwt"
+            }
+          ],
+          "https://vocab.galileoprotocol.io/serviceInfo": [
+            {
+              "href": "https://resolver.galileoprotocol.io/service/09506000134352/ABC123",
+              "title": "Service Information",
+              "type": "application/ld+json",
+              "context": ["service_center"],
+              "auth": "jwt"
+            }
+          ],
+          "https://vocab.galileoprotocol.io/complianceDPP": [
+            {
+              "href": "https://resolver.galileoprotocol.io/compliance/09506000134352/ABC123",
+              "title": "ESPR Compliance Data",
+              "type": "application/ld+json",
+              "context": ["regulator"],
+              "auth": "vc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@context": {
+        "@vocab": "http://www.iana.org/assignments/relation/",
+        "anchor": "@id",
+        "href": "@id",
+        "linkset": "@graph",
+        "gs1": "https://gs1.org/voc/",
+        "galileo": "https://vocab.galileoprotocol.io/"
+      },
+      "linkset": [
+        {
+          "anchor": "https://id.galileoprotocol.io/01/09506000134352",
+          "itemDescription": "Birkin 25 Togo (Model)",
+          "https://gs1.org/voc/defaultLink": [
+            {
+              "href": "https://resolver.galileoprotocol.io/product/09506000134352",
+              "title": "Product Model Page",
+              "type": "text/html"
+            }
+          ],
+          "https://gs1.org/voc/pip": [
+            {
+              "href": "https://resolver.galileoprotocol.io/pip/09506000134352",
+              "hreflang": ["en", "fr"],
+              "title": "Model Information",
+              "type": "text/html"
+            }
+          ],
+          "https://gs1.org/voc/hasRetailers": [
+            {
+              "href": "https://resolver.galileoprotocol.io/retailers/09506000134352",
+              "title": "Authorized Retailers",
+              "type": "application/json"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@context": {
+        "@vocab": "http://www.iana.org/assignments/relation/",
+        "anchor": "@id",
+        "href": "@id",
+        "linkset": "@graph",
+        "gs1": "https://gs1.org/voc/",
+        "galileo": "https://vocab.galileoprotocol.io/"
+      },
+      "linkset": [
+        {
+          "anchor": "https://id.galileoprotocol.io/253/4000001123457AUTH2024001",
+          "itemDescription": "Certificate of Authenticity #AUTH2024001",
+          "https://gs1.org/voc/defaultLink": [
+            {
+              "href": "https://resolver.galileoprotocol.io/certificate/4000001123457AUTH2024001",
+              "title": "Certificate of Authenticity",
+              "type": "application/pdf"
+            }
+          ],
+          "https://gs1.org/voc/certificationInfo": [
+            {
+              "href": "https://resolver.galileoprotocol.io/certificate/4000001123457AUTH2024001/data",
+              "title": "Certificate Data",
+              "type": "application/ld+json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

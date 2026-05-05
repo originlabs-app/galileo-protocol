@@ -1,0 +1,213 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/events/creation.schema.json",
+  "title": "Galileo Creation Event Schema",
+  "description": "ObjectEvent for product creation/manufacturing. Captures initial product commissioning with ILMD containing immutable production attributes. This event marks the birth of a product in the Galileo ecosystem.",
+  "allOf": [
+    {
+      "$ref": "event-base.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "@context",
+    "type",
+    "eventID",
+    "eventTime",
+    "eventTimeZoneOffset",
+    "action",
+    "bizStep",
+    "disposition",
+    "readPoint",
+    "epcList",
+    "ilmd",
+    "galileo:dppContentHash"
+  ],
+  "properties": {
+    "type": {
+      "const": "ObjectEvent"
+    },
+    "action": {
+      "const": "ADD",
+      "description": "ADD indicates creation of new product identity"
+    },
+    "bizStep": {
+      "const": "cbv:BizStep-commissioning",
+      "description": "Commissioning step marks product creation"
+    },
+    "disposition": {
+      "const": "cbv:Disp-active",
+      "description": "Product enters active state upon creation"
+    },
+    "epcList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^https://id\\.gs1\\.org/01/\\d{14}/21/[A-Za-z0-9\\-\\.]{1,20}$"
+      },
+      "minItems": 1,
+      "maxItems": 1,
+      "description": "Single EPC for the created product in GS1 Digital Link format"
+    },
+    "ilmd": {
+      "type": "object",
+      "description": "Instance/Lot Master Data - immutable attributes set at creation time",
+      "required": [
+        "galileo:productionBatch",
+        "galileo:artisanId",
+        "galileo:qualityGrade",
+        "galileo:productDID"
+      ],
+      "properties": {
+        "galileo:productionBatch": {
+          "type": "string",
+          "description": "Production batch identifier for traceability",
+          "minLength": 1,
+          "maxLength": 50
+        },
+        "galileo:artisanId": {
+          "type": "string",
+          "description": "Pseudonymous artisan DID for privacy-preserving attribution",
+          "pattern": "^did:galileo:artisan:[a-z0-9\\-]{1,80}$"
+        },
+        "galileo:qualityGrade": {
+          "type": "string",
+          "description": "Quality grade assigned at production",
+          "enum": ["A+", "A", "B"]
+        },
+        "galileo:productDID": {
+          "type": "string",
+          "description": "Galileo DID for the product",
+          "pattern": "^did:galileo:(01|8006|8010|253):\\d{8,14}(:21:[A-Za-z0-9\\-\\.]{1,20})?$"
+        },
+        "galileo:productionFacility": {
+          "type": "string",
+          "description": "Manufacturing facility DID",
+          "pattern": "^did:galileo:facility:[a-z0-9\\-]{1,80}$"
+        },
+        "galileo:productionLine": {
+          "type": "string",
+          "description": "Production line identifier within facility"
+        },
+        "galileo:craftTechniques": {
+          "type": "array",
+          "description": "Craftsmanship techniques used in production",
+          "items": {
+            "type": "string"
+          }
+        },
+        "galileo:productionDuration": {
+          "type": "string",
+          "description": "Total production time in ISO 8601 duration format",
+          "pattern": "^P(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(\\.\\d+)?S)?)?$"
+        },
+        "galileo:handmadePercentage": {
+          "type": "integer",
+          "description": "Percentage of product made by hand",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "galileo:rawMaterialLots": {
+          "type": "array",
+          "description": "Source material lot identifiers for material traceability",
+          "items": {
+            "type": "object",
+            "required": ["material", "lotId"],
+            "properties": {
+              "material": {
+                "type": "string"
+              },
+              "lotId": {
+                "type": "string"
+              },
+              "supplierDID": {
+                "type": "string",
+                "pattern": "^did:galileo:supplier:[a-z0-9\\-]{1,80}$"
+              },
+              "origin": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              }
+            }
+          }
+        },
+        "galileo:inspectionResult": {
+          "type": "object",
+          "description": "Quality control inspection results",
+          "properties": {
+            "inspectorId": {
+              "type": "string",
+              "pattern": "^did:galileo:inspector:[a-z0-9\\-]{1,80}$"
+            },
+            "inspectionDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "passed": {
+              "type": "boolean"
+            },
+            "defectsNoted": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "galileo:dppContentHash": {
+      "type": "string",
+      "description": "SHA-256 hash of the DPP document created for this product",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "galileo:dppUrl": {
+      "type": "string",
+      "description": "URL to the full DPP document",
+      "format": "uri"
+    }
+  },
+  "examples": [
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "ObjectEvent",
+      "eventID": "ni:///sha-256;b5bb9d8014a0f9b1d61e21e796d78dcc1ae0c12f89ca3b4a5f5e9c3f28b0d6a1?ver=CBV2.0",
+      "eventTime": "2024-03-15T14:30:00.000Z",
+      "eventTimeZoneOffset": "+01:00",
+      "action": "ADD",
+      "bizStep": "cbv:BizStep-commissioning",
+      "disposition": "cbv:Disp-active",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:3014178.00001.0",
+        "galileo:facilityDID": "did:galileo:facility:hermes-pantin"
+      },
+      "epcList": [
+        "https://id.gs1.org/01/09506000134352/21/HK2024A001"
+      ],
+      "ilmd": {
+        "galileo:productionBatch": "HK-2024-Q1-0042",
+        "galileo:artisanId": "did:galileo:artisan:maitre-h-7821",
+        "galileo:qualityGrade": "A+",
+        "galileo:productDID": "did:galileo:01:09506000134352:21:HK2024A001",
+        "galileo:productionFacility": "did:galileo:facility:hermes-pantin",
+        "galileo:craftTechniques": ["sellier-stitch", "hand-burnishing", "edge-painting"],
+        "galileo:productionDuration": "PT18H",
+        "galileo:handmadePercentage": 95,
+        "galileo:rawMaterialLots": [
+          {
+            "material": "Togo Leather",
+            "lotId": "TOGO-FRA-2024-0112",
+            "supplierDID": "did:galileo:supplier:tannerie-du-puy",
+            "origin": "FRA"
+          }
+        ]
+      },
+      "galileo:dppContentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "galileo:productDID": "did:galileo:01:09506000134352:21:HK2024A001"
+    }
+  ]
+}

@@ -1,0 +1,689 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-05",
+  "product": "Galileo Protocol",
+  "summary": "Open-source B2B SaaS and protocol stack for luxury product authentication with Digital Product Passports, GS1 Digital Link, decentralized identifiers, and ERC-3643 compatible blockchain infrastructure.",
+  "statusLegend": {
+    "shipped": "Implemented in the repository and covered by at least typecheck/lint or documented tests.",
+    "partially_verified": "Implemented, but at least one runtime or environment-dependent verification could not be completed locally.",
+    "in_progress": "Implemented in part, with a known missing dependency or follow-up before full production use.",
+    "planned": "Roadmapped or documented, but not implemented as an end-user feature yet."
+  },
+  "features": [
+    {
+      "id": "auth-cookie-sessions",
+      "name": "Secure cookie authentication",
+      "status": "shipped",
+      "area": "api",
+      "surfaces": [
+        "apps/api/src/routes/auth",
+        "apps/dashboard/src/hooks/use-auth.tsx"
+      ],
+      "description": "Email/password registration and login with httpOnly access and refresh cookies, refresh token rotation, logout, current-user introspection, and no browser localStorage token storage.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint",
+        "api tests require local PostgreSQL credentials"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Register/login/setup, authenticated dashboard persistence, refresh retry, and unauthenticated API guards are covered by Playwright plus API auth tests."
+    },
+    {
+      "id": "auth-rbac-brand-scope",
+      "name": "RBAC and brand-scoped authorization",
+      "status": "shipped",
+      "area": "api",
+      "surfaces": [
+        "apps/api/src/middleware/rbac.ts",
+        "apps/api/src/routes/products"
+      ],
+      "description": "ADMIN, BRAND_ADMIN, OPERATOR, and VIEWER roles gate sensitive actions, while product and webhook data is scoped by brandId for non-admin users.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "api_integration",
+      "verificationJustification": "Role and brand-scope rules are covered across API integration tests for products, webhooks, audit, upload, mint, transfer, recall, and security hardening; no dedicated browser role matrix exists."
+    },
+    {
+      "id": "auth-csrf",
+      "name": "CSRF protection for mutating API calls",
+      "status": "shipped",
+      "area": "security",
+      "surfaces": [
+        "apps/api/src/middleware/csrf.ts",
+        "apps/dashboard/src/lib/api.ts"
+      ],
+      "description": "POST, PATCH, PUT, and DELETE flows require the X-Galileo-Client header, and the dashboard central API helper sends it automatically.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "api_integration",
+      "verificationJustification": "CSRF header behavior is covered by API integration tests and unauthenticated Playwright API checks; dashboard sends the header through the shared API helper."
+    },
+    {
+      "id": "auth-siwe",
+      "name": "Sign-In With Ethereum",
+      "status": "shipped",
+      "area": "wallet",
+      "surfaces": [
+        "apps/api/src/routes/auth/siwe.ts",
+        "apps/dashboard/e2e/siwe-login.spec.ts"
+      ],
+      "description": "SIWE login issues one-time 5-minute nonces, verifies wallet signatures, supports wallet-only sessions, and integrates with the dashboard wallet authentication flow.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Playwright covers linked-wallet SIWE login through the dashboard, and API tests cover nonce, signature, replay, and Smart Wallet cases."
+    },
+    {
+      "id": "auth-wallet-linking",
+      "name": "Wallet linking",
+      "status": "shipped",
+      "area": "wallet",
+      "surfaces": [
+        "apps/api/src/routes/auth/nonce.ts",
+        "apps/api/src/routes/auth/link-wallet.ts"
+      ],
+      "description": "Authenticated users can link an Ethereum wallet through nonce-protected EIP-191 signature verification, including Smart Wallet compatible verification paths.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "api_integration",
+      "verificationJustification": "Wallet-link nonce and signature flows are covered by API integration tests and Playwright API checks; there is no full browser wallet-link UI test."
+    },
+    {
+      "id": "gdpr-self-service",
+      "name": "GDPR data export and erasure",
+      "status": "shipped",
+      "area": "compliance",
+      "surfaces": [
+        "apps/api/src/routes/auth/data-export.ts",
+        "apps/api/src/routes/auth/data-erasure.ts",
+        "apps/dashboard/src/app/dashboard/settings/page.tsx"
+      ],
+      "description": "Users can export account data under GDPR Article 15 and request erasure under Article 17, with audit-safe actor handling for deleted users.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "api_integration",
+      "verificationJustification": "API tests cover export and erasure; Playwright now covers the settings page and JSON download, but the destructive browser erasure path is intentionally not executed end-to-end."
+    },
+    {
+      "id": "product-registry",
+      "name": "Product registry and Digital Product Passport authoring",
+      "status": "shipped",
+      "area": "product",
+      "surfaces": [
+        "apps/api/src/routes/products",
+        "apps/api/src/services/products",
+        "apps/dashboard/src/app/dashboard/products"
+      ],
+      "description": "Brand admins create, list, edit, and view products with GTIN validation, serial numbers, luxury categories, DID generation, passport metadata, material composition, and brand-scoped access.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Playwright covers product creation, identity checkpoint, listing, sorting, filtering, and detail navigation; API tests cover validation and brand scoping."
+    },
+    {
+      "id": "product-lifecycle",
+      "name": "Product lifecycle state machine",
+      "status": "shipped",
+      "area": "product",
+      "surfaces": [
+        "apps/api/src/routes/products/mint.ts",
+        "apps/api/src/routes/products/transfer.ts",
+        "apps/api/src/routes/products/recall.ts",
+        "apps/dashboard/src/app/dashboard/products/[id]/page.tsx"
+      ],
+      "description": "Products move through DRAFT, MINTING, ACTIVE, TRANSFERRED, and RECALLED states with guarded dashboard actions, optimistic mint concurrency, recall confirmation, and ownership transfer handling.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Playwright covers DRAFT creation, draft editing, mint confirmation, and transfer; API tests cover mint, transfer, recall, concurrency, and state guards."
+    },
+    {
+      "id": "product-media",
+      "name": "Product image upload",
+      "status": "shipped",
+      "area": "product",
+      "surfaces": [
+        "apps/api/src/routes/products/upload.ts",
+        "apps/dashboard/src/app/dashboard/products/[id]/page.tsx"
+      ],
+      "description": "Brand operators can upload product imagery through multipart API handling and persist image URLs for passport display and scanner verification.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Playwright covers media controls, upload, replacement, persistence, and mobile visibility; API tests cover MIME, permissions, deterministic CID, and replacement cleanup."
+    },
+    {
+      "id": "batch-import",
+      "name": "CSV batch import",
+      "status": "shipped",
+      "area": "product",
+      "surfaces": [
+        "apps/api/src/routes/products/batch-import.ts",
+        "apps/api/src/services/products/import-csv.ts",
+        "apps/dashboard/src/app/dashboard/products/page.tsx"
+      ],
+      "description": "CSV import supports validation-first product ingestion up to 500 rows, row-level errors, dry-run semantics, material composition validation, and dashboard feedback.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Playwright covers CSV preview, dry-run validation, commit, invalid rows, and multiline CSV; API tests cover transaction semantics and access control."
+    },
+    {
+      "id": "batch-mint",
+      "name": "Batch minting",
+      "status": "shipped",
+      "area": "product",
+      "surfaces": [
+        "apps/api/src/routes/products/batch-mint.ts",
+        "apps/dashboard/src/app/dashboard/products/page.tsx"
+      ],
+      "description": "Brand admins can mint up to 100 DRAFT products in one batch with per-product result reporting and lifecycle constraints.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint",
+        "apps/dashboard/e2e/batch-mint.spec.ts"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Batch minting now has a dedicated dashboard Playwright flow: draft products are selected from the product list, minted through the UI, and verified as active in the browser."
+    },
+    {
+      "id": "gs1-digital-link",
+      "name": "GS1 Digital Link resolver",
+      "status": "shipped",
+      "area": "resolver",
+      "surfaces": [
+        "apps/api/src/routes/resolver/resolve.ts",
+        "packages/shared/src"
+      ],
+      "description": "Public resolver serves product passports at /01/{gtin}/21/{serial}, normalizes GTINs to 14 digits, validates check digits, and emits JSON-LD DPP data.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "api_integration",
+      "verificationJustification": "Resolver behavior is covered by API integration tests and Playwright API checks; scanner browser tests cover invalid input paths, not a full active-product resolver page."
+    },
+    {
+      "id": "qr-generation",
+      "name": "QR code generation",
+      "status": "shipped",
+      "area": "product",
+      "surfaces": [
+        "apps/api/src/routes/products/qr.ts",
+        "apps/dashboard/src/app/dashboard/products/[id]/page.tsx"
+      ],
+      "description": "Authenticated users can generate product QR codes that encode the GS1 Digital Link URL for scanner and consumer verification flows.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint",
+        "apps/dashboard/e2e/qr-generation.spec.ts"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "QR generation now has a dedicated dashboard Playwright flow: an active product detail page downloads the QR PNG and verifies the generated filename."
+    },
+    {
+      "id": "scanner-pwa",
+      "name": "Consumer scanner PWA",
+      "status": "shipped",
+      "area": "scanner",
+      "surfaces": [
+        "apps/scanner/src/app",
+        "apps/scanner/public/manifest.json",
+        "apps/scanner/public/sw.js"
+      ],
+      "description": "Consumer-facing scanner app supports QR scanning, GS1 deep links, authenticity result pages, provenance timeline display, material composition, and PWA installation assets.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Playwright covers scanner home, Digital Link form, invalid DID/URL/GTIN handling, and camera permission-denied states."
+    },
+    {
+      "id": "scanner-offline-cache",
+      "name": "Scanner offline cache",
+      "status": "shipped",
+      "area": "scanner",
+      "surfaces": [
+        "apps/scanner/public/sw.js",
+        "apps/scanner/src/app/01/[gtin]/21/[serial]/page.tsx",
+        "apps/scanner/src/app/register-sw.tsx"
+      ],
+      "description": "Scanner service worker caches app shell and previously loaded verification pages to keep critical verification information available offline.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint",
+        "apps/dashboard/e2e/scanner.spec.ts"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Playwright covers scanner app shell and scan page offline behavior, plus strict offline replay of a previously loaded ACTIVE product verification deep link after service worker activation."
+    },
+    {
+      "id": "audit-log",
+      "name": "Audit trail and export",
+      "status": "shipped",
+      "area": "compliance",
+      "surfaces": [
+        "apps/api/src/routes/audit",
+        "apps/dashboard/src/app/dashboard/audit/page.tsx"
+      ],
+      "description": "Append-only audit log records sensitive actions and supports paginated dashboard review plus CSV/JSON export with date filtering.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "api_integration",
+      "verificationJustification": "Audit creation, filtering, role access, CSV/JSON export, and unauthenticated denial are covered by API integration and Playwright API checks; dashboard audit browsing is not separately E2E-tested."
+    },
+    {
+      "id": "transfer-compliance",
+      "name": "Transfer compliance checks",
+      "status": "shipped",
+      "area": "compliance",
+      "surfaces": [
+        "apps/api/src/routes/products/transfer.ts",
+        "contracts/src/compliance"
+      ],
+      "description": "Ownership transfers run compliance checks for jurisdiction, sanctions, brand authorization, certified pre-owned status, and service center eligibility before changing state.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Playwright covers create, mint, and transfer to a valid address; API tests cover compliance rejection and module-level transfer rules."
+    },
+    {
+      "id": "webhook-outbox",
+      "name": "Webhook outbox and signed deliveries",
+      "status": "shipped",
+      "area": "operations",
+      "surfaces": [
+        "apps/api/src/routes/webhooks/index.ts",
+        "apps/api/src/services/webhooks"
+      ],
+      "description": "Brands can create webhook subscriptions for lifecycle events. Delivery records are persisted in PostgreSQL, signed with HMAC-SHA256, retried with exponential backoff, and isolated by brand.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint",
+        "pnpm test with dedicated Galileo PostgreSQL"
+      ],
+      "verificationLevel": "api_integration",
+      "verificationJustification": "Webhook CRUD, stats, delivery queue, signing, retry backoff, brand scoping, and event enqueue are covered by API integration tests."
+    },
+    {
+      "id": "webhook-monitoring-dashboard",
+      "name": "Webhook monitoring dashboard",
+      "status": "shipped",
+      "area": "dashboard",
+      "surfaces": [
+        "apps/dashboard/src/app/dashboard/webhooks/page.tsx",
+        "apps/dashboard/src/app/dashboard/webhooks/[id]/page.tsx",
+        "apps/dashboard/src/components/sidebar.tsx"
+      ],
+      "description": "Dashboard lists webhook subscriptions, displays live queue metrics, creates and deletes endpoints, shows per-subscription pending/failing deliveries, and exposes manual retry for in-flight events.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint",
+        "pnpm test with webhook API coverage",
+        "dashboard Playwright suite passed"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Playwright now covers the Webhooks dashboard, stats cards, subscription creation, one-time secret dialog, detail navigation, retry action visibility, and empty delivery queue."
+    },
+    {
+      "id": "health-observability",
+      "name": "Health probes and structured logging",
+      "status": "shipped",
+      "area": "operations",
+      "surfaces": [
+        "apps/api/src/routes/health.ts",
+        "apps/api/src/server.ts",
+        "apps/api/src/config.ts"
+      ],
+      "description": "API exposes health diagnostics for database and blockchain connectivity and uses structured Pino logging with PII redaction and production-safe configuration.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "api_integration",
+      "verificationJustification": "Health responses and logging behavior are covered by API tests and Playwright API health checks; production log drains are not externally verified."
+    },
+    {
+      "id": "sentry-monitoring",
+      "name": "Sentry error tracking",
+      "status": "shipped",
+      "area": "operations",
+      "surfaces": [
+        "apps/api/test/sentry.test.ts",
+        "apps/api/src/config.ts"
+      ],
+      "description": "Error tracking configuration is present for API runtime monitoring and is represented in tests and environment validation.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "unit",
+      "verificationJustification": "Sentry configuration behavior is covered by unit tests when no DSN is configured; no real Sentry event capture is exercised."
+    },
+    {
+      "id": "base-sepolia-contracts",
+      "name": "ERC-3643 contract suite on Base Sepolia",
+      "status": "shipped",
+      "area": "blockchain",
+      "surfaces": [
+        "contracts/src",
+        "contracts/deployments/base-sepolia.json",
+        "DEPLOYMENT.md"
+      ],
+      "description": "Foundry contracts model ERC-3643 token, identity registry, trusted issuers, claim topics, access control, and compliance modules, with Base Sepolia deployment metadata recorded.",
+      "verification": [
+        "deployment manifest inspected",
+        "/tmp/galileo-foundry-v1.7.0/forge build",
+        "/tmp/galileo-foundry-v1.7.0/forge test",
+        "BASE_SEPOLIA_RPC_URL=https://sepolia.base.org node scripts/check-base-sepolia-readiness.mjs",
+        "BASE_SEPOLIA_RPC_URL=https://sepolia.base.org node apps/api/scripts/test-mint.mjs"
+      ],
+      "verificationLevel": "live_testnet",
+      "verificationJustification": "Contract source and deployment metadata are present, Foundry build plus 738 contract tests pass via an isolated Foundry binary, and a live Base Sepolia constructor-path mint deployed GalileoCompliance 0x688e071B5C7C09c7A9aA6fF0fdd204AD8a7a95Ee plus GalileoToken 0x11ef46e76ae5fbd0b14e29ac7b1fd93ad5eA01F9 in tx 0x9cca203f8c3d988ac79bd5ea5c17cfd23a76d0d1393f32e0fb0f82875ccbc026."
+    },
+    {
+      "id": "live-minting-service",
+      "name": "Live blockchain minting service",
+      "status": "shipped",
+      "area": "blockchain",
+      "surfaces": [
+        "apps/api/src/services/blockchain",
+        "apps/api/src/services/blockchain/bytecode.ts",
+        "apps/api/scripts/test-mint.mjs",
+        "DEPLOYMENT.md"
+      ],
+      "description": "API service can deploy or issue ERC-3643 product tokens through viem and recorded Base Sepolia infrastructure, with live Base Sepolia minting verified through the product token deployment script.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "apps/api/test/blockchain-service.test.ts",
+        "BASE_SEPOLIA_RPC_URL=https://sepolia.base.org node scripts/check-base-sepolia-readiness.mjs",
+        "node apps/api/scripts/test-mint.mjs"
+      ],
+      "verificationLevel": "live_testnet",
+      "verificationJustification": "Blockchain service fallback behavior is unit-tested, API configuration accepts the canonical RPC env plus legacy alias and wallet credentials from ignored environment files, deploy bytecode is embedded for Docker/runtime availability, and a live Base Sepolia mint deployed token 0x11ef46e76ae5fbd0b14e29ac7b1fd93ad5eA01F9 with balanceOf(deployer)=1, totalSupply=1, expected product DID/GTIN/serial, and compliance binding."
+    },
+    {
+      "id": "scanner-chain-verification",
+      "name": "Scanner on-chain verification badge",
+      "status": "shipped",
+      "area": "scanner",
+      "surfaces": [
+        "apps/scanner/src/app/01/[gtin]/21/[serial]/page.tsx",
+        "apps/api/src/routes/products/verify.ts"
+      ],
+      "description": "Scanner can display blockchain verification context for products, including chain-related passport data surfaced by API verification responses.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint",
+        "apps/dashboard/e2e/scanner.spec.ts"
+      ],
+      "verificationLevel": "e2e_browser",
+      "verificationJustification": "Scanner chain context now has browser coverage with a real ACTIVE product resolved through the scanner UI, asserting verified status, blockchain proof, chain, token address, and provenance."
+    },
+    {
+      "id": "developer-faucet",
+      "name": "Base Sepolia developer faucet",
+      "status": "shipped",
+      "area": "developer-tools",
+      "surfaces": [
+        "apps/api/src/routes/faucet.ts",
+        "website/src/app/tools/faucet/page.tsx"
+      ],
+      "description": "Public faucet tooling lets developers request rate-limited Base Sepolia ETH for testing mint and transfer flows, with status endpoint and website UI.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint",
+        "website build",
+        "apps/api/test/faucet.test.ts"
+      ],
+      "verificationLevel": "api_integration",
+      "verificationJustification": "Faucet request behavior is now covered by API tests for status, successful drip, wallet rate limiting, disabled faucet, missing wallet configuration, and invalid address errors."
+    },
+    {
+      "id": "gas-estimator",
+      "name": "Public gas estimator",
+      "status": "shipped",
+      "area": "developer-tools",
+      "surfaces": [
+        "website/src/app/tools/gas-estimator/page.tsx"
+      ],
+      "description": "Website tool estimates testnet operation costs for product minting, transfer, and recall so builders can forecast Base Sepolia usage.",
+      "verification": [
+        "website lint",
+        "website build"
+      ],
+      "verificationLevel": "static_build",
+      "verificationJustification": "The website gas estimator page lints and builds; no interaction-level browser test covers estimator calculations."
+    },
+    {
+      "id": "website-docs",
+      "name": "Documentation website",
+      "status": "shipped",
+      "area": "website",
+      "surfaces": [
+        "website/src/app/docs",
+        "website/src/app/specifications",
+        "website/content/blog"
+      ],
+      "description": "Public documentation portal covers quick start, architecture, compliance, identity, token concepts, governance, specifications, blog posts, and legal pages.",
+      "verification": [
+        "website lint",
+        "website build"
+      ],
+      "verificationLevel": "static_build",
+      "verificationJustification": "Documentation pages lint and build successfully; content correctness is reviewed as documentation rather than tested behavior."
+    },
+    {
+      "id": "website-changelog-roadmap",
+      "name": "Public changelog and roadmap",
+      "status": "shipped",
+      "area": "website",
+      "surfaces": [
+        "website/src/app/changelog/page.tsx",
+        "website/src/app/roadmap/page.tsx",
+        "CHANGELOG.md",
+        "ROADMAP.md"
+      ],
+      "description": "Public pages expose the project changelog and roadmap, including Base ecosystem positioning, release history, and future protocol phases.",
+      "verification": [
+        "website lint",
+        "website build"
+      ],
+      "verificationLevel": "static_build",
+      "verificationJustification": "Changelog and roadmap pages lint and build successfully; they are content pages without browser flow tests."
+    },
+    {
+      "id": "ci-release-automation",
+      "name": "CI and release automation",
+      "status": "shipped",
+      "area": "operations",
+      "surfaces": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/release.yml",
+        ".changeset"
+      ],
+      "description": "GitHub Actions run workspace checks, Playwright configuration is present, changesets support release notes, and pnpm/action-setup has been updated to v6.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint"
+      ],
+      "verificationLevel": "documented_only",
+      "verificationJustification": "Workflow and changeset files are present, but GitHub Actions execution was not run inside this local audit."
+    },
+    {
+      "id": "deployment-configs",
+      "name": "Deployment configuration",
+      "status": "shipped",
+      "area": "operations",
+      "surfaces": [
+        "apps/api/Dockerfile",
+        "apps/api/railway.toml",
+        "apps/dashboard/vercel.json",
+        "apps/scanner/vercel.json",
+        "website/vercel.json"
+      ],
+      "description": "API has a production Docker/Railway setup with Prisma ESM patching and health checks, while dashboard, scanner, and website have Vercel configuration.",
+      "verification": [
+        "pnpm turbo typecheck",
+        "pnpm turbo lint",
+        "website build"
+      ],
+      "verificationLevel": "static_build",
+      "verificationJustification": "Application builds pass with deployment configs present; Railway/Vercel deployment execution itself is not exercised locally."
+    },
+    {
+      "id": "enterprise-multitenancy",
+      "name": "Enterprise multi-tenant workspace isolation",
+      "status": "planned",
+      "area": "roadmap",
+      "surfaces": [
+        "ROADMAP.md"
+      ],
+      "description": "Future work covers database row-level security, workspace-scoped routing, refined roles, team invites, MFA, API keys, and background job tracking.",
+      "verification": [
+        "roadmap documented"
+      ],
+      "verificationLevel": "documented_only",
+      "verificationJustification": "This remains roadmap-only and is not implemented as a product feature."
+    },
+    {
+      "id": "token-economy",
+      "name": "T1 token economy and governance",
+      "status": "planned",
+      "area": "roadmap",
+      "surfaces": [
+        "ROADMAP.md"
+      ],
+      "description": "Future protocol phase covers T1 utility token launch, gas abstraction, payment options, LEOX migration, staking, treasury governance, and buy-back-and-burn mechanics.",
+      "verification": [
+        "roadmap documented"
+      ],
+      "verificationLevel": "documented_only",
+      "verificationJustification": "This remains roadmap-only and is not implemented as a product feature."
+    },
+    {
+      "id": "mainnet-scale",
+      "name": "Base Mainnet scale and independent security audit",
+      "status": "planned",
+      "area": "roadmap",
+      "surfaces": [
+        "ROADMAP.md",
+        "SECURITY.md"
+      ],
+      "description": "Future production hardening includes independent smart contract security audit, mainnet deployment, compliance scaling, and operational maturity before broad adoption.",
+      "verification": [
+        "roadmap documented"
+      ],
+      "verificationLevel": "documented_only",
+      "verificationJustification": "This remains roadmap/security-policy planning and requires future independent audit and mainnet deployment."
+    }
+  ],
+  "audit": {
+    "lastLocalChecks": [
+      {
+        "command": "pnpm turbo typecheck",
+        "status": "passed",
+        "result": "5 Turborepo tasks passed"
+      },
+      {
+        "command": "pnpm turbo lint",
+        "status": "passed",
+        "result": "5 Turborepo tasks passed"
+      },
+      {
+        "command": "NEXT_PUBLIC_API_URL=http://localhost:4000 pnpm turbo build",
+        "status": "passed",
+        "result": "4 Turborepo build tasks passed",
+        "notes": "Dashboard build still emits the Node punycode deprecation warning from dependencies."
+      },
+      {
+        "command": "DATABASE_URL_TEST=postgresql://galileo:galileo@localhost:55433/galileo_test JWT_SECRET=... JWT_REFRESH_SECRET=... pnpm turbo test --force",
+        "status": "passed",
+        "result": "433 tests passed: 359 API tests and 74 shared-package tests",
+        "notes": "Executed against the dedicated local Galileo PostgreSQL container on port 55433."
+      },
+      {
+        "command": "DATABASE_URL=postgresql://galileo:galileo@localhost:55433/galileo_e2e JWT_SECRET=... JWT_REFRESH_SECRET=... CORS_ORIGIN=http://localhost:3000 NEXT_PUBLIC_API_URL=http://localhost:4000 pnpm --filter @galileo/dashboard exec playwright test",
+        "status": "passed",
+        "result": "75 Playwright tests passed",
+        "notes": "Includes browser coverage for batch minting, QR download, active scanner chain context, and strict scanner offline replay of a previously loaded verification page."
+      }
+    ],
+    "knownRisks": [
+      "Website production build reports a Turbopack NFT tracing warning from website/next.config.ts through website/src/lib/specifications.ts.",
+      "Website npm audit has 0 high/critical findings; 3 moderate advisories remain through next/postcss because npm suggests a breaking downgrade rather than a safe patch.",
+      "Generated minting wallet can perform constructor-path live minting, but post-deployment identity registry setup still requires the original Base Sepolia infra admin 0xA46a59EcD84486f31Bc54A4D9d5C8241Aa998c2e to grant REGISTRY_ADMIN_ROLE on GalileoTrustedIssuersRegistry and AGENT_ROLE on GalileoIdentityRegistry, or transfer broader administration."
+    ],
+    "verificationLevels": {
+      "e2e_browser": "A real Playwright browser scenario covers the principal user-facing flow for this feature.",
+      "live_testnet": "A real testnet transaction verifies the principal blockchain flow on the target network.",
+      "api_integration": "API or integration tests cover the behavior, but the principal user-facing browser flow is not fully covered.",
+      "unit": "Unit tests cover core logic, but API/browser integration is incomplete or not applicable.",
+      "static_build": "The implementation is verified by typecheck, lint, or production build only.",
+      "documented_only": "The item is represented by documentation, plans, manifests, or configuration, with no executable verification in this audit."
+    },
+    "e2eAddedThisPass": [
+      {
+        "featureId": "webhook-monitoring-dashboard",
+        "test": "apps/dashboard/e2e/webhooks.spec.ts",
+        "coverage": "Creates a subscription through the dashboard, verifies the one-time secret dialog, opens the detail page, and checks delivery queue monitoring UI."
+      },
+      {
+        "featureId": "gdpr-self-service",
+        "test": "apps/dashboard/e2e/dashboard-settings.spec.ts",
+        "coverage": "Downloads the signed-in user GDPR export JSON from the Settings page."
+      },
+      {
+        "featureId": "batch-mint",
+        "test": "apps/dashboard/e2e/batch-mint.spec.ts",
+        "coverage": "Selects two draft products in the dashboard list, runs Mint selected, and verifies both rows become identity-active."
+      },
+      {
+        "featureId": "qr-generation",
+        "test": "apps/dashboard/e2e/qr-generation.spec.ts",
+        "coverage": "Creates and mints a product, opens its dashboard detail page, downloads the QR PNG, and checks the filename."
+      },
+      {
+        "featureId": "scanner-chain-verification",
+        "test": "apps/dashboard/e2e/scanner.spec.ts",
+        "coverage": "Resolves an ACTIVE product in the scanner browser UI and asserts product identity, verified status, blockchain proof, Base Sepolia context, token address, and provenance."
+      },
+      {
+        "featureId": "scanner-offline-cache",
+        "test": "apps/dashboard/e2e/scanner.spec.ts",
+        "coverage": "Confirms the scanner home and scan app shell are served offline, then creates a real ACTIVE product, loads its /01/{gtin}/21/{serial} verification page online, switches the browser context offline, revisits the same URL, and verifies the cached product identity, verified status, blockchain proof, and provenance."
+      }
+    ],
+    "remainingVerificationGaps": [],
+    "apiAddedThisPass": [
+      {
+        "featureId": "developer-faucet",
+        "test": "apps/api/test/faucet.test.ts",
+        "coverage": "Covers faucet status, successful drip transaction, per-wallet rate limiting, disabled faucet, missing wallet configuration, and invalid address handling."
+      }
+    ]
+  }
+}

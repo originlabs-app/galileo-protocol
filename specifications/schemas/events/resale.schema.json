@@ -1,0 +1,526 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/events/resale.schema.json",
+  "title": "Galileo Resale Event Schema",
+  "description": "TransactionEvent for secondary market transactions. Captures ownership transfer in the pre-owned market including CPO (Certified Pre-Owned) status, authentication verification, condition assessment, and marketplace context. Enables transparent provenance for luxury resale.",
+  "allOf": [
+    {
+      "$ref": "event-base.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "@context",
+    "type",
+    "eventID",
+    "eventTime",
+    "eventTimeZoneOffset",
+    "action",
+    "bizStep",
+    "disposition",
+    "readPoint",
+    "epcList",
+    "bizTransactionList",
+    "sourceList",
+    "destinationList",
+    "galileo:resaleContext"
+  ],
+  "properties": {
+    "type": {
+      "const": "TransactionEvent"
+    },
+    "action": {
+      "const": "ADD",
+      "description": "ADD indicates new ownership assignment"
+    },
+    "bizStep": {
+      "const": "cbv:BizStep-retail_selling",
+      "description": "Retail selling step (secondary market)"
+    },
+    "disposition": {
+      "const": "cbv:Disp-retail_sold",
+      "description": "Product sold in secondary market"
+    },
+    "epcList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^https://id\\.gs1\\.org/01/\\d{14}/21/[A-Za-z0-9\\-\\.]{1,20}$"
+      },
+      "minItems": 1,
+      "maxItems": 1,
+      "description": "Single EPC for the resold product"
+    },
+    "bizTransactionList": {
+      "type": "array",
+      "description": "Business transaction references",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "bizTransaction"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["cbv:BTT-po", "cbv:BTT-inv"]
+          },
+          "bizTransaction": {
+            "type": "string",
+            "pattern": "^urn:"
+          }
+        }
+      }
+    },
+    "sourceList": {
+      "type": "array",
+      "description": "Selling party (previous owner or consignor)",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "source"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "cbv:SDT-owning_party"
+          },
+          "source": {
+            "type": "string",
+            "description": "Anonymized seller DID or marketplace DID",
+            "pattern": "^did:galileo:(customer:anon-[a-f0-9]{64}|marketplace:[a-z0-9\\-]{1,80}|brand:[a-z0-9\\-]{1,80})$"
+          }
+        }
+      }
+    },
+    "destinationList": {
+      "type": "array",
+      "description": "Buying party (new owner)",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "destination"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "cbv:SDT-owning_party"
+          },
+          "destination": {
+            "type": "string",
+            "description": "Anonymized buyer DID",
+            "pattern": "^did:galileo:customer:anon-[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "galileo:resaleContext": {
+      "type": "object",
+      "description": "Secondary market transaction context",
+      "required": ["channel", "authenticatedBy", "cpoStatus", "condition", "previousOwnerCount"],
+      "properties": {
+        "channel": {
+          "type": "string",
+          "description": "Resale channel type",
+          "enum": [
+            "certified_marketplace",
+            "auction",
+            "private_sale",
+            "brand_buyback",
+            "consignment",
+            "dealer",
+            "peer_to_peer"
+          ]
+        },
+        "marketplace": {
+          "type": "string",
+          "description": "Marketplace DID if sold through platform",
+          "pattern": "^did:galileo:marketplace:[a-z0-9\\-]{1,80}$"
+        },
+        "marketplaceName": {
+          "type": "string",
+          "description": "Human-readable marketplace name"
+        },
+        "authenticatedBy": {
+          "type": "string",
+          "description": "Authenticator DID who verified the product",
+          "pattern": "^did:galileo:(verifier|brand|marketplace):[a-z0-9\\-]{1,80}$"
+        },
+        "authenticationDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date authentication was performed"
+        },
+        "authenticationMethod": {
+          "type": "array",
+          "description": "Methods used for authentication",
+          "items": {
+            "type": "string",
+            "enum": [
+              "visual_inspection",
+              "nfc_verification",
+              "dpp_validation",
+              "molecular_signature",
+              "blockchain_history",
+              "expert_panel",
+              "machine_learning",
+              "hardware_analysis"
+            ]
+          }
+        },
+        "authenticationConfidence": {
+          "type": "number",
+          "description": "Confidence score from authentication (0-1)",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "cpoStatus": {
+          "type": "string",
+          "description": "Certified Pre-Owned status level",
+          "enum": [
+            "certified_pre_owned",
+            "authenticated",
+            "unverified",
+            "brand_certified",
+            "marketplace_certified"
+          ]
+        },
+        "cpoProgram": {
+          "type": "string",
+          "description": "Name of CPO program if applicable"
+        },
+        "condition": {
+          "type": "string",
+          "description": "Product condition assessment",
+          "enum": [
+            "new_with_tags",
+            "new_without_tags",
+            "excellent",
+            "very_good",
+            "good",
+            "fair",
+            "poor"
+          ]
+        },
+        "conditionNotes": {
+          "type": "string",
+          "description": "Detailed condition description",
+          "maxLength": 2000
+        },
+        "conditionPhotos": {
+          "type": "array",
+          "description": "URLs to condition documentation photos",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "previousOwnerCount": {
+          "type": "integer",
+          "description": "Number of previous owners (not identities)",
+          "minimum": 1
+        },
+        "productAge": {
+          "type": "string",
+          "description": "Product age at time of resale in ISO 8601 duration",
+          "pattern": "^P(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?$"
+        },
+        "serviceHistoryVerified": {
+          "type": "boolean",
+          "description": "Whether service history was verified through DPP"
+        },
+        "originalAccessoriesIncluded": {
+          "type": "array",
+          "description": "Original accessories included in resale",
+          "items": {
+            "type": "string",
+            "enum": [
+              "original_box",
+              "dust_bag",
+              "receipt",
+              "warranty_card",
+              "care_instructions",
+              "strap",
+              "lock_key",
+              "clochette",
+              "shoulder_strap",
+              "certificate"
+            ]
+          }
+        },
+        "refurbishmentPerformed": {
+          "type": "boolean",
+          "description": "Whether product was refurbished before resale"
+        },
+        "refurbishmentDetails": {
+          "type": "object",
+          "description": "Refurbishment work performed",
+          "properties": {
+            "performedBy": {
+              "type": "string",
+              "pattern": "^did:galileo:(brand|verifier|workshop):[a-z0-9\\-]{1,80}$"
+            },
+            "services": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            },
+            "eventId": {
+              "type": "string",
+              "description": "Reference to repair event if applicable",
+              "pattern": "^ni:///sha-256;[a-f0-9]{64}"
+            }
+          }
+        }
+      }
+    },
+    "galileo:auctionDetails": {
+      "type": "object",
+      "description": "Auction-specific details if sold at auction",
+      "properties": {
+        "auctionHouse": {
+          "type": "string",
+          "description": "Auction house DID",
+          "pattern": "^did:galileo:marketplace:[a-z0-9\\-]{1,80}$"
+        },
+        "auctionHouseName": {
+          "type": "string"
+        },
+        "lotNumber": {
+          "type": "string"
+        },
+        "saleName": {
+          "type": "string"
+        },
+        "saleDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "estimateLow": {
+          "type": "number",
+          "description": "Low estimate (currency-agnostic reference value)"
+        },
+        "estimateHigh": {
+          "type": "number",
+          "description": "High estimate (currency-agnostic reference value)"
+        },
+        "hammerPrice": {
+          "type": "number",
+          "description": "Final hammer price (currency-agnostic reference value)"
+        },
+        "catalogUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "galileo:warrantyTransfer": {
+      "type": "object",
+      "description": "Warranty status and transfer information",
+      "properties": {
+        "originalWarrantyActive": {
+          "type": "boolean",
+          "description": "Whether original manufacturer warranty is still active"
+        },
+        "warrantyEndDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "warrantyTransferable": {
+          "type": "boolean",
+          "description": "Whether warranty transfers to new owner"
+        },
+        "newWarrantyProvided": {
+          "type": "boolean",
+          "description": "Whether reseller provides additional warranty"
+        },
+        "newWarrantyDuration": {
+          "type": "string",
+          "pattern": "^P(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?$"
+        },
+        "newWarrantyTermsUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "galileo:valueAssessment": {
+      "type": "object",
+      "description": "Value assessment at time of resale (no actual prices)",
+      "properties": {
+        "assessedBy": {
+          "type": "string",
+          "pattern": "^did:galileo:(verifier|marketplace):[a-z0-9\\-]{1,80}$"
+        },
+        "assessmentDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "valueCategory": {
+          "type": "string",
+          "description": "Relative value category",
+          "enum": ["exceptional", "above_market", "at_market", "below_market", "distressed"]
+        },
+        "rarityFactor": {
+          "type": "string",
+          "description": "Rarity assessment",
+          "enum": ["unique", "extremely_rare", "rare", "uncommon", "common"]
+        },
+        "collectibilityScore": {
+          "type": "number",
+          "description": "Collectibility score (1-10)",
+          "minimum": 1,
+          "maximum": 10
+        }
+      }
+    },
+    "galileo:productDID": {
+      "type": "string",
+      "pattern": "^did:galileo:(01|8006|8010|253):\\d{8,14}(:21:[A-Za-z0-9\\-\\.]{1,20})?$"
+    }
+  },
+  "examples": [
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "TransactionEvent",
+      "eventID": "ni:///sha-256;a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3?ver=CBV2.0",
+      "eventTime": "2027-09-15T14:00:00.000Z",
+      "eventTimeZoneOffset": "+02:00",
+      "action": "ADD",
+      "bizStep": "cbv:BizStep-retail_selling",
+      "disposition": "cbv:Disp-retail_sold",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:5012345.00001.0",
+        "galileo:facilityDID": "did:galileo:facility:vestiaire-auth-center"
+      },
+      "epcList": [
+        "https://id.gs1.org/01/09506000134352/21/HK2024A001"
+      ],
+      "bizTransactionList": [
+        {
+          "type": "cbv:BTT-po",
+          "bizTransaction": "urn:epc:id:gdti:5012345.00001.VC2027091501"
+        }
+      ],
+      "sourceList": [
+        {
+          "type": "cbv:SDT-owning_party",
+          "source": "did:galileo:customer:anon-a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"
+        }
+      ],
+      "destinationList": [
+        {
+          "type": "cbv:SDT-owning_party",
+          "destination": "did:galileo:customer:anon-b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3"
+        }
+      ],
+      "galileo:resaleContext": {
+        "channel": "certified_marketplace",
+        "marketplace": "did:galileo:marketplace:vestiaire-collective",
+        "marketplaceName": "Vestiaire Collective",
+        "authenticatedBy": "did:galileo:verifier:vestiaire-auth",
+        "authenticationDate": "2027-09-10",
+        "authenticationMethod": ["visual_inspection", "nfc_verification", "dpp_validation"],
+        "authenticationConfidence": 0.99,
+        "cpoStatus": "marketplace_certified",
+        "cpoProgram": "Vestiaire Verified",
+        "condition": "excellent",
+        "conditionNotes": "Minor patina on corners consistent with light use. Hardware pristine. Interior clean.",
+        "previousOwnerCount": 1,
+        "productAge": "P3Y6M",
+        "serviceHistoryVerified": true,
+        "originalAccessoriesIncluded": ["original_box", "dust_bag", "receipt", "lock_key", "clochette"],
+        "refurbishmentPerformed": false
+      },
+      "galileo:warrantyTransfer": {
+        "originalWarrantyActive": false,
+        "warrantyEndDate": "2026-03-20",
+        "warrantyTransferable": true,
+        "newWarrantyProvided": true,
+        "newWarrantyDuration": "P6M",
+        "newWarrantyTermsUrl": "https://vestiairecollective.com/warranty"
+      },
+      "galileo:valueAssessment": {
+        "assessedBy": "did:galileo:verifier:vestiaire-valuation",
+        "assessmentDate": "2027-09-10",
+        "valueCategory": "above_market",
+        "rarityFactor": "uncommon",
+        "collectibilityScore": 7
+      },
+      "galileo:productDID": "did:galileo:01:09506000134352:21:HK2024A001"
+    },
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "TransactionEvent",
+      "eventID": "ni:///sha-256;b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4?ver=CBV2.0",
+      "eventTime": "2030-11-20T19:30:00.000Z",
+      "eventTimeZoneOffset": "-05:00",
+      "action": "ADD",
+      "bizStep": "cbv:BizStep-retail_selling",
+      "disposition": "cbv:Disp-retail_sold",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:1234567.00001.0"
+      },
+      "epcList": [
+        "https://id.gs1.org/01/09506000134352/21/HK2024A001"
+      ],
+      "bizTransactionList": [
+        {
+          "type": "cbv:BTT-po",
+          "bizTransaction": "urn:epc:id:gdti:1234567.00001.CHR2030112001"
+        }
+      ],
+      "sourceList": [
+        {
+          "type": "cbv:SDT-owning_party",
+          "source": "did:galileo:marketplace:christies"
+        }
+      ],
+      "destinationList": [
+        {
+          "type": "cbv:SDT-owning_party",
+          "destination": "did:galileo:customer:anon-c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4"
+        }
+      ],
+      "galileo:resaleContext": {
+        "channel": "auction",
+        "marketplace": "did:galileo:marketplace:christies",
+        "marketplaceName": "Christie's",
+        "authenticatedBy": "did:galileo:verifier:christies-auth",
+        "authenticationDate": "2030-10-15",
+        "authenticationMethod": ["visual_inspection", "expert_panel", "dpp_validation", "molecular_signature"],
+        "authenticationConfidence": 0.999,
+        "cpoStatus": "authenticated",
+        "condition": "excellent",
+        "conditionNotes": "Museum quality. Exceptional patina. Complete documentation from original purchase.",
+        "previousOwnerCount": 2,
+        "productAge": "P6Y8M",
+        "serviceHistoryVerified": true,
+        "originalAccessoriesIncluded": ["original_box", "dust_bag", "receipt", "warranty_card", "lock_key", "clochette", "shoulder_strap"]
+      },
+      "galileo:auctionDetails": {
+        "auctionHouse": "did:galileo:marketplace:christies",
+        "auctionHouseName": "Christie's",
+        "lotNumber": "142",
+        "saleName": "Handbags & Accessories",
+        "saleDate": "2030-11-20",
+        "catalogUrl": "https://www.christies.com/lot/142-birkin-25"
+      },
+      "galileo:valueAssessment": {
+        "assessedBy": "did:galileo:verifier:christies-valuation",
+        "assessmentDate": "2030-10-15",
+        "valueCategory": "exceptional",
+        "rarityFactor": "rare",
+        "collectibilityScore": 9
+      },
+      "galileo:productDID": "did:galileo:01:09506000134352:21:HK2024A001"
+    }
+  ]
+}

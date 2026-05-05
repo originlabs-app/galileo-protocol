@@ -1,0 +1,378 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.galileoprotocol.io/credentials/v1/galileo-vc.schema.json",
+  "title": "Galileo Verifiable Credential",
+  "description": "JSON Schema for validating Galileo Verifiable Credentials conforming to W3C VC Data Model 2.0",
+  "type": "object",
+
+  "$defs": {
+    "vcBase": {
+      "type": "object",
+      "required": ["@context", "type", "issuer", "validFrom", "credentialSubject", "proof"],
+      "properties": {
+        "@context": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" },
+          "minItems": 2,
+          "allOf": [
+            {
+              "contains": {
+                "const": "https://www.w3.org/ns/credentials/v2"
+              }
+            },
+            {
+              "contains": {
+                "const": "https://vocab.galileoprotocol.io/contexts/galileo.jsonld"
+              }
+            }
+          ],
+          "description": "JSON-LD context array. MUST contain both W3C VC 2.0 and Galileo contexts."
+        },
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "Unique identifier for this credential"
+        },
+        "type": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 2,
+          "contains": {
+            "const": "VerifiableCredential"
+          },
+          "description": "Credential types. MUST include 'VerifiableCredential'."
+        },
+        "issuer": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^did:galileo:",
+              "description": "Issuer DID (string form)"
+            },
+            {
+              "type": "object",
+              "required": ["id"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^did:galileo:",
+                  "description": "Issuer DID"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Human-readable issuer name"
+                }
+              },
+              "description": "Issuer object with DID and optional name"
+            }
+          ],
+          "description": "Credential issuer. MUST be a did:galileo identifier."
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date-time when credential becomes valid (ISO 8601)"
+        },
+        "validUntil": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date-time when credential expires (ISO 8601). Optional for heritage credentials."
+        },
+        "credentialSubject": {
+          "type": "object",
+          "description": "Claims about the credential subject"
+        },
+        "credentialStatus": {
+          "$ref": "#/$defs/bitstringStatusEntry"
+        },
+        "proof": {
+          "$ref": "#/$defs/dataIntegrityProof"
+        }
+      }
+    },
+
+    "bitstringStatusEntry": {
+      "type": "object",
+      "required": ["id", "type", "statusPurpose", "statusListIndex", "statusListCredential"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri",
+          "description": "Unique identifier for this status entry (typically statusListCredential#statusListIndex)"
+        },
+        "type": {
+          "const": "BitstringStatusListEntry",
+          "description": "Status entry type per W3C BitstringStatusList v1.0"
+        },
+        "statusPurpose": {
+          "enum": ["revocation", "suspension"],
+          "description": "Purpose of status check: revocation (permanent) or suspension (reversible)"
+        },
+        "statusListIndex": {
+          "type": "string",
+          "pattern": "^[0-9]+$",
+          "description": "Index position in the status list bitstring"
+        },
+        "statusListCredential": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the BitstringStatusListCredential"
+        }
+      },
+      "description": "W3C BitstringStatusList entry for revocation/suspension tracking"
+    },
+
+    "dataIntegrityProof": {
+      "type": "object",
+      "required": ["type", "cryptosuite", "verificationMethod", "proofPurpose", "proofValue"],
+      "properties": {
+        "type": {
+          "const": "DataIntegrityProof",
+          "description": "Proof type per W3C Data Integrity specification"
+        },
+        "cryptosuite": {
+          "enum": ["eddsa-rdfc-2022", "ecdsa-rdfc-2019"],
+          "description": "Cryptographic suite used for proof generation"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date-time when proof was created (ISO 8601)"
+        },
+        "verificationMethod": {
+          "type": "string",
+          "description": "DID URL of the key used for signing (e.g., did:galileo:issuer:xyz#key-1)"
+        },
+        "proofPurpose": {
+          "const": "assertionMethod",
+          "description": "Purpose of proof. MUST be 'assertionMethod' for VCs."
+        },
+        "proofValue": {
+          "type": "string",
+          "pattern": "^z[1-9A-HJ-NP-Za-km-z]+$",
+          "description": "Multibase-encoded (base58btc) signature value"
+        }
+      },
+      "description": "W3C Data Integrity proof with Ed25519 or ECDSA cryptosuite"
+    },
+
+    "kycCredentialSubject": {
+      "type": "object",
+      "required": ["id", "galileo:kycLevel", "galileo:jurisdiction"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^did:galileo:",
+          "description": "Subject's Galileo DID (individual participant)"
+        },
+        "galileo:kycLevel": {
+          "enum": ["basic", "enhanced"],
+          "description": "Level of KYC verification performed"
+        },
+        "galileo:jurisdiction": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "ISO 3166-1 alpha-2 country code of verification jurisdiction"
+        },
+        "galileo:verificationDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when KYC verification was performed (YYYY-MM-DD)"
+        },
+        "galileo:verificationMethod": {
+          "type": "string",
+          "enum": ["document_only", "biometric", "document_and_biometric"],
+          "description": "Method used for identity verification"
+        }
+      },
+      "description": "Credential subject for GalileoKYCCredential"
+    },
+
+    "luxuryCredentialSubject": {
+      "type": "object",
+      "required": ["id", "galileo:credentialType", "galileo:brandAuthorization"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^did:galileo:",
+          "description": "Subject's Galileo DID (retailer, service center, etc.)"
+        },
+        "galileo:credentialType": {
+          "enum": ["authorized_retailer", "service_center", "authenticator", "auction_house"],
+          "description": "Type of luxury authorization"
+        },
+        "galileo:brandAuthorization": {
+          "type": "string",
+          "pattern": "^did:galileo:brand:",
+          "description": "DID of the authorizing brand"
+        },
+        "galileo:territory": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$"
+          },
+          "description": "ISO 3166-1 alpha-2 country codes where authorization is valid"
+        },
+        "galileo:categories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Product categories covered by authorization"
+        },
+        "galileo:authorizedSince": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when authorization was first granted (YYYY-MM-DD)"
+        },
+        "galileo:serviceTypes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Types of service authorized (for service_center type)"
+        },
+        "galileo:certifiedTechnicians": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of certified technicians (for service_center type)"
+        },
+        "galileo:facilityInspectionDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of last facility inspection (for service_center type)"
+        }
+      },
+      "description": "Credential subject for GalileoLuxuryCredential"
+    },
+
+    "heritageCredentialSubject": {
+      "type": "object",
+      "required": ["id", "galileo:credentialType", "galileo:verificationDate", "galileo:methodology", "galileo:confidence"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^did:galileo:",
+          "description": "Subject's Galileo DID (product DID in GS1 format)"
+        },
+        "galileo:credentialType": {
+          "enum": ["origin_certified", "authenticity_verified", "provenance_documented"],
+          "description": "Type of heritage claim"
+        },
+        "galileo:verificationDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when verification was performed (YYYY-MM-DD)"
+        },
+        "galileo:methodology": {
+          "type": "string",
+          "description": "Verification methodology used (e.g., microscopic_analysis, brand_attestation)"
+        },
+        "galileo:confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Confidence score of verification (0.0 to 1.0)"
+        },
+        "galileo:reportURI": {
+          "type": "string",
+          "format": "uri",
+          "description": "URI to detailed verification report"
+        },
+        "galileo:manufacturingLocation": {
+          "type": "object",
+          "properties": {
+            "facility": { "type": "string" },
+            "country": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            }
+          },
+          "description": "Manufacturing location details (for origin_certified type)"
+        },
+        "galileo:materialsOrigin": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "material": { "type": "string" },
+              "origin": {
+                "type": "string",
+                "pattern": "^[A-Z]{2}$"
+              },
+              "supplier": {
+                "type": "string",
+                "pattern": "^did:galileo:"
+              }
+            }
+          },
+          "description": "Origin of materials used (for origin_certified type)"
+        }
+      },
+      "description": "Credential subject for GalileoHeritageCredential"
+    }
+  },
+
+  "oneOf": [
+    {
+      "allOf": [
+        { "$ref": "#/$defs/vcBase" },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "contains": {
+                "const": "GalileoKYCCredential"
+              }
+            },
+            "credentialSubject": {
+              "$ref": "#/$defs/kycCredentialSubject"
+            }
+          },
+          "required": ["type", "credentialSubject"]
+        }
+      ],
+      "title": "GalileoKYCCredential",
+      "description": "Compliance credential for KYC/KYB verification"
+    },
+    {
+      "allOf": [
+        { "$ref": "#/$defs/vcBase" },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "contains": {
+                "const": "GalileoLuxuryCredential"
+              }
+            },
+            "credentialSubject": {
+              "$ref": "#/$defs/luxuryCredentialSubject"
+            }
+          },
+          "required": ["type", "credentialSubject"]
+        }
+      ],
+      "title": "GalileoLuxuryCredential",
+      "description": "Authorization credential for luxury industry participants"
+    },
+    {
+      "allOf": [
+        { "$ref": "#/$defs/vcBase" },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "contains": {
+                "const": "GalileoHeritageCredential"
+              }
+            },
+            "credentialSubject": {
+              "$ref": "#/$defs/heritageCredentialSubject"
+            }
+          },
+          "required": ["type", "credentialSubject"]
+        }
+      ],
+      "title": "GalileoHeritageCredential",
+      "description": "Heritage credential for origin and authenticity claims"
+    }
+  ]
+}

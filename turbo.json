@@ -1,0 +1,38 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "test/**", "prisma/**", ".env*", "vitest.config.*", "package.json"],
+      "outputs": [],
+      "passThroughEnv": [
+        "DATABASE_URL",
+        "DATABASE_URL_TEST",
+        "JWT_SECRET",
+        "JWT_REFRESH_SECRET",
+        "CORS_ORIGIN",
+        "NODE_ENV"
+      ]
+    },
+    "test:e2e": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "e2e/**", "playwright.config.*", "package.json"],
+      "outputs": [],
+      "cache": false
+    }
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/events/sale.schema.json",
+  "title": "Galileo First Sale Event Schema",
+  "description": "TransactionEvent for initial retail sale. Captures the first purchase of a new product from brand/retailer to customer, including warranty activation, purchase channel, and ownership transfer. Customer identity is anonymized per GDPR requirements.",
+  "allOf": [
+    {
+      "$ref": "event-base.schema.json"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "@context",
+    "type",
+    "eventID",
+    "eventTime",
+    "eventTimeZoneOffset",
+    "action",
+    "bizStep",
+    "disposition",
+    "readPoint",
+    "epcList",
+    "bizTransactionList",
+    "sourceList",
+    "destinationList",
+    "galileo:warrantyActivation",
+    "galileo:purchaseChannel"
+  ],
+  "properties": {
+    "type": {
+      "const": "TransactionEvent"
+    },
+    "action": {
+      "const": "ADD",
+      "description": "ADD indicates new ownership assignment"
+    },
+    "bizStep": {
+      "const": "cbv:BizStep-retail_selling",
+      "description": "Retail selling step marks sale transaction"
+    },
+    "disposition": {
+      "const": "cbv:Disp-retail_sold",
+      "description": "Product enters retail_sold state"
+    },
+    "epcList": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^https://id\\.gs1\\.org/01/\\d{14}/21/[A-Za-z0-9\\-\\.]{1,20}$"
+      },
+      "minItems": 1,
+      "maxItems": 1,
+      "description": "Single EPC for the sold product"
+    },
+    "bizTransactionList": {
+      "type": "array",
+      "description": "Business transaction references including purchase order",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "bizTransaction"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "CBV business transaction type",
+            "enum": ["cbv:BTT-po", "cbv:BTT-inv", "cbv:BTT-desadv"]
+          },
+          "bizTransaction": {
+            "type": "string",
+            "description": "Transaction identifier URN (invoice number, PO number)",
+            "pattern": "^urn:"
+          }
+        }
+      },
+      "contains": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "cbv:BTT-po"
+          }
+        },
+        "required": ["type"]
+      }
+    },
+    "sourceList": {
+      "type": "array",
+      "description": "Selling party (brand or retailer)",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "source"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "cbv:SDT-owning_party"
+          },
+          "source": {
+            "type": "string",
+            "description": "Brand or retailer DID",
+            "pattern": "^did:galileo:(brand|retailer):[a-z0-9\\-]{1,80}$"
+          }
+        }
+      }
+    },
+    "destinationList": {
+      "type": "array",
+      "description": "Buying party (anonymized customer)",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "destination"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "cbv:SDT-owning_party"
+          },
+          "destination": {
+            "type": "string",
+            "description": "Anonymized customer DID (GDPR-compliant hash)",
+            "pattern": "^did:galileo:customer:anon-[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "galileo:warrantyActivation": {
+      "type": "object",
+      "description": "Warranty activation details",
+      "required": ["startDate", "duration", "termsUrl"],
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Warranty start date (typically purchase date)"
+        },
+        "duration": {
+          "type": "string",
+          "description": "Warranty duration in ISO 8601 format",
+          "pattern": "^P(\\d+Y)?(\\d+M)?(\\d+W)?(\\d+D)?$"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Calculated warranty end date"
+        },
+        "termsUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to warranty terms and conditions"
+        },
+        "warrantyType": {
+          "type": "string",
+          "description": "Type of warranty provided",
+          "enum": ["manufacturer", "extended", "lifetime", "limited"]
+        },
+        "warrantyNumber": {
+          "type": "string",
+          "description": "Warranty certificate number"
+        },
+        "coverageRegions": {
+          "type": "array",
+          "description": "Regions where warranty is valid (ISO 3166-1 alpha-3)",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          }
+        },
+        "internationalCoverage": {
+          "type": "boolean",
+          "description": "Whether warranty is valid internationally",
+          "default": true
+        }
+      }
+    },
+    "galileo:purchaseChannel": {
+      "type": "string",
+      "description": "Channel through which sale occurred",
+      "enum": [
+        "boutique",
+        "online",
+        "authorized_retailer",
+        "department_store",
+        "duty_free",
+        "private_client",
+        "vip_event"
+      ]
+    },
+    "galileo:retailLocation": {
+      "type": "object",
+      "description": "Retail location details (city level for privacy)",
+      "properties": {
+        "storeId": {
+          "type": "string",
+          "description": "Store identifier"
+        },
+        "storeName": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "retailerDID": {
+          "type": "string",
+          "pattern": "^did:galileo:retailer:[a-z0-9\\-]{1,80}$"
+        }
+      }
+    },
+    "galileo:salesAssociate": {
+      "type": "string",
+      "description": "Pseudonymous sales associate identifier",
+      "pattern": "^did:galileo:associate:[a-z0-9\\-]{1,80}$"
+    },
+    "galileo:giftPurchase": {
+      "type": "boolean",
+      "description": "Whether purchased as a gift (affects warranty registration)",
+      "default": false
+    },
+    "galileo:giftWrapping": {
+      "type": "boolean",
+      "description": "Whether gift wrapping was provided"
+    },
+    "galileo:personalization": {
+      "type": "object",
+      "description": "Any personalization applied at point of sale",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["engraving", "hot_stamping", "monogram", "none"]
+        },
+        "content": {
+          "type": "string",
+          "description": "Personalization content (initials, date, etc.)"
+        },
+        "location": {
+          "type": "string",
+          "description": "Where on product personalization was applied"
+        }
+      }
+    },
+    "galileo:paymentMethod": {
+      "type": "string",
+      "description": "Payment method category (no financial details)",
+      "enum": ["card", "cash", "wire_transfer", "financing", "crypto", "store_credit"]
+    },
+    "galileo:receiptHash": {
+      "type": "string",
+      "description": "SHA-256 hash of receipt document for proof of purchase",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "galileo:productDID": {
+      "type": "string",
+      "pattern": "^did:galileo:(01|8006|8010|253):\\d{8,14}(:21:[A-Za-z0-9\\-\\.]{1,20})?$"
+    }
+  },
+  "examples": [
+    {
+      "@context": [
+        "https://ref.gs1.org/standards/epcis/2.0.0/epcis-context.jsonld",
+        "https://vocab.galileoprotocol.io/context/galileo.jsonld"
+      ],
+      "type": "TransactionEvent",
+      "eventID": "ni:///sha-256;f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2?ver=CBV2.0",
+      "eventTime": "2024-03-20T15:45:00.000Z",
+      "eventTimeZoneOffset": "+01:00",
+      "action": "ADD",
+      "bizStep": "cbv:BizStep-retail_selling",
+      "disposition": "cbv:Disp-retail_sold",
+      "readPoint": {
+        "id": "urn:epc:id:sgln:3014178.00100.0",
+        "galileo:facilityDID": "did:galileo:facility:hermes-faubourg"
+      },
+      "epcList": [
+        "https://id.gs1.org/01/09506000134352/21/HK2024A001"
+      ],
+      "bizTransactionList": [
+        {
+          "type": "cbv:BTT-po",
+          "bizTransaction": "urn:epc:id:gdti:3014178.00001.INV2024032001"
+        },
+        {
+          "type": "cbv:BTT-inv",
+          "bizTransaction": "urn:epc:id:gdti:3014178.00001.REC2024032001"
+        }
+      ],
+      "sourceList": [
+        {
+          "type": "cbv:SDT-owning_party",
+          "source": "did:galileo:brand:hermes"
+        }
+      ],
+      "destinationList": [
+        {
+          "type": "cbv:SDT-owning_party",
+          "destination": "did:galileo:customer:anon-a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"
+        }
+      ],
+      "galileo:warrantyActivation": {
+        "startDate": "2024-03-20",
+        "duration": "P2Y",
+        "endDate": "2026-03-20",
+        "termsUrl": "https://www.hermes.com/warranty-terms",
+        "warrantyType": "manufacturer",
+        "warrantyNumber": "HW-2024-08472",
+        "internationalCoverage": true
+      },
+      "galileo:purchaseChannel": "boutique",
+      "galileo:retailLocation": {
+        "storeId": "FSG-001",
+        "storeName": "Hermes Faubourg Saint-Honore",
+        "city": "Paris",
+        "country": "FRA",
+        "retailerDID": "did:galileo:retailer:hermes-faubourg"
+      },
+      "galileo:salesAssociate": "did:galileo:associate:paris-8721",
+      "galileo:giftPurchase": false,
+      "galileo:personalization": {
+        "type": "hot_stamping",
+        "content": "M.D.",
+        "location": "interior flap"
+      },
+      "galileo:paymentMethod": "card",
+      "galileo:receiptHash": "b5bb9d8014a0f9b1d61e21e796d78dcc1ae0c12f89ca3b4a5f5e9c3f28b0d6a1",
+      "galileo:productDID": "did:galileo:01:09506000134352:21:HK2024A001"
+    }
+  ]
+}

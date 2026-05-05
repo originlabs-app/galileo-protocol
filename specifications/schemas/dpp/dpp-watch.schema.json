@@ -1,0 +1,1068 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.galileoprotocol.io/dpp/dpp-watch.schema.json",
+  "title": "Galileo DPP Watch Schema",
+  "description": "Digital Product Passport schema for timepieces. Extends dpp-core with movement details, case specifications, complications, and chronometry certifications for luxury watches.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "dpp-core.schema.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "movement",
+        "caseDetails"
+      ],
+      "properties": {
+        "movement": {
+          "description": "Watch movement specifications",
+          "$ref": "#/definitions/Movement"
+        },
+        "caseDetails": {
+          "description": "Case specifications",
+          "$ref": "#/definitions/CaseDetails"
+        },
+        "complications": {
+          "description": "Watch complications",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Complication"
+          }
+        },
+        "chronometry": {
+          "description": "Chronometric certifications and accuracy",
+          "$ref": "#/definitions/Chronometry"
+        },
+        "dialDetails": {
+          "description": "Dial specifications",
+          "$ref": "#/definitions/DialDetails"
+        },
+        "handsDetails": {
+          "description": "Hands specifications",
+          "$ref": "#/definitions/HandsDetails"
+        },
+        "crystalDetails": {
+          "description": "Crystal/glass specifications",
+          "$ref": "#/definitions/CrystalDetails"
+        },
+        "strapBracelet": {
+          "description": "Strap or bracelet details",
+          "$ref": "#/definitions/StrapBracelet"
+        },
+        "buckleDetails": {
+          "description": "Buckle or clasp details",
+          "$ref": "#/definitions/BuckleDetails"
+        },
+        "watchCategory": {
+          "description": "Watch category",
+          "type": "string",
+          "enum": [
+            "dress",
+            "sport",
+            "dive",
+            "pilot",
+            "chronograph",
+            "grand-complication",
+            "minute-repeater",
+            "tourbillon",
+            "perpetual-calendar",
+            "world-time",
+            "skeleton",
+            "jewelry"
+          ]
+        },
+        "referenceNumber": {
+          "description": "Manufacturer reference number",
+          "type": "string"
+        },
+        "serviceHistory": {
+          "description": "Service and maintenance records",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceRecord"
+          }
+        },
+        "originalBoxPapers": {
+          "description": "Original accessories included",
+          "$ref": "#/definitions/OriginalAccessories"
+        },
+        "watchCertifications": {
+          "description": "Watch-specific certifications",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WatchCertification"
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "Movement": {
+      "type": "object",
+      "description": "Watch movement specifications",
+      "required": ["@type", "movementType", "caliber"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Movement"
+        },
+        "movementType": {
+          "type": "string",
+          "enum": [
+            "mechanical-manual",
+            "mechanical-automatic",
+            "quartz",
+            "quartz-solar",
+            "quartz-kinetic",
+            "spring-drive",
+            "hybrid"
+          ]
+        },
+        "caliber": {
+          "type": "string",
+          "description": "Caliber reference number"
+        },
+        "caliberFamily": {
+          "type": "string",
+          "description": "Caliber family or base movement"
+        },
+        "manufacturer": {
+          "type": "string",
+          "description": "Movement manufacturer (may differ from watch brand)"
+        },
+        "inHouse": {
+          "type": "boolean",
+          "description": "In-house manufactured movement"
+        },
+        "diameter": {
+          "type": "number",
+          "description": "Movement diameter in mm"
+        },
+        "height": {
+          "type": "number",
+          "description": "Movement height/thickness in mm"
+        },
+        "jewels": {
+          "type": "integer",
+          "description": "Number of jewels"
+        },
+        "components": {
+          "type": "integer",
+          "description": "Total number of components"
+        },
+        "frequency": {
+          "type": "number",
+          "description": "Balance frequency in Hz (vph = Hz * 7200)"
+        },
+        "vph": {
+          "type": "integer",
+          "description": "Vibrations per hour"
+        },
+        "powerReserve": {
+          "type": "integer",
+          "description": "Power reserve in hours"
+        },
+        "windingMechanism": {
+          "type": "string",
+          "enum": [
+            "crown-manual",
+            "rotor-unidirectional",
+            "rotor-bidirectional",
+            "micro-rotor",
+            "peripheral-rotor"
+          ]
+        },
+        "rotorMaterial": {
+          "type": "string"
+        },
+        "mainspring": {
+          "type": "string",
+          "description": "Mainspring material/type"
+        },
+        "balance": {
+          "type": "string",
+          "description": "Balance wheel type"
+        },
+        "escapement": {
+          "type": "string",
+          "description": "Escapement type",
+          "examples": [
+            "swiss-lever",
+            "co-axial",
+            "constant-force",
+            "detent",
+            "anchor"
+          ]
+        },
+        "hairspring": {
+          "type": "string",
+          "description": "Hairspring material",
+          "examples": [
+            "nivarox",
+            "silicon",
+            "parachrom",
+            "spiromax",
+            "breguet-overcoil"
+          ]
+        },
+        "antiMagnetic": {
+          "type": "boolean"
+        },
+        "antiMagneticRating": {
+          "type": "string",
+          "description": "Anti-magnetic rating (e.g., >15,000 Gauss)"
+        },
+        "shockProtection": {
+          "type": "string",
+          "description": "Shock protection system",
+          "examples": ["incabloc", "kif", "paraflex"]
+        },
+        "finishing": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["cotes-de-geneve", "perlage", "anglage", "snailing", "hand-beveling"]]
+        },
+        "decorationLevel": {
+          "type": "string",
+          "enum": ["standard", "fine", "haute-horlogerie", "grand-feu"]
+        }
+      }
+    },
+    "CaseDetails": {
+      "type": "object",
+      "description": "Watch case specifications",
+      "required": ["@type", "material", "diameter", "waterResistance"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CaseDetails"
+        },
+        "material": {
+          "type": "string",
+          "examples": [
+            "stainless-steel",
+            "18k-yellow-gold",
+            "18k-white-gold",
+            "18k-rose-gold",
+            "platinum",
+            "titanium",
+            "ceramic",
+            "carbon",
+            "bronze",
+            "tantalum"
+          ]
+        },
+        "materialGrade": {
+          "type": "string",
+          "description": "Material grade (e.g., 904L, Grade 5)",
+          "examples": ["904L", "316L", "950", "Grade 5"]
+        },
+        "diameter": {
+          "type": "number",
+          "description": "Case diameter in mm"
+        },
+        "thickness": {
+          "type": "number",
+          "description": "Case thickness in mm"
+        },
+        "lugToLug": {
+          "type": "number",
+          "description": "Lug to lug distance in mm"
+        },
+        "lugWidth": {
+          "type": "number",
+          "description": "Lug width (strap width) in mm"
+        },
+        "shape": {
+          "type": "string",
+          "enum": [
+            "round",
+            "square",
+            "rectangular",
+            "tonneau",
+            "cushion",
+            "octagonal",
+            "oval"
+          ]
+        },
+        "waterResistance": {
+          "type": "integer",
+          "description": "Water resistance in meters"
+        },
+        "waterResistanceATM": {
+          "type": "number",
+          "description": "Water resistance in ATM/bar"
+        },
+        "caseback": {
+          "type": "string",
+          "enum": [
+            "solid",
+            "display",
+            "sapphire-display",
+            "decorated",
+            "screw-down"
+          ]
+        },
+        "casebackEngraving": {
+          "type": "string"
+        },
+        "bezel": {
+          "$ref": "#/definitions/BezelDetails"
+        },
+        "crown": {
+          "$ref": "#/definitions/CrownDetails"
+        },
+        "pushers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PusherDetails"
+          }
+        },
+        "heliumValve": {
+          "type": "boolean"
+        },
+        "finishing": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["polished", "brushed", "satin", "sandblasted", "pvd"]]
+        }
+      }
+    },
+    "BezelDetails": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "BezelDetails"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "fixed",
+            "rotating-unidirectional",
+            "rotating-bidirectional",
+            "fluted",
+            "gem-set"
+          ]
+        },
+        "material": {
+          "type": "string"
+        },
+        "insert": {
+          "type": "string",
+          "examples": ["ceramic", "aluminum", "sapphire"]
+        },
+        "scale": {
+          "type": "string",
+          "examples": ["diving", "tachymeter", "gmt", "worldtime", "compass"]
+        },
+        "clicks": {
+          "type": "integer",
+          "description": "Number of bezel clicks (for rotating)"
+        }
+      }
+    },
+    "CrownDetails": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CrownDetails"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["push-pull", "screw-down", "screw-lock"]
+        },
+        "material": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "boolean"
+        },
+        "gemSet": {
+          "type": "boolean"
+        },
+        "diameter": {
+          "type": "number"
+        }
+      }
+    },
+    "PusherDetails": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PusherDetails"
+        },
+        "position": {
+          "type": "string",
+          "examples": ["2 o'clock", "4 o'clock", "8 o'clock", "10 o'clock"]
+        },
+        "type": {
+          "type": "string",
+          "enum": ["push", "screw-lock", "pump"]
+        },
+        "function": {
+          "type": "string"
+        }
+      }
+    },
+    "Complication": {
+      "type": "object",
+      "description": "Watch complication",
+      "required": ["@type", "complicationType"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Complication"
+        },
+        "complicationType": {
+          "type": "string",
+          "enum": [
+            "date",
+            "day-date",
+            "annual-calendar",
+            "perpetual-calendar",
+            "moonphase",
+            "chronograph",
+            "flyback-chronograph",
+            "split-seconds",
+            "rattrapante",
+            "gmt",
+            "world-time",
+            "power-reserve",
+            "tourbillon",
+            "flying-tourbillon",
+            "minute-repeater",
+            "sonnerie",
+            "alarm",
+            "equation-of-time",
+            "sunrise-sunset",
+            "tide-indicator",
+            "regulator",
+            "jumping-hour",
+            "retrograde",
+            "skeleton"
+          ]
+        },
+        "subdialPosition": {
+          "type": "string",
+          "examples": ["3 o'clock", "6 o'clock", "9 o'clock", "12 o'clock"]
+        },
+        "displayType": {
+          "type": "string",
+          "enum": ["hand", "aperture", "disc", "digital", "retrograde"]
+        },
+        "details": {
+          "type": "string"
+        }
+      }
+    },
+    "Chronometry": {
+      "type": "object",
+      "description": "Chronometric certification and accuracy",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Chronometry"
+        },
+        "coscCertified": {
+          "type": "boolean",
+          "description": "COSC chronometer certification"
+        },
+        "coscCertificateNumber": {
+          "type": "string"
+        },
+        "metas": {
+          "type": "boolean",
+          "description": "Master Chronometer (METAS) certification"
+        },
+        "genevaHallmark": {
+          "type": "boolean",
+          "description": "Poincon de Geneve"
+        },
+        "qualiteFleurier": {
+          "type": "boolean",
+          "description": "Qualite Fleurier certification"
+        },
+        "patek Philippe Seal": {
+          "type": "boolean"
+        },
+        "dailyVariance": {
+          "type": "number",
+          "description": "Average daily variance in seconds"
+        },
+        "testingDuration": {
+          "type": "integer",
+          "description": "Testing duration in days"
+        },
+        "testingTemperatures": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Testing temperatures in Celsius"
+        },
+        "magneticResistance": {
+          "type": "integer",
+          "description": "Magnetic resistance in Gauss"
+        }
+      }
+    },
+    "DialDetails": {
+      "type": "object",
+      "description": "Dial specifications",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "DialDetails"
+        },
+        "color": {
+          "type": "string"
+        },
+        "material": {
+          "type": "string",
+          "examples": [
+            "lacquer",
+            "enamel",
+            "grand-feu-enamel",
+            "guilloche",
+            "mother-of-pearl",
+            "meteorite",
+            "aventurine",
+            "onyx",
+            "opaline"
+          ]
+        },
+        "finish": {
+          "type": "string",
+          "examples": [
+            "sunburst",
+            "brushed",
+            "sandblasted",
+            "tapisserie",
+            "clous-de-paris"
+          ]
+        },
+        "indices": {
+          "type": "string",
+          "enum": ["applied", "printed", "arabic", "roman", "diamond", "baton"]
+        },
+        "indicesMaterial": {
+          "type": "string"
+        },
+        "luminous": {
+          "type": "boolean"
+        },
+        "luminousMaterial": {
+          "type": "string",
+          "examples": ["superluminova", "chromalight", "tritium"]
+        },
+        "gemSet": {
+          "type": "boolean"
+        },
+        "gemDetails": {
+          "$ref": "#/definitions/GemSetting"
+        }
+      }
+    },
+    "HandsDetails": {
+      "type": "object",
+      "description": "Hands specifications",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "HandsDetails"
+        },
+        "style": {
+          "type": "string",
+          "examples": [
+            "dauphine",
+            "baton",
+            "mercedes",
+            "sword",
+            "lance",
+            "leaf",
+            "breguet",
+            "cathedral",
+            "alpha",
+            "lollipop"
+          ]
+        },
+        "material": {
+          "type": "string"
+        },
+        "luminous": {
+          "type": "boolean"
+        },
+        "secondsHand": {
+          "type": "string",
+          "enum": ["center", "small-seconds", "dead-beat", "none"]
+        }
+      }
+    },
+    "CrystalDetails": {
+      "type": "object",
+      "description": "Crystal/glass specifications",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CrystalDetails"
+        },
+        "material": {
+          "type": "string",
+          "enum": ["sapphire", "mineral", "hesalite", "plexiglass"]
+        },
+        "shape": {
+          "type": "string",
+          "enum": ["flat", "domed", "double-domed", "box"]
+        },
+        "coating": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["anti-reflective", "AR-inner", "AR-both-sides"]]
+        },
+        "cyclops": {
+          "type": "boolean",
+          "description": "Date magnification lens"
+        },
+        "cyclopsMagnification": {
+          "type": "number",
+          "examples": [2.5]
+        }
+      }
+    },
+    "StrapBracelet": {
+      "type": "object",
+      "description": "Strap or bracelet details",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "StrapBracelet"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["strap", "bracelet", "nato", "rubber", "fabric"]
+        },
+        "material": {
+          "type": "string",
+          "examples": [
+            "alligator",
+            "crocodile",
+            "calf",
+            "ostrich",
+            "rubber",
+            "stainless-steel",
+            "gold",
+            "titanium",
+            "nato-nylon",
+            "sailcloth"
+          ]
+        },
+        "color": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "description": "Width at lugs in mm"
+        },
+        "taperWidth": {
+          "type": "number",
+          "description": "Width at buckle in mm"
+        },
+        "length": {
+          "type": "string",
+          "examples": ["short", "standard", "long"]
+        },
+        "braceletLinks": {
+          "type": "integer"
+        },
+        "braceletStyle": {
+          "type": "string",
+          "examples": ["oyster", "jubilee", "president", "sports", "milano"]
+        },
+        "quickRelease": {
+          "type": "boolean"
+        },
+        "interchangeable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "BuckleDetails": {
+      "type": "object",
+      "description": "Buckle/clasp specifications",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "BuckleDetails"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "pin-buckle",
+            "deployant",
+            "butterfly",
+            "folding",
+            "hidden-clasp",
+            "jewelry-clasp"
+          ]
+        },
+        "material": {
+          "type": "string"
+        },
+        "branded": {
+          "type": "boolean"
+        },
+        "microAdjust": {
+          "type": "boolean"
+        },
+        "microAdjustPositions": {
+          "type": "integer"
+        },
+        "safetyLatch": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GemSetting": {
+      "type": "object",
+      "properties": {
+        "totalGems": {
+          "type": "integer"
+        },
+        "gemType": {
+          "type": "string",
+          "examples": ["diamond", "ruby", "sapphire", "emerald"]
+        },
+        "totalCarats": {
+          "type": "number"
+        },
+        "quality": {
+          "type": "string",
+          "description": "4Cs for diamonds or equivalent"
+        },
+        "settingType": {
+          "type": "string",
+          "enum": ["pave", "channel", "bezel", "prong", "invisible"]
+        }
+      }
+    },
+    "ServiceRecord": {
+      "type": "object",
+      "description": "Service history record",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ServiceRecord"
+        },
+        "serviceDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "serviceType": {
+          "type": "string",
+          "enum": [
+            "complete-service",
+            "movement-service",
+            "battery-replacement",
+            "crystal-replacement",
+            "water-resistance-test",
+            "polishing",
+            "bracelet-service",
+            "strap-replacement"
+          ]
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceProviderDID": {
+          "type": "string",
+          "pattern": "^did:galileo:(brand|retailer|issuer|artisan|verifier|customer|regulator|facility|technician|supplier|inspector|operator|recycler|marketplace|workshop|associate|official):[a-z0-9\\-]{1,80}$"
+        },
+        "authorizedService": {
+          "type": "boolean"
+        },
+        "partsReplaced": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "nextServiceDue": {
+          "type": "string",
+          "format": "date"
+        },
+        "serviceInterval": {
+          "type": "integer",
+          "description": "Recommended service interval in years"
+        },
+        "serviceDocumentUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "OriginalAccessories": {
+      "type": "object",
+      "description": "Original box, papers, and accessories",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "OriginalAccessories"
+        },
+        "originalBox": {
+          "type": "boolean"
+        },
+        "outerBox": {
+          "type": "boolean"
+        },
+        "warrantyCard": {
+          "type": "boolean"
+        },
+        "warrantyCardDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "instructionManual": {
+          "type": "boolean"
+        },
+        "chronometryCertificate": {
+          "type": "boolean"
+        },
+        "hangTag": {
+          "type": "boolean"
+        },
+        "extraLinks": {
+          "type": "integer"
+        },
+        "extraStraps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "travelCase": {
+          "type": "boolean"
+        },
+        "servicePouch": {
+          "type": "boolean"
+        }
+      }
+    },
+    "WatchCertification": {
+      "type": "object",
+      "description": "Watch-specific certifications",
+      "required": ["@type", "certification"],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "WatchCertification"
+        },
+        "certification": {
+          "type": "string",
+          "enum": [
+            "COSC",
+            "METAS",
+            "Geneva-Hallmark",
+            "Qualite-Fleurier",
+            "Patek-Philippe-Seal",
+            "1000m-Dive",
+            "ISO-6425"
+          ]
+        },
+        "certificateNumber": {
+          "type": "string"
+        },
+        "certificationDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "validUntil": {
+          "type": "string",
+          "format": "date"
+        },
+        "certificateUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "@context": [
+        "https://vocab.galileoprotocol.io/contexts/galileo.jsonld",
+        "https://vocab.galileoprotocol.io/contexts/luxury.jsonld"
+      ],
+      "@type": "IndividualProduct",
+      "@id": "did:galileo:01:07611928123456:21:M9B3X7K2",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "gtin",
+        "value": "07611928123456"
+      },
+      "serialNumber": "M9B3X7K2",
+      "name": "Nautilus 5711/1A-014",
+      "brand": {
+        "@type": "Brand",
+        "@id": "did:galileo:brand:patekphilippe",
+        "name": "Patek Philippe"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "Patek Philippe SA"
+      },
+      "productionDate": "2024-01-15",
+      "countryOfOrigin": "CHE",
+      "referenceNumber": "5711/1A-014",
+      "watchCategory": "sport",
+      "movement": {
+        "@type": "Movement",
+        "movementType": "mechanical-automatic",
+        "caliber": "26-330 S C",
+        "inHouse": true,
+        "diameter": 27,
+        "height": 3.3,
+        "jewels": 29,
+        "components": 256,
+        "frequency": 4,
+        "vph": 28800,
+        "powerReserve": 45,
+        "windingMechanism": "rotor-unidirectional",
+        "rotorMaterial": "21K Gold",
+        "escapement": "swiss-lever",
+        "hairspring": "spiromax",
+        "finishing": ["cotes-de-geneve", "perlage", "hand-beveling"],
+        "decorationLevel": "haute-horlogerie"
+      },
+      "caseDetails": {
+        "@type": "CaseDetails",
+        "material": "stainless-steel",
+        "materialGrade": "316L",
+        "diameter": 40,
+        "thickness": 8.3,
+        "lugToLug": 44.5,
+        "lugWidth": 19,
+        "shape": "octagonal",
+        "waterResistance": 120,
+        "caseback": "sapphire-display",
+        "bezel": {
+          "@type": "BezelDetails",
+          "type": "fixed",
+          "material": "stainless-steel"
+        },
+        "crown": {
+          "@type": "CrownDetails",
+          "type": "screw-down",
+          "logo": true
+        },
+        "finishing": ["polished", "satin"]
+      },
+      "dialDetails": {
+        "@type": "DialDetails",
+        "color": "Olive Green",
+        "finish": "horizontal-embossed",
+        "indices": "applied",
+        "indicesMaterial": "18k-white-gold",
+        "luminous": true,
+        "luminousMaterial": "superluminova"
+      },
+      "complications": [
+        {
+          "@type": "Complication",
+          "complicationType": "date",
+          "subdialPosition": "3 o'clock",
+          "displayType": "aperture"
+        }
+      ],
+      "chronometry": {
+        "@type": "Chronometry",
+        "patek Philippe Seal": true,
+        "dailyVariance": -3,
+        "testingDuration": 60
+      },
+      "strapBracelet": {
+        "@type": "StrapBracelet",
+        "type": "bracelet",
+        "material": "stainless-steel",
+        "braceletStyle": "sports"
+      },
+      "buckleDetails": {
+        "@type": "BuckleDetails",
+        "type": "folding",
+        "material": "stainless-steel",
+        "branded": true
+      },
+      "materialComposition": [
+        {
+          "@type": "MaterialComponent",
+          "material": "Stainless Steel",
+          "percentage": 80,
+          "origin": "CHE"
+        },
+        {
+          "@type": "MaterialComponent",
+          "material": "Sapphire Crystal",
+          "percentage": 10,
+          "origin": "CHE"
+        },
+        {
+          "@type": "MaterialComponent",
+          "material": "Gold (rotor)",
+          "percentage": 5,
+          "origin": "CHE"
+        },
+        {
+          "@type": "MaterialComponent",
+          "material": "Other Materials",
+          "percentage": 5,
+          "origin": "CHE"
+        }
+      ],
+      "carbonFootprint": {
+        "@type": "CarbonFootprint",
+        "totalCO2e": 28.5,
+        "unit": "kgCO2e",
+        "scope": ["cradle-to-gate"],
+        "methodology": "ISO14067"
+      },
+      "repairInstructions": {
+        "@type": "RepairGuide",
+        "guideUrl": "https://www.patek.com/service",
+        "availableLanguages": ["en", "fr", "de", "it", "zh", "ja"],
+        "repairabilityIndex": 9.0,
+        "estimatedLifespan": "P100Y",
+        "maintenanceSchedule": [
+          {
+            "action": "Complete service",
+            "interval": "P5Y",
+            "professional": true
+          }
+        ]
+      },
+      "complianceDeclaration": {
+        "@type": "ComplianceDeclaration",
+        "regulation": "ESPR 2024/1781",
+        "compliant": true,
+        "declarationDate": "2024-01-15"
+      },
+      "originalBoxPapers": {
+        "@type": "OriginalAccessories",
+        "originalBox": true,
+        "outerBox": true,
+        "warrantyCard": true,
+        "instructionManual": true,
+        "chronometryCertificate": true,
+        "extraLinks": 3
+      }
+    }
+  ]
+}
