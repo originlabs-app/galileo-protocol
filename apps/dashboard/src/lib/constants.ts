@@ -26,3 +26,14 @@ function getApiUrl(): string {
 }
 
 export const API_URL = getApiUrl();
+
+function getScannerUrl(): string {
+  return (
+    process.env.NEXT_PUBLIC_SCANNER_URL?.replace(/\/+$/, "") ??
+    (process.env.NODE_ENV === "production"
+      ? "https://scanner.galileoprotocol.io"
+      : "http://localhost:3001")
+  );
+}
+
+export const SCANNER_URL = getScannerUrl();

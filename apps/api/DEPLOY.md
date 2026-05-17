@@ -24,7 +24,7 @@ Dockerfile and a `railway.toml` for one-click Railway deployment.
 | `DATABASE_URL` | Auto-set by Railway PostgreSQL plugin |
 | `JWT_SECRET` | Min 32 chars — generate with `openssl rand -hex 32` |
 | `JWT_REFRESH_SECRET` | Min 32 chars |
-| `CORS_ORIGIN` | Comma-separated allowed origins, e.g. `https://galileoprotocol.io` |
+| `CORS_ORIGIN` | Comma-separated allowed dashboard and scanner origins, e.g. `https://dashboard.example,https://scanner.example` |
 | `BASE_SEPOLIA_RPC_URL` | Alchemy/Infura Base Sepolia endpoint |
 | `DEPLOYER_PRIVATE_KEY` | `0x`-prefixed 32-byte hex — faucet & minting wallet |
 | `FAUCET_ENABLED` | `true` to enable `POST /api/v1/faucet/drip` |

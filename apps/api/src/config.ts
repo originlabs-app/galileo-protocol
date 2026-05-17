@@ -18,6 +18,11 @@ function isUrlList(value: string) {
     });
 }
 
+const LOCAL_CORS_ORIGINS = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+].join(",");
+
 const envSchema = z.object({
   DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
   JWT_SECRET: z.string().min(32, "JWT_SECRET must be at least 32 characters"),
@@ -45,7 +50,7 @@ const envSchema = z.object({
   API_URL: z.string().url().optional(),
   CORS_ORIGIN: z
     .string()
-    .default("http://localhost:3000")
+    .default(LOCAL_CORS_ORIGINS)
     .refine(isUrlList, {
       message: "CORS_ORIGIN must be a URL or comma-separated list of URLs",
     }),

@@ -34,7 +34,8 @@ export default defineConfig({
       timeout: 60_000,
     },
     {
-      command: "pnpm build && pnpm exec next start --port 3000",
+      command:
+        "NEXT_PUBLIC_API_URL=http://localhost:4000 NEXT_PUBLIC_SCANNER_URL=http://localhost:3001 pnpm build && NEXT_PUBLIC_API_URL=http://localhost:4000 NEXT_PUBLIC_SCANNER_URL=http://localhost:3001 pnpm exec next start --port 3000",
       url: "http://localhost:3000",
       reuseExistingServer: false,
       timeout: 60_000,

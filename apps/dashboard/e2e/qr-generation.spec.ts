@@ -66,6 +66,12 @@ test.describe("QR generation dashboard flow", () => {
       page.getByRole("heading", { name: productName }),
     ).toBeVisible({ timeout: 15_000 });
     await expect(page.getByText("Active", { exact: true }).first()).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Open scanner" }),
+    ).toHaveAttribute(
+      "href",
+      new RegExp(`^http://localhost:3001/\\?link=.*${serialNumber}`),
+    );
 
     const downloadPromise = page.waitForEvent("download");
     await page.getByRole("button", { name: "Download QR" }).click();

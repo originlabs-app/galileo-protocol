@@ -15,6 +15,7 @@
     "db:seed": "pnpm --filter @galileo/api exec prisma db seed",
     "db:seed:demo": "pnpm --filter @galileo/api run seed:demo",
     "demo:dataset:check": "pnpm --filter @galileo/api run check:demo-dataset",
+    "demo:proof:check": "node scripts/check-public-demo-proof.mjs",
     "db:studio": "pnpm --filter @galileo/api exec prisma studio",
     "demo:health:check": "node scripts/check-demo-health.mjs"
   },

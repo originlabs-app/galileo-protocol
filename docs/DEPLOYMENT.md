@@ -36,8 +36,9 @@ CI uses a real PostgreSQL 16 service container (no mocks). Tests blocked if any 
 | `DATABASE_URL_TEST` | Test DB (separate `galileo_test`) |
 | `JWT_SECRET` | Min 32 chars |
 | `JWT_REFRESH_SECRET` | Min 32 chars |
-| `CORS_ORIGIN` | Dashboard origin URL |
+| `CORS_ORIGIN` | Comma-separated dashboard and scanner origins |
 | `NEXT_PUBLIC_API_URL` | API URL (for dashboard) |
+| `NEXT_PUBLIC_SCANNER_URL` | Scanner URL used by dashboard public proof links |
 | `PORT` | API port (default 4000) |
 | `NODE_ENV` | `development` / `production` / `test` |
 | `SEED_ADMIN_PASSWORD` | Initial admin password for seeding |

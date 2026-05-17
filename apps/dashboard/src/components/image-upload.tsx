@@ -31,6 +31,7 @@ interface ImageUploadProps {
   currentImageUrl?: string | null;
   currentMedia?: ProductMediaDescriptor[];
   onUploadComplete?: () => void;
+  readOnly?: boolean;
 }
 
 const uploadStatusStorageKey = (productId: string) =>
@@ -57,6 +58,7 @@ export function ImageUpload({
   currentImageUrl,
   currentMedia = [],
   onUploadComplete,
+  readOnly = false,
 }: ImageUploadProps) {
   const [preview, setPreview] = useState<string | null>(null);
   const [pendingFile, setPendingFile] = useState<File | null>(null);
@@ -114,6 +116,8 @@ export function ImageUpload({
 
   const handleFileSelect = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (readOnly) return;
+
       const file = e.target.files?.[0];
       if (!file) return;
 
@@ -125,10 +129,11 @@ export function ImageUpload({
       setStatusMessage(null);
       e.target.value = "";
     },
-    [],
+    [readOnly],
   );
 
   const handleUpload = useCallback(async () => {
+    if (readOnly) return;
     if (!pendingFile) return;
     const trimmedAltText = altText.trim();
 
@@ -185,7 +190,7 @@ export function ImageUpload({
     } finally {
       setIsUploading(false);
     }
-  }, [altText, pendingFile, productId, onUploadComplete]);
+  }, [altText, pendingFile, productId, onUploadComplete, readOnly]);
 
   const displayUrl =
     preview ??
@@ -197,10 +202,11 @@ export function ImageUpload({
   return (
     <div className="flex flex-col gap-4">
       <div className="space-y-1">
-        <Label>Linked media draft</Label>
+        <Label>{readOnly ? "Linked media" : "Linked media draft"}</Label>
         <p className="text-sm text-muted-foreground">
-          Upload the primary product image and store the shared passport media
-          descriptor while the record stays in DRAFT.
+          {readOnly
+            ? "Media attached to an active passport is locked after mint."
+            : "Upload the primary product image and store the shared passport media descriptor while the record stays in DRAFT."}
         </p>
       </div>
 
@@ -211,6 +217,7 @@ export function ImageUpload({
           value={altText}
           onChange={(event) => setAltText(event.target.value)}
           placeholder="Front-facing product image"
+          disabled={readOnly}
         />
       </div>
 
@@ -228,36 +235,38 @@ export function ImageUpload({
           <ImageIcon className="size-8 text-muted-foreground" />
         </div>
       )}
-      <div className="flex items-center gap-2">
-        <Button
-          type="button"
-          variant="outline"
-          size="sm"
-          disabled={isUploading}
-          asChild
-        >
-          <label className="cursor-pointer">
-            <Upload className="mr-1 size-3" />
-            {pendingFile ? "Change file" : actionLabel}
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleFileSelect}
-            />
-          </label>
-        </Button>
-        {pendingFile && (
+      {!readOnly ? (
+        <div className="flex items-center gap-2">
           <Button
             type="button"
+            variant="outline"
             size="sm"
             disabled={isUploading}
-            onClick={handleUpload}
+            asChild
           >
-            {isUploading ? "Uploading..." : "Upload"}
+            <label className="cursor-pointer">
+              <Upload className="mr-1 size-3" />
+              {pendingFile ? "Change file" : actionLabel}
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleFileSelect}
+              />
+            </label>
           </Button>
-        )}
-      </div>
+          {pendingFile && (
+            <Button
+              type="button"
+              size="sm"
+              disabled={isUploading}
+              onClick={handleUpload}
+            >
+              {isUploading ? "Uploading..." : "Upload"}
+            </Button>
+          )}
+        </div>
+      ) : null}
       {primaryImage?.cid ? (
         <p className="text-xs text-muted-foreground">
           Current linked CID: {primaryImage.cid}

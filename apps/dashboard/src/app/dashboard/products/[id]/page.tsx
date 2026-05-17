@@ -25,7 +25,7 @@ import {
 import { api, ApiError } from "@/lib/api";
 import { ImageUpload } from "@/components/image-upload";
 import { ProductMaterialsEditor } from "@/components/product-materials-editor";
-import { API_URL } from "@/lib/constants";
+import { API_URL, SCANNER_URL } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -154,6 +154,10 @@ function formatMaterial(material: ProductMaterial): string {
 
 function formatShortHex(value: string): string {
   return `${value.slice(0, 10)}…${value.slice(-8)}`;
+}
+
+function buildScannerUrl(digitalLink: string): string {
+  return `${SCANNER_URL}/?link=${encodeURIComponent(digitalLink)}`;
 }
 
 export default function ProductDetailPage() {
@@ -485,6 +489,19 @@ export default function ProductDetailPage() {
     explorerBase && product.passport?.tokenAddress
       ? `${explorerBase}/address/${product.passport.tokenAddress}`
       : null;
+  const scannerProofUrl = product.passport?.digitalLink
+    ? buildScannerUrl(product.passport.digitalLink)
+    : null;
+  const workspaceDescription =
+    product.status === "DRAFT"
+      ? "Identity is locked. Use this DRAFT passport workspace to refine descriptive metadata and linked media without changing the permanent GTIN plus serial baseline."
+      : "Identity is locked and the passport is live. Use this workspace to review public proof, lifecycle history, and post-mint actions.";
+  const passportSectionTitle =
+    product.status === "DRAFT" ? "Passport draft" : "Passport metadata";
+  const passportSectionDescription =
+    product.status === "DRAFT"
+      ? "Mutable passport fields stay grouped separately from the immutable identity baseline."
+      : "Minted passport metadata is locked for public verification.";
 
   return (
     <div className="flex flex-col gap-6">
@@ -502,9 +519,7 @@ export default function ProductDetailPage() {
             {product.name}
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            Identity is locked. Use this DRAFT passport workspace to refine
-            descriptive metadata and linked media without changing the
-            permanent GTIN plus serial baseline.
+            {workspaceDescription}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -675,11 +690,10 @@ export default function ProductDetailPage() {
           <Card>
             <CardHeader>
               <CardTitle className="font-serif text-lg">
-                Passport draft
+                {passportSectionTitle}
               </CardTitle>
               <CardDescription>
-                Mutable passport fields stay grouped separately from the
-                immutable identity baseline.
+                {passportSectionDescription}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -742,7 +756,9 @@ export default function ProductDetailPage() {
         <CardHeader>
           <CardTitle className="font-serif text-lg">Linked media</CardTitle>
           <CardDescription>
-            Media stays mutable only while the passport remains in DRAFT.
+            {canAuthorDraft
+              ? "Media stays mutable only while the passport remains in DRAFT."
+              : "Media is locked after mint to keep the public passport stable."}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -751,6 +767,7 @@ export default function ProductDetailPage() {
             currentImageUrl={product.imageUrl}
             currentMedia={productMedia as ProductMediaDescriptor[]}
             onUploadComplete={() => fetchProduct()}
+            readOnly={!canAuthorDraft}
           />
         </CardContent>
       </Card>
@@ -759,8 +776,8 @@ export default function ProductDetailPage() {
         <CardHeader>
           <CardTitle className="font-serif text-lg">Record history</CardTitle>
           <CardDescription>
-            Lifecycle and authoring updates stay auditable even while the
-            record is still a DRAFT passport.
+            Lifecycle and authoring updates stay auditable across the full
+            passport lifecycle.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -889,6 +906,18 @@ export default function ProductDetailPage() {
                   >
                     <ExternalLink className="size-4" />
                     Open resolver
+                  </a>
+                </Button>
+              ) : null}
+              {scannerProofUrl ? (
+                <Button asChild variant="outline">
+                  <a
+                    href={scannerProofUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <QrCode className="size-4" />
+                    Open scanner
                   </a>
                 </Button>
               ) : null}
