@@ -7,11 +7,13 @@ import {
   clearAuthCookies,
 } from "../../utils/cookies.js";
 import { errorResponseSchema } from "../../utils/schemas.js";
+import { requireCsrfHeader } from "../../middleware/csrf.js";
 
 export default async function refreshRoute(fastify: FastifyInstance) {
   fastify.post(
     "/auth/refresh",
     {
+      onRequest: [requireCsrfHeader],
       schema: {
         description: "Refresh access token using the galileo_rt cookie",
         tags: ["Auth"],

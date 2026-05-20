@@ -374,6 +374,7 @@ contract GalileoToken is IGalileoToken, AccessControlEnumerable {
         uint256 _amount
     ) public override onlyRole(AGENT_ROLE) returns (bool) {
         require(!_isDecommissioned, "Token decommissioned");
+        require(!_frozen[_to], "recipient wallet is frozen");
         require(balanceOf(_from) >= _amount, "sender balance too low");
         uint256 freeBalance = balanceOf(_from) - _frozenTokens[_from];
         if (_amount > freeBalance) {
@@ -381,7 +382,7 @@ contract GalileoToken is IGalileoToken, AccessControlEnumerable {
             _frozenTokens[_from] = _frozenTokens[_from] - tokensToUnfreeze;
             emit TokensUnfrozen(_from, tokensToUnfreeze);
         }
-        if (_tokenIdentityRegistry.isVerified(_to)) {
+        if (_tokenIdentityRegistry.isVerified(_to) && _tokenCompliance.canTransfer(_from, _to, _amount)) {
             _transfer(_from, _to, _amount);
             _tokenCompliance.transferred(_from, _to, _amount);
             return true;
@@ -428,6 +429,7 @@ contract GalileoToken is IGalileoToken, AccessControlEnumerable {
      * @dev See {IToken-batchTransfer}.
      */
     function batchTransfer(address[] calldata _toList, uint256[] calldata _amounts) external override {
+        require(_toList.length == _amounts.length, "batch length mismatch");
         for (uint256 i = 0; i < _toList.length; i++) {
             transfer(_toList[i], _amounts[i]);
         }
@@ -441,6 +443,10 @@ contract GalileoToken is IGalileoToken, AccessControlEnumerable {
         address[] calldata _toList,
         uint256[] calldata _amounts
     ) external override {
+        require(
+            _fromList.length == _toList.length && _fromList.length == _amounts.length,
+            "batch length mismatch"
+        );
         for (uint256 i = 0; i < _fromList.length; i++) {
             forcedTransfer(_fromList[i], _toList[i], _amounts[i]);
         }
@@ -450,6 +456,7 @@ contract GalileoToken is IGalileoToken, AccessControlEnumerable {
      * @dev See {IToken-batchMint}.
      */
     function batchMint(address[] calldata _toList, uint256[] calldata _amounts) external override {
+        require(_toList.length == _amounts.length, "batch length mismatch");
         require(_totalSupply == 0, "Token already minted");
         require(_toList.length == 1, "Single supply: batch limited to 1");
         for (uint256 i = 0; i < _toList.length; i++) {
@@ -461,6 +468,7 @@ contract GalileoToken is IGalileoToken, AccessControlEnumerable {
      * @dev See {IToken-batchBurn}.
      */
     function batchBurn(address[] calldata _userAddresses, uint256[] calldata _amounts) external override {
+        require(_userAddresses.length == _amounts.length, "batch length mismatch");
         for (uint256 i = 0; i < _userAddresses.length; i++) {
             burn(_userAddresses[i], _amounts[i]);
         }
@@ -473,6 +481,7 @@ contract GalileoToken is IGalileoToken, AccessControlEnumerable {
         address[] calldata _userAddresses,
         bool[] calldata _freeze
     ) external override {
+        require(_userAddresses.length == _freeze.length, "batch length mismatch");
         for (uint256 i = 0; i < _userAddresses.length; i++) {
             setAddressFrozen(_userAddresses[i], _freeze[i]);
         }
@@ -485,6 +494,7 @@ contract GalileoToken is IGalileoToken, AccessControlEnumerable {
         address[] calldata _userAddresses,
         uint256[] calldata _amounts
     ) external override {
+        require(_userAddresses.length == _amounts.length, "batch length mismatch");
         for (uint256 i = 0; i < _userAddresses.length; i++) {
             freezePartialTokens(_userAddresses[i], _amounts[i]);
         }
@@ -497,6 +507,7 @@ contract GalileoToken is IGalileoToken, AccessControlEnumerable {
         address[] calldata _userAddresses,
         uint256[] calldata _amounts
     ) external override {
+        require(_userAddresses.length == _amounts.length, "batch length mismatch");
         for (uint256 i = 0; i < _userAddresses.length; i++) {
             unfreezePartialTokens(_userAddresses[i], _amounts[i]);
         }

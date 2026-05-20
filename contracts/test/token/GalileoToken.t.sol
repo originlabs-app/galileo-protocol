@@ -226,6 +226,12 @@ contract GalileoTokenTest is Test {
         _mockTransferred(from, to, amount);
     }
 
+    function _setupForcedTransfer(address from, address to, uint256 amount) internal {
+        _mockIsVerified(to, true);
+        _mockCanTransfer(from, to, amount, true);
+        _mockTransferred(from, to, amount);
+    }
+
     // Transfer ownership1 token to owner2 (unpauses first)
     function _transferToOwner2() internal {
         vm.prank(agent);
@@ -1042,8 +1048,7 @@ contract GalileoTokenTest is Test {
     // ============ SECTION: ForcedTransfer ============
 
     function test_forcedTransfer_movesToken() public {
-        _mockIsVerified(owner2, true);
-        _mockTransferred(owner1, owner2, 1);
+        _setupForcedTransfer(owner1, owner2, 1);
         vm.prank(agent);
         assertTrue(token.forcedTransfer(owner1, owner2, 1));
         assertEq(token.balanceOf(owner2), 1);
@@ -1053,8 +1058,7 @@ contract GalileoTokenTest is Test {
     function test_forcedTransfer_unfreezesIfNeeded() public {
         vm.prank(agent);
         token.freezePartialTokens(owner1, 1);
-        _mockIsVerified(owner2, true);
-        _mockTransferred(owner1, owner2, 1);
+        _setupForcedTransfer(owner1, owner2, 1);
         vm.prank(agent);
         vm.expectEmit(true, false, false, true);
         emit TokensUnfrozen(owner1, 1);
@@ -1075,6 +1079,23 @@ contract GalileoTokenTest is Test {
         token.forcedTransfer(owner1, owner2, 1);
     }
 
+    function test_forcedTransfer_reverts_complianceBlocked() public {
+        _mockIsVerified(owner2, true);
+        _mockCanTransfer(owner1, owner2, 1, false);
+        vm.prank(agent);
+        vm.expectRevert("Transfer not possible");
+        token.forcedTransfer(owner1, owner2, 1);
+    }
+
+    function test_forcedTransfer_reverts_receiverFrozen() public {
+        vm.prank(agent);
+        token.setAddressFrozen(owner2, true);
+        _setupForcedTransfer(owner1, owner2, 1);
+        vm.prank(agent);
+        vm.expectRevert("recipient wallet is frozen");
+        token.forcedTransfer(owner1, owner2, 1);
+    }
+
     function test_forcedTransfer_reverts_notAgent() public {
         vm.prank(nobody);
         vm.expectRevert();
@@ -1085,8 +1106,7 @@ contract GalileoTokenTest is Test {
         _mockDestroyed(owner1, 1);
         vm.prank(agent);
         token.decommission(owner1, "destroyed");
-        _mockIsVerified(owner2, true);
-        _mockTransferred(owner1, owner2, 1);
+        _setupForcedTransfer(owner1, owner2, 1);
         vm.prank(agent);
         vm.expectRevert("Token decommissioned");
         token.forcedTransfer(owner1, owner2, 1);
@@ -1107,8 +1127,7 @@ contract GalileoTokenTest is Test {
         );
         _mockInvestorCountry(owner1, 840);
         _mockRegisterIdentity(newWallet, investorID, 840);
-        _mockIsVerified(newWallet, true);
-        _mockTransferred(owner1, newWallet, 1);
+        _setupForcedTransfer(owner1, newWallet, 1);
         _mockDeleteIdentity(owner1);
 
         vm.prank(agent);
@@ -1129,8 +1148,7 @@ contract GalileoTokenTest is Test {
         );
         _mockInvestorCountry(owner1, 840);
         _mockRegisterIdentity(newWallet, investorID, 840);
-        _mockIsVerified(newWallet, true);
-        _mockTransferred(owner1, newWallet, 1);
+        _setupForcedTransfer(owner1, newWallet, 1);
         _mockDeleteIdentity(owner1);
 
         vm.prank(agent);
@@ -1544,8 +1562,7 @@ contract GalileoTokenTest is Test {
     }
 
     function test_batchForcedTransfer_transfersAll() public {
-        _mockIsVerified(owner2, true);
-        _mockTransferred(owner1, owner2, 1);
+        _setupForcedTransfer(owner1, owner2, 1);
 
         address[] memory froms = new address[](1);
         froms[0] = owner1;
@@ -1557,6 +1574,20 @@ contract GalileoTokenTest is Test {
         vm.prank(agent);
         token.batchForcedTransfer(froms, tos, amounts);
         assertEq(token.balanceOf(owner2), 1);
+    }
+
+    function test_batchForcedTransfer_reverts_lengthMismatch() public {
+        address[] memory froms = new address[](1);
+        froms[0] = owner1;
+        address[] memory tos = new address[](2);
+        tos[0] = owner2;
+        tos[1] = makeAddr("owner3");
+        uint256[] memory amounts = new uint256[](1);
+        amounts[0] = 1;
+
+        vm.prank(agent);
+        vm.expectRevert("batch length mismatch");
+        token.batchForcedTransfer(froms, tos, amounts);
     }
 
     // ============ SECTION: Product metadata (additional) ============

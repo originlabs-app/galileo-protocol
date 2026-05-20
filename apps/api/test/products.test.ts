@@ -1,4 +1,11 @@
-import { describe, it, expect, beforeAll, afterAll, beforeEach } from "vitest";
+import {
+  describe,
+  it,
+  expect,
+  beforeAll,
+  afterAll,
+  beforeEach,
+} from "vitest";
 import { buildApp } from "../src/server.js";
 import type { FastifyInstance } from "fastify";
 import { parseCookies, cleanDb, nextFixtureId } from "./helpers.js";
@@ -1131,6 +1138,31 @@ describe("Product CRUD endpoints", () => {
       expect(response.statusCode).toBe(400);
       const body = response.json();
       expect(body.error.message).toContain("non-DRAFT");
+    });
+
+    it("keeps the DRAFT update guard atomic after a stale read", async () => {
+      const staleProduct = await app.prisma.product.findUnique({
+        where: { id: draftProductId },
+      });
+      expect(staleProduct?.status).toBe("DRAFT");
+
+      await app.prisma.product.update({
+        where: { id: draftProductId },
+        data: { status: "ACTIVE" },
+      });
+
+      const claim = await app.prisma.product.updateMany({
+        where: { id: draftProductId, brandId: testBrandId, status: "DRAFT" },
+        data: { name: "Should Not Win Race" },
+      });
+
+      expect(claim.count).toBe(0);
+
+      const product = await app.prisma.product.findUnique({
+        where: { id: draftProductId },
+      });
+      expect(product?.name).toBe("Patchable Product");
+      expect(product?.status).toBe("ACTIVE");
     });
 
     it("rejects gtin/serialNumber/did/status changes with 400", async () => {

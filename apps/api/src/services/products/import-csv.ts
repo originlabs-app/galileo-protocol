@@ -20,6 +20,7 @@ const HEADER_ALIASES = {
 } as const;
 
 const REQUIRED_COLUMNS = ["name", "gtin", "serialNumber", "category"] as const;
+const SPREADSHEET_FORMULA_PREFIX = /^\s*[=+\-@]/;
 
 type CsvImportColumn = (typeof HEADER_ALIASES)[keyof typeof HEADER_ALIASES];
 type CsvImportDbClient = Pick<PrismaClient, "product" | "$transaction">;
@@ -303,9 +304,37 @@ function parseMaterialsCell(value: string): ProductMaterial[] | undefined {
   );
 }
 
+function spreadsheetFormulaIssue(
+  field: string,
+  value: string | undefined,
+): CsvImportRowIssue | null {
+  if (!value || value.length === 0) {
+    return null;
+  }
+
+  if (SPREADSHEET_FORMULA_PREFIX.test(value)) {
+    return {
+      field,
+      message: "CSV text fields must not start with spreadsheet formula prefixes",
+    };
+  }
+
+  return null;
+}
+
 function normalizeCsvImportRow(
   source: CsvImportSourceRow,
 ): CatalogImportRowResult["input"] | CsvImportRowIssue[] {
+  const formulaIssues = [
+    spreadsheetFormulaIssue("name", source.name),
+    spreadsheetFormulaIssue("description", source.description),
+    spreadsheetFormulaIssue("materials", source.materials),
+  ].filter((issue): issue is CsvImportRowIssue => issue !== null);
+
+  if (formulaIssues.length > 0) {
+    return formulaIssues;
+  }
+
   let materials: ProductMaterial[] | undefined;
 
   try {
@@ -318,6 +347,14 @@ function normalizeCsvImportRow(
           error instanceof Error ? error.message : "Invalid materials value",
       },
     ];
+  }
+
+  const materialFormulaIssue = materials
+    ?.map((material) => spreadsheetFormulaIssue("materials", material.name))
+    .find((issue): issue is CsvImportRowIssue => issue !== null);
+
+  if (materialFormulaIssue) {
+    return [materialFormulaIssue];
   }
 
   const parsed = catalogAuthoringDraftSchema.safeParse({

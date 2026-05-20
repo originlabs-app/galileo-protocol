@@ -30,19 +30,35 @@ vi.mock("viem/chains", () => ({
 import { parseCookies, cleanDb } from "./helpers.js";
 
 const WALLET_ADDRESS = "0x1234567890123456789012345678901234567890";
+const CSRF_HEADERS = { "x-galileo-client": "1" };
+const VALID_SIGNATURE = "0xdeadbeef";
+const INVALID_SIGNATURE = "0xfeedface";
 
-function buildSiweMessage(address: string, nonce: string): string {
+function buildSiweMessage(
+  address: string,
+  nonce: string,
+  overrides: {
+    domain?: string;
+    uri?: string;
+    chainId?: number;
+    issuedAt?: string;
+  } = {},
+): string {
+  const domain = overrides.domain ?? "localhost:3000";
+  const uri = overrides.uri ?? "http://localhost:3000";
+  const chainId = overrides.chainId ?? 84532;
+  const issuedAt = overrides.issuedAt ?? new Date().toISOString();
   return [
-    "localhost wants you to sign in with your Ethereum account:",
+    `${domain} wants you to sign in with your Ethereum account:`,
     address,
     "",
     "Sign in to Galileo Protocol",
     "",
-    "URI: http://localhost:3000",
+    `URI: ${uri}`,
     "Version: 1",
-    "Chain ID: 84532",
+    `Chain ID: ${chainId}`,
     `Nonce: ${nonce}`,
-    `Issued At: ${new Date().toISOString()}`,
+    `Issued At: ${issuedAt}`,
   ].join("\n");
 }
 
@@ -119,7 +135,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xvalidsig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
       });
 
       expect(res.statusCode).toBe(200);
@@ -128,6 +145,79 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       expect(data.data.user.email).toBe("siwe@test.com");
       const cookies = parseCookies(res);
       expect(cookies.galileo_at).toBeTruthy();
+    });
+
+    it("should require CSRF header on SIWE verify", async () => {
+      await createUserWithWallet();
+      const nonce = await getNonce();
+      const message = buildSiweMessage(WALLET_ADDRESS, nonce);
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/auth/siwe/verify",
+        payload: { message, signature: VALID_SIGNATURE },
+      });
+
+      expect(res.statusCode).toBe(403);
+      expect(res.json().error.code).toBe("CSRF_REQUIRED");
+    });
+
+    it("should reject SIWE messages from untrusted origins", async () => {
+      await createUserWithWallet();
+      const nonce = await getNonce();
+      const message = buildSiweMessage(WALLET_ADDRESS, nonce, {
+        domain: "evil.example",
+        uri: "https://evil.example",
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/auth/siwe/verify",
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
+      });
+
+      expect(res.statusCode).toBe(400);
+      expect(res.json().error.code).toBe("INVALID_DOMAIN");
+      expect(mockVerifyMessage).not.toHaveBeenCalled();
+    });
+
+    it("should reject SIWE messages for the wrong chain", async () => {
+      await createUserWithWallet();
+      const nonce = await getNonce();
+      const message = buildSiweMessage(WALLET_ADDRESS, nonce, {
+        chainId: 1,
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/auth/siwe/verify",
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
+      });
+
+      expect(res.statusCode).toBe(400);
+      expect(res.json().error.code).toBe("INVALID_CHAIN_ID");
+      expect(mockVerifyMessage).not.toHaveBeenCalled();
+    });
+
+    it("should reject stale SIWE messages even when nonce exists", async () => {
+      await createUserWithWallet();
+      const nonce = await getNonce();
+      const message = buildSiweMessage(WALLET_ADDRESS, nonce, {
+        issuedAt: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+      });
+
+      const res = await app.inject({
+        method: "POST",
+        url: "/auth/siwe/verify",
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
+      });
+
+      expect(res.statusCode).toBe(400);
+      expect(res.json().error.code).toBe("INVALID_MESSAGE");
+      expect(mockVerifyMessage).not.toHaveBeenCalled();
     });
 
     it("should reject invalid signature (401)", async () => {
@@ -139,7 +229,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xinvalid" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: INVALID_SIGNATURE },
       });
       expect(res.statusCode).toBe(401);
       expect(res.json().error.code).toBe("INVALID_SIGNATURE");
@@ -153,7 +244,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xsig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
       });
       expect(res.statusCode).toBe(401);
       expect(res.json().error.code).toBe("INVALID_NONCE");
@@ -169,7 +261,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res1 = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xsig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
       });
       expect(res1.statusCode).toBe(200);
 
@@ -177,7 +270,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res2 = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xsig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
       });
       expect(res2.statusCode).toBe(401);
     });
@@ -191,7 +285,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xsig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
       });
       expect(res.statusCode).toBe(404);
       expect(res.json().error.code).toBe("WALLET_NOT_LINKED");
@@ -201,6 +296,7 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
+        headers: CSRF_HEADERS,
         payload: { message: "" },
       });
       expect(res.statusCode).toBe(400);
@@ -215,7 +311,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const loginRes = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xsig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
       });
       const cookie = `galileo_at=${parseCookies(loginRes).galileo_at}`;
 
@@ -242,7 +339,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xsig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
       });
       expect(res.statusCode).toBe(401);
     });
@@ -257,7 +355,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xsmartWalletSig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: "0x1234abcd" },
       });
 
       expect(res.statusCode).toBe(200);
@@ -266,7 +365,7 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       expect(mockVerifyMessage).toHaveBeenCalledWith({
         address: WALLET_ADDRESS,
         message,
-        signature: "0xsmartWalletSig",
+        signature: "0x1234abcd",
       });
     });
 
@@ -279,7 +378,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xinvalidSmartWalletSig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: "0xabcdef12" },
       });
 
       expect(res.statusCode).toBe(401);
@@ -295,7 +395,8 @@ describe("SIWE Auth (/auth/siwe/*)", () => {
       const res = await app.inject({
         method: "POST",
         url: "/auth/siwe/verify",
-        payload: { message, signature: "0xsig" },
+        headers: CSRF_HEADERS,
+        payload: { message, signature: VALID_SIGNATURE },
       });
 
       expect(res.statusCode).toBe(401);

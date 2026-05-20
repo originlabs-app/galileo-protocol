@@ -5,6 +5,7 @@ import {
 } from "@galileo/shared";
 import { Prisma } from "../../generated/prisma/client.js";
 import { requireRole } from "../../middleware/rbac.js";
+import { RouteError } from "../../utils/route-error.js";
 import { buildWorkspaceProductByIdWhere } from "../../utils/workspace.js";
 
 const updateProductBody = productAuthoringPatchSchema;
@@ -94,58 +95,83 @@ export default async function updateProductRoute(fastify: FastifyInstance) {
         });
       }
 
-      // Update product and create UPDATED event in a transaction
-      const updated = await fastify.prisma.$transaction(
-        async (tx: import("../../plugins/prisma.js").TxClient) => {
-          if (Object.keys(productFields).length > 0) {
-            await tx.product.update({
-              where: { id },
-              data: productFields,
+      // Update product and create UPDATED event in a transaction. The product
+      // update is conditional on status=DRAFT so a concurrent mint/recall cannot
+      // race between the pre-check above and the actual mutation.
+      let updated;
+      try {
+        updated = await fastify.prisma.$transaction(
+          async (tx: import("../../plugins/prisma.js").TxClient) => {
+            const productClaim = await tx.product.updateMany({
+              where: { ...where, status: "DRAFT" },
+              data:
+                Object.keys(productFields).length > 0
+                  ? productFields
+                  : { updatedAt: new Date() },
             });
-          }
 
-          if (materials !== undefined || media !== undefined) {
-            const passport = await tx.productPassport.findUnique({
-              where: { productId: id },
-            });
-            if (passport) {
-              await tx.productPassport.update({
-                where: { id: passport.id },
-                data: {
-                  metadata: writeProductPassportAuthoringMetadata(
-                    passport.metadata,
-                    { materials, media },
-                  ) as Prisma.InputJsonValue,
-                },
-              });
+            if (productClaim.count === 0) {
+              throw new RouteError(
+                409,
+                "CONFLICT",
+                "Product is no longer in DRAFT status",
+              );
             }
-          }
 
-          await tx.productEvent.create({
-            data: {
-              productId: id,
-              type: "UPDATED",
+            if (materials !== undefined || media !== undefined) {
+              const passport = await tx.productPassport.findUnique({
+                where: { productId: id },
+              });
+              if (passport) {
+                await tx.productPassport.update({
+                  where: { id: passport.id },
+                  data: {
+                    metadata: writeProductPassportAuthoringMetadata(
+                      passport.metadata,
+                      { materials, media },
+                    ) as Prisma.InputJsonValue,
+                  },
+                });
+              }
+            }
+
+            await tx.productEvent.create({
               data: {
-                ...productFields,
-                ...(materials !== undefined ? { materials } : {}),
-                ...(media !== undefined ? { media } : {}),
+                productId: id,
+                type: "UPDATED",
+                data: {
+                  ...productFields,
+                  ...(materials !== undefined ? { materials } : {}),
+                  ...(media !== undefined ? { media } : {}),
+                },
+                performedBy: user.sub,
               },
-              performedBy: user.sub,
-            },
-          });
+            });
 
-          // Re-fetch to include the new event
-          return tx.product.findUnique({
-            where: { id },
-            include: {
-              passport: true,
-              events: {
-                orderBy: { createdAt: "desc" },
+            // Re-fetch to include the new event
+            return tx.product.findFirst({
+              where,
+              include: {
+                passport: true,
+                events: {
+                  orderBy: { createdAt: "desc" },
+                },
               },
+            });
+          },
+        );
+      } catch (err) {
+        if (err instanceof RouteError) {
+          return reply.status(err.statusCode).send({
+            success: false,
+            error: {
+              code: err.code,
+              message: err.message,
             },
           });
-        },
-      );
+        }
+        throw err;
+      }
 
       return reply.status(200).send({
         success: true,

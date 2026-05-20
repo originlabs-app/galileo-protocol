@@ -8,6 +8,8 @@
 import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { getAddress } from "viem";
+import { config } from "../../config.js";
+import { requireCsrfHeader } from "../../middleware/csrf.js";
 import { createSiweNonce, consumeSiweNonce } from "../../services/siwe.js";
 import { generateTokenPair } from "../../utils/tokens.js";
 import { hashToken } from "../../utils/token-hash.js";
@@ -16,26 +18,39 @@ import { setAuthCookies } from "../../utils/cookies.js";
 const siweVerifyBody = z
   .object({
     message: z.string().min(1, "Message is required"),
-    signature: z.string().min(1, "Signature is required"),
+    signature: z
+      .string()
+      .regex(/^0x(?:[0-9a-fA-F]{2})+$/, "Signature must be hex-encoded bytes"),
   })
   .strict();
+
+const SIWE_MESSAGE_MAX_AGE_MS = 5 * 60 * 1000;
+const SIWE_CLOCK_SKEW_MS = 60 * 1000;
+
+interface SiweFields {
+  address: string;
+  nonce: string;
+  chainId: number;
+  domain: string;
+  uri: string;
+  version: string;
+  issuedAt: string;
+}
 
 /**
  * Minimal SIWE message parser.
  * Extracts nonce and address from an EIP-4361 formatted message.
  */
-function parseSiweFields(message: string): {
-  address: string;
-  nonce: string;
-  chainId: number;
-  domain: string;
-} | null {
+function parseSiweFields(message: string): SiweFields | null {
   try {
     const lines = message.split("\n");
     let address = "";
     let nonce = "";
     let chainId = 0;
     let domain = "";
+    let uri = "";
+    let version = "";
+    let issuedAt = "";
 
     // Line 0: "{domain} wants you to sign in with your Ethereum account:"
     const domainMatch = lines[0]?.match(/^(.+?) wants you to sign in/);
@@ -50,13 +65,109 @@ function parseSiweFields(message: string): {
       if (nonceMatch) nonce = nonceMatch[1]!.trim();
       const chainMatch = line.match(/^Chain ID:\s*(\d+)$/);
       if (chainMatch) chainId = Number(chainMatch[1]);
+      const uriMatch = line.match(/^URI:\s*(.+)$/);
+      if (uriMatch) uri = uriMatch[1]!.trim();
+      const versionMatch = line.match(/^Version:\s*(.+)$/);
+      if (versionMatch) version = versionMatch[1]!.trim();
+      const issuedAtMatch = line.match(/^Issued At:\s*(.+)$/);
+      if (issuedAtMatch) issuedAt = issuedAtMatch[1]!.trim();
     }
 
-    if (!address || !nonce) return null;
-    return { address, nonce, chainId, domain };
+    if (!address || !nonce || !domain || !uri || !version || !issuedAt) {
+      return null;
+    }
+    return { address, nonce, chainId, domain, uri, version, issuedAt };
   } catch {
     return null;
   }
+}
+
+function allowedSiweOrigins(): string[] {
+  return config.CORS_ORIGIN.split(",").map((origin) => origin.trim()).filter(
+    Boolean,
+  ).map((origin) => new URL(origin).origin);
+}
+
+function validateSiweFields(fields: SiweFields): {
+  ok: true;
+} | {
+  ok: false;
+  code: string;
+  message: string;
+} {
+  if (fields.version !== "1") {
+    return {
+      ok: false,
+      code: "INVALID_MESSAGE",
+      message: "Unsupported SIWE message version",
+    };
+  }
+
+  if (fields.chainId !== config.chain.deployment.chainId) {
+    return {
+      ok: false,
+      code: "INVALID_CHAIN_ID",
+      message: "SIWE message chain ID is not supported",
+    };
+  }
+
+  const issuedAtTime = Date.parse(fields.issuedAt);
+  const now = Date.now();
+  if (!Number.isFinite(issuedAtTime)) {
+    return {
+      ok: false,
+      code: "INVALID_MESSAGE",
+      message: "SIWE message issuedAt is invalid",
+    };
+  }
+  if (issuedAtTime > now + SIWE_CLOCK_SKEW_MS) {
+    return {
+      ok: false,
+      code: "INVALID_MESSAGE",
+      message: "SIWE message issuedAt is in the future",
+    };
+  }
+  if (now - issuedAtTime > SIWE_MESSAGE_MAX_AGE_MS) {
+    return {
+      ok: false,
+      code: "INVALID_MESSAGE",
+      message: "SIWE message has expired",
+    };
+  }
+
+  let uri: URL;
+  try {
+    uri = new URL(fields.uri);
+  } catch {
+    return {
+      ok: false,
+      code: "INVALID_MESSAGE",
+      message: "SIWE message URI is invalid",
+    };
+  }
+
+  if (fields.domain !== uri.host) {
+    return {
+      ok: false,
+      code: "INVALID_DOMAIN",
+      message: "SIWE message domain does not match URI",
+    };
+  }
+
+  const allowedOrigins = allowedSiweOrigins();
+  const allowedHosts = new Set(
+    allowedOrigins.map((origin) => new URL(origin).host),
+  );
+
+  if (!allowedOrigins.includes(uri.origin) || !allowedHosts.has(fields.domain)) {
+    return {
+      ok: false,
+      code: "INVALID_DOMAIN",
+      message: "SIWE message origin is not allowed",
+    };
+  }
+
+  return { ok: true };
 }
 
 export default async function siweRoutes(fastify: FastifyInstance) {
@@ -83,6 +194,7 @@ export default async function siweRoutes(fastify: FastifyInstance) {
   fastify.post(
     "/auth/siwe/verify",
     {
+      onRequest: [requireCsrfHeader],
       schema: {
         description:
           "Verify a SIWE message and signature. If valid and the wallet is linked to an account, issues a session cookie.",
@@ -104,7 +216,6 @@ export default async function siweRoutes(fastify: FastifyInstance) {
 
       const { message, signature } = parsed.data;
 
-      // Parse SIWE message fields
       const fields = parseSiweFields(message);
       if (!fields) {
         return reply.status(400).send({
@@ -112,6 +223,30 @@ export default async function siweRoutes(fastify: FastifyInstance) {
           error: {
             code: "INVALID_MESSAGE",
             message: "Could not parse SIWE message",
+          },
+        });
+      }
+
+      const fieldValidation = validateSiweFields(fields);
+      if (!fieldValidation.ok) {
+        return reply.status(400).send({
+          success: false,
+          error: {
+            code: fieldValidation.code,
+            message: fieldValidation.message,
+          },
+        });
+      }
+
+      let checksumAddress: `0x${string}`;
+      try {
+        checksumAddress = getAddress(fields.address) as `0x${string}`;
+      } catch {
+        return reply.status(400).send({
+          success: false,
+          error: {
+            code: "INVALID_MESSAGE",
+            message: "SIWE message address is invalid",
           },
         });
       }
@@ -129,9 +264,7 @@ export default async function siweRoutes(fastify: FastifyInstance) {
 
       // Verify signature using publicClient.verifyMessage (supports both EOA + ERC-1271 Smart Wallets)
       let isValid: boolean;
-      let checksumAddress: `0x${string}`;
       try {
-        checksumAddress = getAddress(fields.address) as `0x${string}`;
         isValid = await fastify.chain.publicClient.verifyMessage({
           address: checksumAddress,
           message,
