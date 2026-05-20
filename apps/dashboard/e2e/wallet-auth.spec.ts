@@ -29,7 +29,7 @@ test.describe("Wallet Auth Flows (API)", () => {
     request,
   }) => {
     const message = [
-      "localhost wants you to sign in with your Ethereum account:",
+      "localhost:3000 wants you to sign in with your Ethereum account:",
       "0x1234567890123456789012345678901234567890",
       "",
       "Sign in to Galileo Protocol",
@@ -42,7 +42,7 @@ test.describe("Wallet Auth Flows (API)", () => {
     ].join("\n");
 
     const res = await request.post(`${API_URL}/auth/siwe/verify`, {
-      data: { message, signature: "0xfakesig" },
+      data: { message, signature: "0xdeadbeef" },
       headers: {
         "Content-Type": "application/json",
         "X-Galileo-Client": "dashboard",
@@ -61,7 +61,7 @@ test.describe("Wallet Auth Flows (API)", () => {
     const nonce = (await nonceRes.json()).data.nonce;
 
     const message = [
-      "localhost wants you to sign in with your Ethereum account:",
+      "localhost:3000 wants you to sign in with your Ethereum account:",
       "0x1234567890123456789012345678901234567890",
       "",
       "Sign in to Galileo Protocol",
@@ -75,7 +75,7 @@ test.describe("Wallet Auth Flows (API)", () => {
 
     // First attempt - nonce consumed (will fail at signature step, but nonce is consumed)
     const res1 = await request.post(`${API_URL}/auth/siwe/verify`, {
-      data: { message, signature: "0xfakesig" },
+      data: { message, signature: "0xdeadbeef" },
       headers: {
         "Content-Type": "application/json",
         "X-Galileo-Client": "dashboard",
@@ -87,7 +87,7 @@ test.describe("Wallet Auth Flows (API)", () => {
 
     // Second attempt with same nonce - should be rejected as INVALID_NONCE
     const res2 = await request.post(`${API_URL}/auth/siwe/verify`, {
-      data: { message, signature: "0xfakesig" },
+      data: { message, signature: "0xdeadbeef" },
       headers: {
         "Content-Type": "application/json",
         "X-Galileo-Client": "dashboard",
