@@ -61,12 +61,14 @@ The Faucet component reads this variable and falls back to `http://localhost:400
 
 ---
 
-## Health check
+## Health checks
 
-The API exposes `GET /health` — Railway uses this for zero-downtime deploys.
+Railway and the Docker image use `GET /health/live` for liveness checks. Keep
+`GET /health` for deeper diagnostics because it also checks database, RPC, and
+wallet dependencies.
 
 ```bash
-curl https://<your-railway-domain>.railway.app/health
+curl https://<your-railway-domain>.railway.app/health/live
 # → {"status":"ok"}
 ```
 
