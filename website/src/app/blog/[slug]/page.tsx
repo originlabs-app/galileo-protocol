@@ -36,7 +36,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.frontmatter.title} | Galileo Blog`,
+    title: post.frontmatter.title,
     description: post.frontmatter.description,
     authors: [{ name: post.frontmatter.author }],
     alternates: {

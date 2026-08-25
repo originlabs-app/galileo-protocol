@@ -30,37 +30,147 @@ export interface BlogPostFrontmatter {
   published?: boolean;
 }
 
-/**
- * Normalize raw gray-matter frontmatter into BlogPostFrontmatter
- */
-function normalizeFrontmatter(data: Record<string, unknown>): BlogPostFrontmatter {
-  const rawFaq = Array.isArray(data.faq) ? data.faq : [];
-  const faq: BlogFaqItem[] = rawFaq
-    .filter(
-      (item): item is { question: unknown; answer: unknown } =>
-        typeof item === 'object' && item !== null
-    )
-    .map((item) => ({
-      question: String(item.question ?? ''),
-      answer: String(item.answer ?? ''),
-    }))
-    .filter((item) => item.question.length > 0 && item.answer.length > 0);
+const KEBAB_SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const ISO_DATE =
+  /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?)?$/;
 
-  const date = (data.date as string) || new Date().toISOString();
-  const excerpt = (data.excerpt as string) || '';
+const DESCRIPTION_MIN = 120;
+const DESCRIPTION_MAX = 158;
+const TITLE_MAX = 100;
+
+function blogError(filename: string, message: string): never {
+  throw new Error(
+    `Invalid blog frontmatter in content/blog/${filename}: ${message}`
+  );
+}
+
+function requireString(
+  data: Record<string, unknown>,
+  field: string,
+  filename: string
+): string {
+  const value = data[field];
+  if (typeof value !== 'string' || value.trim().length === 0) {
+    blogError(filename, `missing or empty required field "${field}"`);
+  }
+  return value;
+}
+
+function requireIsoDate(
+  value: unknown,
+  field: string,
+  filename: string
+): string {
+  if (
+    typeof value !== 'string' ||
+    !ISO_DATE.test(value) ||
+    Number.isNaN(Date.parse(value))
+  ) {
+    blogError(
+      filename,
+      `field "${field}" must be a quoted ISO date (YYYY-MM-DD), got ${JSON.stringify(value)}`
+    );
+  }
+  return value;
+}
+
+/**
+ * Validate raw gray-matter frontmatter and normalize it into
+ * BlogPostFrontmatter. Throws (failing the build) on any invalid frontmatter;
+ * defaults only apply to optional fields: `modified = date`,
+ * `description = excerpt`, `faq = []`.
+ */
+function normalizeFrontmatter(
+  data: Record<string, unknown>,
+  filename: string
+): BlogPostFrontmatter {
+  const slug = filename.replace(/\.mdx?$/, '');
+  if (!KEBAB_SLUG.test(slug)) {
+    blogError(filename, `slug "${slug}" must be kebab-case`);
+  }
+
+  const title = requireString(data, 'title', filename);
+  if (title.length > TITLE_MAX) {
+    blogError(filename, `title is ${title.length} chars (max ${TITLE_MAX})`);
+  }
+
+  const date = requireIsoDate(data.date, 'date', filename);
+  const modified =
+    data.modified === undefined ||
+    data.modified === null ||
+    data.modified === ''
+      ? date
+      : requireIsoDate(data.modified, 'modified', filename);
+  if (Date.parse(modified) < Date.parse(date)) {
+    blogError(filename, `modified (${modified}) is before date (${date})`);
+  }
+
+  const excerpt = requireString(data, 'excerpt', filename);
+  const description =
+    typeof data.description === 'string' && data.description.trim().length > 0
+      ? data.description
+      : excerpt;
+  if (
+    description.length < DESCRIPTION_MIN ||
+    description.length > DESCRIPTION_MAX
+  ) {
+    blogError(
+      filename,
+      `description must be ${DESCRIPTION_MIN}-${DESCRIPTION_MAX} chars, got ${description.length}`
+    );
+  }
+
+  const author = requireString(data, 'author', filename);
+
+  if (
+    !Array.isArray(data.tags) ||
+    !data.tags.every((tag) => typeof tag === 'string')
+  ) {
+    blogError(filename, 'field "tags" must be an array of strings');
+  }
+  const tags = data.tags as string[];
+
+  if (typeof data.published !== 'boolean') {
+    blogError(filename, 'missing required boolean field "published"');
+  }
+
+  let faq: BlogFaqItem[] = [];
+  if (data.faq !== undefined && data.faq !== null) {
+    if (!Array.isArray(data.faq)) {
+      blogError(filename, 'field "faq" must be an array of {question, answer}');
+    }
+    faq = (data.faq as unknown[]).map((item, index) => {
+      if (typeof item !== 'object' || item === null) {
+        blogError(filename, `faq[${index}] must be an object`);
+      }
+      const { question, answer } = item as { question?: unknown; answer?: unknown };
+      if (
+        typeof question !== 'string' ||
+        question.trim().length === 0 ||
+        typeof answer !== 'string' ||
+        answer.trim().length === 0
+      ) {
+        blogError(
+          filename,
+          `faq[${index}] needs a non-empty question and answer`
+        );
+      }
+      return { question, answer };
+    });
+  }
 
   return {
-    title: (data.title as string) || 'Untitled',
+    title,
     date,
-    modified: (data.modified as string) || date,
+    modified,
     excerpt,
-    description: (data.description as string) || excerpt,
-    author: (data.author as string) || 'Galileo Team',
-    tags: (data.tags as string[]) || [],
+    description,
+    author,
+    tags,
     coverImage: data.coverImage as string | undefined,
     coverImageAlt: data.coverImageAlt as string | undefined,
     faq,
-    published: data.published !== false, // Default to true if not specified
+    published: data.published,
   };
 }
 
@@ -103,7 +213,7 @@ export function getAllPosts(): BlogPostMeta[] {
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const { data } = matter(fileContent);
 
-      const frontmatter = normalizeFrontmatter(data);
+      const frontmatter = normalizeFrontmatter(data, filename);
 
       return {
         slug,
@@ -150,7 +260,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
-  const frontmatter = normalizeFrontmatter(data);
+  const frontmatter = normalizeFrontmatter(data, path.basename(filePath));
 
   // Check if post is unpublished in production
   if (process.env.NODE_ENV === 'production' && !frontmatter.published) {

@@ -28,12 +28,12 @@ Frontmatter contract (all fields unless noted):
 
 ```yaml
 ---
-title: "..."
+title: "..."                 # SERP/H1 title — aim ≤60 chars, hard max 100
 date: "YYYY-MM-DD"          # first publication
 modified: "YYYY-MM-DD"      # optional, defaults to date — bump on every meaningful edit
 author: "Pierre Beunardeau"
 excerpt: "..."              # teaser shown on /blog and in llms-full.txt
-description: "..."          # optional, defaults to excerpt — meta/OG description
+description: "..."          # optional, defaults to excerpt — meta/OG description, 120-158 chars
 tags: [dpp, espr]           # lowercase list
 published: true
 coverImage: "/images/..."   # optional — OG/Twitter image; default generated OG image otherwise
@@ -54,6 +54,7 @@ Editorial contract for every article:
 Publication checklist:
 
 - [ ] Frontmatter complete (see contract above), `date` matches the filename prefix.
+- [ ] Build gates on frontmatter (enforced by `src/lib/blog.ts`, build fails on violation): all required fields present, `title` ≤100 chars (aim ≤60), `description` 120-158 chars (or `excerpt` in that range when used as fallback), `date`/`modified` ISO with `modified >= date`, kebab-case filename slug, well-formed `faq`.
 - [ ] Facts and dates verified against primary sources, linked inline.
 - [ ] Direct answer present in the first 2 sentences.
 - [ ] `cd website && npm run lint && npm run build` green.
@@ -62,8 +63,12 @@ Publication checklist:
 
 ### SEO/GEO harness (do not regress)
 
-- `src/lib/blog.ts` normalizes frontmatter (defaults: `modified = date`, `description = excerpt`, `faq = []`).
+- `src/lib/blog.ts` validates frontmatter strictly (build fails on missing required fields, non-ISO or incoherent dates, non-kebab slug, out-of-range title/description, malformed faq); defaults only for optional fields: `modified = date`, `description = excerpt`, `faq = []`.
 - `src/app/blog/[slug]/page.tsx` emits BlogPosting + BreadcrumbList (+ FAQPage) JSON-LD and article OG metas.
 - `src/app/sitemap.ts` enumerates all routes including every `/docs/*` and `/specifications/*` page.
 - `src/app/robots.ts` explicitly allows the main AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, …).
 - `src/app/llms.txt/route.ts` and `src/app/llms-full.txt/route.ts` (`force-static`) are generated from `src/lib/llms.ts` — update `MAIN_PAGES` there when adding a main page.
+
+### Known debt
+
+- **Canonicals**: an external audit (2026-08) found 83 of 96 canonical URLs inconsistent with the sitemap. This is pre-existing debt on non-blog pages (blog pages are clean). Deliberately not fixed yet — to be handled by a dedicated future lot.

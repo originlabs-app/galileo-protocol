@@ -1,0 +1,138 @@
+---
+title: "MiCA Transition Ends: RWA Tokenization Leaves the Grey Zone"
+date: "2026-08-25"
+modified: "2026-08-25"
+author: "Pierre Beunardeau"
+excerpt: "Since 1 July 2026, the MiCA transitional period has ended across the entire EU: no authorisation, no service. Here is the decision framework — which rulebook applies to your token — a reusable scoping checklist, a bounded luxury case, and what MiCA deliberately leaves open, with care for LEOX holders."
+description: "The MiCA grandfathering window closed on 1 July 2026 across the EU as on-chain RWAs hit $33.5 billion. What changes for tokenization, luxury and LEOX."
+tags:
+  - mica
+  - rwa
+  - tokenization
+  - regulation
+  - leox
+published: true
+faq:
+  - question: "When did the MiCA transitional period end?"
+    answer: "Everywhere in the EU on 1 July 2026 at the latest. Article 143(3) of Regulation (EU) 2023/1114 allowed CASPs already operating under national law before 30 December 2024 to continue until they were granted or refused a MiCA authorisation, or until 1 July 2026, whichever came first. Member states could shorten that window: several (including the Netherlands, Finland, Hungary, Latvia, Poland and Slovenia) chose six months, ending 30 June 2025, and others chose twelve months, ending 30 December 2025."
+  - question: "Does MiCA regulate tokenized real-world assets?"
+    answer: "It depends on the legal nature of the token. Crypto-assets that qualify as financial instruments under MiFID II are excluded from MiCA's scope and fall under securities law, including the EU DLT Pilot Regime (Regulation (EU) 2022/858). Other tokenized assets — asset-referenced tokens, e-money tokens and utility tokens — are directly in MiCA's scope, as are the services around them: custody, exchange, trading platforms and advice."
+  - question: "What concretely changed for crypto service providers on 1 July 2026?"
+    answer: "The situation became binary: a provider either holds a CASP authorisation granted under Article 63 of MiCA by a national competent authority — valid across the whole EU through passporting — or it must cease providing crypto-asset services to EU clients. ESMA maintains an interim register of authorised CASPs and of non-compliant entities."
+  - question: "Does MiCA apply to luxury goods tokenization and Digital Product Passports?"
+    answer: "Not directly to the passport itself. A Digital Product Passport or authenticity certificate is product data governed by the ESPR, not a crypto-asset. MiCA becomes relevant when tokens linked to physical goods are offered or traded as crypto-assets, or when regulated services — custody, exchange, transfer — are provided around them. The two frameworks are complementary: ESPR standardises the product data layer, MiCA standardises the market conduct layer."
+  - question: "Does full MiCA application mean a token like LEOX is 'approved' by the EU?"
+    answer: "No. MiCA does not approve or endorse individual crypto-assets. White papers are notified to competent authorities, not validated by them, and ESMA states this explicitly on its register. Regulatory clarity defines the rules of the game; it says nothing about the merits or future value of any token. Nothing in this article is investment advice."
+---
+
+Since 1 July 2026, the first question for any tokenization project touching the EU is no longer "is this allowed?" but "which rulebook applies to this token?" — and that question must be answered by a legal qualification exercise done before any technical or commercial decision. The cost of skipping it is now binary: the services around your token are either provided by authorised entities, or they cannot be provided to EU clients at all.
+
+## What ended on 1 July 2026
+
+[MiCA — Regulation (EU) 2023/1114](https://eur-lex.europa.eu/eli/reg/2023/1114/oj) entered into force in June 2023. Its stablecoin titles applied from 30 June 2024 and the full regulation from 30 December 2024. But one clause kept a door half-open: **Article 143(3)**, the grandfathering provision. It allowed crypto-asset service providers (CASPs) already operating legally under national regimes before 30 December 2024 to continue "until 1 July 2026 or until they are granted or refused an authorisation pursuant to Article 63, whichever is sooner."
+
+That window was deliberately non-uniform. Member states could shorten it or skip it entirely, and they did: the Netherlands, Finland, Hungary, Latvia, Poland and Slovenia opted for six months (closed 30 June 2025), others — Spain among them — for twelve months (closed 30 December 2025). **1 July 2026 was the hard outer limit, everywhere.** The [European Securities and Markets Authority (ESMA)](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica) published the list of national grandfathering periods, maintains the interim register of authorised CASPs — and now also lists non-compliant entities.
+
+The situation is therefore binary since that date: authorised under Article 63 by a national competent authority, with an EU-wide passport, or out of the EU market. For eighteen months, "MiCA compliance" was a roadmap item; it is now an operating condition. Any platform, custodian or exchange still serving EU clients without authorisation is not in a grey zone — it is on the wrong side of a bright line that ESMA's register makes publicly checkable.
+
+## Where RWA tokenization stood when the window closed
+
+The timing matters because the market did not wait for the rules. According to the [Stobox State of RWA Tokenization — 2026 Mid-Year Report](https://www.stobox.io/reports/state-of-rwa-2026) (data as of 10 July 2026):
+
+- **$33.5 billion** of on-chain RWA value excluding stablecoins (rwa.xyz methodology, July 2026) — roughly **4× the level of early 2025**.
+- Close to **995,000 on-chain RWA holders** across 167 tokenization platforms and 30+ networks.
+- Ethereum remains the centre of gravity with **47.9%** of RWA value.
+- The largest segments are tokenized US Treasuries and money-market funds ($13.4–15.2 billion) and private credit ($8–18.9 billion depending on methodology).
+
+The same report lists "MiCA's transitional period ends across the EU" as one of July 2026's regulatory milestones — alongside the first tokenization company IPO and ERC-7943 reaching Final status as an Ethereum RWA standard. It also carries an honest caveat worth repeating: **issuance is not liquidity**. Much of the tokenized credit and Treasury market still operates in mint-and-redeem cycles rather than genuine secondary trading. Regulatory clarity removes the "is this allowed?" question; it does not manufacture a market. Keep that caveat in mind — it returns in the limits section below.
+
+## The first decision: which rulebook applies to your token
+
+This is where most commentary goes wrong, and it is where a tokenization project should spend its first legal euro.
+
+MiCA defines a crypto-asset broadly — a digital representation of a value or of a right that can be transferred and stored electronically using distributed-ledger technology (Article 3(1)(5)). If a token cannot be transferred to other holders at all, it falls outside the definition itself. From there, the regulation works by **exclusion**: MiCA regulates crypto-assets *not already covered by other EU financial services law* — see the [European Commission's digital finance page](https://finance.ec.europa.eu/digital-finance/crypto-assets_en).
+
+Per **Article 2(4)** of the regulation, MiCA does not apply to crypto-assets that qualify as:
+
+- **financial instruments** as defined by [MiFID II — Directive 2014/65/EU](https://eur-lex.europa.eu/eli/dir/2014/65/oj): transferable securities, money-market instruments, units in collective investment undertakings, derivatives. A tokenized security stays a security — it is governed by securities law and, for DLT-based market infrastructure, by the [DLT Pilot Regime — Regulation (EU) 2022/858](https://eur-lex.europa.eu/eli/reg/2022/858/oj), in application since March 2023;
+- **deposits and structured deposits**;
+- **funds**, except where they qualify as e-money tokens;
+- **securitisation positions** — pooling and tranching tokenized assets is [Regulation (EU) 2017/2402](https://eur-lex.europa.eu/eli/reg/2017/2402/oj) territory, not MiCA's;
+- **insurance, reinsurance and pension products**.
+
+Per **Article 2(3)**, crypto-assets that are **unique and not fungible** with other crypto-assets are also out of scope — the NFT carve-out. It comes with an explicit anti-circumvention warning in the regulation's recitals: issuing assets in a large series or collection is an indicator of fungibility, and fractionalising a unique asset brings the fractions back into scope. The label on the token does not decide; its actual characteristics do.
+
+What MiCA covers directly is everything left: **asset-referenced tokens** (ARTs), **e-money tokens** (EMTs), and the broad residual category of "other" crypto-assets — including **utility tokens** — plus every service around them: custody and administration, exchange, operation of trading platforms, execution of orders, advice, portfolio management, transfer services.
+
+To help authorities and market participants draw the brightest of these lines, ESMA published its **Guidelines on the conditions and criteria for the qualification of crypto-assets as financial instruments** (final report, December 2024 — referenced on [ESMA's MiCA page](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica)). The guidelines matter because the MiFID/MiCA boundary is the most consequential fork in the checklist below: a token that drifts into financial-instrument territory leaves MiCA entirely and inherits prospectus, conduct and market-infrastructure obligations instead.
+
+## Checklist: is your token inside MiCA's perimeter?
+
+A reusable scoping exercise, in the order the questions should be asked. It is a reading grid, not legal advice — the final qualification belongs to counsel in the relevant member state.
+
+1. **Is it a crypto-asset at all?** Digital representation of value or a right, transferable and storable via DLT (Art. 3(1)(5)). A non-transferable certificate — say, a product passport locked to the item — is not a crypto-asset. If it cannot move, stop here: outside MiCA.
+2. **Is it genuinely unique and non-fungible?** If yes, Art. 2(3) takes it out — unless it is fractionalised, or issued as part of a series or collection in a way that makes the "unique" label artificial. Both bring it back in.
+3. **Does it qualify as a MiFID II financial instrument?** Does it confer ownership or debt claims, profit participation, voting or dividend-like rights, or exposure to an underlying? If yes: outside MiCA; securities law applies, and any DLT trading or settlement infrastructure should look at the DLT Pilot Regime. Use the ESMA guidelines as the reference text for this step.
+4. **Is it e-money, a deposit, a fund unit, a securitisation position, or an insurance/pension product?** Each has its own regime listed in Art. 2(4). If yes: outside MiCA, into that regime.
+5. **If none of the above: it is in MiCA.** Now classify it. Pegged to a single official currency → e-money token. Maintaining value by referencing other values, rights or currencies → asset-referenced token. Everything else — including utility tokens that grant access to a good or service → the residual category, with a white paper to notify before any public offer or admission to trading.
+6. **Who does what around it?** Custody, exchange, platform operation, advice, transfers: each is a regulated crypto-asset service requiring CASP authorisation under Article 63 — since 1 July 2026, without exception. Map every actor in your value chain to this list.
+7. **Where do the two rails meet?** If the token also carries product data (authenticity, provenance, service history), the ESPR/DPP framework governs that data layer independently. Both can apply to the same object without conflict — one to the data, one to the market conduct.
+
+## Applying the checklist: tokenizing a luxury watch
+
+A bounded case, deliberately concrete. A maison wants to issue, for each watch of a flagship line (5,000 units a year), a transferable digital twin used for authentication, service history, and ownership transfer on resale. Walk the checklist:
+
+1. **Crypto-asset?** Yes — the twin is transferable by design and stored on a DLT. Had the maison made it non-transferable (a pure passport bound to the watch forever), the exercise would stop here: ESPR territory only, no MiCA.
+2. **Unique and non-fungible?** Each twin is tied to one physical watch with a unique serial — the Art. 2(3) carve-out is plausibly available. But two design choices would destroy it: selling **fractions** of a twin (100 investors each holding 1% of a watch), or minting thousands of interchangeable twins marketed as an investment collection. The first is clearly fractionalisation; the second is exactly the "series or collection" indicator the recitals flag.
+3. **Financial instrument?** If the twin is marketed with an expectation of profit — "buy the twin, watches appreciate, we will help you resell" — counsel must test it against transferable-security and collective-investment criteria using the ESMA guidelines. If it is a pure proof of authenticity and ownership with no investment promise, it stays clear of MiFID.
+4. **E-money, deposit, securitisation?** No — as long as nobody pools watches into tranches.
+5. **Classification:** the twin, if fungibility questions are resolved, lands in MiCA's residual category as a utility-type crypto-asset; a public offer triggers the white-paper notification obligation.
+6. **Actors:** if the maison — or more realistically a specialised platform — offers custody of the twins, or runs a resale marketplace where they are exchanged, those are CASP services. Since 1 July 2026, that platform must be authorised. The maison's vendor-selection question is no longer "who has the best tech?" but "who is on ESMA's register?".
+7. **Two rails:** the watch's passport data (materials, service history) lives under the ESPR; the twin's circulation lives under MiCA. Same object, two defined rulebooks — which is precisely what "the grey zone is closed" means in practice.
+
+The same physical watch can therefore sit under three different regimes — outside MiCA entirely, inside MiCA as a utility token, or outside MiCA as a financial instrument — depending entirely on how the token is designed and marketed. That is why the qualification exercise comes first.
+
+## What MiCA does not settle
+
+The regulation closes the authorisation question. It deliberately, or by silence, leaves several others open:
+
+- **Liquidity.** MiCA licenses intermediaries; it does not create buyers. As the Stobox report notes, much of the $33.5 billion on-chain RWA market still runs mint-and-redeem rather than genuine secondary trading. A compliant token with no market is a compliant token with no market.
+- **Securitisation.** Pooling tokenized assets — luxury portfolios included — into tranches sits under Regulation (EU) 2017/2402, with its own due-diligence, risk-retention and transparency rules. MiCA neither enables nor simplifies it.
+- **NFT edge cases.** The Art. 2(3) carve-out is assessed case by case. Fractional NFTs are in scope; large "collections" may be too. Projects that relabel fungible tokens as NFTs to escape MiCA are exactly what the recitals warn against, and ESMA has signalled it will look through the label.
+- **No approval, no endorsement.** MiCA does not certify tokens. White papers are *notified* to national authorities, not validated by them, and ESMA states this explicitly on its register. "MiCA compliant" on a website is a claim, not a credential.
+- **Decentralisation.** Services provided in a fully decentralised manner, without any intermediary, fall outside MiCA — but "fully" is doing heavy lifting, and the regulation gives no bright-line test. Most real-world projects have an identifiable operator and cannot rely on this.
+- **Supervisory convergence.** Authorisation is national (Article 63), passporting is EU-wide, but supervisory practice across 27 authorities will take years to converge. The rulebook is uniform; its enforcement culture is not yet.
+
+## What this changes for LEOX holders
+
+With care, and without any form of financial advice: the end of the transitional period does not "approve" LEOX or any other token. MiCA does not work that way — white papers are notified, not endorsed, and ESMA says so explicitly on its register.
+
+What holders and users of a utility token in a tokenization ecosystem actually gain is structural: the intermediaries they interact with operate under a single EU rulebook; the classification questions that made platforms hesitant are settled by published guidelines; and building consumer-facing services on utility tokens is now a compliance exercise with known parameters rather than a legal bet. Clarity is an operating condition. It is not a promise about value, and nothing in this article constitutes investment advice.
+
+## Galileo's take
+
+**Galileo's take: in the post-transition market, the moat is not the token — it is the qualification file.** Every serious project will soon have access to the same authorised custodians, the same exchanges, the same passported infrastructure. What will separate durable tokenization projects from relaunches is whether the legal nature of the token was decided deliberately, documented against the ESMA guidelines, and designed to survive the Art. 2(3)/2(4) fork without rebranding. The projects that treated compliance plumbing as a first-class design constraint before July 2026 are now building; the ones that treated it as a launch blocker are rewriting white papers. For physical-asset tokenization specifically, we read the ESPR/MiCA split as a feature, not a burden: product truth on one rail, market conduct on the other, and no ambiguity about which rulebook owns which question.
+
+*Galileo Protocol is an open protocol for the authenticity and tokenization of physical assets — luxury goods first — with transferable digital twins, verifiable identity and compliance rules encoded at the token level, designed for exactly this two-rail world of ESPR product data and MiCA market conduct. Explore the [Galileo documentation](/docs) to see how a standards-based tokenization flow works end to end, or [contact us](mailto:info@galileoprotocol.io) to discuss what post-MiCA clarity means for your project. Nothing in this article is investment advice.*
+
+## FAQ
+
+### When did the MiCA transitional period end?
+
+Everywhere in the EU on 1 July 2026 at the latest. Article 143(3) allowed pre-existing CASPs to continue until their authorisation was granted or refused, or until that date, whichever came first. Several member states shortened the window to six months (closed 30 June 2025) or twelve months (closed 30 December 2025).
+
+### Does MiCA regulate tokenized real-world assets?
+
+It depends on the token's legal nature. Tokens qualifying as financial instruments under MiFID II are excluded from MiCA and fall under securities law, including the DLT Pilot Regime. Asset-referenced tokens, e-money tokens and utility tokens — and all services around them — are in MiCA's scope.
+
+### What concretely changed for crypto service providers on 1 July 2026?
+
+The situation became binary: authorised under Article 63 of MiCA — with EU-wide passporting — or out of the EU market. ESMA maintains the register of authorised CASPs and of non-compliant entities.
+
+### Does MiCA apply to luxury goods tokenization and Digital Product Passports?
+
+Not to the passport itself, which is ESPR territory. MiCA applies when tokens linked to physical goods are offered or traded as crypto-assets, or when regulated services are provided around them. The two frameworks are complementary.
+
+### Does full MiCA application mean a token like LEOX is "approved" by the EU?
+
+No. MiCA does not approve or endorse crypto-assets; white papers are notified, not validated. Regulatory clarity defines the rules of the game and says nothing about any token's merits or future value. This article is not investment advice.

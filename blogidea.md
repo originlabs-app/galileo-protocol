@@ -20,10 +20,8 @@ Idea format:
 ### [drafted] The EU Digital Product Passport registry is live: what luxury brands must do now
 - Article written: `website/content/blog/2026-08-25-eu-dpp-registry-live.mdx` — awaiting deploy (GO Pierre).
 
-### [selected] End of the MiCA transitional period: RWA tokenization leaves the grey zone
-- **Angle**: since 1 July 2026 MiCA fully applies across the EU while on-chain RWA quadrupled in 18 months ($33.5B, Stobox mid-year report). What regulatory clarity concretely changes for a tokenization protocol like Galileo and for LEOX holders.
-- **Sources**: stobox.io/reports/state-of-rwa-2026 (10/07/2026), eco.com MiCA guide (31/07/2026).
-- **Why now**: MiCA milestone just passed — still hot, barely covered in French/accessible English.
+### [drafted] End of the MiCA transitional period: RWA tokenization leaves the grey zone
+- Article written: `website/content/blog/2026-08-25-mica-transitional-period-rwa.mdx` — awaiting deploy (GO Pierre).
 
 ### [idea] $467 billion of counterfeiting: why visual authentication is dead (and what replaces it)
 - **Angle**: "super-fakes" make eye-based expertise unreliable; verifiable product identity becomes a legal requirement via the EU DPP. Problem-first, then Galileo's verifiable-proof approach (NFC/QR scan → on-chain record).
