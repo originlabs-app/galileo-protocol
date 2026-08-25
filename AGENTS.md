@@ -72,3 +72,4 @@ Publication checklist:
 ### Known debt
 
 - **Canonicals**: an external audit (2026-08) found 83 of 96 canonical URLs inconsistent with the sitemap. This is pre-existing debt on non-blog pages (blog pages are clean). Deliberately not fixed yet — to be handled by a dedicated future lot.
+- **Dependencies (2026-08-25, dedicated security batch required)**: `npm audit` in `website/` reports 7 vulnerabilities (1 low, 6 high). Not introduced by the blog/SEO commits; do not fix inside blog/SEO work.
