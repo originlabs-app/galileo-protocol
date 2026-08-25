@@ -3,16 +3,65 @@ import path from 'path';
 import matter from 'gray-matter';
 
 /**
+ * A single FAQ entry for structured data (FAQPage JSON-LD)
+ */
+export interface BlogFaqItem {
+  question: string;
+  answer: string;
+}
+
+/**
  * Blog post frontmatter and content types
  */
 export interface BlogPostFrontmatter {
   title: string;
   date: string;
+  /** ISO date of last modification, defaults to `date` */
+  modified: string;
   excerpt: string;
+  /** Meta/OG description, defaults to `excerpt` */
+  description: string;
   author: string;
   tags: string[];
   coverImage?: string;
+  /** Alt text for the cover image, only meaningful with coverImage */
+  coverImageAlt?: string;
+  faq: BlogFaqItem[];
   published?: boolean;
+}
+
+/**
+ * Normalize raw gray-matter frontmatter into BlogPostFrontmatter
+ */
+function normalizeFrontmatter(data: Record<string, unknown>): BlogPostFrontmatter {
+  const rawFaq = Array.isArray(data.faq) ? data.faq : [];
+  const faq: BlogFaqItem[] = rawFaq
+    .filter(
+      (item): item is { question: unknown; answer: unknown } =>
+        typeof item === 'object' && item !== null
+    )
+    .map((item) => ({
+      question: String(item.question ?? ''),
+      answer: String(item.answer ?? ''),
+    }))
+    .filter((item) => item.question.length > 0 && item.answer.length > 0);
+
+  const date = (data.date as string) || new Date().toISOString();
+  const excerpt = (data.excerpt as string) || '';
+
+  return {
+    title: (data.title as string) || 'Untitled',
+    date,
+    modified: (data.modified as string) || date,
+    excerpt,
+    description: (data.description as string) || excerpt,
+    author: (data.author as string) || 'Galileo Team',
+    tags: (data.tags as string[]) || [],
+    coverImage: data.coverImage as string | undefined,
+    coverImageAlt: data.coverImageAlt as string | undefined,
+    faq,
+    published: data.published !== false, // Default to true if not specified
+  };
 }
 
 export interface BlogPost {
@@ -54,15 +103,7 @@ export function getAllPosts(): BlogPostMeta[] {
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const { data } = matter(fileContent);
 
-      const frontmatter: BlogPostFrontmatter = {
-        title: data.title || 'Untitled',
-        date: data.date || new Date().toISOString(),
-        excerpt: data.excerpt || '',
-        author: data.author || 'Galileo Team',
-        tags: data.tags || [],
-        coverImage: data.coverImage,
-        published: data.published !== false, // Default to true if not specified
-      };
+      const frontmatter = normalizeFrontmatter(data);
 
       return {
         slug,
@@ -109,15 +150,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
 
-  const frontmatter: BlogPostFrontmatter = {
-    title: data.title || 'Untitled',
-    date: data.date || new Date().toISOString(),
-    excerpt: data.excerpt || '',
-    author: data.author || 'Galileo Team',
-    tags: data.tags || [],
-    coverImage: data.coverImage,
-    published: data.published !== false,
-  };
+  const frontmatter = normalizeFrontmatter(data);
 
   // Check if post is unpublished in production
   if (process.env.NODE_ENV === 'production' && !frontmatter.published) {

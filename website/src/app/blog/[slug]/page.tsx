@@ -3,7 +3,11 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getAllPostSlugs, getPostBySlug, formatDate } from '@/lib/blog';
-import { Calendar, User, ArrowLeft } from 'lucide-react';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { Calendar, User, ArrowLeft, ChevronRight } from 'lucide-react';
+
+const SITE_URL = 'https://www.galileoprotocol.io';
+const TWITTER_SITE = '@GalileoProtocol';
 
 /**
  * Generate static params for all blog posts
@@ -33,24 +37,41 @@ export async function generateMetadata({
 
   return {
     title: `${post.frontmatter.title} | Galileo Blog`,
-    description: post.frontmatter.excerpt,
+    description: post.frontmatter.description,
     authors: [{ name: post.frontmatter.author }],
     alternates: {
       canonical: `/blog/${slug}`,
     },
     openGraph: {
       title: post.frontmatter.title,
-      description: post.frontmatter.excerpt,
+      description: post.frontmatter.description,
       url: `/blog/${slug}`,
       type: 'article',
       publishedTime: post.frontmatter.date,
+      modifiedTime: post.frontmatter.modified,
       authors: [post.frontmatter.author],
       tags: post.frontmatter.tags,
+      // When no cover image is set, the file-based opengraph-image
+      // convention of this route provides the default OG image.
+      ...(post.frontmatter.coverImage
+        ? {
+            images: [
+              {
+                url: post.frontmatter.coverImage,
+                alt: post.frontmatter.coverImageAlt || post.frontmatter.title,
+              },
+            ],
+          }
+        : {}),
     },
     twitter: {
       card: 'summary_large_image',
+      site: TWITTER_SITE,
       title: post.frontmatter.title,
-      description: post.frontmatter.excerpt,
+      description: post.frontmatter.description,
+      ...(post.frontmatter.coverImage
+        ? { images: [post.frontmatter.coverImage] }
+        : {}),
     },
   };
 }
@@ -156,9 +177,112 @@ export default async function BlogPostPage({
 
   const { frontmatter, content } = post;
 
+  const articleUrl = `${SITE_URL}/blog/${slug}`;
+  const imageUrl = frontmatter.coverImage
+    ? new URL(frontmatter.coverImage, SITE_URL).toString()
+    : `${SITE_URL}/blog/${slug}/opengraph-image`;
+
+  const jsonLdGraph: Record<string, unknown>[] = [
+    {
+      '@type': 'BlogPosting',
+      '@id': `${articleUrl}#article`,
+      headline: frontmatter.title,
+      description: frontmatter.description,
+      image: imageUrl,
+      datePublished: frontmatter.date,
+      dateModified: frontmatter.modified,
+      inLanguage: 'en',
+      author: {
+        '@type': 'Person',
+        name: frontmatter.author,
+      },
+      publisher: {
+        '@id': `${SITE_URL}/#organization`,
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': articleUrl,
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: SITE_URL,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: `${SITE_URL}/blog`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: frontmatter.title,
+          item: articleUrl,
+        },
+      ],
+    },
+  ];
+
+  if (frontmatter.faq.length > 0) {
+    jsonLdGraph.push({
+      '@type': 'FAQPage',
+      mainEntity: frontmatter.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    });
+  }
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': jsonLdGraph,
+  };
+
   return (
     <div className="ocean-background min-h-screen">
+      <JsonLd data={jsonLd} />
       <main className="container pt-40 pb-16 md:pb-24">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex flex-wrap items-center gap-2 text-sm text-[var(--platinum-dim)]">
+            <li>
+              <Link
+                href="/"
+                className="hover:text-[var(--cyan-primary)] transition-colors"
+              >
+                Home
+              </Link>
+            </li>
+            <li aria-hidden="true">
+              <ChevronRight className="w-4 h-4 opacity-50" />
+            </li>
+            <li>
+              <Link
+                href="/blog"
+                className="hover:text-[var(--cyan-primary)] transition-colors"
+              >
+                Blog
+              </Link>
+            </li>
+            <li aria-hidden="true">
+              <ChevronRight className="w-4 h-4 opacity-50" />
+            </li>
+            <li aria-current="page" className="text-[var(--platinum)] truncate max-w-[16rem] md:max-w-md">
+              {frontmatter.title}
+            </li>
+          </ol>
+        </nav>
+
         {/* Back link */}
         <Link
           href="/blog"
