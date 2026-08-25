@@ -36,7 +36,9 @@ const ISO_DATE =
 
 const DESCRIPTION_MIN = 120;
 const DESCRIPTION_MAX = 158;
-const TITLE_MAX = 100;
+// The title is rendered as the full SERP title (title.absolute, no layout
+// template suffix), so it must fit the ≤60-char SERP budget on its own.
+const TITLE_MAX = 60;
 
 function blogError(filename: string, message: string): never {
   throw new Error(

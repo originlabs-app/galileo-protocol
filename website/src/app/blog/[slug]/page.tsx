@@ -36,7 +36,10 @@ export async function generateMetadata({
   }
 
   return {
-    title: post.frontmatter.title,
+    // The frontmatter title is the full SERP title: bypass the root
+    // layout template so it renders without the " | Galileo Protocol"
+    // suffix (brand stays present via openGraph.siteName).
+    title: { absolute: post.frontmatter.title },
     description: post.frontmatter.description,
     authors: [{ name: post.frontmatter.author }],
     alternates: {
@@ -46,6 +49,7 @@ export async function generateMetadata({
       title: post.frontmatter.title,
       description: post.frontmatter.description,
       url: `/blog/${slug}`,
+      siteName: 'Galileo Protocol',
       type: 'article',
       publishedTime: post.frontmatter.date,
       modifiedTime: post.frontmatter.modified,
