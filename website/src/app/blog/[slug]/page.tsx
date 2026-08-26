@@ -297,7 +297,7 @@ export default async function BlogPostPage({
           Back to Blog
         </Link>
 
-        <article className="max-w-3xl mx-auto">
+        <article className="w-full">
           {/* Header */}
           <header className="mb-12">
             {/* Tags */}
