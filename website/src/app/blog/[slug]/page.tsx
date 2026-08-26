@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
 import { getAllPostSlugs, getPostBySlug, formatDate } from '@/lib/blog';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Calendar, User, ArrowLeft, ChevronRight } from 'lucide-react';
@@ -338,7 +339,11 @@ export default async function BlogPostPage({
 
           {/* Content */}
           <div className="prose prose-invert max-w-none">
-            <MDXRemote source={content} components={mdxComponents} />
+            <MDXRemote
+              source={content}
+              components={mdxComponents}
+              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            />
           </div>
 
           {/* Footer */}
