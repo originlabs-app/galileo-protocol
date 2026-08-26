@@ -334,6 +334,20 @@ export default async function BlogPostPage({
             </p>
           </header>
 
+          {/* Cover hero (optional): quiet, full container width, below the header */}
+          {frontmatter.coverImage && (
+            <figure className="mb-12">
+              {/* eslint-disable-next-line @next/next/no-img-element -- static asset from public/, sized by CSS */}
+              <img
+                src={frontmatter.coverImage}
+                alt={frontmatter.coverImageAlt || frontmatter.title}
+                width={1200}
+                height={630}
+                className="w-full h-auto rounded-xl border border-[rgba(0,255,255,0.1)]"
+              />
+            </figure>
+          )}
+
           {/* Divider */}
           <hr className="border-t border-[rgba(229,229,229,0.1)] mb-12" />
 

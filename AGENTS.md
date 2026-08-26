@@ -36,7 +36,7 @@ excerpt: "..."              # teaser shown on /blog and in llms-full.txt
 description: "..."          # optional, defaults to excerpt — meta/OG description, 120-158 chars
 tags: [dpp, espr]           # lowercase list
 published: true
-coverImage: "/images/..."   # optional — OG/Twitter image; default generated OG image otherwise
+coverImage: "/images/..."   # optional in the loader, required for new articles (see Blog visual contract); default generated OG image otherwise
 coverImageAlt: "..."        # optional, only with coverImage
 faq:                        # optional, drives FAQPage JSON-LD — keep empty if none
   - question: "..."
@@ -60,6 +60,16 @@ Publication checklist:
 - [ ] `cd website && npm run lint && npm run build` green.
 - [ ] Spot-check the built article HTML: canonical, `og:type=article`, JSON-LD BlogPosting/BreadcrumbList (+ FAQPage if faq).
 - [ ] `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/llms-full.txt` regenerated (automatic at build).
+
+### Blog visual contract
+
+Every new article ships with visuals, generated with a native image-generation tool (`image_gen`/`$imagegen` via an agent CLI — never a stock photo, never a hand-drawn placeholder):
+
+- [ ] **Cover image** referenced by the `coverImage` frontmatter field: JPEG, exactly 1200×630, ≤ 150 KB, stored in `website/public/images/blog/` and served from `/images/blog/`. Used as OG/Twitter image and as the article hero. `src/lib/blog.ts` fails the build if the file is missing or overweight.
+- [ ] **At least one body visual** per article; prefer inline SVG for anything data-driven (timelines, grids, comparisons) so it stays crisp and token-consistent.
+- [ ] **No text, letters, numbers or logos baked into generated images** (hallucinated glyphs are a factual-error risk). Text lives in the article, not in the pixels.
+- [ ] **Style derived from the brand tokens** (`website/src/app/globals.css`): dark obsidian canvas (`#000810`), cyan bioluminescent accents (`#00FFFF`/`#22D3EE`), editorial photo or premium tech-noir illustration. Avoid literal flags and cliché stock metaphors.
+- [ ] Inspect every final image before committing; regenerate on any artefact, off-topic content or embedded text.
 
 ### SEO/GEO harness (do not regress)
 

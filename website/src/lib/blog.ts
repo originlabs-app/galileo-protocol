@@ -40,6 +40,10 @@ const DESCRIPTION_MAX = 158;
 // template suffix), so it must fit the ≤60-char SERP budget on its own.
 const TITLE_MAX = 60;
 
+// Cover images live in public/ and are served as-is: keep them light enough
+// for OG crawlers and social cards.
+const COVER_IMAGE_MAX_BYTES = 150 * 1024;
+
 function blogError(filename: string, message: string): never {
   throw new Error(
     `Invalid blog frontmatter in content/blog/${filename}: ${message}`
@@ -161,6 +165,30 @@ function normalizeFrontmatter(
     });
   }
 
+  let coverImage: string | undefined;
+  if (data.coverImage !== undefined && data.coverImage !== null) {
+    if (typeof data.coverImage !== 'string' || !data.coverImage.startsWith('/')) {
+      blogError(
+        filename,
+        'field "coverImage" must be a site-rooted path like "/images/blog/x.jpg"'
+      );
+    }
+    coverImage = data.coverImage;
+    const coverPath = path.join(process.cwd(), 'public', coverImage);
+    if (!fs.existsSync(coverPath)) {
+      blogError(filename, `coverImage "${coverImage}" not found in public/`);
+    }
+    const coverSize = fs.statSync(coverPath).size;
+    if (coverSize > COVER_IMAGE_MAX_BYTES) {
+      blogError(
+        filename,
+        `coverImage "${coverImage}" is ${Math.ceil(coverSize / 1024)} KB (max ${COVER_IMAGE_MAX_BYTES / 1024} KB)`
+      );
+    }
+  }
+  const coverImageAlt =
+    typeof data.coverImageAlt === 'string' ? data.coverImageAlt : undefined;
+
   return {
     title,
     date,
@@ -169,8 +197,8 @@ function normalizeFrontmatter(
     description,
     author,
     tags,
-    coverImage: data.coverImage as string | undefined,
-    coverImageAlt: data.coverImageAlt as string | undefined,
+    coverImage,
+    coverImageAlt,
     faq,
     published: data.published,
   };
