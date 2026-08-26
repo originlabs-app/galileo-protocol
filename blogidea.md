@@ -3,6 +3,15 @@
 Idea log for the blog. Every brainstormed idea lands here before drafting.
 Workflow: `idea` → `selected` → `drafted` (website/content/blog/) → `published` (add date).
 See AGENTS.md for the frontmatter and editorial contract.
+Before every brainstorm, run the news watch (below) and log the session as a dated section.
+
+## News watch
+
+Decision rules and commands: the "News watch (ideation)" section in `AGENTS.md`. Trends and News are ideation signals, never sources; "no relevant signal" is a valid outcome.
+
+Google News queries (EN, US/GB): `digital product passport`, `luxury blockchain`, `RWA tokenization`, `MiCA regulation`, `luxury counterfeiting`, `ESPR`.
+
+Journal of a watch session (dated "Brainstorm of …" section): queries run, signals evaluated (kept / dismissed and why), editorial gap identified, primary source found. No copying of titles or wordings.
 
 Idea format:
 

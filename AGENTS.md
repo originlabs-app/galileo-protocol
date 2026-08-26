@@ -61,6 +61,31 @@ Publication checklist:
 - [ ] Spot-check the built article HTML: canonical, `og:type=article`, JSON-LD BlogPosting/BreadcrumbList (+ FAQPage if faq).
 - [ ] `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/llms-full.txt` regenerated (automatic at build).
 
+### News watch (ideation)
+
+Ideation signals only — never sources. Run before every brainstorm and every article, even when the topic is already set. "No relevant signal" is a valid outcome: an evergreen or regulatory article is never forced into the news cycle. Geography: US/GB (English-speaking market) and EU (`geo=FR` for the French luxury ecosystem). Domain queries and the session journal live in `blogidea.md`.
+
+1. **Google Trends** (`geo=US`, also `geo=GB` / `geo=FR`):
+
+   ```bash
+   curl -s "https://trends.google.com/trending/rss?geo=US" \
+     | sed 's/</\n</g' \
+     | awk '/^<item>$/{f=1;next} f && /^<title>/{sub(/^<title>/,"");print;f=0}'
+   ```
+
+2. **Google News RSS**, URL-encoded query — domain keyword or exact article subject (`hl/gl/ceid` = `en-US/US/US:en`, also `en-GB/GB/GB:en`):
+
+   ```bash
+   curl -sG "https://news.google.com/rss/search" \
+     --data-urlencode "q=<subject>" --data-urlencode "hl=en-US" \
+     --data-urlencode "gl=US" --data-urlencode "ceid=US:en" \
+     | sed 's/</\n</g' \
+     | awk '/^<item>$/{f=1;next} f && /^<title>/{sub(/^<title>/,"");print;f=0}'
+   ```
+
+3. **Cross the two feeds**: a trending topic overlapping a domain keyword is a signal to evaluate against business relevance and search intent. Reading already-published coverage serves to spot the editorial gap and differentiate — never reuse a title or wording, always an original contribution.
+4. **Journal** the session in `blogidea.md` (date, queries, signals evaluated, gap identified, primary source found). Verify any retained news item against its primary source the same day — never draft on an unconfirmed claim.
+
 ### Blog visual contract
 
 Every new article ships with visuals, generated with a native image-generation tool (`image_gen`/`$imagegen` via an agent CLI — never a stock photo, never a hand-drawn placeholder):
