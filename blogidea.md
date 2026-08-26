@@ -15,6 +15,27 @@ Idea format:
 
 ---
 
+## Brainstorm of 26 August 2026 (market signals / ESPR enforcement)
+
+### [drafted] LVMH's DPP Strategy in Writing: The Signal Luxury Awaited
+- Article written: `website/content/blog/2026-08-26-lvmh-dpp-strategy.mdx` — awaiting deploy (GO Pierre).
+- Fact-check note: the rumoured "10 August 2026 officialisation" could NOT be verified — the LVMH DPP page predates 2026 (content references 2024 deployment). Article written as an analysis piece on the documented strategy (lvmh.com DPP page, DPP Factory via La Tribune 30/06/2025 partner content, Aura CEO interview Journal du Luxe 17/06/2026: 50+ brands, 80M+ products), with an explicit limits section. Distinct from 2026-08-25-eu-dpp-registry-live.mdx (that one = EU registry/standards; this one = market signal from the luxury leader).
+
+### [idea] The ESPR destruction ban is now enforceable: what luxury must disclose
+- **Angle**: Article 29 ESPR (public disclosure of discarded unsold products) has applied since 19 July 2026 for large enterprises, alongside the Article 25 ban on destroying unsold textiles/footwear. The board-level question: destroy, discount, or channel to certified resale — and what the public disclosure of volumes destroyed does to brand equity.
+- **Sources**: EUR-Lex Regulation (EU) 2024/1781 (arts. 25 & 29), Commission ESPR page.
+- **Why now**: first disclosure cycle will make destroyed volumes public; maisons need a defensible policy before their numbers are.
+
+### [idea] 30,000 smuggled diamonds: Vietnam's scandal is a provenance failure
+- **Angle**: PNJ (Phu Nhuan Jewelry) scandal — ~30,000 smuggled diamonds, ~$57M, stock down ~19.5% — as a documentary provenance crisis in jewelry. When provenance lives in paper and ERP entries, fraud scales; verifiable, item-level provenance records are the structural fix.
+- **Sources**: press coverage of the PNJ case (August 2026) — to be re-verified against primary sources before drafting.
+- **Why now**: fresh scandal, directly maps to the value of verifiable provenance infrastructure.
+
+### Note on existing idea "From Treasury bills to handbags: RWA tokenization leaves finance"
+- Enrich rather than create a dedicated article: add Bitcoin back above $80k (Reuters, 25/08/2026) to the market-context paragraph when this idea is selected for drafting.
+
+---
+
 ## Brainstorm of 25 August 2026 (RWA / DPP watch)
 
 ### [drafted] The EU Digital Product Passport registry is live: what luxury brands must do now
