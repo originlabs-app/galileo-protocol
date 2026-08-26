@@ -338,7 +338,7 @@ export default async function BlogPostPage({
           <hr className="border-t border-[rgba(229,229,229,0.1)] mb-12" />
 
           {/* Content */}
-          <div className="prose prose-invert max-w-none">
+          <div className="prose prose-invert prose-full max-w-none">
             <MDXRemote
               source={content}
               components={mdxComponents}
