@@ -1,0 +1,30 @@
+{
+  "date": "2026-08-26",
+  "purpose": "Baseline (photo avant) de la visibilite de Galileo Protocol dans les assistants IA avec recherche web. Panel gele AVANT le premier run ; rejeu mensuel avec le MEME panel, comparaison ligne a ligne.",
+  "brand_regex": "galileo",
+  "domain": "galileoprotocol.io",
+  "classification": {
+    "mentioned": "la marque apparait dans le texte visible de la reponse",
+    "cited": "une citation/annotation pointe vers le domaine galileoprotocol.io",
+    "fetched": "le domaine galileoprotocol.io apparait dans les resultats de recherche web du recu brut (recupere par l'outil, meme si non cite)"
+  },
+  "providers": [
+    {"id": "openai", "model": "gpt-5.6", "api": "responses", "web_tool": "web_search"},
+    {"id": "anthropic", "model": "claude-opus-5", "api": "messages", "web_tool": "web_search_20250305"}
+  ],
+  "prompts": [
+    {"id": "A1", "cat": "marque", "text": "What is Galileo Protocol?"},
+    {"id": "A2", "cat": "marque", "text": "Galileo Protocol luxury blockchain review"},
+    {"id": "A3", "cat": "marque", "text": "What does galileoprotocol.io offer?"},
+    {"id": "A4", "cat": "marque", "text": "Galileo Protocol tokenization luxury goods"},
+    {"id": "B1", "cat": "categorie", "text": "Digital product passport platform for luxury brands"},
+    {"id": "B2", "cat": "categorie", "text": "Blockchain authentication for luxury goods"},
+    {"id": "B3", "cat": "categorie", "text": "Tokenization infrastructure for physical luxury assets"},
+    {"id": "B4", "cat": "categorie", "text": "Which platforms help luxury brands comply with the EU digital product passport?"},
+    {"id": "C1", "cat": "tache", "text": "How to prepare a luxury brand for the EU digital product passport?"},
+    {"id": "C2", "cat": "tache", "text": "How to issue verifiable product certificates on-chain for a watch brand?"},
+    {"id": "C3", "cat": "tache", "text": "ESPR compliance roadmap for a leather goods maison"},
+    {"id": "C4", "cat": "tache", "text": "How to fight counterfeiting with verifiable product identity?"},
+    {"id": "D1", "cat": "geo", "text": "Which companies provide DPP infrastructure for European luxury brands?"}
+  ]
+}

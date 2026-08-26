@@ -47,7 +47,7 @@ faq:                        # optional, drives FAQPage JSON-LD — keep empty if
 Editorial contract for every article:
 
 1. **Direct answer in the first 2 sentences**, before the first H2 — extractable as-is by a search engine or LLM.
-2. **Primary sources linked inline** (EUR-Lex, ec.europa.eu, CEN-CENELEC, standard bodies) — verify every fact and date before publishing; reformulate cautiously anything unverifiable.
+2. **Primary sources linked inline** (EUR-Lex, ec.europa.eu, CEN-CENELEC, standard bodies) — verify every fact and date before publishing; reformulate cautiously anything unverifiable. **Source regime**: regulated topics (ESPR, MiCA, DPP standards) rely on official primary sources only; non-regulated analysis requires pluralism (diverging readings kept, dated sources < 12 months for current-affairs topics).
 3. **FAQ section** mirrored in the `faq` frontmatter (the frontmatter is the source of truth for FAQPage JSON-LD).
 4. **CTA** at the end pointing to `/docs` and/or contact.
 
@@ -103,6 +103,8 @@ Every new article ships with visuals, generated with a native image-generation t
 - `src/app/sitemap.ts` enumerates all routes including every `/docs/*` and `/specifications/*` page.
 - `src/app/robots.ts` explicitly allows the main AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, …).
 - `src/app/llms.txt/route.ts` and `src/app/llms-full.txt/route.ts` (`force-static`) are generated from `src/lib/llms.ts` — update `MAIN_PAGES` there when adding a main page.
+- `src/lib/blog.ts` warns on body sentences >30 words; warning-only until the existing corpus is reworked, target: blocking.
+- GEO share-of-voice: frozen prompt panel in `geo/PANEL.json`, monthly replay via the `mesurer-part-de-voix-geo` skill, results in `geo/runs/` (first run UNPROVEN until the provider keys are provisioned).
 
 ### Known debt
 
