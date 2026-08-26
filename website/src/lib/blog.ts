@@ -44,6 +44,128 @@ const TITLE_MAX = 60;
 // for OG crawlers and social cards.
 const COVER_IMAGE_MAX_BYTES = 150 * 1024;
 
+// Body sentences longer than 30 words are a style defect. The existing
+// corpus still has some, so this gate warns at build time instead of failing
+// the build (unlike the frontmatter validations above).
+const MAX_SENTENCE_WORDS = 30;
+
+// Placeholder used to protect dots that must not end a sentence
+// (abbreviations, decimal numbers) while splitting prose into sentences.
+const SENTENCE_DOT = '․';
+
+// Abbreviations whose trailing dot does not end a sentence.
+const ABBREVIATIONS = [
+  'art.',
+  'etc.',
+  'M.',
+  'Mme.',
+  'Mlle.',
+  'Dr.',
+  'Dr',
+  'fig.',
+  'vol.',
+  'p.ex.',
+  'e.g.',
+  'i.e.',
+  'cf.',
+  'vs.',
+  'No.',
+  'Mr.',
+  'Mrs.',
+  'U.S.',
+  'env.',
+];
+
+/**
+ * Keep only body prose: drop fenced code blocks, headings, table rows, list
+ * items and raw HTML/SVG lines (blank lines kept as paragraph breaks).
+ */
+function extractProse(body: string): string {
+  const lines = body.split(/\r?\n/);
+  const kept: string[] = [];
+  let inFence = false;
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('```') || trimmed.startsWith('~~~')) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue;
+    if (trimmed === '') {
+      kept.push('');
+      continue;
+    }
+    if (/^([-*_]\s*){3,}$/.test(trimmed)) continue;
+    if (trimmed.startsWith('#')) continue;
+    if (trimmed.startsWith('|')) continue;
+    if (/^([-*+]|\d+[.)])\s/.test(trimmed)) continue;
+    if (trimmed.startsWith('<')) continue;
+    kept.push(trimmed);
+  }
+  return kept.join('\n');
+}
+
+/** Remove markdown inline markup, keeping only the visible words. */
+function stripInlineMarkup(text: string): string {
+  return text
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/[*_~]/g, '')
+    .replace(/&[a-z]+;/gi, ' ');
+}
+
+/** Split prose into sentences on ". ! ?" followed by whitespace. */
+function splitSentences(prose: string): string[] {
+  let text = prose.replace(/\s+/g, ' ').trim();
+  if (text === '') return [];
+  text = text.replace(/(\d)\.(\d)/g, `$1${SENTENCE_DOT}$2`);
+  const sorted = [...ABBREVIATIONS].sort((a, b) => b.length - a.length);
+  for (const abbr of sorted) {
+    const escaped = abbr.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    text = text.replace(new RegExp(escaped, 'g'), (m) =>
+      m.replace(/\./g, SENTENCE_DOT)
+    );
+  }
+  return text
+    .split(/(?<=[.!?]['"”’)\]*]*)\s+/)
+    .map((s) => s.replaceAll(SENTENCE_DOT, '.').trim())
+    .filter((s) => s !== '');
+}
+
+/** Count words in a sentence (tokens holding at least one letter/digit). */
+function countWords(sentence: string): number {
+  return stripInlineMarkup(sentence)
+    .split(/\s+/)
+    .filter((token) => /[\p{L}\p{N}]/u.test(token)).length;
+}
+
+/** Sentences in the article body longer than MAX_SENTENCE_WORDS words. */
+function findLongSentences(
+  body: string
+): { sentence: string; words: number }[] {
+  return splitSentences(extractProse(body))
+    .map((sentence) => ({ sentence, words: countWords(sentence) }))
+    .filter(({ words }) => words > MAX_SENTENCE_WORDS);
+}
+
+// getAllPosts() and getPostBySlug() both run during a build: warn once per file.
+const sentenceWarningsEmitted = new Set<string>();
+
+/** Warn (without failing the build) on over-long body sentences. */
+function warnOnLongSentences(filename: string, body: string): void {
+  if (sentenceWarningsEmitted.has(filename)) return;
+  sentenceWarningsEmitted.add(filename);
+  for (const { sentence, words } of findLongSentences(body)) {
+    const truncated =
+      sentence.length > 80 ? `${sentence.slice(0, 80)}…` : sentence;
+    console.warn(
+      `[blog] content/blog/${filename}: sentence is ${words} words (max ${MAX_SENTENCE_WORDS}): "${truncated}"`
+    );
+  }
+}
+
 function blogError(filename: string, message: string): never {
   throw new Error(
     `Invalid blog frontmatter in content/blog/${filename}: ${message}`
@@ -241,9 +363,10 @@ export function getAllPosts(): BlogPostMeta[] {
       const slug = filename.replace(/\.mdx?$/, '');
       const filePath = path.join(BLOG_DIR, filename);
       const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const { data } = matter(fileContent);
+      const { data, content } = matter(fileContent);
 
       const frontmatter = normalizeFrontmatter(data, filename);
+      warnOnLongSentences(filename, content);
 
       return {
         slug,
@@ -291,6 +414,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
   const { data, content } = matter(fileContent);
 
   const frontmatter = normalizeFrontmatter(data, path.basename(filePath));
+  warnOnLongSentences(path.basename(filePath), content);
 
   // Check if post is unpublished in production
   if (process.env.NODE_ENV === 'production' && !frontmatter.published) {
