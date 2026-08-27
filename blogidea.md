@@ -24,6 +24,34 @@ Idea format:
 
 ---
 
+## Brainstorm of 27 August 2026 (Trends × News watch)
+
+Queries run: Google Trends RSS geo=US, geo=GB, geo=FR; Google News RSS (hl=en-US, gl=US, ceid=US:en) for `digital product passport`, `luxury blockchain`, `RWA tokenization`, `MiCA regulation`, `luxury counterfeiting`, `ESPR`.
+
+Trends × News crossing: no overlap — US trends are sports betting and consumer media, GB sports/entertainment, FR domestic politics. All signals below come from the News feed alone.
+
+Signals evaluated:
+
+- Aura Blockchain Consortium leadership coverage (WebWire, Luxus Plus, Business of Fashion, Vogue) — DISMISSED: primary-source check shows the appointments are not fresh (CEO Marcel Härtlein announced 08/01/2026, chairman Stefano Rosso 28/04/2026 on auraconsortium.com). The story is a resurfacing, and Aura's strategy is already covered by the 26/08 drafted LVMH DPP article.
+- EU DPP registry follow-ups (EU NEIGHBOURS east, Euroconsumers, Open Access Government) — DISMISSED: same registry story already covered by the 25/08 drafted article `2026-08-25-eu-dpp-registry-live.mdx`.
+- Forrester report on DPPs as customer-engagement channel — DISMISSED: analyst content, evergreen, no dated news event.
+- UN ESCAP publication on DPPs for cross-border trade — DISMISSED: trade-facilitation angle, not luxury-specific.
+- SealTrust DPP product launch (Packaging Europe) — DISMISSED: vendor PR; SealTrust is already cited in the counterfeiting idea below.
+- World Liberty Financial USD1 stablecoin on Canton Network (Business Wire) and RWA market rally pieces (BeInCrypto, Yellow.com) — DISMISSED: institutional crypto-finance angle already covered by the existing RWA idea; weak sources for the rally figures.
+- Germany reaches 79 MiCA licences (Cryptonews) — DISMISSED: banking/CASP tally, and MiCA transitional period already covered by the 25/08 drafted article.
+- Lexology deep dive on finalised ESPR requirements for unsold consumer products + Ellen MacArthur Foundation position on ESPR textile performance requirements — DISMISSED as new idea, KEPT as enrichment: the delegated/implementing acts behind the destruction ban were adopted 09/02/2026; feed their details (derogations, disclosure format) into the existing idea "The ESPR destruction ban is now enforceable" when drafted.
+- WIRED investigation buying a $500 counterfeit luxury watch that defeated expert inspection — DISMISSED as new idea, KEPT as enrichment: confirms the exact thesis of the existing idea "$467 billion of counterfeiting: why visual authentication is dead"; add as a dated 2026 reference (WIRED watches section, indexed 07/2026) when drafted.
+- Louisville CBP counterfeit watch seizure series (WLKY local coverage) — KEPT as new idea below. The local TV figure ($1.25B) could not be confirmed; the primary sources (cbp.gov) confirm a real, escalating series worth ~$125M over June-August 2026.
+
+Editorial gap identified: seizure coverage stays episodic local news — nobody aggregates the port-level escalation into what it means for watch and jewelry maisons' authentication infrastructure. Primary sources found: three cbp.gov newsroom releases (see idea below).
+
+### [idea] One port, one summer, $125M in fake Swiss watches: border enforcement cannot keep up
+- **Angle**: Louisville CBP intercepted three major counterfeit watch shipments in three months — $54M (June), $28M (July), $43M (August, 875 fake Audemars Piguet across June-July). Even successful enforcement is a rounding error against the flow; item-level verifiable identity shifts authentication from overloaded inspectors to the product itself.
+- **Sources / trigger**: cbp.gov national media releases 30/06/2026, 17/07/2026, 07/08/2026 (cbp.gov/newsroom) — figures to be re-verified against the releases before drafting.
+- **Why now**: three confirmed seizures in a single summer at a single US port, concentrated on high-end Swiss references; fresh, dated, and directly maps to verifiable product identity as structural fix.
+
+---
+
 ## Brainstorm of 26 August 2026 (market signals / ESPR enforcement)
 
 ### [drafted] LVMH's DPP Strategy in Writing: The Signal Luxury Awaited
