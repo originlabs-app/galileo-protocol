@@ -11,7 +11,7 @@ Decision rules and commands: the "News watch (ideation)" section in `AGENTS.md`.
 
 Google News queries (EN, US/GB): `digital product passport`, `luxury blockchain`, `RWA tokenization`, `MiCA regulation`, `luxury counterfeiting`, `ESPR`.
 
-Journal of a watch session (dated "Brainstorm of …" section): queries run, signals evaluated (kept / dismissed and why), editorial gap identified, primary source found. No copying of titles or wordings.
+Journal of a watch session (dated "Brainstorm of …" section): queries run, signals evaluated (signal URL, kept / dismissed and why), editorial gap identified, primary source found. No copying of titles or wordings into the article.
 
 Idea format:
 
