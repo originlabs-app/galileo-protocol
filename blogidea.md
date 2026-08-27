@@ -45,7 +45,8 @@ Signals evaluated:
 
 Editorial gap identified: seizure coverage stays episodic local news — nobody aggregates the port-level escalation into what it means for watch and jewelry maisons' authentication infrastructure. Primary sources found: three cbp.gov newsroom releases (see idea below).
 
-### [idea] One port, one summer, $125M in fake Swiss watches: border enforcement cannot keep up
+### [drafted] One port, one summer, $125M in fake Swiss watches: border enforcement cannot keep up
+- Article written: `website/content/blog/2026-08-27-cbp-louisville-fake-watches-border-enforcement.mdx` (main, 27/08/2026) — awaiting deploy (GO Pierre). The "$1.25B" figure appears in the 07/08 CBP release itself but contradicts its own per-seizure numbers ($125M total, exact 10x factor); the article treats it as "reported, unverified — likely a typo that travelled".
 - **Angle**: Louisville CBP intercepted three major counterfeit watch shipments in three months — $54M (June), $28M (July), $43M (August, 875 fake Audemars Piguet across June-July). Even successful enforcement is a rounding error against the flow; item-level verifiable identity shifts authentication from overloaded inspectors to the product itself.
 - **Sources / trigger**: cbp.gov national media releases 30/06/2026, 17/07/2026, 07/08/2026 (cbp.gov/newsroom) — figures to be re-verified against the releases before drafting.
 - **Why now**: three confirmed seizures in a single summer at a single US port, concentrated on high-end Swiss references; fresh, dated, and directly maps to verifiable product identity as structural fix.
