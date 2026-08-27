@@ -151,7 +151,7 @@ None of what follows diminishes the officers' work. The seizures are real catche
 
 **The channel is the problem.** CBP itself states that [over 90% of all counterfeit seizures occur in the international mail and express environments](https://www.cbp.gov/newsroom/national-media-release/shipment-worth-54-million-counterfeit-watches-seized-cbp-officers). That is the small-parcel economy: millions of packages, inspected by sampling. Three interceptions prove detection works. They say nothing about how many similar parcels passed.
 
-**The pattern looks industrial — that part is our inference.** Batches of 200 to 375 watches of a single brand suggest production-line volumes. The late-2025 Louisville seizures were smaller and mixed-brand. Summer 2026 is focused, repeated and growing. Three shipments do not prove an organisation, but whoever ships these parcels appears to price seizure risk as a cost of doing business.
+**The pattern looks industrial — that part is our inference.** Batches of 200 to 375 watches of a single brand suggest production-line volumes. The late-2025 Louisville seizures were smaller and mixed-brand. Summer 2026 is focused, repeated and growing. Three shipments do not prove an organisation.
 
 **Detection is expert labor.** Each catch follows the same chain: officer targeting, physical examination, then authentication by the Centers of Excellence and Expertise. Every step is skilled human time. Counterfeiters scale with machines; customs scales with headcount.
 
@@ -163,7 +163,7 @@ What happens after a seizure changes little for the market. CBP has authority to
 
 For a watch maison, the Louisville file reframes the question. The choice is not between customs recordation and nothing. It is between relying on interception alone, or giving every genuine watch a proof that travels with it.
 
-CBP's [e-Recordation programme](https://iprr.cbp.gov/s/) already shows the logic. A brand records its trademarks with customs, and officers can then detain infringing goods. Recordation empowers the border. It does nothing for the secondary market. Most fakes are, in our reading, sold there rather than intercepted in parcels — an inference from the enforcement record, not a figure these releases establish.
+CBP's [e-Recordation programme](https://iprr.cbp.gov/s/) already shows the logic. A brand records its trademarks with customs, and officers can then detain infringing goods. Recordation empowers the border. It does nothing for the secondary market.
 
 The regulatory wind blows the same way. The EU's Digital Product Passport framework, covered when [the registry and standards went live](/blog/2026-08-25-eu-dpp-registry-live), will make product-level data carriers mandatory category by category. LVMH has already put [its group-level DPP strategy in writing](/blog/2026-08-26-lvmh-dpp-strategy). No delegated act covers watches yet. But the direction is identical: authenticity data born with the product, not reconstructed at a checkpoint.
 
@@ -202,17 +202,17 @@ Intellectual honesty about the file. An analysis is only worth what its evidence
 
 ## Galileo's take
 
-**Galileo's take: Louisville is what it looks like when enforcement works — and still cannot close the gap.** Three catches in seven weeks is a good summer for any port. It is also a demonstration that interception is retrospective, sampled and capacity-bound, while counterfeit supply is industrial and repeatable. The lesson for watchmakers is not to demand more officers. It is to stop asking the border to do a job that belongs at the bench.
+**Galileo's take: Louisville is what it looks like when enforcement works — and still cannot close the gap.** Three catches in seven weeks is a good summer for any port. It is also a demonstration that interception is retrospective, sampled and capacity-bound, while the supply it catches looks industrial and repeatable. The lesson for watchmakers is not to demand more officers. It is to stop asking the border to do a job that belongs at the bench.
 
 Honesty applies to our own thesis too. A digital attestation does not, by itself, make every fake verifiably fake. Authentication at the source has five distinct layers, and each one fails differently:
 
 1. **Attestation integrity.** Cryptography holds here: a counterfeiter cannot forge a valid signature from the maison. This layer is solved.
 2. **Issuer identity and authority.** Verification must prove the attestation comes from the maison itself, not from a lookalike issuer. Open identity standards handle this.
-3. **Physical anti-cloning binding.** Linking the digital identity to the object, so the link cannot be transferred, is the hard layer. Our specifications anticipate NFC carrier types and an `nfc_bound` claim topic for chip-binding verification. But no digital passport today — ours included — prevents the physical cloning of a carrier. Treat this as the open problem the industry must engineer against, not as a solved feature.
+3. **Physical binding.** Anti-cloning silicon exists: chips like NXP's [NTAG 424 DNA](https://www.nxp.com/products/rfid-nfc/nfc-hf/ntag-for-tags-and-labels/ntag-424-dna-424-dna-tagtamper-advanced-security-and-privacy-for-trusted-iot-applications:NTAG424DNA) authenticate dynamically at every read, on attack-resistant certified silicon. Our specifications anticipate NFC carrier types and an `nfc_bound` claim topic for chip-binding verification. The open problem is the durable link between the secure element and the watch itself: proving the genuine chip is still inside the object presented. Treat that binding as the problem the industry must engineer against, not as a solved feature.
 4. **Replay of a genuine identifier.** Short of cloning, a counterfeiter can copy a QR code or relay the NFC response of one authentic watch onto many fakes. The attestation verifies; the object in the buyer's hand is still counterfeit. Duplicate-scan analytics and event history help detect this. They do not prevent it.
 5. **Compromise or complicity at issuance.** If issuance keys leak, or an insider attests goods that never existed, every downstream check passes. Hardware key custody and audit trails mitigate this. Nothing eliminates it.
 
-What source-issued identity does change is the burden of proof. Today, a genuine watch cannot prove itself at the moment of purchase. With a verifiable attestation born at the bench, it can — at customs, at retail, at resale, in thirty years. Galileo Protocol exists to make that proof ordinary infrastructure. It is an open protocol: each physical item gets a verifiable digital twin, authenticity and service events become interoperable attestations, and personal data stays off-chain. Our schemas are published openly in our [specifications](/specifications), so a maison can pilot a full lifecycle — issue, authenticate, service, resell — without surrendering its data to anyone. Explore the [documentation](/docs) or [contact us](mailto:info@galileoprotocol.io) to discuss a pilot.
+What source-issued identity does change is the burden of proof. Today, a genuine watch cannot prove itself at the moment of purchase. A verifiable attestation born at the bench proves issuance and the integrity of the record — at customs, at retail, at resale, in thirty years. The watch itself proves genuine only where the physical binding of layer 3 is robust enough. Galileo Protocol exists to make that proof ordinary infrastructure. It is an open protocol: each physical item gets a verifiable digital twin, authenticity and service events become interoperable attestations, and personal data stays off-chain. Our schemas are published openly in our [specifications](/specifications), so a maison can pilot a full lifecycle — issue, authenticate, service, resell — without surrendering its data to anyone. Explore the [documentation](/docs) or [contact us](mailto:info@galileoprotocol.io) to discuss a pilot.
 
 ## Sources
 
@@ -225,6 +225,7 @@ What source-issued identity does change is the burden of proof. Today, a genuine
 - [CBP, $81 Million in Fake Watches Intercepted by Louisville CBP in 6 Months](https://www.cbp.gov/newsroom/local-media-release/81-million-fake-watches-intercepted-louisville-cbp-6-months), 12 April 2022: historical recurrence context. Consulted 27 August 2026.
 - [WLKY, Louisville CBP seizes more than $1.25B in fake luxury watches over two-month period](https://www.wlky.com/article/louisville-customs-cbp-counterfeit-watches-audemars-piguet/73382733), 8 August 2026: local TV amplification of the unverified $1.25B figure. Consulted 27 August 2026.
 - [CBP e-Recordation programme](https://iprr.cbp.gov/s/): trademark recordation enabling border detention of infringing goods. Consulted 27 August 2026.
+- [NXP, NTAG 424 DNA — advanced security and privacy for trusted IoT applications](https://www.nxp.com/products/rfid-nfc/nfc-hf/ntag-for-tags-and-labels/ntag-424-dna-424-dna-tagtamper-advanced-security-and-privacy-for-trusted-iot-applications:NTAG424DNA): AES-128 Secure Unique NFC authentication on each read-out, attack-resistant certified silicon. Consulted 27 August 2026.
 
 ## FAQ
 
