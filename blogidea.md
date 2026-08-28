@@ -3,6 +3,7 @@
 Idea log for the blog. Every brainstormed idea lands here before drafting.
 Workflow: `idea` → `selected` → `drafted` (website/content/blog/) → `published` (add date).
 See AGENTS.md for the frontmatter and editorial contract.
+Editorial line: four axes (protocol & infra, tokenization/RWA, counterfeiting & provenance, DPP & luxury regulation) — see the "Editorial line" section in AGENTS.md. DPP is one axis, not the whole line; allocate brainstorms to the least-served axis first (currently: tokenization/RWA).
 Before every brainstorm, run the news watch (below) and log the session as a dated section.
 
 ## News watch

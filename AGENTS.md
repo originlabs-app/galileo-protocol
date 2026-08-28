@@ -61,6 +61,17 @@ Publication checklist:
 - [ ] Spot-check the built article HTML: canonical, `og:type=article`, JSON-LD BlogPosting/BreadcrumbList (+ FAQPage if faq).
 - [ ] `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/llms-full.txt` regenerated (automatic at build).
 
+### Editorial line: four axes, not just DPP
+
+The blog covers four axes. DPP is one of them, never the whole line:
+
+1. **Protocol & infrastructure** — releases, deployments, network milestones (e.g. v1 release, production deployment, Base Sepolia mint).
+2. **Tokenization / RWA** — MiCA, RWA leaving pure finance, standards (ERC-3643, ERC-7943, W3C DID). Historically the least-served axis and the strongest GEO potential: prioritize it in upcoming batches.
+3. **Counterfeiting / authentication / provenance** — enforcement stories, provenance failures, what verifiable item-level identity changes (e.g. CBP seizures, smuggled diamonds).
+4. **DPP & luxury regulation** — ESPR, EU DPP registry, maisons' strategies (e.g. LVMH).
+
+Balance rule: at every brainstorm, check the axes of the last published articles and allocate new ideas to the least-served axis first. No two consecutive articles on the same axis unless a dated news event forces it.
+
 ### News watch (ideation)
 
 Ideation signals only — never sources. Run before every brainstorm and every article, even when the topic is already set. "No relevant signal" is a valid outcome: an evergreen or regulatory article is never forced into the news cycle. Geography: US/GB (English-speaking market) and EU (`geo=FR` for the French luxury ecosystem). Domain queries and the session journal live in `blogidea.md`.
