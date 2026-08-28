@@ -41,7 +41,8 @@ Signals evaluated:
 
 Editorial gap identified: coverage of brand DPP launches stays product-PR; nobody asks which attestation wins when one maison runs two passport stacks on the same product line. Primary sources to verify: tods.com, renoon.com, auraconsortium.com, todsgroup.com.
 
-### [selected] Tod's scans twice: Renoon QR vs Aura NFC — who is the source of truth when the customer scans?
+### [drafted] Tod's scans twice: Renoon QR vs Aura NFC — who is the source of truth when the customer scans?
+- Article written: `website/content/blog/2026-08-28-tods-gommino-two-passports-renoon-aura.mdx` (main, 28/08/2026) — awaiting deploy (GO Pierre). Fact-check notes: WWD confirmed (datePublished 2026-08-28); Aura releases confirmed via their own JSON-LD dates (2023-11-20 Di Bag, 2025-03-14 My Gommino); renoon.com documents the deal NOWHERE publicly (full sitemap checked) — the article says so; todsgroup.com newsroom inaccessible (Access Denied), history corroborated via Aura releases.
 - **Angle**: WWD (28/08/2026) announces a Tod's DPP for the Gommino with Renoon (materials, production, sustainability via QR). But Tod's has shipped Aura/Temera NFC passports since 2023 (Di Bag) and on the My Gommino since 03/2025. The maison now runs two DPP stacks on the same product line — the concrete case of the interoperability question the ESPR registry will force: which attestation wins, and what would an open protocol reconcile? Never write "first DPP".
 - **Sources / trigger**: wwd.com (28/08/2026); primaries to verify the same day: tods.com DPP pages, renoon.com, auraconsortium.com (14/03/2025 My Gommino release), todsgroup.com newsroom.
 - **Why now**: only true same-day story in the watch; a maison below conglomerate level putting the passport in the UX — complements LVMH (group strategy) and the EU registry (public infrastructure).

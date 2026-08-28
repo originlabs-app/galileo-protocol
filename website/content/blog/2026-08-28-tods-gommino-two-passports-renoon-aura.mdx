@@ -1,0 +1,197 @@
+---
+title: "Tod's Scans Twice: Which Passport Is the Source of Truth?"
+date: "2026-08-28"
+modified: "2026-08-28"
+author: "Pierre Beunardeau"
+excerpt: "WWD reports Tod's new Digital Product Passport with Renoon. It is not the maison's first: Aura Blockchain Consortium and Temera NFC passports have shipped since November 2023, on the My Gommino since March 2025. One product line now carries two passport stacks — NFC for authenticity, QR for sustainability data. When the customer scans, which attestation wins?"
+description: "Tod's now runs two digital passports on the same Gommino: Aura NFC for authenticity, Renoon QR for sustainability data. Which one wins the scan?"
+tags:
+  - dpp
+  - espr
+  - interoperability
+  - luxury
+  - traceability
+published: true
+coverImage: "/images/blog/tods-gommino-two-passports-renoon-aura.jpg"
+coverImageAlt: "A handcrafted leather driving loafer on a craftsman's workbench beside a smartphone with a glowing cyan screen, in a dim luxury atelier"
+faq:
+  - question: "Is the Renoon passport Tod's first Digital Product Passport?"
+    answer: "No. Tod's has shipped Digital Product Passports with the Aura Blockchain Consortium since 20 November 2023, starting with the custom Di Bag. The maison extended the same NFC-based Tod's Passport to the My Gommino collection on 14 March 2025, with traceability by Temera. The Renoon partnership announced on 28 August 2026 adds a second, QR-based data layer."
+  - question: "What is the difference between Tod's NFC passport and the new QR passport?"
+    answer: "They carry different claim sets. The NFC passport, built with Aura and Temera, certifies authenticity and ownership: a secure digital certificate stored on the Aura Private Blockchain, product registration and premium services. The QR passport, built with Renoon, publishes materials, production processes, locations and company certifications — the sustainability and compliance data layer."
+  - question: "Which passport is the source of truth when a customer scans?"
+    answer: "Today, each stack is authoritative only for its own claims. The NFC chip answers 'is this pair genuine and who owns it'; the QR code answers 'what is it made of and how was it produced'. No public documentation describes a reconciliation layer between the two registries. WWD reports that Renoon's data will be ensured through the Aura Blockchain Consortium, which suggests a shared integrity anchor — but the architecture is not public."
+  - question: "Does EU regulation require two passports on one product?"
+    answer: "No. The ESPR framework points to a single Digital Product Passport per product, accessible through one data carrier. For footwear, no delegated act has been adopted yet; the European Commission's preparatory study is planned for the end of 2027. Tod's is moving ahead of the mandate — and previewing the interoperability problem every maison will face."
+  - question: "Can a QR code prove a shoe is authentic?"
+    answer: "No. A QR code is a printed, copyable carrier: it links to data, but anyone can photograph and reproduce it. Authenticity requires a cryptographic check that a copy cannot pass — typically a dynamic NFC authentication. Even then, proving the genuine chip is still inside the genuine shoe, the physical-binding problem, remains open engineering work."
+---
+
+Tod's did not launch its first Digital Product Passport this week — it added a second one. [WWD reported on 28 August 2026](https://wwd.com/footwear-news/shoe-industry-news/tods-digital-product-passport-launch-1239125385/) that the maison is rolling out QR-based passports with Renoon on its signature loafers. The same product line has carried Aura Blockchain Consortium NFC passports since March 2025.
+
+One pair of Gommino, two passport stacks, two carriers, two registries. When the customer scans, which attestation is the source of truth? That question is no longer theoretical. It is the exact interoperability problem the EU's Digital Product Passport framework will put in front of every maison — and Tod's just became its most concrete public case.
+
+## What WWD reported on 28 August 2026
+
+The WWD piece, dated 28 August 2026, announces that Tod's is launching Digital Product Passports on its website with Renoon, a compliance-focused provider. The rollout starts with the signature loafers and will extend to other products. The passports publish materials, production processes, locations and company certifications, delivered through QR codes.
+
+Renoon's role, per the article, is data plumbing. The company "structures and confirms consistency of product and supply chain data across both Tod's internal systems and those of its partners". Renoon CEO Iris Skrami frames the work as deep infrastructure: most companies have the data somewhere, but fragmented and unstructured.
+
+Two details matter for what follows. First, WWD states that the data in Tod's DPPs "will be ensured through the Aura Blockchain Consortium, which the brand joined in 2023". Second, Tod's general brand manager Carlo Alberto Beretta presents the passport as bringing "verified product information directly into the customer experience". Verified by whom, and against which registry, is precisely the open question.
+
+One caution on framing: the WWD headline travel wires, and some aggregator pickups, call this Tod's "first" Digital Product Passport. It is not, and the record below is unambiguous.
+
+## The passport the Gommino already had
+
+Tod's passport history is documented by the Aura Blockchain Consortium itself.
+
+**20 November 2023.** Tod's [joins the Aura Blockchain Consortium](https://auraconsortium.com/news/tods-joins-aura-blockchain) and ships its first DPP on the custom Di Bag. Each bag is linked to what Aura calls an immutable traceability token. The passport carries product certificates, origin and craftsmanship data, and ownership certificates.
+
+**14 March 2025.** Tod's [extends the Tod's Passport to the My Gommino collection](https://www.auraconsortium.com/news/tods-digital-product-passports-to-its-iconic-my-gommino-collection), with Aura and its ecosystem partner Temera. Each pair embeds an NFC chip in the right sole. Scanning it lets the customer register the product, claim official ownership, and access a secure digital certificate of authenticity stored on the Aura Private Blockchain. A wallet card, linked to the Tod's CRM, extends the experience in store.
+
+The maison's [own DPP page](https://www.tods.com/us-en/Tods-Digital-Passport/) confirms the architecture as it stands: Aura blockchain technology plus the NFC tag. It covers the Di Bag and the My Gommino, with materials origin, production-chain locations and premium benefits such as extended warranty.
+
+<div style={{ margin: '2rem 0', padding: '1.25rem 1rem', background: 'var(--graphite)', border: '1px solid rgba(0, 255, 255, 0.1)', borderRadius: '0.75rem' }}>
+  <svg viewBox="0 0 440 240" role="img" aria-label="Timeline of Tod's Digital Product Passport history from 2023 to 2026. 20 November 2023: Tod's joins the Aura Blockchain Consortium and ships NFC passports on the custom Di Bag, built with Aura. 14 March 2025: the Tod's Passport extends to the My Gommino collection, NFC chip in the right sole, certificate of authenticity on the Aura Private Blockchain, traceability by Temera. 28 August 2026: Tod's adds a second passport layer with Renoon, QR codes publishing materials, production and sustainability data on the signature loafers — the two stacks now overlap on the same product line." style={{ width: '100%', height: 'auto', display: 'block' }} fontFamily="ui-sans-serif, system-ui, sans-serif">
+    <text x="20" y="26" fontSize="14" fontWeight="600" fill="#FFFFFF">Tod's passport history — one maison, two stacks</text>
+    <text x="20" y="44" fontSize="10" fill="rgba(255, 255, 255, 0.55)">Aura / Temera NFC layer since 2023 · Renoon QR layer added 28 Aug 2026</text>
+    <line x1="24" y1="130" x2="416" y2="130" stroke="#062840" strokeWidth="1.5" />
+    <circle cx="70" cy="130" r="8" fill="#0E7490" opacity="0.9" />
+    <line x1="70" y1="122" x2="70" y2="92" stroke="#062840" strokeWidth="1" />
+    <text x="70" y="72" textAnchor="middle" fontSize="10" fontWeight="600" fill="#22D3EE">20 Nov 2023</text>
+    <text x="70" y="86" textAnchor="middle" fontSize="9.5" fill="rgba(255, 255, 255, 0.7)">Di Bag · Aura · NFC</text>
+    <circle cx="230" cy="130" r="8" fill="#00FFFF" opacity="0.85" />
+    <line x1="230" y1="138" x2="230" y2="168" stroke="#062840" strokeWidth="1" />
+    <text x="230" y="186" textAnchor="middle" fontSize="10" fontWeight="600" fill="#22D3EE">14 Mar 2025</text>
+    <text x="230" y="200" textAnchor="middle" fontSize="9.5" fill="rgba(255, 255, 255, 0.7)">My Gommino · Aura + Temera · NFC</text>
+    <circle cx="388" cy="130" r="9" fill="#22D3EE" opacity="0.9" />
+    <line x1="388" y1="121" x2="388" y2="92" stroke="#062840" strokeWidth="1" />
+    <text x="388" y="72" textAnchor="middle" fontSize="10" fontWeight="600" fill="#22D3EE">28 Aug 2026</text>
+    <text x="388" y="86" textAnchor="middle" fontSize="9.5" fill="rgba(255, 255, 255, 0.7)">Loafers · Renoon · QR</text>
+    <rect x="160" y="104" width="256" height="52" rx="6" fill="none" stroke="#22D3EE" strokeWidth="1" strokeDasharray="5 4" opacity="0.6" />
+    <text x="288" y="118" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.6)">Same product line, two live stacks</text>
+    <text x="20" y="228" fontSize="10" fill="rgba(255, 255, 255, 0.55)">Source: Aura Blockchain Consortium releases (2023, 2025), WWD (2026), linked inline.</text>
+  </svg>
+</div>
+
+So the Renoon announcement is not an entry into product passports. It is the arrival of a second stack on a product line that already had one.
+
+## What Renoon adds — and what it does not
+
+The two stacks are not redundant. They answer different questions.
+
+The NFC layer is an authenticity and ownership instrument. Its core attestation is a certificate of authenticity on the Aura Private Blockchain, bound to a chip embedded in the shoe. Its job is to answer: is this pair genuine, and who does it belong to?
+
+The QR layer is a compliance and transparency instrument. Per WWD, it publishes materials, production processes, locations and certifications — the data categories the ESPR will progressively mandate. Renoon's own [footwear DPP page](https://www.renoon.com/digital-product-passport-footwear) describes the typical carrier mix. QR codes serve as the primary carrier, GS1 Digital Link connects product and record, and NFC covers "selected authentication or premium product experiences".
+
+Renoon is not a newcomer pitching a pilot. Its [homepage](https://www.renoon.com) claims more than 30 live case studies and over 10 million passport-ready products. What its site does not publish today is any documentation of the Tod's integration itself. We checked its full public sitemap and found no Tod's case study or announcement. The deal is documented only by WWD's reporting.
+
+## One product, two passports: who is the source of truth?
+
+Here is the scan a customer will actually perform in 2026. They tap the NFC chip in the right sole and land on the Tod's Passport: authenticity certificate, ownership, warranty, CRM-linked services. Or they scan a QR code and land on the Renoon-powered page: materials, production locations, certifications. Two entry points, two backends, two operators — Temera and Aura on one side, Renoon on the other.
+
+<div style={{ margin: '2rem 0', padding: '1.25rem 1rem', background: 'var(--graphite)', border: '1px solid rgba(0, 255, 255, 0.1)', borderRadius: '0.75rem' }}>
+  <svg viewBox="0 0 440 300" role="img" aria-label="Diagram of the two-stack scan flow on one pair of Tod's Gommino loafers. The customer scans the same product in two ways. The NFC chip in the right sole, operated with Temera, opens the Tod's Passport on the Aura Private Blockchain: certificate of authenticity, ownership claim, warranty and client services — it answers the question, is this pair genuine. The QR code, powered by Renoon, opens a page of materials, production locations and certifications — it answers the question, how was this pair made. WWD reports Renoon's data will be ensured through the Aura Blockchain Consortium, drawn as a dashed link between the two registries. No public documentation describes a reconciliation layer deciding which attestation wins if the two ever disagree." style={{ width: '100%', height: 'auto', display: 'block' }} fontFamily="ui-sans-serif, system-ui, sans-serif">
+    <text x="20" y="26" fontSize="14" fontWeight="600" fill="#FFFFFF">One pair, two scans — which registry answers?</text>
+    <rect x="150" y="44" width="140" height="34" rx="6" fill="#00FFFF" opacity="0.12" />
+    <text x="220" y="65" textAnchor="middle" fontSize="11" fontWeight="600" fill="#FFFFFF">Customer scans the Gommino</text>
+    <line x1="180" y1="78" x2="90" y2="106" stroke="#062840" strokeWidth="1.5" />
+    <line x1="260" y1="78" x2="350" y2="106" stroke="#062840" strokeWidth="1.5" />
+    <rect x="24" y="106" width="150" height="30" rx="6" fill="#0E7490" opacity="0.5" />
+    <text x="99" y="125" textAnchor="middle" fontSize="10.5" fontWeight="600" fill="#FFFFFF">NFC chip, right sole</text>
+    <rect x="266" y="106" width="150" height="30" rx="6" fill="#0E7490" opacity="0.5" />
+    <text x="341" y="125" textAnchor="middle" fontSize="10.5" fontWeight="600" fill="#FFFFFF">QR code</text>
+    <text x="99" y="150" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.6)">Aura + Temera</text>
+    <text x="341" y="150" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.6)">Renoon</text>
+    <line x1="99" y1="156" x2="99" y2="176" stroke="#062840" strokeWidth="1.5" />
+    <line x1="341" y1="156" x2="341" y2="176" stroke="#062840" strokeWidth="1.5" />
+    <rect x="24" y="176" width="150" height="64" rx="6" fill="#00FFFF" opacity="0.1" />
+    <text x="99" y="194" textAnchor="middle" fontSize="9.5" fontWeight="600" fill="#22D3EE">Aura Private Blockchain</text>
+    <text x="99" y="208" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.75)">Authenticity certificate</text>
+    <text x="99" y="220" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.75)">Ownership · warranty · CRM</text>
+    <text x="99" y="233" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.55)">"Is this pair genuine?"</text>
+    <rect x="266" y="176" width="150" height="64" rx="6" fill="#00FFFF" opacity="0.1" />
+    <text x="341" y="194" textAnchor="middle" fontSize="9.5" fontWeight="600" fill="#22D3EE">Renoon data layer</text>
+    <text x="341" y="208" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.75)">Materials · production sites</text>
+    <text x="341" y="220" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.75)">Certifications</text>
+    <text x="341" y="233" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.55)">"How was this pair made?"</text>
+    <line x1="174" y1="208" x2="266" y2="208" stroke="#22D3EE" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
+    <text x="220" y="202" textAnchor="middle" fontSize="8.5" fill="rgba(255, 255, 255, 0.6)">Data "ensured through Aura" (WWD)</text>
+    <text x="20" y="268" fontSize="10" fill="rgba(255, 255, 255, 0.55)">Undocumented: any reconciliation layer if the two attestations ever disagree.</text>
+    <text x="20" y="286" fontSize="10" fill="rgba(255, 255, 255, 0.55)">Sources: tods.com, auraconsortium.com, WWD 28 Aug 2026.</text>
+  </svg>
+</div>
+
+In the benign case, nothing conflicts. The NFC certificate says the pair is genuine; the QR page describes how it was made. The customer never notices the seam.
+
+But seams become visible exactly when it matters. Three scenarios:
+
+1. **Disagreement.** The sustainability layer states a material origin that the authenticity layer's production record does not corroborate. Which record does a regulator, a reseller or a court treat as authoritative?
+2. **Divergent lifecycle events.** The QR passport lists a repair; the NFC certificate knows nothing of it. At resale, the buyer reads two partial histories of one object.
+3. **Operator risk.** One vendor sunsets its platform, or the maison switches providers. Which half of the product's memory survives the migration?
+
+WWD's line about Renoon data being "ensured through" Aura hints at a shared integrity anchor. If accurate, Aura's chain would anchor both claim sets — a sensible architecture. But no public documentation confirms how the anchor works, who writes to it, or which attestation prevails in a conflict.
+
+| Question | NFC stack (Aura + Temera) | QR stack (Renoon) |
+| --- | --- | --- |
+| Primary claim | Authenticity, ownership | Materials, production, certifications |
+| Carrier | NFC chip in the right sole | QR code |
+| Backend | Aura Private Blockchain | Renoon data platform |
+| Copy-resistant carrier | Yes, dynamic chip authentication | No, printed and photographable |
+| Regulatory driver | Anti-counterfeiting, customer engagement | ESPR compliance preparation |
+| Documented since | Nov 2023 (Di Bag), Mar 2025 (My Gommino) | Aug 2026 (WWD only) |
+
+## Why the ESPR registry will not tolerate ambiguity
+
+Tod's is moving early. Renoon's own footwear page notes that no footwear-specific DPP delegated act exists yet, and the Commission's preparatory study is planned for the end of 2027. Nothing forced this launch except strategy.
+
+But the direction is set. When [the EU DPP registry and standards went live](/blog/2026-08-25-eu-dpp-registry-live), the passport stopped being a brand experience. It became market infrastructure: one product, one passport, resolvable by systems the brand does not control. And as we noted when reading [LVMH's group-level DPP strategy](/blog/2026-08-26-lvmh-dpp-strategy), the majors are consolidating their passport estates precisely because fragmentation does not scale.
+
+The ESPR logic assumes a single, coherent passport per product. A maison running two stacks with two operators and two carriers will face a question its marketing never had to answer. Which attestation is authoritative for which claim? And how does a third party verify the linkage between them, in a machine-readable way? That is an interoperability contract, not a storytelling choice. Tod's is simply the first maison where the question is visible from the outside, because both of its stacks are.
+
+## The limits of what we know
+
+Intellectual honesty about this file.
+
+- **The Renoon integration is documented only by WWD.** Renoon's public site, checked today, documents neither the deal nor the Tod's data model. Tod's own DPP page still describes only the Aura/NFC architecture at the time of writing. Tod's Group's newsroom could not be consulted directly (access restrictions); the 2023 and 2025 history is corroborated by Aura's own releases.
+- **The QR passport's actual content is not public.** We have not seen a live Renoon-powered Tod's passport. The data categories above come from WWD's description, not from the product.
+- **The "ensured through Aura" mechanism is unverified.** WWD states it; no primary source we could consult today explains the technical linkage between Renoon's data and Aura's chain.
+- **We do not know whether the two carriers will coexist on the same pairs.** The rollout may target different SKUs, regions or sales channels. WWD says the rollout begins with signature loafers and will extend.
+- **A passport stack does not solve physical binding.** As detailed in our [analysis of the Louisville counterfeit seizures](/blog/2026-08-27-cbp-louisville-fake-watches-border-enforcement), a QR code can be photographed and a genuine NFC response can be relayed onto a fake. Two stacks double the attestations; they do not double the proof that the object in hand is the attested one.
+
+## Galileo's take
+
+**Galileo's take: the Tod's file is the interoperability question, dated.** One maison, one product line, two passport stacks — each legitimate, each answering a different question, neither publicly reconciled with the other. This is not a criticism of Tod's, which is ahead of the regulatory curve and transparent about its suppliers. It is a preview of what every maison will manage as ESPR enforcement approaches. Authenticity attestations born from anti-counterfeiting, sustainability attestations born from compliance — and a customer, soon a registry, expecting one coherent answer.
+
+The fix is not picking a winner between NFC and QR, or between consortium chains and compliance platforms. Carriers are a UX choice; registries are a trust choice. The fix is a layer where attestations verify independently of the operator that issued them. On an open protocol, authenticity claims, materials claims and lifecycle events about the same item resolve to one verifiable identity. That identity stays readable by systems the maison does not control — resale platforms, customs tooling, the EU registry itself. That is the layer Galileo Protocol builds: item-level digital twins, interoperable attestations, personal data off-chain, schemas published openly in our [specifications](/specifications). A maison should be able to run Aura for certificates and Renoon for sustainability data — and still present one coherent, verifiable product identity to the world. Explore the [documentation](/docs) or [contact us](mailto:info@galileoprotocol.io) to discuss what that reconciliation layer looks like for your maison.
+
+## Sources
+
+- [WWD, Tod's Launches Digital Product Passports With Renoon](https://wwd.com/footwear-news/shoe-industry-news/tods-digital-product-passport-launch-1239125385/), 28 August 2026: Renoon partnership, QR carriers, loafers first, Skrami and Beretta quotes, data "ensured through the Aura Blockchain Consortium". Consulted 28 August 2026.
+- [Aura Blockchain Consortium, Tod's joins Aura Blockchain Consortium, Securing Digital Product Passports for their Iconic custom Di Bag](https://auraconsortium.com/news/tods-joins-aura-blockchain), 20 November 2023: first Tod's DPP, Di Bag, traceability token, ownership certificates. Consulted 28 August 2026.
+- [Aura Blockchain Consortium, Tod's Digital Product Passports to its Iconic My Gommino Collection](https://www.auraconsortium.com/news/tods-digital-product-passports-to-its-iconic-my-gommino-collection), 14 March 2025: NFC chip in the right sole, Temera traceability, certificate of authenticity on the Aura Private Blockchain, wallet card linked to Tod's CRM. Consulted 28 August 2026.
+- [Tod's, Digital Product Passport page](https://www.tods.com/us-en/Tods-Digital-Passport/): current Aura/NFC architecture for Di Bag and My Gommino, materials origin, production-chain locations, premium benefits. Consulted 28 August 2026.
+- [Renoon, homepage](https://www.renoon.com): DPP compliance positioning, 30+ live case studies, over 10 million passport-ready products. Consulted 28 August 2026.
+- [Renoon, Digital Product Passport for footwear](https://www.renoon.com/digital-product-passport-footwear): no footwear delegated act adopted, Commission preparatory study planned end 2027, QR and GS1 Digital Link as typical carriers, NFC for authentication experiences. Consulted 28 August 2026.
+
+## FAQ
+
+### Is the Renoon passport Tod's first Digital Product Passport?
+
+No. Tod's has shipped Digital Product Passports with the Aura Blockchain Consortium since [20 November 2023](https://auraconsortium.com/news/tods-joins-aura-blockchain), starting with the custom Di Bag. The maison extended the same NFC-based Tod's Passport to the My Gommino collection on [14 March 2025](https://www.auraconsortium.com/news/tods-digital-product-passports-to-its-iconic-my-gommino-collection), with traceability by Temera. The Renoon partnership announced on 28 August 2026 adds a second, QR-based data layer.
+
+### What is the difference between Tod's NFC passport and the new QR passport?
+
+They carry different claim sets. The NFC passport, built with Aura and Temera, certifies authenticity and ownership: a secure digital certificate stored on the Aura Private Blockchain, product registration and premium services. The QR passport, built with Renoon, publishes materials, production processes, locations and company certifications — the sustainability and compliance data layer.
+
+### Which passport is the source of truth when a customer scans?
+
+Today, each stack is authoritative only for its own claims. The NFC chip answers "is this pair genuine and who owns it"; the QR code answers "what is it made of and how was it produced". No public documentation describes a reconciliation layer between the two registries. WWD reports that Renoon's data will be ensured through the Aura Blockchain Consortium, which suggests a shared integrity anchor — but the architecture is not public.
+
+### Does EU regulation require two passports on one product?
+
+No. The ESPR framework points to a single Digital Product Passport per product, accessible through one data carrier. For footwear, no delegated act has been adopted yet; the European Commission's preparatory study is planned for the [end of 2027](https://www.renoon.com/digital-product-passport-footwear). Tod's is moving ahead of the mandate — and previewing the interoperability problem every maison will face.
+
+### Can a QR code prove a shoe is authentic?
+
+No. A QR code is a printed, copyable carrier: it links to data, but anyone can photograph and reproduce it. Authenticity requires a cryptographic check that a copy cannot pass — typically a dynamic NFC authentication. Even then, proving the genuine chip is still inside the genuine shoe, the physical-binding problem, remains open engineering work, as we detailed in our [Louisville seizures analysis](/blog/2026-08-27-cbp-louisville-fake-watches-border-enforcement).
