@@ -25,6 +25,29 @@ Idea format:
 
 ---
 
+## Brainstorm of 28 August 2026 (Trends × News watch)
+
+Status note: the four drafted articles of 25-27/08 (EU DPP registry, MiCA transitional period, LVMH DPP strategy, CBP Louisville) were published 27/08/2026. They are not re-proposed.
+
+Queries run: Google Trends RSS geo=US, geo=GB, geo=FR, geo=DE; Google News RSS (hl=en-US, gl=US, ceid=US:en) for the domain queries. Reddit searches (site:reddit.com) returned nothing today — zero social signal, not "nothing exists". X connector not authenticated, no X citations.
+
+Trends × News crossing: no usable overlap — FR trends = Dassault Rafale (out of scope), DE = germanwings 2015 trial and generic hacker noise.
+
+Signals evaluated:
+
+- Tod's launches a Digital Product Passport for the Gommino with Renoon (WWD, 28/08/2026) — KEPT as new idea below. Correction vs the headline: the Gommino DPP is not new (Aura/Temera NFC since 03/2025, Di Bag since 11/2023); the news is the Renoon partnership. Axis note: DPP axis justified by a dated news event (balance rule); tokenization/RWA stays the next batch.
+- Miami $1.7M Instagram counterfeit seizure — DISMISSED: same family as the 27/08 Louisville article, smaller; at most an enrichment of that lot.
+- ESPR query polluted by the Esperion pharma ticker — no signal.
+
+Editorial gap identified: coverage of brand DPP launches stays product-PR; nobody asks which attestation wins when one maison runs two passport stacks on the same product line. Primary sources to verify: tods.com, renoon.com, auraconsortium.com, todsgroup.com.
+
+### [selected] Tod's scans twice: Renoon QR vs Aura NFC — who is the source of truth when the customer scans?
+- **Angle**: WWD (28/08/2026) announces a Tod's DPP for the Gommino with Renoon (materials, production, sustainability via QR). But Tod's has shipped Aura/Temera NFC passports since 2023 (Di Bag) and on the My Gommino since 03/2025. The maison now runs two DPP stacks on the same product line — the concrete case of the interoperability question the ESPR registry will force: which attestation wins, and what would an open protocol reconcile? Never write "first DPP".
+- **Sources / trigger**: wwd.com (28/08/2026); primaries to verify the same day: tods.com DPP pages, renoon.com, auraconsortium.com (14/03/2025 My Gommino release), todsgroup.com newsroom.
+- **Why now**: only true same-day story in the watch; a maison below conglomerate level putting the passport in the UX — complements LVMH (group strategy) and the EU registry (public infrastructure).
+
+---
+
 ## Brainstorm of 27 August 2026 (Trends × News watch)
 
 Queries run: Google Trends RSS geo=US, geo=GB, geo=FR; Google News RSS (hl=en-US, gl=US, ceid=US:en) for `digital product passport`, `luxury blockchain`, `RWA tokenization`, `MiCA regulation`, `luxury counterfeiting`, `ESPR`.
