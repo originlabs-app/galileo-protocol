@@ -107,6 +107,20 @@ Every new article ships with visuals, generated with a native image-generation t
 - [ ] **Style derived from the brand tokens** (`website/src/app/globals.css`): dark obsidian canvas (`#000810`), cyan bioluminescent accents (`#00FFFF`/`#22D3EE`), editorial photo or premium tech-noir illustration. Avoid literal flags and cliché stock metaphors.
 - [ ] Inspect every final image before committing; regenerate on any artefact, off-topic content or embedded text.
 
+### SVG diagram layout rules
+
+Lesson from the malformed diagrams fixed in production on 28/08/2026. Reference patterns: the Origin Labs and Origin Education blog diagrams, which follow these rules.
+
+- Never trust character-count estimates for text width: real fonts render wider than expected. Before committing, render every SVG with headless Chrome and inspect the PNG (extract the `<svg>` block into an HTML file on the site background; convert JSX camelCase attributes to kebab-case when extracting from MDX: `fontSize` → `font-size`, `textAnchor` → `text-anchor`, `strokeWidth` → `stroke-width`):
+  ```bash
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --screenshot=/tmp/svg.png --window-size=920,760 file:///tmp/svg.html
+  ```
+- At least 12 px between text edge and box edge, with the site's real font.
+- Several short lines (35 characters max) over one long line; never a 50+ character single line at `font-size` ≥ 11 inside a box.
+- Timelines and flows with close milestones: stagger labels on two alternating rows (Education timeline pattern).
+- Box width = measured text width + 24 px minimum; when in doubt, widen the box or drop body text to 10-10.5 px.
+- Check the render at desktop width AND at 390 px: relative overflow does not disappear on mobile.
+
 ### SEO/GEO harness (do not regress)
 
 - `src/lib/blog.ts` validates frontmatter strictly (build fails on missing required fields, non-ISO or incoherent dates, non-kebab slug, out-of-range title/description, malformed faq); defaults only for optional fields: `modified = date`, `description = excerpt`, `faq = []`.
