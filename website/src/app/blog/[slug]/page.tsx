@@ -129,6 +129,12 @@ const mdxComponents = {
       />
     );
   },
+  // Keep wide editorial tables inside the article column on small screens.
+  table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
+    <div className="w-full overflow-x-auto my-6">
+      <table {...props} className="min-w-full border-collapse text-sm" />
+    </div>
+  ),
   // Lists with cyan markers
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul {...props} className="list-disc my-4 space-y-2 text-[var(--platinum-dim)] pl-5 marker:text-[var(--cyan-primary)]" />
