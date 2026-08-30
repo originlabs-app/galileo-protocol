@@ -44,9 +44,10 @@ Primary-source verification (30/08/2026, all fetched directly):
 
 ### [drafted] When F.P. Journe asks to be contacted before every purchase: is the secondary market missing a portable proof?
 - Article written: `website/content/blog/2026-08-30-fpjourne-secondary-market-portable-proof.mdx` (30/08/2026) — awaiting deploy (GO Pierre). Local archive of the homepage: `.blog-archive/2026-08-30-fpjourne/` (home-popup.png, home-en.png, home-en.html).
-- **Angle**: the manufacture displays a public anti-counterfeit warning on its own official site and routes collectors to its Boutiques for a nominative Certificate of Authenticity (watches sold >5 years ago). The certificate is not a transferable token — the "portable proof" gap that verifiable item-level identity fills.
+- **Angle**: the manufacture displays a public anti-counterfeit warning on its own official site and routes collectors to its Boutiques for a nominative Certificate of Authenticity (watches sold >5 years ago). The public pages describe no transferable proof and no independent verification at resale — a public-documentation gap that verifiable item-level identity addresses (post-review framing; do not affirm no mechanism exists).
 - **Sources / trigger**: fpjourne.com (homepage popup, service, garantie, patrimoine, press area); WatchPro USA 28/08/2026 (cautious); luxe.net 29/08/2026 (cautious, self-flagged access limits). No auction figures used as evidence of the authenticity problem.
 - **Why now**: warning live on the official site as of 30/08/2026; first trade-press coverage 28-29/08/2026.
+- Editorial review of 30/08/2026 (second independent review, HOLD, corrected same day): (1) main thesis exceeded the source — "nominative" does not prove the certificate is unusable at resale; all claims reframed as a public-documentation gap ("not described publicly", "documentation gap, not proof that no mechanism exists"), across excerpt, description, lead, body section (renamed "What the public documentation does not say"), comparison table (+ reading-guide note), SVG1 labels, FAQ frontmatter and body mirrors, Galileo's take; (2) "question of ownership" corrected to "question of authenticity, for a named requester, at one point in time". Gates re-run green; corrections committed on top of the previous lot (no history rewrite).
 
 ---
 
