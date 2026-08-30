@@ -25,6 +25,31 @@ Idea format:
 
 ---
 
+## Brainstorm of 30 August 2026 (Trends × News watch)
+
+Topic and angle frozen by Pierre: "When F.P. Journe asks to be contacted before every purchase: is the secondary market missing a portable proof?" — NOT "human expertise doesn't scale"; distinct from the Louisville border-enforcement article, from Tod's brand-DPP-stacks article, and from the logged "$467B / visual authentication is dead" idea.
+
+Queries run: Google Trends RSS geo=US; Google News RSS (hl=en-US, gl=US, ceid=US:en) for `F.P. Journe counterfeit` and `F.P. Journe super-fakes`.
+
+Trends × News crossing: no Trends overlap (sports betting, entertainment). News: WatchPro USA "Beware of super-fakes warns F.P. Journe" (28/08/2026) + adjacent superfakes coverage (Robb Report, Time+Tide, Quill & Pad reprise) — the topic is live; the editorial gap is the institutional-answer / portable-proof reading, which the article takes.
+
+Primary-source verification (30/08/2026, all fetched directly):
+- fpjourne.com/en homepage: anti-counterfeit WARNING popup verified in page source (popupMessage JSON) and captured visually via headless Chrome. Text: "all of these watches, clocks and related products are counterfeits", "contact us before purchasing", "Do not purchase without the expertise of a professional"; grid of flagged items (wall clocks, key ring, Brioni item, boxes, watches face/caseback) each stamped FAKE. Archived locally: screenshot + full HTML in `.blog-archive/2026-08-30-fpjourne/`. archive.today returned HTTP 429 twice — no public snapshot.
+- "Nine fakes" NOT used: luxe.net (29/08/2026) says "neuf pièces" but flags it could not access the brand's site/accounts; no dated, archivable social post from the manufacture fixes a count. Article describes the banner without a number, per Pierre's instruction.
+- /fr/service: "CERTIFICAT D'AUTHENTICITÉ — Nous vous invitons à contacter une Boutique F.P.Journe." Verified.
+- /fr/garantie FAQ: certificate for any timepiece sold more than 5 years ago, certified by a Boutique, "établi de manière nominative"; official network "vous éviterez la contrefaçon et l'achat d'une montre volée". Verified verbatim.
+- /fr/patrimoine: service created 2016, buyback of rare out-of-production watches, original state guaranteed, resale via Boutiques with a new 3-year sales warranty. Verified verbatim.
+- /en/press-area: no anti-counterfeit dossier visible (contact info only). Verified.
+- WatchPro USA article: direct fetch blocked (403 bot wall); title + 28/08/2026 date confirmed via Google News RSS. luxe.net article fetched and read in full.
+
+### [drafted] When F.P. Journe asks to be contacted before every purchase: is the secondary market missing a portable proof?
+- Article written: `website/content/blog/2026-08-30-fpjourne-secondary-market-portable-proof.mdx` (30/08/2026) — awaiting deploy (GO Pierre). Local archive of the homepage: `.blog-archive/2026-08-30-fpjourne/` (home-popup.png, home-en.png, home-en.html).
+- **Angle**: the manufacture displays a public anti-counterfeit warning on its own official site and routes collectors to its Boutiques for a nominative Certificate of Authenticity (watches sold >5 years ago). The certificate is not a transferable token — the "portable proof" gap that verifiable item-level identity fills.
+- **Sources / trigger**: fpjourne.com (homepage popup, service, garantie, patrimoine, press area); WatchPro USA 28/08/2026 (cautious); luxe.net 29/08/2026 (cautious, self-flagged access limits). No auction figures used as evidence of the authenticity problem.
+- **Why now**: warning live on the official site as of 30/08/2026; first trade-press coverage 28-29/08/2026.
+
+---
+
 ## Brainstorm of 28 August 2026 (Trends × News watch)
 
 Status note: the four drafted articles of 25-27/08 (EU DPP registry, MiCA transitional period, LVMH DPP strategy, CBP Louisville) were published 27/08/2026. They are not re-proposed.
