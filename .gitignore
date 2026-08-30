@@ -46,6 +46,7 @@ pnpm-debug.log*
 .claude/
 .cursor/
 .windsurf/
+.blog-archive/
 planning/
 .planning/
 docs/references/agent-missions/
