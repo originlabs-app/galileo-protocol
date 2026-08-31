@@ -30,6 +30,41 @@ Primary-source verification (31/08/2026, all fetched directly):
 - **Angle**: the week Coinbase put US equities on-chain (24/08/2026, B20/Base, Alpaca/ADGM, Chainlink) with RWAs holding above $30B, 100% of headlines were finance. The missing link is physical luxury — authenticity and resale, not yield. Analysis piece ("the week where…"), not breaking news. Two-rulebooks section (MiFID II/DLT Pilot vs ESPR/DPP), luxury exceptions cited (Aura, Renoon, Tod's, LVMH), internal links to MiCA, DPP registry, LVMH, Tod's, F.P. Journe and ESPR destruction articles.
 - **Sources**: Chainlink/Coinbase PR (24/08/2026), docs.base.org B20, a16z (08/05/2026), rwa.xyz (31/08/2026), Stobox mid-year 2026, Galaxy Research (28/08/2026), Yahoo Finance (25/08/2026), EUR-Lex MiFID II + DLT Pilot Regime.
 - **Why now**: pillar Tokenization/RWA axis (least-served per AGENTS.md); the Coinbase launch is one week old — analysis framing, not a dispatch.
+- Cover note update (31/08/2026): the cover image was generated and added in a later commit (`feat(blog): cover for RWA tokenization pillar`); the "cover missing" note above is stale.
+
+### Evidence archive — adversarial review of 31/08/2026 (HOLD, 5 points)
+
+**rwa.xyz dashboard — refetch of 31/08/2026, ~09:58 UTC** (second independent reading same day; text capture from the live dashboard):
+- Distributed Asset Value: **$31.79B** (+1.95% vs 30d) — unchanged vs the morning reading.
+- Represented Asset Value: $385.39B (−11.98% vs 30d).
+- Total Asset Holders: **833,206** (+11.30% vs 30d) — unchanged.
+- Total Stablecoin Value: $298.40B; Total Stablecoin Holders: 260.17M.
+- Asset-class tabs visible: Government Securities, Stablecoins, Non-U.S. Govt. Debt, Credit, Stocks, PE/VC, Active Strategies, Commodities, Real Estate — no luxury/collectibles category.
+- Methodology note: the article cites rwa.xyz's "Distributed Asset Value" metric, excluding stablecoins. Higher totals (≈$38B / ≈1.6M holders) circulate from other aggregators under broader methodologies; the article now says so explicitly.
+
+**Google News RSS scan — rerun 31/08/2026, ~09:58 UTC.** Method: `news.google.com/rss/search?q=RWA tokenization&hl=en-US&gl=US&ceid=US:en`; first 20 item titles scanned; categories observed: all financial (tokenized treasuries, stablecoins, securities platforms, market analysis, commodity trading, real-estate tokenization). Zero physical-luxury story. Titles, in order:
+1. Everything You Own Will Live On-Chain Thanks to RWA Tokenization — CoinMarketCap
+2. BlackRock's BUIDL Reclaims Top Spot for Tokenized Treasuries, Bolstering RWA Market — BeInCrypto
+3. World Liberty Financial Launches USD1 on Canton Network to Accelerate RWA Tokenization — Business Wire
+4. Stellar RWA Assets Outgrow Its DeFi Markets — The Defiant
+5. Shinhan Asset Management Signs MOU with Global RWA Platform Plume for Tokenized Securities Business Cooperation — PR Newswire
+6. RWA Trading Is Surging in 2026: What's Driving the Tokenization Boom? — CryptoRank
+7. 8 Blockchains Taking Different Approaches to Real-World Asset Tokenization — DailyCoin
+8. Stellar's RWA Market Surges 360% This Year, Nears $4 Billion — bloomingbit
+9. Copper Procurement Is Bottlenecking AI Development. Can Blockchain Help? — Built In
+10. RWA Market Surges 48.7%, But One Token Explains Almost Everything — Yellow.com
+11. Datavault AI Ties RWA Tokenization To 24/7 Regulated Commodity Trading — Yahoo Finance
+12. Asset Tokenization in the US: A Practical Guide — Practical Law The Journal / Reuters
+13. Chart of the week: Tokenized 'real-world' assets top $30B in market cap — a16z crypto
+14. RWA Tokenization Hits $28.9B Record in May 2026 as Stablecoins Reach $320B ATH — CoinDesk
+15. The Future of RWA Tokenization Platforms: Key Trends for 2026 — Nasscom
+16. Tokenized RWA Yields Will Dominate the Next Crypto Downturn — CoinMarketCap
+17. CZ Says He Underestimated RWA Growth and Now Understands Its Appeal — bloomingbit
+18. Reality of RWA Tokenization in 2026: Only One Asset Class Is Ready for Prime Time — BeInCrypto
+19. Coinbase picks Abu Dhabi for its global tokenized asset push — CoinDesk
+20. Tether expands tokenization business into Saudi Arabia, starting with real estate — CoinDesk
+
+**WWD Tod's/Renoon article — refetched in full 31/08/2026** (review point 5 REFUTED): WWD (28/08/2026) states "Digital passports are now accessible directly on Tod's website" (present, not a 1 September future) and "the QR codes carrying DPP's open up new possibilities" (QR explicitly documented). Article phrasing aligned: "a Renoon QR layer live on tods.com since 28 August 2026".
 
 ---
 
