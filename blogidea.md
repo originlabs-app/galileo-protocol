@@ -6,6 +6,33 @@ See AGENTS.md for the frontmatter and editorial contract.
 Editorial line: four axes (protocol & infra, tokenization/RWA, counterfeiting & provenance, DPP & luxury regulation) — see the "Editorial line" section in AGENTS.md. DPP is one axis, not the whole line; allocate brainstorms to the least-served axis first (currently: tokenization/RWA).
 Before every brainstorm, run the news watch (below) and log the session as a dated section.
 
+---
+
+## Brainstorm of 31 August 2026 (Trends × News watch)
+
+Topic frozen by Pierre: the pillar RWA idea "From Treasury bills to handbags: RWA tokenization leaves finance", drafted as an analysis piece on the week of 24-31/08/2026 (Coinbase Tokenized Stocks on Base, RWAs above $30B, all headlines financial).
+
+Queries run: Google Trends RSS geo=US; Google News RSS (hl=en-US, gl=US, ceid=US:en) for `RWA tokenization`.
+
+Trends × News crossing: no Trends overlap (weather, entertainment, social security). News: top results all financial — BlackRock BUIDL reclaims top tokenized-Treasuries spot (BeInCrypto), World Liberty USD1 on Canton (Business Wire), Shinhan AM × Plume MOU (PR Newswire), Stellar RWA surge. The observation "100% of the headlines are finance" is documented as this dated 31/08/2026 scan, phrased as a snapshot, not a media study.
+
+Primary-source verification (31/08/2026, all fetched directly):
+- Chainlink/Coinbase PR via nasdaq.com (24/08/2026): B20 tokens on Base, NVDAc/METAc/AAPLc/GOOGLc, 1:1 backing, Alpaca custody under ADGM, Chainlink official oracle, tokenized equities at a record $2.3B by mid-July 2026, non-US only. Verified in full.
+- docs.base.org B20 page: B20 = Base-native ERC-20 extension (precompiles, Beryl upgrade), asset-agnostic, corporate-action multipliers, allow/blocklist policies, KYC only at mint/redeem by Authorized Participants, permissionless secondary. Verified in full — B20 IS a real new standard, described as such.
+- a16z crypto "Tokenized RWAs top $30B": datePublished in JSON-LD = **2026-05-08, i.e. 8 MAY 2026 — NOT 05/08/2026**. The $30B crossing is a May event; the article frames it as such and uses the rwa.xyz same-day figure for "this week". Correction applied vs the original brief.
+- rwa.xyz dashboard (fetched 31/08/2026): Distributed Asset Value $31.79B (+1.95%/30d), Represented Asset Value $385.39B, Total Asset Holders 833,206, stablecoins $298.40B / 260.17M holders. Asset classes listed: government securities, non-US govt debt, credit, stocks, commodities, real estate, PE/VC, active strategies — NO luxury/collectibles category (observation dated 31/08/2026).
+- Bitcoin: crossed $80,000 intraday on 25/08/2026, high $81,023.41 (Yahoo Finance, 25/08/2026 — used as the citable source; the Reuters piece was not directly fetchable).
+- Galaxy Research (28/08/2026): "the tokens are live; the SEC's framework is not" — used for the regulatory asymmetry.
+- Stobox State of RWA 2026 mid-year: reused as cited in the 25/08 MiCA article ($33.5B excl. stablecoins as of 10/07/2026, 167 platforms, Ethereum 47.9%, ERC-7943 Final May 2026).
+
+### [drafted] From T-Bills to Handbags: Tokenization Leaves Finance
+- Article written: `website/content/blog/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets.mdx` (main, 31/08/2026) — awaiting deploy (GO Pierre). **Cover image NOT generated** (no image_gen tool available in the drafting environment): frontmatter ships without `coverImage`, build stays green on the default OG image — generate the 1200×630 cover before publication per the visual contract.
+- **Angle**: the week Coinbase put US equities on-chain (24/08/2026, B20/Base, Alpaca/ADGM, Chainlink) with RWAs holding above $30B, 100% of headlines were finance. The missing link is physical luxury — authenticity and resale, not yield. Analysis piece ("the week where…"), not breaking news. Two-rulebooks section (MiFID II/DLT Pilot vs ESPR/DPP), luxury exceptions cited (Aura, Renoon, Tod's, LVMH), internal links to MiCA, DPP registry, LVMH, Tod's, F.P. Journe and ESPR destruction articles.
+- **Sources**: Chainlink/Coinbase PR (24/08/2026), docs.base.org B20, a16z (08/05/2026), rwa.xyz (31/08/2026), Stobox mid-year 2026, Galaxy Research (28/08/2026), Yahoo Finance (25/08/2026), EUR-Lex MiFID II + DLT Pilot Regime.
+- **Why now**: pillar Tokenization/RWA axis (least-served per AGENTS.md); the Coinbase launch is one week old — analysis framing, not a dispatch.
+
+---
+
 ## News watch
 
 Decision rules and commands: the "News watch (ideation)" section in `AGENTS.md`. Trends and News are ideation signals, never sources; "no relevant signal" is a valid outcome.
@@ -143,7 +170,8 @@ Editorial gap identified: seizure coverage stays episodic local news — nobody 
 - **Sources**: sealtrust.io (20/02/2026), magazine.luxus-plus.com (02/04/2026).
 - **Why now**: fresh 2026 figures + DPP regulatory convergence; great short LinkedIn format.
 
-### [idea] From Treasury bills to handbags: RWA tokenization leaves finance
+### [drafted] From Treasury bills to handbags: RWA tokenization leaves finance
+- Drafted 31/08/2026 as `website/content/blog/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets.mdx` — see the "Brainstorm of 31 August 2026" section above for the verified facts and the a16z date correction (8 May 2026, not 05/08).
 - **Angle**: 2026 RWA news is dominated by BlackRock, Nasdaq, Securitize — but the least-served segment is non-financial physical assets (luxury, art, collectibles). Position Galileo on this "missing middle".
 - **Sources**: stobox.io/reports/state-of-rwa-2026, cryptonaute.fr (22/12/2025).
 - **Why now**: institutional RWA euphoria (July 2026) creates media appetite for differentiated angles.
