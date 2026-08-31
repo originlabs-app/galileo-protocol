@@ -40,7 +40,8 @@ Primary-source verification (31/08/2026, all fetched directly):
 - Total Asset Holders: **833,206** (+11.30% vs 30d) — unchanged.
 - Total Stablecoin Value: $298.40B; Total Stablecoin Holders: 260.17M.
 - Asset-class tabs visible: Government Securities, Stablecoins, Non-U.S. Govt. Debt, Credit, Stocks, PE/VC, Active Strategies, Commodities, Real Estate — no luxury/collectibles category.
-- Methodology note: the article cites rwa.xyz's "Distributed Asset Value" metric, excluding stablecoins. Higher totals (≈$38B / ≈1.6M holders) circulate from other aggregators under broader methodologies; the article now says so explicitly.
+- Earlier-draft methodology note: the draft cited rwa.xyz's "Distributed Asset Value" metric, excluding stablecoins. Higher totals (≈$38B / ≈1.6M holders) circulated from other aggregators under broader methodologies.
+- Final publication decision (31/08/2026): the exact live dashboard total and holder count were removed from the article because an independent reviewer could not reproduce them through the dashboard's security interstitial. The published analysis now relies on dated, reproducible benchmarks from a16z (8 and 22 May) and Stobox (10 July); rwa.xyz is used only for its asset-class taxonomy.
 
 **Google News RSS scan — rerun 31/08/2026, ~09:58 UTC.** Method: `news.google.com/rss/search?q=RWA tokenization&hl=en-US&gl=US&ceid=US:en`; first 20 item titles scanned; categories observed: all financial (tokenized treasuries, stablecoins, securities platforms, market analysis, commodity trading, real-estate tokenization). Zero physical-luxury story. Titles, in order:
 1. Everything You Own Will Live On-Chain Thanks to RWA Tokenization — CoinMarketCap
