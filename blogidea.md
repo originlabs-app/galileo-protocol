@@ -8,6 +8,17 @@ Before every brainstorm, run the news watch (below) and log the session as a dat
 
 ---
 
+## Session of 1 September 2026 (update of a published article — no brainstorm)
+
+Trigger frozen by Pierre: a fourth Louisville seizure missed by `2026-08-27-cbp-louisville-fake-watches-border-enforcement.mdx` (published). Update in place, no new article.
+
+Primary-source verification (01/09/2026, fetched directly):
+- CBP national media release "Louisville CBP intercepts a $9 million shipment of counterfeit watches", **Release Date Aug 26, 2026** (verified in page HTML): seizure on **August 18** at the Port of Louisville; **152 watches** bearing suspected **Rolex and Louis Vuitton** trademarks + **32 pairs of shoes** bearing the suspected **Gucci** trademark; parcel from the **Republic of Korea**, bound for **Georgia**; combined MSRP if genuine **over $9.3 million**; deemed inauthentic by CBP's Centers of Excellence and Expertise.
+- Double-count check, release by release: 30/06 (seized 18/06, 375 AP, $54M), 17/07 (seized 09/07, 200 AP, $28M), 07/08 (seized 31/07, 300 AP, $43M, cumulative 875), 26/08 (seized **18/08 — after** the 07/08 release; different origin, brands and merchandise). The 4th seizure ADDS, no overlap. New series total: $54M + $28M + $43M + $9.3M = **over $134M**; watch count 875 + 152 = **1,027** (+ 32 pairs of shoes).
+- Article updated in place: 4th seizure paragraph, section retitled "The four seizures, in one record", excerpt/description/FAQ Q1, timeline SVG (Aug 18 marker), bar-chart SVG (4th outlined bar), status table (2 rows), "coverage missed"/"border"/limits/Galileo's take counts (three → four), update note for the reader under the lead, `modified: 2026-09-01`. Both SVGs re-rendered and inspected in headless Chrome (desktop + 390 px). Push authorized by Pierre for this lot.
+
+---
+
 ## Brainstorm of 31 August 2026 (Trends × News watch)
 
 Topic frozen by Pierre: the pillar RWA idea "From Treasury bills to handbags: RWA tokenization leaves finance", drafted as an analysis piece on the week of 24-31/08/2026 (Coinbase Tokenized Stocks on Base, RWAs above $30B, all headlines financial).
