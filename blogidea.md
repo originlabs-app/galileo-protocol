@@ -8,6 +8,62 @@ Before every brainstorm, run the news watch (below) and log the session as a dat
 
 ---
 
+## Brainstorm of 2 September 2026 (multi-source watch: Trends × News × Reddit × X, orchestrator)
+
+Status note: 12 articles live. Last 8 by axis: DPP & regulation 4, counterfeiting 2, RWA 2, protocol & infra 0 since 04/05/2026. Per the balance rule, protocol & infra is now the least-served axis (the file header still says RWA; corrected here).
+
+Queries played: Google News RSS EN/US (digital product passport luxury, luxury counterfeit seizure, RWA tokenization, MiCA regulation, ESPR ecodesign, luxury authentication blockchain, LVMH Aura, fake watches seized, luxury resale authentication, tokenized RWA luxury, ERC-3643, EU DPP 2027); Google Trends related queries US 3 months (digital product passport, RWA tokenization, luxury counterfeit, MiCA); autocomplete; Reddit search RSS (r/handbags answered, r/Watches and generic queries hit 429); X via web index only (not authenticated).
+
+Trends × domain crossings: `digital product passport` related top = `eu digital product passport`; autocomplete adds `digital product passport 2027`, `registry`, `for textiles`, `example`. `how to authenticate` autocomplete is brand-led (Louis Vuitton, Rolex, Gucci, Chanel): the buyer's question is per-item, not per-standard.
+
+Signals evaluated:
+
+- Luxury Evermore (Singapore) found Chanel serial code 10218184 on 127 bags across 36 countries in its free authentication database (Inside Retail Asia, 25/08/2026) — KEPT below: a serial number is not an identity.
+- WIRED bought a $500 super-clone Rolex that Rolex itself did not catch; clone movements now ship free-sprung balances (19/08/2026, also viral on X @WIRED) — KEPT: promotes the 25/08 idea "visual authentication is dead" to `selected`, re-framed to avoid overlap with F.P. Journe and Louisville.
+- Reddit r/handbags: "Vestiaire Collective is using AI/automation to falsely reject authentic bags and ignore receipts" (05/08/2026) and "Cettire sold me a counterfeit Balenciaga" (25/08/2026) — KEPT as social signals for the two pieces above: authentication fails in both directions (false rejections and false acceptances).
+- Austria's FMA published the first MiCA fine: Bitpanda, €70,000, white paper timing and marketing communication (published 14/08/2026, The Block, CoinDesk 17/08) — KEPT below: enforcement has started, what a tokenized-goods issuer must file before marketing.
+- SMX molecular markers "putting the proof inside the product" (27-31/08/2026, marketscreener, Stock Titan) — KEPT below on the protocol & infra axis: physical anchor vs digital identifier, what binds the two.
+- The RealReal 2026 Resale Report (25/08/2026): 47 % of buyers evaluate resale value before buying new; vintage demand +432 % since 2020 — NOT a standalone article: enrich the F.P. Journe portable-proof piece or use as a LinkedIn post.
+- New CBP seizures (Indianapolis jewelry $3 M 25/08, Louisville 4th seizure) and the Waterbury $16 M watch case (DOJ 28/08) — DISCARDED: Louisville piece already updated 01/09; seizure fatigue.
+- IMF tokenization warnings (April and July 2026, resurfaced by CoinMarketCap 22/08) — DISCARDED: not new.
+- Battery passport February 2027, "DPP coming to America" (WhatTheyThink 02/09), KPMG Switzerland — DISCARDED: generic DPP explainers; the registry piece (25/08) covers the obligation.
+- X: Aura Blockchain Consortium posts are 2023-2024; no fresh luxury DPP conversation surfaced through the index.
+
+Editorial gap identified: zero protocol & infra article in four months; the corpus explains regulations and scandals but never how the identifier, the physical anchor and the on-chain record are bound together.
+
+### [drafted] One Chanel serial number, 127 bags, 36 countries: why a code is not an identity
+- **Angle**: a serial or date code is a static string; anyone can print it, and counterfeiters reuse a valid one at scale. Authentication services build databases of "seen" codes, which only proves a code is reused, not which bag is genuine. What an identity requires instead: a unique, issuer-signed identifier bound to the item (NFC/QR) with a verifiable record, exactly what the ESPR DPP unique product identifier mandates. Practical checklist for a maison and for a reseller.
+- **Sources**: Inside Retail Asia (25/08/2026), Luxury Evermore red-flag serial database (primary for the count), ESPR Reg. (EU) 2024/1781 art. 9-13 (unique product identifier, data carrier), GS1 Digital Link; Reddit r/handbags threads (25/08 and 05/08/2026) as social signals only.
+- **Why now**: fresh case with a concrete number; maps to the buyer's real question (`how to authenticate a chanel bag`).
+- **Dedup**: F.P. Journe (30/08) is about portable proof on the secondary market; Louisville (27/08) about border enforcement. This one is about the identifier itself.
+- **Article**: `website/content/blog/2026-09-02-chanel-serial-code-not-identity.mdx`, 3,150 rendered prose words including the FAQ. Cover: `website/public/images/blog/chanel-serial-code-not-identity.jpg`, 1200×630, 123,247 bytes. Awaiting Pierre's publication GO.
+- **Evidence correction**: the Luxury Evermore summary row reports 127 submissions from 36 countries, but the code's detail page names only 35 and omits Belgium. The article preserves the attributed headline claim and discloses the mismatch. The raw submissions are not public, so the count is not presented as independently audited. ESPR Article 9 is also stated exactly: passport granularity is set at model, batch or item level by the relevant delegated act, not universally at item level.
+- **Quotes**: Mingchuan Tian via Inside Retail Asia (25/08/2026), on the warning function of a tag or microchip; Reddit user Loud-Aerie4711 (05/08/2026), on a disputed automated receipt rejection, explicitly labelled an unverified customer account.
+- **Article watch replay, 02/09/2026**: Google Trends RSS US/GB/FR had no crossing with Chanel, serial-number or luxury-authentication terms. Google News RSS US and GB for `Chanel serial number authentication` returned the Inside Retail report first, followed mainly by older resale litigation and authentication coverage. No newer primary signal changed the angle.
+- **Local gates, 02/09/2026**: `npm ci`, `npm run lint` and two clean `npm run build` passes. No overlong-sentence warning for the new article. Built HTML contains the canonical, article OG metadata and BlogPosting, BreadcrumbList and FAQPage JSON-LD; sitemap and both LLM files include the URL. Browser checked at 1440 px and emulated 390 px: cover 1200×630, both SVGs legible, no document overflow, no console errors and all observed requests successful. Production dependency audit matches the base at 5 high findings, so this is baseline debt, not introduced here.
+
+### [selected] Even Rolex missed the $500 super-clone: expertise sees the object, not its origin
+- **Angle**: WIRED's three budget fakes passed as real; clone movements now copy free-sprung balances. When the eye and even the brand cannot tell, authentication must move from "what does it look like" to "where does it come from and who says so". Position verifiable provenance (issuer-signed record, transfer history) as the complement, not the replacement, of physical expertise. Include the false-rejection side (Vestiaire Collective thread) to be fair to resellers.
+- **Sources**: WIRED (19/08/2026), OECD/EUIPO counterfeit trade figures 2025 (primary for the $467 bn claim; re-verify), Reddit r/handbags (05/08/2026) as signal.
+- **Why now**: viral piece, X and Reddit still discussing; promotes the 25/08 idea. Keep short; strong LinkedIn companion.
+
+### [selected] MiCA enforcement has started: Bitpanda's €70,000 fine and the paperwork of a tokenized handbag
+- **Angle**: Austria's FMA fined Bitpanda for publishing a white paper without the 20-working-day prior notification and for a marketing communication issued before the white paper. Translate to a maison or platform that tokenizes physical goods: when does a token fall under MiCA (utility vs asset-referenced vs out of scope), what must be notified before any marketing, and which claims are forbidden. Practical, primary-source-only.
+- **Sources**: FMA Austria published decision (primary, 14/08/2026), MiCAR Reg. (EU) 2023/1114 art. 7 and 8, ESMA Q&A; The Block and CoinDesk (17/08/2026) as context.
+- **Why now**: first published MiCA penalty in the EU; follows the 25/08 transitional-period piece with the next step (enforcement).
+- **Dedup**: check overlap with `mica-transitional-period-rwa` before drafting; the angle here is marketing and notification, not licensing.
+
+### [selected, protocol & infra] Marker in the material or chip on the item: what actually binds a physical object to its passport
+- **Angle**: SMX embeds invisible molecular markers in materials so that records "follow" them; Aura and most DPP deployments use NFC/QR carriers; Galileo binds an identifier to an on-chain record. Explain the three layers (physical anchor, identifier, record), the failure modes of each (cloned chip, removed tag, unreadable marker) and why an open standard for the identifier and the record matters more than the anchor technology. Ends on Galileo's design choices (ERC-3643, W3C DID, GS1 EPCIS).
+- **Sources**: SMX press release (27/08/2026, primary), ESPR data-carrier provisions (EUR-Lex), GS1 Digital Link and EPCIS standards, W3C DID Core, ERC-3643 spec; galileoprotocol.io/docs.
+- **Why now**: least-served axis (none since May); the standards idea of 25/08 folds into this piece as its second half.
+
+### Update to published article
+- `cbp-louisville-fake-watches-border-enforcement`: no further update; seizure cycle saturated.
+- `fpjourne-secondary-market-portable-proof`: add The RealReal 2026 Resale Report data (47 % evaluate resale value before buying; 25/08/2026) to the market-context paragraph.
+
+---
+
 ## Session of 1 September 2026 (update of a published article — no brainstorm)
 
 Trigger frozen by Pierre: a fourth Louisville seizure missed by `2026-08-27-cbp-louisville-fake-watches-border-enforcement.mdx` (published). Update in place, no new article.
