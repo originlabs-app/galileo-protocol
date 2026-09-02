@@ -50,6 +50,7 @@ Editorial contract for every article:
 2. **Primary sources linked inline** (EUR-Lex, ec.europa.eu, CEN-CENELEC, standard bodies) — verify every fact and date before publishing; reformulate cautiously anything unverifiable. **Source regime**: regulated topics (ESPR, MiCA, DPP standards) rely on official primary sources only; non-regulated analysis requires pluralism (diverging readings kept, dated sources < 12 months for current-affairs topics).
 3. **FAQ section** mirrored in the `faq` frontmatter (the frontmatter is the source of truth for FAQPage JSON-LD).
 4. **CTA** at the end pointing to `/docs` and/or contact.
+5. **Attributed quotations** archived in `website/content/reviews/<slug>/citations.md`. Each entry records the exact verbatim, author, original date, live URL, capture date and time, plus a PNG screenshot or text export readable without an account on the origin platform. If the article has no attributed quotation, the rule is not applicable and does not block.
 
 Publication checklist:
 
@@ -57,6 +58,7 @@ Publication checklist:
 - [ ] Build gates on frontmatter (enforced by `src/lib/blog.ts`, build fails on violation): all required fields present, `title` 45-60 chars (it is the full SERP title, rendered via `title.absolute` without the layout template suffix), `description` 120-158 chars (or `excerpt` in that range when used as fallback), `date`/`modified` ISO with `modified >= date`, kebab-case filename slug, well-formed `faq`.
 - [ ] Facts and dates verified against primary sources, linked inline.
 - [ ] Direct answer present in the first 2 sentences.
+- [ ] `title`, `seoTitle` when used, `description`, and FAQ do not assert anything the body attributes to the press or presents as unverified in a primary source. Rewrite those surfaces before publication.
 - [ ] `cd website && npm run lint && npm run build` green.
 - [ ] Spot-check the built article HTML: canonical, `og:type=article`, JSON-LD BlogPosting/BreadcrumbList (+ FAQPage if faq).
 - [ ] `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/llms-full.txt` regenerated (automatic at build).
