@@ -31,7 +31,8 @@ Signals evaluated:
 
 Editorial gap identified: zero protocol & infra article in four months; the corpus explains regulations and scandals but never how the identifier, the physical anchor and the on-chain record are bound together.
 
-### [drafted] One Chanel serial number, 127 bags, 36 countries: why a code is not an identity
+### [published 2 September 2026] One Chanel serial number, 127 bags, 36 countries: why a code is not an identity
+- **Published 2 September 2026**: https://www.galileoprotocol.io/blog/2026-09-02-chanel-serial-code-not-identity (PR merged, Codex + Grok 4.6 counter-review applied).
 - **Angle**: a serial or date code is a static string; anyone can print it, and counterfeiters reuse a valid one at scale. Authentication services build databases of "seen" codes, which only proves a code is reused, not which bag is genuine. What an identity requires instead: a unique, issuer-signed identifier bound to the item (NFC/QR) with a verifiable record, exactly what the ESPR DPP unique product identifier mandates. Practical checklist for a maison and for a reseller.
 - **Sources**: Inside Retail Asia (25/08/2026), Luxury Evermore red-flag serial database (primary for the count), ESPR Reg. (EU) 2024/1781 art. 9-13 (unique product identifier, data carrier), GS1 Digital Link; Reddit r/handbags threads (25/08 and 05/08/2026) as social signals only.
 - **Why now**: fresh case with a concrete number; maps to the buyer's real question (`how to authenticate a chanel bag`).
