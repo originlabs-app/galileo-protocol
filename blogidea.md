@@ -48,7 +48,8 @@ Editorial gap identified: zero protocol & infra article in four months; the corp
 - **Sources**: WIRED (19/08/2026), OECD/EUIPO counterfeit trade figures 2025 (primary for the $467 bn claim; re-verify), Reddit r/handbags (05/08/2026) as signal.
 - **Why now**: viral piece, X and Reddit still discussing; promotes the 25/08 idea. Keep short; strong LinkedIn companion.
 
-### [drafted] MiCA enforcement has started: Bitpanda's €70,000 fine and the paperwork of a tokenized handbag
+### [published 3 September 2026] MiCA enforcement has started: Bitpanda's €70,000 fine and the paperwork of a tokenized handbag
+- **Published 3 September 2026**: https://www.galileoprotocol.io/blog/2026-09-03-mica-bitpanda-marketing-paper-trail (PR merged, independent counter-review applied).
 - **Angle**: Austria's FMA fined Bitpanda for publishing a white paper without the 20-working-day prior notification and for a marketing communication issued before the white paper. Translate to a maison or platform that tokenizes physical goods: when does a token fall under MiCA (utility vs asset-referenced vs out of scope), what must be notified before any marketing, and which claims are forbidden. Practical, primary-source-only.
 - **Sources**: FMA Austria published decision (primary, 14/08/2026), MiCAR Reg. (EU) 2023/1114 art. 7 and 8, ESMA Q&A; The Block and CoinDesk (17/08/2026) as context.
 - **Why now**: first published MiCA penalty in the EU; follows the 25/08 transitional-period piece with the next step (enforcement).
