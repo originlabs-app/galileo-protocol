@@ -8,6 +8,38 @@ Before every brainstorm, run the news watch (below) and log the session as a dat
 
 ---
 
+## Session of 4 September 2026 (update of a published article — no new slug)
+
+Trigger frozen by Pierre via issue originlabs-app/galileo-protocol#12: Beezie and The Luxury Closet announced authenticated luxury goods on Solana on 3 September 2026. Update the existing RWA pillar `2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets.mdx` in place. Do not create a competing article.
+
+Queries run (04/09/2026): Google Trends RSS geo=US; Google News RSS US (`RWA tokenization luxury`, `Beezie Luxury Closet Solana`, `Beezie Luxury Closet Launch On-Chain Marketplace`) and GB (`Beezie Luxury Closet`).
+
+Trends × domain crossings: none. US Trends titles were sports and entertainment (Dodgers, Nicole Kidman, Onimusha). No overlap with RWA, Solana luxury, Beezie or authentication.
+
+Signals evaluated:
+
+- Beezie / The Luxury Closet joint release, Boston dateline 3 September 2026 (GlobeNewswire). Full wire copy read: authenticated pre-owned handbags, watches, jewelry and accessories tokenized on Solana; The Luxury Closet in-house authentication; vault storage; late-2026 launch with blind bags; self-declared swap of up to 92% of fair market value; celebration inventory names an Hermès Birkin 40. KEPT as the dated case for the existing RWA article.
+- The Crypto Times, 3 September 2026: independent rewrite of the same release; states Hermès is not a party and that redemption fees, insurance and a specific go-live date are unpublished. KEPT as corroboration and as the limit on unpublished modalities.
+- Google News US/GB first hits for the wire title: Manila Times (GlobeNewswire reprint, pubDate 03/09/2026 12:36 UTC) and The Crypto Times. KEPT as discovery, not as extra facts.
+- Other RWA headlines the same morning (Lotus Tech / Finloop, World Liberty Maldives hotel, Dubai apartment on XRPL, Tether "tokenize anything"): DISCARDED for this lot. They are finance or real-estate tokens, not physical luxury proof. They would duplicate the original 31/08 observation if forced into this update.
+- Coinfomania headline "Beezie Announces Partnership with Solana": DISCARDED as a source. It misstates the parties (Beezie × The Luxury Closet on Solana, not a Solana Foundation partnership with The Luxury Closet).
+- Beezie docs (vault FAQ): Brink's named as vault partner for the collectibles product. KEPT only as Beezie's published collectibles custody claim. The 3 September luxury release says "secure vault storage" and does not name the operator for this activation.
+
+Editorial gap identified: the 31 August article argued that RWA headlines stopped at finance. The 3 September case is the first dated luxury-goods token story in this corpus, and it is a third-party resale token, not a maison proof. The gap is the four-layer split (token, custody, third-party authentication, manufacturer-issued proof), not another product launch.
+
+Primary-source verification (04/09/2026, fetched directly):
+
+- GlobeNewswire dateline BOSTON, Sept. 03, 2026, full wire text via the reprint at lifestyle.fictiontalk.com/story/831098 (title identical to the Manila Times Google News item). Quotes captured: Andrea Miele (Beezie founder and CEO) and Kunal Kapoor (The Luxury Closet CEO). Hermès appears only as a named inventory item (Birkin 40), never as a contracting party.
+- The Crypto Times, "Hermès Birkins Head to Solana in Beezie, Luxury Closet Deal", 3 September 2026: confirms the Boston joint release date, the 1:1 digital twin, Solana, in-house authentication, vaulting, late-2026 launch, and the unpublished fee/date schedule. Independent sentence: Hermès is not named as a party.
+- Beezie docs, General FAQ, "How secure is the vault?": "Our vault partner is Brink's." Consulted 4 September 2026. Not restated as a fact of the luxury activation.
+- Beezie GlobeNewswire, 12 May 2026: Solana expansion and luxury flagged as a future vertical. Background only.
+- Dedup: no new slug. Chanel serial (02/09) is identifier reuse; MiCA Bitpanda (03/09) is marketing paperwork; this update is the object-token vs maison-proof split on the RWA article.
+
+### Update to published article
+- `rwa-tokenization-leaves-finance-luxury-physical-assets`: integrate the 3 September Beezie / The Luxury Closet Solana case; bump `modified` to 2026-09-04; archive two attributed quotations in `website/content/reviews/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets/citations.md`.
+
+---
+
 ## Brainstorm of 2 September 2026 (multi-source watch: Trends × News × Reddit × X, orchestrator)
 
 Status note: 12 articles live. Last 8 by axis: DPP & regulation 4, counterfeiting 2, RWA 2, protocol & infra 0 since 04/05/2026. Per the balance rule, protocol & infra is now the least-served axis (the file header still says RWA; corrected here).
