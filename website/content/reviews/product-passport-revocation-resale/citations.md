@@ -3,12 +3,12 @@
 Capture date and time: 2026-09-05T07:08:42.693161+00:00. Sources retrieved directly without authentication. Short text exports are in this directory.
 
 ## W3C
-- Verbatim: “Status information is about the verifiable credential”
+- Verbatim: “Status information is about the verifiable credential itself and might not apply to any underlying or backing credential”
 - Author: W3C Verifiable Credentials Working Group.
 - Original date: 15 May 2025, Recommendation.
 - URL: https://www.w3.org/TR/vc-bitstring-status-list/#conceptual-framework
 - Evidence: `w3c-excerpt.txt`; note heading in section 1.1.
-- 7 quoted words; attribution is institutional, not to an individual speaker.
+- 18 quoted words; attribution is institutional, not to an individual speaker.
 
 ## GS1
 - Verbatim: “Note that revocation checks should be done online.”
@@ -16,4 +16,4 @@ Capture date and time: 2026-09-05T07:08:42.693161+00:00. Sources retrieved direc
 - Original date: January 2026 (month precision as published), release 1.1.0.
 - URL: https://ref.gs1.org/guidelines/digital-signatures/
 - Evidence: `gs1-excerpt.txt`; printed page 35, discussion after Figure 3-7.
-- 8 quoted words; recommendation refers to the described DigSig workflow.
+- 9 quoted words; recommendation refers to the described DigSig workflow.
