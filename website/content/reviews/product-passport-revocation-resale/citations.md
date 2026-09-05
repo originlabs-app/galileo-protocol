@@ -3,12 +3,12 @@
 Capture date and time: 2026-09-05T07:08:42.693161+00:00. Sources retrieved directly without authentication. Short text exports are in this directory.
 
 ## W3C
-- Verbatim: “Status information is about the verifiable credential itself and might not apply to any underlying or backing credential”
+- Verbatim excerpt: “is about the verifiable credential itself and might not apply to any underlying or backing credential”
 - Author: W3C Verifiable Credentials Working Group.
 - Original date: 15 May 2025, Recommendation.
 - URL: https://www.w3.org/TR/vc-bitstring-status-list/#conceptual-framework
-- Evidence: `w3c-excerpt.txt`; note heading in section 1.1.
-- 18 quoted words; attribution is institutional, not to an individual speaker.
+- Evidence: `w3c-excerpt.txt`; first sentence of the note in section 1.1.
+- 16 quoted words; attribution is institutional, not to an individual speaker.
 
 ## GS1
 - Verbatim: “Note that revocation checks should be done online.”
