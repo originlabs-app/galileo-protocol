@@ -1,0 +1,5 @@
+Captured 2026-09-05T07:08:42.693161+00:00
+URL https://www.w3.org/TR/vc-bitstring-status-list/
+W3C, 15 May 2025, section 1.1
+Exact heading: Status information is about the verifiable credential
+Context: credential revocation can arise from compromised signing material while an underlying degree remains valid. This context sentence is an editor summary.

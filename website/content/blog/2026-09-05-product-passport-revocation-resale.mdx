@@ -1,0 +1,160 @@
+---
+title: "Product Passport Revocation: What Resale Must Check"
+date: "2026-09-05"
+modified: "2026-09-05"
+author: "Pierre Beunardeau"
+excerpt: "A revoked product credential does not prove a fake. A resale guide to checking current status, handling stale results and protecting owner privacy."
+description: "A revoked product credential does not prove a fake. A resale guide to checking current status, handling stale results and protecting owner privacy."
+tags: [provenance, authentication, infrastructure, luxury]
+published: true
+coverImage: "/images/blog/product-passport-revocation-resale.jpg"
+coverImageAlt: "An intact black leather handbag beside a separate glass certificate with an interrupted amber ring and cyan edges"
+faq:
+  - question: "Does a revoked product passport mean the item is counterfeit?"
+    answer: "No. Revocation concerns a particular credential and must be interpreted under its issuer's policy. It may reflect compromised signing material or replacement of a record. The product's authenticity, ownership and condition need separate evidence. Stop relying on the revoked credential and ask the issuer for clarification."
+  - question: "Can a reseller accept a cached passport status?"
+    answer: "Only within a defined verification policy that respects the credential's validity and the applicable status mechanism. A recent download does not make an old signed statement current. Record the statement's time and the check time, refresh when required, and hold a certificate-dependent decision if the evidence is too old or unavailable."
+  - question: "Does an unavailable status service mean a credential is revoked?"
+    answer: "No. A timeout, unsupported format or failed status retrieval means the check could not establish the status. It must not become either a counterfeit accusation or an automatic approval. Explain the missing check, retry through the documented service and offer an issuer or specialist review."
+  - question: "Can checking passport status expose a customer's activity?"
+    answer: "It can. Requests tied to one credential can reveal when and where it is presented. Shared status lists and controlled caching can reduce this exposure, but do not guarantee anonymity. Avoid attaching customer identity to public status requests and keep transaction records under access controls."
+---
+
+A revoked product credential does not, by itself, prove that the physical item is counterfeit. A reseller should stop relying on that credential, establish what changed and keep an unavailable or outdated status separate from an authenticity verdict.
+
+That distinction becomes practical at the resale counter. The seller has a bag, the phone displays a certificate, and the buyer wants a decision. A signature can still check out while the issuer has withdrawn the statement. A perfectly genuine object can also arrive with a damaged tag, a replaced credential or an inaccessible service.
+
+This is an operational guide for teams using digitally signed product records. It is not a claim that every Digital Product Passport uses W3C credentials, a new regulatory obligation, or a description of a deployed Galileo verification feature.
+
+## Start with the claim that the certificate actually makes
+
+Our [Chanel serial-number analysis](/blog/2026-09-02-chanel-serial-code-not-identity) explains why a copied identifier cannot authenticate a bag. Here the starting point is further along: assume the team has a signed record and knows which physical object it purports to describe.
+
+The remaining question is whether that particular statement can support today's transaction.
+
+A service credential may concern a repair. An authenticity credential may contain an issuer's assessment. An ownership record may describe a transfer. These are different claims, even when the customer sees them inside one passport interface. A withdrawn repair credential should not silently erase a separate authenticity assessment. An authenticity assessment does not establish that the seller has title to the item.
+
+The [W3C Verifiable Credentials Data Model 2.0](https://www.w3.org/TR/vc-data-model-2.0/) provides a model for issuer claims, validity and status. It does not relieve the recipient of deciding whether to trust the issuer or accept the claim for its purpose. For resale, that means knowing who issued each statement, what it covers and which evidence the buying policy requires.
+
+Write those distinctions into the intake form before choosing a colour for the scan result. A single green or red badge hides too much of the decision.
+
+## A revoked credential is not a counterfeit finding
+
+W3C makes the boundary explicit in [Bitstring Status List v1.0, section 1.1](https://www.w3.org/TR/vc-bitstring-status-list/#conceptual-framework): **“Status information is about the verifiable credential”**. The Recommendation is dated 15 May 2025.
+
+The note uses a degree as an example: compromised signing material can invalidate a digital credential while the underlying qualification remains valid. Applied to a product record, the same distinction prevents a technical withdrawal from becoming an unsupported accusation about a bag.
+
+This application is our analysis. An issuer might withdraw a product credential after discovering an error, or replace it under a documented recovery process. Those are possible scenarios, not asserted explanations for a real revocation. The reseller needs the issuer's authenticated explanation and any replacement evidence before relying on either.
+
+A status entry may establish withdrawal without explaining why. Do not fill that gap with an invented reason. Equally, a seller saying that a certificate was merely replaced is not sufficient evidence of replacement.
+
+Our recommended response is precise: **the submitted credential cannot support this decision; the product assessment remains open**. Retain the withdrawn record as evidence of what was presented, restrict access, and request clarification through a known issuer channel. Do not overwrite the original with an email attachment and lose the sequence of events.
+
+Suspension needs its own handling. In a system that distinguishes suspension from revocation, the former may allow later reinstatement under the issuer's rules. Neither label establishes who owns the object. Staff should read the status purpose and the issuer's policy rather than assume all non-active results mean the same thing.
+
+## Keep three questions visible at the counter
+
+The useful interface separates the digital statement, its freshness and the physical assessment. The following diagram is a recommended operating model, not a standards-mandated screen.
+
+<div style={{ margin: '2rem 0', padding: '1rem', background: '#000810', border: '1px solid #164e63', borderRadius: '12px' }}>
+  <svg viewBox="0 0 480 400" role="img" aria-label="Three independent resale checks: credential evidence, status freshness, and physical assessment. Complete all required checks before a certificate-dependent acceptance decision." style={{ width: '100%', height: 'auto', display: 'block' }} fontFamily="ui-sans-serif, system-ui, sans-serif">
+    <rect x="16" y="16" width="448" height="92" rx="10" fill="#082f49" />
+    <text x="36" y="45" fontSize="18" fill="#22D3EE" fontWeight="600">1. Credential evidence</text>
+    <text x="36" y="71" fontSize="15" fill="#ffffff">Issuer, signature, claim and status</text>
+    <text x="36" y="93" fontSize="15" fill="#cbd5e1">Withdrawn? Stop relying on it.</text>
+    <rect x="16" y="124" width="448" height="92" rx="10" fill="#082f49" />
+    <text x="36" y="153" fontSize="18" fill="#22D3EE" fontWeight="600">2. Status freshness</text>
+    <text x="36" y="179" fontSize="15" fill="#ffffff">Statement time and check time</text>
+    <text x="36" y="201" fontSize="15" fill="#cbd5e1">Too old or missing? Hold and refresh.</text>
+    <rect x="16" y="232" width="448" height="92" rx="10" fill="#082f49" />
+    <text x="36" y="261" fontSize="18" fill="#22D3EE" fontWeight="600">3. Physical assessment</text>
+    <text x="36" y="287" fontSize="15" fill="#ffffff">Item, condition and seller evidence</text>
+    <text x="36" y="309" fontSize="15" fill="#cbd5e1">Assess the physical item separately.</text>
+    <text x="240" y="360" textAnchor="middle" fontSize="16" fill="#ffffff" fontWeight="600">Required checks must pass.</text>
+    <text x="240" y="385" textAnchor="middle" fontSize="14" fill="#22D3EE">Unknown does not mean counterfeit.</text>
+  </svg>
+</div>
+
+A successful signature check belongs in the first box, not across all three. A service timeout belongs in the second. Expert inspection belongs in the third. Each produces evidence with a different limit.
+
+That separation also makes escalation useful. The issuer can explain its credential. A specialist can examine the object. A manager can decide whether the transaction meets the company's acceptance policy. Asking any one of them to supply every answer invites false certainty.
+
+## Freshly downloaded does not mean freshly stated
+
+Caching means keeping a local copy to avoid fetching the same information repeatedly. It can improve speed and availability, but it changes what a verifier knows at the moment of sale.
+
+In its January 2026 [Digital Signatures Technical Implementation Guideline](https://ref.gs1.org/guidelines/digital-signatures/), GS1 describes caching a DigSig Certificate in constrained connectivity. Its qualification on printed page 35 is direct: **“Note that revocation checks should be done online.”** This guidance concerns that DigSig workflow; it should not be misrepresented as the operating rule of every credential format.
+
+For a resale team, the practical implication is to distinguish locally verified material from a current status check. A screenshot taken yesterday may record a genuine result from yesterday. It says nothing reliable about changes since then.
+
+Even an online request can return a cached response. [HTTP Caching, RFC 9111](https://www.rfc-editor.org/rfc/rfc9111.html), distinguishes response freshness, age and validation. Those transport rules describe reuse of an HTTP response. They do not by themselves establish whether a signed product statement is suitable for a particular purchase.
+
+A sound acceptance policy therefore records two times: when the relevant statement was issued or updated, and when the verifier checked it. It also respects validity limits and the rules of the chosen status mechanism. A download at 14:00 does not turn yesterday's statement into a statement issued at 14:00.
+
+**Our recommendation is to define the freshness threshold before intake.** The responsible team should document the evidence age it will accept, how it refreshes that evidence and what happens when refresh fails. The sources here do not supply a universal resale deadline in minutes. The appropriate threshold depends on the mechanism, the issuer's service and the consequence of a wrong acceptance.
+
+For a transaction explicitly dependent on a current issuer credential, use a hold when that requirement cannot be established. Physical intake, photography and specialist examination may continue under their own rules. Payment and a certificate-backed sales claim should wait until the required evidence is available, or until an authorised alternative assessment is completed and accurately described.
+
+## A worked case: the same bag, three different decisions
+
+Consider a fictional reseller accepting a handbag on consignment. The seller presents an issuer credential and an earlier successful scan. The business has chosen to require current credential evidence before advertising an issuer-backed authenticity claim. This policy is illustrative, not a legal requirement.
+
+**At intake, the service is unavailable.** Staff can verify some locally held evidence, but cannot complete the required status check. The intake record says that status is unverified. They retain the bag under the agreed intake process and give the seller a clear next step: a scheduled retry and, if necessary, issuer review. They do not list the bag as authenticated by the issuer.
+
+**The later check returns a verified revocation result.** Staff stop relying on the submitted credential. They do not change the product record to counterfeit. The seller is asked for replacement documentation, and the team contacts the issuer through its established channel rather than a link supplied in a message.
+
+**The issuer provides a replacement credential and a verifiable relationship to the withdrawn one.** Staff validate that evidence, check its applicable status and confirm that it refers to the same item and relevant claim. The specialist's physical assessment and seller checks remain separate prerequisites. A replacement certificate does not waive them.
+
+Only then can the manager determine whether the chosen acceptance policy is satisfied. If the issuer provides no usable explanation or replacement, the certificate-dependent decision remains on hold or is declined on that ground. The customer-facing reason should identify the missing evidence rather than accuse the seller of fraud.
+
+The audit record should preserve the original submission, each relevant result, the times, the reason for the hold and the evidence used to resolve it. Keep enough to explain the decision without indiscriminately collecting the owner's unrelated personal records.
+
+## Privacy changes how status should be checked
+
+There is a cost to asking an issuer about one uniquely identifiable credential at every sale: the request can reveal activity. W3C's [status-list privacy discussion](https://www.w3.org/TR/vc-bitstring-status-list/#privacy-considerations) addresses this risk and explains how shared lists and caching can reduce correlation. It also warns that malicious participants can defeat the intended protections.
+
+The architectural choice is therefore not simply maximum caching versus no caching. It is controlled freshness with fewer unnecessary disclosures.
+
+For a luxury resale implementation, we recommend separating the public status check from the private customer file. The remote status request should not casually include the customer's name, proposed price or reason for selling. A shared list can be retrieved and evaluated locally without sending the individual credential's index back as a separate lookup request, where the selected mechanism permits that design.
+
+That still does not guarantee anonymity. Network access, persistent identifiers, logs and collusion can expose activity. Teams should inspect the actual request and retention practices rather than assume that using a privacy-oriented standard settles the issue.
+
+The business must also explain its own retention choice. A restricted transaction record serves a different purpose from a public ownership history. Evidence required to settle a dispute should not automatically become data exposed to anyone scanning the product.
+
+## What a passport provider should demonstrate
+
+Before relying on a provider's scan result, ask for a demonstration with deliberately incomplete evidence. A normal successful scan proves very little about the difficult cases.
+
+- Present a withdrawn credential whose signature still verifies. Does the interface explain that distinction?
+- Disconnect the status service. Does the screen show the missing check and the age of any retained result?
+- Supply an expired statement or an unsupported format. Is the failure visible without being translated into a counterfeit label?
+- Replace a credential through the issuer's documented process. Can the reviewer follow the relationship without losing the earlier record?
+- Inspect a status request. Is customer identity disclosed when the mechanism does not need it?
+
+These are procurement questions and recommended acceptance checks. They are not assertions about an existing provider's implementation, including Galileo's. The provider should show the relevant version, configuration and evidence rather than answer with a standards logo.
+
+This is the operational continuation of [portable proof in the secondary market](/blog/2026-08-30-fpjourne-secondary-market-portable-proof). A record needs to travel, but the next holder must also understand when it can be relied upon and how uncertainty is resolved.
+
+## Frequently asked questions
+
+### Does a revoked product passport mean the item is counterfeit?
+
+No. Revocation concerns a particular credential and must be interpreted under its issuer's policy. It may reflect compromised signing material or replacement of a record. The product's authenticity, ownership and condition need separate evidence. Stop relying on the revoked credential and ask the issuer for clarification.
+
+### Can a reseller accept a cached passport status?
+
+Only within a defined verification policy that respects the credential's validity and the applicable status mechanism. A recent download does not make an old signed statement current. Record the statement's time and the check time, refresh when required, and hold a certificate-dependent decision if the evidence is too old or unavailable.
+
+### Does an unavailable status service mean a credential is revoked?
+
+No. A timeout, unsupported format or failed status retrieval means the check could not establish the status. It must not become either a counterfeit accusation or an automatic approval. Explain the missing check, retry through the documented service and offer an issuer or specialist review.
+
+### Can checking passport status expose a customer's activity?
+
+It can. Requests tied to one credential can reveal when and where it is presented. Shared status lists and controlled caching can reduce this exposure, but do not guarantee anonymity. Avoid attaching customer identity to public status requests and keep transaction records under access controls.
+
+## Design the unresolved result before the successful scan
+
+A useful passport process gives the seller an explanation, the buyer an accurate claim and the reseller a record it can defend. It preserves the difference between evidence that failed, evidence that is missing and an object that still needs assessment.
+
+Explore the [Galileo protocol documentation](/docs) to discuss how issuer evidence, product identity and verifiable records fit your resale process. Ask for the exact verification and recovery behaviour your workflow needs, then require a demonstration of it.

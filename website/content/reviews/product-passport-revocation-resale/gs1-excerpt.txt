@@ -1,0 +1,5 @@
+Captured 2026-09-05T07:08:42.693161+00:00
+URL https://ref.gs1.org/guidelines/digital-signatures/
+GS1, Release 1.1.0, Ratified, Jan 2026, printed page 35
+Exact excerpt: Note that revocation checks should be done online.
+Context: the DigSig Certificate can be cached for constrained-connectivity verification. This context sentence is an editor summary.
