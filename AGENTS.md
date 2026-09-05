@@ -52,12 +52,51 @@ Editorial contract for every article:
 4. **CTA** at the end pointing to `/docs` and/or contact.
 5. **Attributed quotations** archived in `website/content/reviews/<slug>/citations.md`. Each entry records the exact verbatim, author, original date, live URL, capture date and time, plus a PNG screenshot or text export readable without an account on the origin platform. If the article has no attributed quotation, the rule is not applicable and does not block.
 
+#### Human, clear and practical writing
+
+Answer the reader’s question first, then explain the choice with a useful work
+example. Label an invented scenario as fictional where it begins. Do not imply
+that a named brand uses the imagined system or that Galileo has shipped a
+feature without evidence. Warmth comes from helping the person make a decision,
+not from decorative scenes or invented customer experience.
+
+Use familiar words where possible. Explain a necessary technical term in plain
+English at its first occurrence, in the sentence where the reader needs it.
+
+Give each paragraph a purpose and connect it to the next question the reader
+needs to resolve. Use short sentences for decisions and longer ones when an
+explanation needs room. Avoid a sequence of slogans or forced rhetorical
+questions. During a style rewrite, preserve factual limits: a possible result
+must not become a guarantee, and an editorial recommendation must not become a
+legal obligation.
+
+These examples illustrate the approach; they are not a template for every post:
+
+- **Before:** “The solution guarantees seamless trust across the entire lifecycle.”
+  **After:** “Check who issued the record and whether it is still valid before
+  relying on it. The physical item still needs a separate assessment.”
+  The reader gets a decision and its limit instead of an unsupported promise.
+- **Before:** “The operator must establish comprehensive procedural traceability.”
+  **After:** “Leave a record your colleague can follow: what you checked, why the
+  purchase is on hold and who will follow up.”
+  The instruction becomes useful to the person handling the next step.
+- **Before:** “A leading maison’s passport instantly resolves the buyer’s doubts.”
+  **After, for an invented case:** “Consider a fictional resale store receiving
+  a bag with a digital certificate. If the status check fails, explain which
+  confirmation is missing before making a certificate-dependent decision.”
+  The example introduces neither a real brand deployment nor a measured result.
+
+For editorial review, restate what the reader should do, why and what remains
+uncertain. If that requires repeated reading, revise the passage. Apply this
+judgment within the existing editorial review; a style score or successful build
+cannot establish reader comprehension.
+
 Publication checklist:
 
 - [ ] Frontmatter complete (see contract above), `date` matches the filename prefix.
 - [ ] Build gates on frontmatter (enforced by `src/lib/blog.ts`, build fails on violation): all required fields present, `title` 45-60 chars (it is the full SERP title, rendered via `title.absolute` without the layout template suffix), `description` 120-158 chars (or `excerpt` in that range when used as fallback), `date`/`modified` ISO with `modified >= date`, kebab-case filename slug, well-formed `faq`.
 - [ ] Facts and dates verified against primary sources, linked inline.
-- [ ] Direct answer present in the first 2 sentences.
+- [ ] Direct answer present in the first 2 sentences; apply [the writing guidance](#human-clear-and-practical-writing) to review the action, reason and limits.
 - [ ] `title`, `seoTitle` when used, `description`, and FAQ do not assert anything the body attributes to the press or presents as unverified in a primary source. Rewrite those surfaces before publication.
 - [ ] `cd website && npm run lint && npm run build` green.
 - [ ] Spot-check the built article HTML: canonical, `og:type=article`, JSON-LD BlogPosting/BreadcrumbList (+ FAQPage if faq).
