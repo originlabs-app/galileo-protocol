@@ -60,6 +60,9 @@ that a named brand uses the imagined system or that Galileo has shipped a
 feature without evidence. Warmth comes from helping the person make a decision,
 not from decorative scenes or invented customer experience.
 
+Use familiar words where possible. Explain a necessary technical term in plain
+English at its first occurrence, in the sentence where the reader needs it.
+
 Give each paragraph a purpose and connect it to the next question the reader
 needs to resolve. Use short sentences for decisions and longer ones when an
 explanation needs room. Avoid a sequence of slogans or forced rhetorical
