@@ -1,0 +1,8 @@
+Captured 2026-09-05T10:37:49.467602+00:00
+URL https://www.w3.org/TR/vc-bitstring-status-list/
+W3C, 15 May 2025, section 1.1
+Status information is about the verifiable credential The status information associated with a particular verifiable credential is about the verifiable credential itself and might not apply to any
+underlying or backing credential , such as an educational degree. For
+example, in the case of such an educational degree, it is possible for a verifiable credential to be revoked because the mechanism used to
+create its digital signature has been compromised, while the backing educational
+degree remains valid. 
