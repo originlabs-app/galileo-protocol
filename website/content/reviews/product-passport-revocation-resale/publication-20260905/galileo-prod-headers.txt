@@ -1,0 +1,23 @@
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 0
+cache-control: public, max-age=0, must-revalidate
+content-disposition: inline
+content-type: text/html; charset=utf-8
+date: Sat, 05 Sep 2026 10:45:54 GMT
+etag: "ce1cec3b8c91e4483c781deb1a3fbc29"
+permissions-policy: camera=(), microphone=(), geolocation=()
+referrer-policy: strict-origin-when-cross-origin
+server: Vercel
+strict-transport-security: max-age=63072000
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-matched-path: /blog/2026-09-05-product-passport-revocation-resale
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+x-vercel-cache: PRERENDER
+x-vercel-id: cdg1::tdrw8-1788605153734-3348217bc843
+content-length: 95916
+
