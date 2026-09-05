@@ -8,6 +8,24 @@ Before every brainstorm, run the news watch (below) and log the session as a dat
 
 ---
 
+
+## Session of 5 September 2026 (issue #14, four-channel watch)
+
+- Base checked: origin/main ef3ec753af4911a446a87fa7207d45941d4d8fd3; 14 MDX posts, no open PR returned by GitHub. Existing Beezie and publication worktrees left untouched.
+- Google Trends RSS read for US, GB and FR. Leading results were entertainment, sport and general local news (including Guillaume Faury in FR); no luxury-passport signal in the inspected leading results. This is a limited trending-feed sample, not a search-volume measurement or proof of absent demand.
+- Google News RSS query: `luxury product passport authentication digital signature` (en-US/US). Results included Merck/Hashgraph product authentication, Cerfinity vendor commentary and an STMicroelectronics NFC release. These are discovery signals only; none retained as a newly verified news event for this article.
+- Reddit: `https://www.reddit.com/r/handbags/search.rss?q=authentication&restrict_sr=1&sort=new` returned HTTP 403. Web-index fallback query `site:reddit.com/r/handbags authentication September 2026` found the 1 September monthly authentication thread, https://www.reddit.com/r/handbags/comments/1w4bc8z/monthly_authentication_thread/ . Reader uncertainty supports the use case, not any factual conclusion about a product.
+- X web-index queries: `site:x.com luxury authentication 2026` and `site:x.com digital product passport 2026`. No relevant result retained. No authenticated X access or exhaustive coverage claimed.
+- Primary sources opened on 5 September: W3C Bitstring Status List v1.0 (Recommendation 15 May 2025), https://www.w3.org/TR/vc-bitstring-status-list/ ; GS1 Digital Signatures Technical Implementation Guideline 1.1.0 (January 2026), https://ref.gs1.org/guidelines/digital-signatures/ . Both distinguish cryptographic verification from a broader trust decision; W3C explicitly separates credential status from the underlying credential.
+
+### [retained] Product Passport Revocation: What Resale Must Check
+
+- Axis: protocol and infrastructure, the least-served axis in recent posts.
+- Angle: a reseller must distinguish a revoked credential, an unverified or stale status, and an independently assessed physical object. Work through a resale hold, refresh and issuer clarification without labelling the bag counterfeit.
+- Why now: a durable decision guide selected after the watch; not a breaking-news claim. Existing passport coverage needs the operational consequence of unavailable or changed status.
+- Anti-duplication: the 2 September Chanel article covers identifier copying and physical binding and briefly asks for current status. This article develops status semantics, freshness policy, recovery and privacy only. The 3 September MiCA article and 4 September Beezie update address different decisions.
+- Scope: standards-backed analysis and a clearly fictional case, no claim that Galileo currently implements this verifier or that W3C imposes an EU DPP architecture.
+
 ## Session of 4 September 2026 (update of a published article — no new slug)
 
 Trigger frozen by Pierre via issue originlabs-app/galileo-protocol#12: Beezie and The Luxury Closet announced authenticated luxury goods on Solana on 3 September 2026. Update the existing RWA pillar `2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets.mdx` in place. Do not create a competing article.
