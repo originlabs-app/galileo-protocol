@@ -18,14 +18,14 @@ Before every brainstorm, run the news watch (below) and log the session as a dat
 - X web-index queries: `site:x.com luxury authentication 2026` and `site:x.com digital product passport 2026`. No relevant result retained. No authenticated X access or exhaustive coverage claimed.
 - Primary sources opened on 5 September: W3C Bitstring Status List v1.0 (Recommendation 15 May 2025), https://www.w3.org/TR/vc-bitstring-status-list/ ; GS1 Digital Signatures Technical Implementation Guideline 1.1.0 (January 2026), https://ref.gs1.org/guidelines/digital-signatures/ . Both distinguish cryptographic verification from a broader trust decision; W3C explicitly separates credential status from the underlying credential.
 
-### [drafted 5 September 2026] Product Passport Revocation: What Resale Must Check
+### [publie le 2026-09-05] Product Passport Revocation: What Resale Must Check
 
 - Axis: protocol and infrastructure, the least-served axis in recent posts.
 - Angle: a reseller must distinguish a revoked credential, an unverified or stale status, and an independently assessed physical object. Work through a resale hold, refresh and issuer clarification without labelling the bag counterfeit.
 - Why now: a durable decision guide selected after the watch; not a breaking-news claim. Existing passport coverage needs the operational consequence of unavailable or changed status.
 - Anti-duplication: the 2 September Chanel article covers identifier copying and physical binding and briefly asks for current status. This article develops status semantics, freshness policy, recovery and privacy only. The 3 September MiCA article and 4 September Beezie update address different decisions.
 - Scope: standards-backed analysis and a clearly fictional case, no claim that Galileo currently implements this verifier or that W3C imposes an EU DPP architecture.
-- Draft: `website/content/blog/2026-09-05-product-passport-revocation-resale.mdx`; source captures and local validation in `website/content/reviews/product-passport-revocation-resale/`. Local only, not published.
+- Draft: `website/content/blog/2026-09-05-product-passport-revocation-resale.mdx`; source captures and local validation in `website/content/reviews/product-passport-revocation-resale/`. Published after PR #16, two fresh publication reviews, website CI and production Chrome checks: https://www.galileoprotocol.io/blog/2026-09-05-product-passport-revocation-resale .
 
 ## Session of 4 September 2026 (update of a published article — no new slug)
 

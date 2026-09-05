@@ -1,0 +1,33 @@
+{
+  "at": "2026-09-05T10:46:19.202002+00:00",
+  "results": [
+    {
+      "width": 1440,
+      "http": 200,
+      "corrected_text": true,
+      "overflow": false,
+      "page_errors": [],
+      "canonical": "https://www.galileoprotocol.io/blog/2026-09-05-product-passport-revocation-resale",
+      "structured_data": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "cta_docs": true
+    },
+    {
+      "width": 390,
+      "http": 200,
+      "corrected_text": true,
+      "overflow": false,
+      "page_errors": [],
+      "canonical": "https://www.galileoprotocol.io/blog/2026-09-05-product-passport-revocation-resale",
+      "structured_data": [
+        "BlogPosting",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "cta_docs": true
+    }
+  ]
+}
