@@ -1,0 +1,352 @@
+{
+  "date": "2026-09-06T08:18:27.704247+00:00",
+  "browser": "Chrome isolated via Playwright",
+  "url": "http://127.0.0.1:4187/blog/2026-09-06-tokenized-shares-ownership-register",
+  "widths": [
+    {
+      "title": "Tokenized Shares: Who Records Your Ownership Today?",
+      "canonical": "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register",
+      "ogType": "article",
+      "overflow": false,
+      "headings": [
+        "Start with what the token represents",
+        "Why the SEC proposal matters this week",
+        "A wallet address and a person's holding are different questions",
+        "Work through one fictional transfer",
+        "A short record trail you can actually use",
+        "What blockchain does not decide for the reader",
+        "Frequently asked questions",
+        "Does a token in my wallet prove that I own the referenced share?",
+        "Has the SEC adopted the September 2026 transfer agent proposal?",
+        "Must my name appear on the company's own shareholder register?",
+        "Does this proposal require investors to put their identity on a public blockchain?",
+        "Sources and method"
+      ],
+      "images": [
+        {
+          "src": "/images/blog/tokenized-shares-ownership-register-v1.jpg",
+          "ok": true,
+          "alt": "A hand aligns a transparent cyan token with a separate archive mechanism on an obsidian background."
+        }
+      ],
+      "types": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://www.galileoprotocol.io/#organization",
+              "name": "Galileo Network",
+              "alternateName": "Galileo Protocol",
+              "url": "https://www.galileoprotocol.io",
+              "logo": "https://www.galileoprotocol.io/favicon.svg",
+              "sameAs": [
+                "https://github.com/originlabs-app/galileo-protocol"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://www.galileoprotocol.io/#website",
+              "name": "Galileo Protocol",
+              "url": "https://www.galileoprotocol.io",
+              "publisher": {
+                "@id": "https://www.galileoprotocol.io/#organization"
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register#article",
+              "headline": "Tokenized Shares: Who Records Your Ownership Today?",
+              "description": "A token in your wallet is a starting point. Follow the share, the ownership record and the responsible party through the SEC's proposed changes.",
+              "image": "https://www.galileoprotocol.io/images/blog/tokenized-shares-ownership-register-v1.jpg",
+              "datePublished": "2026-09-06",
+              "dateModified": "2026-09-06",
+              "inLanguage": "en",
+              "author": {
+                "@type": "Person",
+                "name": "Pierre Beunardeau"
+              },
+              "publisher": {
+                "@id": "https://www.galileoprotocol.io/#organization"
+              },
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.galileoprotocol.io"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://www.galileoprotocol.io/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Tokenized Shares: Who Records Your Ownership Today?",
+                  "item": "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Does a token in my wallet prove that I own the referenced share?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not by itself. Identify the instrument, its issuer and its terms, then follow the relevant ownership records. A token may represent a share, an indirect interest through an intermediary, or a different instrument linked to the share's price."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Has the SEC adopted the September 2026 transfer agent proposal?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "As of 6 September 2026, the SEC lists this document as a proposed rule. This article does not present its proposed changes or consultation questions as adopted requirements."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Must my name appear on the company's own shareholder register?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It depends on how the holding is structured. A registered owner holds shares directly with the company. A beneficial owner holds through an intermediary, whose records are part of the ownership trail. Check which structure the product uses."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does this proposal require investors to put their identity on a public blockchain?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This article identifies no such requirement. Consultation question 83 asks about associating blockchain records with information stored elsewhere. It must not be rewritten as an adopted requirement to publish personal identity data."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "links": [
+        "/blog/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets",
+        "/blog/2026-09-03-mica-bitpanda-marketing-paper-trail",
+        "/docs"
+      ],
+      "width": 390,
+      "status": 200,
+      "errors": []
+    },
+    {
+      "title": "Tokenized Shares: Who Records Your Ownership Today?",
+      "canonical": "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register",
+      "ogType": "article",
+      "overflow": false,
+      "headings": [
+        "Start with what the token represents",
+        "Why the SEC proposal matters this week",
+        "A wallet address and a person's holding are different questions",
+        "Work through one fictional transfer",
+        "A short record trail you can actually use",
+        "What blockchain does not decide for the reader",
+        "Frequently asked questions",
+        "Does a token in my wallet prove that I own the referenced share?",
+        "Has the SEC adopted the September 2026 transfer agent proposal?",
+        "Must my name appear on the company's own shareholder register?",
+        "Does this proposal require investors to put their identity on a public blockchain?",
+        "Sources and method"
+      ],
+      "images": [
+        {
+          "src": "/images/blog/tokenized-shares-ownership-register-v1.jpg",
+          "ok": true,
+          "alt": "A hand aligns a transparent cyan token with a separate archive mechanism on an obsidian background."
+        }
+      ],
+      "types": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://www.galileoprotocol.io/#organization",
+              "name": "Galileo Network",
+              "alternateName": "Galileo Protocol",
+              "url": "https://www.galileoprotocol.io",
+              "logo": "https://www.galileoprotocol.io/favicon.svg",
+              "sameAs": [
+                "https://github.com/originlabs-app/galileo-protocol"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://www.galileoprotocol.io/#website",
+              "name": "Galileo Protocol",
+              "url": "https://www.galileoprotocol.io",
+              "publisher": {
+                "@id": "https://www.galileoprotocol.io/#organization"
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              "@id": "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register#article",
+              "headline": "Tokenized Shares: Who Records Your Ownership Today?",
+              "description": "A token in your wallet is a starting point. Follow the share, the ownership record and the responsible party through the SEC's proposed changes.",
+              "image": "https://www.galileoprotocol.io/images/blog/tokenized-shares-ownership-register-v1.jpg",
+              "datePublished": "2026-09-06",
+              "dateModified": "2026-09-06",
+              "inLanguage": "en",
+              "author": {
+                "@type": "Person",
+                "name": "Pierre Beunardeau"
+              },
+              "publisher": {
+                "@id": "https://www.galileoprotocol.io/#organization"
+              },
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.galileoprotocol.io"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Blog",
+                  "item": "https://www.galileoprotocol.io/blog"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Tokenized Shares: Who Records Your Ownership Today?",
+                  "item": "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Does a token in my wallet prove that I own the referenced share?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not by itself. Identify the instrument, its issuer and its terms, then follow the relevant ownership records. A token may represent a share, an indirect interest through an intermediary, or a different instrument linked to the share's price."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Has the SEC adopted the September 2026 transfer agent proposal?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "As of 6 September 2026, the SEC lists this document as a proposed rule. This article does not present its proposed changes or consultation questions as adopted requirements."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Must my name appear on the company's own shareholder register?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "It depends on how the holding is structured. A registered owner holds shares directly with the company. A beneficial owner holds through an intermediary, whose records are part of the ownership trail. Check which structure the product uses."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Does this proposal require investors to put their identity on a public blockchain?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "This article identifies no such requirement. Consultation question 83 asks about associating blockchain records with information stored elsewhere. It must not be rewritten as an adopted requirement to publish personal identity data."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "links": [
+        "/blog/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets",
+        "/blog/2026-09-03-mica-bitpanda-marketing-paper-trail",
+        "/docs"
+      ],
+      "width": 1440,
+      "status": 200,
+      "errors": []
+    }
+  ],
+  "svg": [
+    {
+      "file": "galileo-record-trail",
+      "bounds": [
+        {
+          "text": "What did you buy?",
+          "x": 264.7421875,
+          "right": 455.2578125,
+          "width": 190.515625
+        },
+        {
+          "text": "Instrument, issuer, terms",
+          "x": 255.9921875,
+          "right": 464.0078125,
+          "width": 208.015625
+        },
+        {
+          "text": "Which records show the holding?",
+          "x": 190.6015625,
+          "right": 529.3984375,
+          "width": 338.796875
+        },
+        {
+          "text": "Direct or through an intermediary",
+          "x": 221.125,
+          "right": 498.875,
+          "width": 277.75
+        },
+        {
+          "text": "Who can explain a discrepancy?",
+          "x": 194.4296875,
+          "right": 525.5703125,
+          "width": 331.140625
+        },
+        {
+          "text": "Named party and contact route",
+          "x": 229.5625,
+          "right": 490.4375,
+          "width": 260.875
+        },
+        {
+          "text": "Editorial checklist, not a regulatory test",
+          "x": 223.046875,
+          "right": 496.953125,
+          "width": 273.90625
+        }
+      ]
+    }
+  ]
+}
