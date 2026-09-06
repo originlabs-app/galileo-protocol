@@ -1,0 +1,40 @@
+{
+  "forbidden_dashes": true,
+  "body_words_approx": 1841,
+  "browser_ok": true,
+  "faq_match": true,
+  "local_links": [
+    {
+      "href": "/blog/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets",
+      "exists": true
+    },
+    {
+      "href": "/docs",
+      "exists": true
+    },
+    {
+      "href": "/blog/2026-09-03-mica-bitpanda-marketing-paper-trail",
+      "exists": true
+    }
+  ],
+  "index_routes": {
+    "/sitemap.xml": {
+      "http": 200,
+      "article_present": true
+    },
+    "/robots.txt": {
+      "http": 200,
+      "article_present": false
+    },
+    "/llms.txt": {
+      "http": 200,
+      "article_present": true
+    },
+    "/llms-full.txt": {
+      "http": 200,
+      "article_present": true
+    }
+  },
+  "status": "pass",
+  "article_sha256": "908841be2e6439233f38ceacd6e7a406a9c0b8204231e91cfb679b67e3c14d50"
+}

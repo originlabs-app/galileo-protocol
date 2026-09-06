@@ -1,0 +1,153 @@
+---
+title: "Tokenized Shares: Who Records Your Ownership Today?"
+date: "2026-09-06"
+author: "Pierre Beunardeau"
+excerpt: "A token in your wallet is a starting point. Follow the share, the ownership record and the responsible party through the SEC's proposed changes."
+description: "A token in your wallet is a starting point. Follow the share, the ownership record and the responsible party through the SEC's proposed changes."
+tags: [tokenization, rwa, blockchain, securities]
+published: true
+coverImage: "/images/blog/tokenized-shares-ownership-register-v1.jpg"
+coverImageAlt: "A hand aligns a transparent cyan token with a separate archive mechanism on an obsidian background."
+faq:
+  - question: "Does a token in my wallet prove that I own the referenced share?"
+    answer: "Not by itself. Identify the instrument, its issuer and its terms, then follow the relevant ownership records. A token may represent a share, an indirect interest through an intermediary, or a different instrument linked to the share's price."
+  - question: "Has the SEC adopted the September 2026 transfer agent proposal?"
+    answer: "As of 6 September 2026, the SEC lists this document as a proposed rule. This article does not present its proposed changes or consultation questions as adopted requirements."
+  - question: "Must my name appear on the company's own shareholder register?"
+    answer: "It depends on how the holding is structured. A registered owner holds shares directly with the company. A beneficial owner holds through an intermediary, whose records are part of the ownership trail. Check which structure the product uses."
+  - question: "Does this proposal require investors to put their identity on a public blockchain?"
+    answer: "This article identifies no such requirement. Consultation question 83 asks about associating blockchain records with information stored elsewhere. It must not be rewritten as an adopted requirement to publish personal identity data."
+---
+To understand what a tokenized share gives you, identify the instrument you bought and follow the ownership records behind it. The SEC's transfer agent proposal, dated 1 September 2026, makes that recordkeeping question timely, but it is a proposal, not a newly adopted rule.
+
+The interesting part of tokenization is not only that an asset can move between digital wallets. It is whether the person receiving it can understand what changed, which rights they now hold and whom to contact if the records disagree. That is a useful question for buyers, product teams and anyone building a service around digital assets.
+
+This article follows the US proposal and related official investor guidance, checked on 6 September. It does not assess a particular investment or extend the US framework to other jurisdictions.
+
+## Start with what the token represents
+
+Imagine a fictional investor, Maya, comparing two products described as tokenized shares. Both appear in a wallet. Both refer to the same fictional company. The screens look reassuringly similar, but Maya has not yet checked whether the products give her the same rights.
+
+She starts with the instrument's terms, not its icon. Who issued it? What exactly does she acquire? What document explains her rights? These questions sound less exciting than an instant transfer, yet they determine what she can reasonably expect after the transaction.
+
+[Investor.gov's explanation of tokenized securities](https://www.investor.gov/introduction-investing/investing-basics/investment-products/tokenized-securities) distinguishes issuer-sponsored, custodial and synthetic models. In plain language, a token may represent a security issued through the company, an indirect interest held through an intermediary, or an instrument linked to another security's performance. According to that guidance, a synthetic instrument does not give its holder claims against the issuer of the referenced security.
+
+The practical lesson is to avoid treating a familiar stock name as a complete description of the product. Maya writes down the legal name of the instrument and its issuer before comparing anything else. If she cannot find them, she has a missing answer, not a completed ownership check.
+
+That distinction also helps product teams write clearer interfaces. A label such as “share” should lead to an explanation of the actual instrument. The user should not need to reconstruct the arrangement from a logo, a ticker symbol and a blockchain transaction.
+
+## Why the SEC proposal matters this week
+
+A transfer agent helps maintain securities ownership records. The [SEC's proposed Transfer Agent Rules](https://www.sec.gov/files/rules/proposed/2026/34-106246.pdf), dated 1 September, address how those records are maintained and controlled. The proposal discusses electronic records and linked systems. The question for the reader is which record establishes ownership and who is responsible for maintaining it.
+
+One short sentence captures the point:
+
+> “The master securityholder file is the authoritative record of who owns an issuer’s securities.”
+>
+> SEC, proposed Transfer Agent Rules, 1 September 2026, printed page 84.
+
+Here, the master securityholder file means the official record recognized by the issuer. The quoted passage describes its role; it does not say every buyer must personally appear on that record in every holding structure.
+
+Question 83 (printed page 140) asks how blockchain records could link to information held elsewhere, so that a token transfer corresponds to an ownership-file change. It is a question to consultees, not a finalized requirement. The [SEC rulemaking page](https://www.sec.gov/rules-regulations/2026/09/s7-2026-30) is the place to follow the proposal's status.
+
+For a reader, this creates a useful distinction: a digital transfer and the recognition of a holding need to be understood together. For an operator, the question becomes practical. Can someone explain the relationship between the records, including what happens when they do not agree?
+
+## A wallet address and a person's holding are different questions
+
+A wallet address identifies a destination in a blockchain system. Maya still needs to understand how the product connects that address with her holding. The answer depends on the arrangement she chose; it cannot be inferred from the address alone.
+
+Official guidance makes a second distinction. A [registered owner holds shares directly with the company; a beneficial owner holds through an intermediary](https://www.investor.gov/what-registered-owner-what-beneficial-owner). In the latter case, the intermediary's records matter to the ownership trail. The absence of Maya's name from the company's own register is therefore not, by itself, evidence that her holding is invalid.
+
+The question to ask is more precise: “Which record shows my position, and how does it connect to the company or the intermediary responsible for it?” This leaves room for different valid structures without pretending they are interchangeable.
+
+<figure>
+<svg viewBox="0 0 720 390" role="img" aria-label="Three questions connect the instrument, its ownership records and the responsible party. The wallet display alone does not answer all three." xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="390" rx="20" fill="#000810" />
+  <g fontFamily="Arial, sans-serif" textAnchor="middle">
+    <rect x="60" y="24" width="600" height="88" rx="12" fill="#08202C" stroke="#22D3EE" />
+    <text x="360" y="60" fontSize="23" fill="#FFFFFF">What did you buy?</text>
+    <text x="360" y="90" fontSize="19" fill="#BFEAF1">Instrument, issuer, terms</text>
+    <path d="M360 118 V137" stroke="#22D3EE" strokeWidth="3" />
+    <rect x="60" y="144" width="600" height="88" rx="12" fill="#08202C" stroke="#22D3EE" />
+    <text x="360" y="180" fontSize="23" fill="#FFFFFF">Which records show the holding?</text>
+    <text x="360" y="210" fontSize="19" fill="#BFEAF1">Direct or through an intermediary</text>
+    <path d="M360 238 V257" stroke="#22D3EE" strokeWidth="3" />
+    <rect x="60" y="264" width="600" height="88" rx="12" fill="#08202C" stroke="#22D3EE" />
+    <text x="360" y="300" fontSize="23" fill="#FFFFFF">Who can explain a discrepancy?</text>
+    <text x="360" y="330" fontSize="19" fill="#BFEAF1">Named party and contact route</text>
+    <text x="360" y="378" fontSize="16" fill="#BFEAF1">Editorial checklist, not a regulatory test</text>
+  </g>
+</svg>
+<figcaption>Start with the instrument, follow its records, then identify the person or entity responsible for answering a discrepancy.</figcaption>
+</figure>
+
+## Work through one fictional transfer
+
+Return to Maya's fictional example. She has chosen a product whose documentation describes direct registration. This is an assumption for the worked case, not a description of an existing platform or a Galileo feature.
+
+Before the transfer, Maya saves the instrument's terms and identifies the party responsible for the ownership record. She checks the process for receiving the asset into an eligible wallet. If the documentation leaves that process unclear, she asks for clarification before proceeding.
+
+After the transfer, her wallet shows the token. She then checks the confirmation offered by the arrangement she selected. Does it refer to the same instrument? Does it identify the expected holding? Can she connect it to the relevant transaction without guessing from a similar name?
+
+Now imagine that the wallet display and the confirmation appear to disagree. Maya does not need to decide instantly that the product is fraudulent, nor should she ignore the discrepancy because the blockchain transaction completed. She has a narrower task: preserve the references and ask the responsible party to explain the difference.
+
+A useful message would name the instrument, the transaction reference and the conflicting confirmation. It would ask which record establishes the current position and what further information is needed. That gives the recipient something concrete to investigate.
+
+For a product team, this is a good interface review exercise. Put the two conflicting records in front of someone who did not build the system. Can they find the contact route and explain the problem? If they cannot, the product may need clearer support information even when its transaction display is technically correct.
+
+## A short record trail you can actually use
+
+Our editorial recommendation is to keep a compact record trail for the arrangement being assessed. It is a reading aid, not a legal checklist or a substitute for the product's governing documents.
+
+| Keep this answer | Why it helps | What should prompt a question |
+| --- | --- | --- |
+| The instrument and its issuer | Identifies what the token represents | Only the referenced company's brand is shown |
+| The terms describing the rights | Separates a label from the actual entitlement | Rights are implied in marketing but hard to locate in the terms |
+| The direct or intermediary holding structure | Explains which records belong in the trail | Nobody can explain where your position is recorded |
+| A confirmation linked to the transaction | Makes the specific event traceable | References or quantities appear inconsistent |
+| The responsible party and contact route | Makes a discrepancy actionable | Support cannot identify who maintains the relevant record |
+
+The aim is not to collect the largest possible folder. It is to leave enough context that you, a colleague or an adviser can follow the position later. A screenshot without the instrument's terms may be easy to save but hard to interpret.
+
+Keep unresolved points visible. Writing “confirmation requested” is more useful than treating a missing answer as an implicit success. When the answer arrives, attach it to the original question so that the next reader can understand what was clarified.
+
+This approach has a broader application than shares. Our [analysis of tokenization across financial and physical assets](/blog/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets) explains why the underlying rights and evidence differ between products. The question about responsible records remains useful, but the legal answer must be established for each arrangement.
+
+## What blockchain does not decide for the reader
+
+A transaction record can be part of the evidence you inspect. It does not remove the need to understand the instrument, the holding structure or the route for resolving a problem. Likewise, a technically readable record does not mean you have interpreted its legal effect correctly.
+
+For this article, the relevant boundary is especially important around identity. The proposal's question about linking records held on and off the blockchain must not become a claim that investors are required to publish personal identity data on a public network. The text discussed above does not establish that claim.
+
+Nor does a US transfer agent proposal tell a European issuer which authorization it needs. Readers working across jurisdictions should keep the legal scope attached to each source. Our [MiCA article on keeping a clear regulatory record trail](/blog/2026-09-03-mica-bitpanda-marketing-paper-trail) addresses a different framework; it should not be used as a substitute for securities analysis.
+
+When designing a record that someone else will rely on, explain these distinctions before choosing the technology. A person should be able to follow what the record represents and what remains to be established. No product capability, transfer-agent status or regulatory approval is claimed for Galileo in this worked example.
+
+If you are designing a verifiable-record experience, [read the Galileo documentation](/docs) and compare its documented scope with your actual requirements. Start with the right the token represents and the evidence a future reader will need.
+
+## Frequently asked questions
+
+### Does a token in my wallet prove that I own the referenced share?
+
+Not by itself. Identify the instrument, its issuer and its terms, then follow the relevant ownership records. A token may represent a share, an indirect interest through an intermediary, or a different instrument linked to the share's price.
+
+### Has the SEC adopted the September 2026 transfer agent proposal?
+
+As of 6 September 2026, the SEC lists this document as a proposed rule. This article does not present its proposed changes or consultation questions as adopted requirements.
+
+### Must my name appear on the company's own shareholder register?
+
+It depends on how the holding is structured. A registered owner holds shares directly with the company. A beneficial owner holds through an intermediary, whose records are part of the ownership trail. Check which structure the product uses.
+
+### Does this proposal require investors to put their identity on a public blockchain?
+
+This article identifies no such requirement. Consultation question 83 asks about associating blockchain records with information stored elsewhere. It must not be rewritten as an adopted requirement to publish personal identity data.
+
+## Sources and method
+
+- [SEC: proposed Transfer Agent Rules, release 34-106246](https://www.sec.gov/files/rules/proposed/2026/34-106246.pdf), dated 1 September 2026. Printed pages 84 and 140 discussed above.
+- [SEC: rulemaking docket S7-2026-30](https://www.sec.gov/rules-regulations/2026/09/s7-2026-30), consulted 6 September 2026.
+- [Investor.gov: Tokenized Securities](https://www.investor.gov/introduction-investing/investing-basics/investment-products/tokenized-securities), consulted 6 September 2026. Investor education from SEC staff, not an additional rule.
+- [Investor.gov: registered and beneficial owners](https://www.investor.gov/what-registered-owner-what-beneficial-owner), consulted 6 September 2026.
+
+Method: primary-source reading followed by an editorial record-tracing exercise. Maya and the transaction are fictional. No platform was tested and no investment or customer outcome is reported.
