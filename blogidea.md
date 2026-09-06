@@ -343,7 +343,7 @@ Editorial gap identified: seizure coverage stays episodic local news — nobody 
 
 ## Watch session, 6 September 2026: tokenized shares and ownership records
 
-- Status: retained for local drafting, independent review pending. Issue #20.
+- Status: [publie le 2026-09-06]. Issue #20, PR #21. Production verified: https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register .
 - Axis: tokenization/RWA, outside luxury. Proposed title: Tokenized Shares: Who Records Your Ownership?
 - Google News RSS `SEC transfer agent tokenization when:7d`, en-US/US: SEC proposal coverage dated 1 September and Governance Intelligence 3 September. Signals only.
 - Google Trends RSS US, GB and FR checked 6 September: no relevant overlap in the observed feeds; no search-growth claim.
