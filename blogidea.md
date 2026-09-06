@@ -339,3 +339,16 @@ Editorial gap identified: seizure coverage stays episodic local news — nobody 
 - **Angle**: ERC-7943 finalized in May 2026; ecosystem converging on open standards. Why Galileo's open-standards choice (ERC-3643, W3C DID, GS1 EPCIS) is a strategic edge vs. proprietary luxury consortium silos.
 - **Sources**: stobox.io/reports/state-of-rwa-2026 (ERC-7943, May 2026), galileoprotocol.io.
 - **Why now**: ERC-7943 finalization is fresh; expert-level topic that builds founder credibility on LinkedIn.
+
+
+## Watch session, 6 September 2026: tokenized shares and ownership records
+
+- Status: retained for local drafting, independent review pending. Issue #20.
+- Axis: tokenization/RWA, outside luxury. Proposed title: Tokenized Shares: Who Records Your Ownership?
+- Google News RSS `SEC transfer agent tokenization when:7d`, en-US/US: SEC proposal coverage dated 1 September and Governance Intelligence 3 September. Signals only.
+- Google Trends RSS US, GB and FR checked 6 September: no relevant overlap in the observed feeds; no search-growth claim.
+- Reddit indexed thread r/Hedera 1w4j35q dated 1 September: enthusiasm for blockchain records. Qualitative signal only, no quotation or popularity claim in article.
+- Primary source verified 6 September: https://www.sec.gov/files/rules/proposed/2026/34-106246.pdf, dated 1 September 2026. Proposed rule, not an adopted requirement. Consultation question 83 must remain a question.
+- Additional primary education: https://www.investor.gov/introduction-investing/investing-basics/investment-products/tokenized-securities and https://www.investor.gov/what-registered-owner-what-beneficial-owner .
+- Anti-duplicate: inspected articles, branches and issues. The 31 August RWA overview updated 4 September compares markets and luxury models. New page answers how to identify the right, authoritative record and responsible party in a share transaction. New intent justified.
+- Original contribution: a clearly fictional transfer case and reusable questions for tracing a claimed entitlement. No investment recommendation, no Galileo deployment or regulatory approval implied.
