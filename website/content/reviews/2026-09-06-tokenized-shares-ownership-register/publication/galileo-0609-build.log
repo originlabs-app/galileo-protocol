@@ -1,0 +1,352 @@
+
+> website@0.1.0 build
+> next build
+
+▲ Next.js 16.3.4 (Turbopack)
+✓ Running next.config.ts took 202ms
+
+⚠ The Edge Runtime is deprecated. You can use the "nodejs" runtime instead. Learn more: https://nextjs.org/docs/messages/edge-runtime-deprecated
+  Creating an optimized production build ...
+✓ Compiled successfully in 1148ms
+  Running TypeScript ...
+  Finished TypeScript in 1566ms ...
+  Collecting page data using 17 workers ...
+⚠ Using edge runtime on a page currently disables static generation for that page
+  Generating static pages using 17 workers (0/115) ...
+[blog] content/blog/2026-02-01-v1-release.mdx: sentence is 63 words (max 30): "Our [identity system](/specifications/identity) implements the ERC-3643 v4.1.3 s…"
+[blog] content/blog/2026-05-04-live-base-sepolia-mint.mdx: sentence is 48 words (max 30): "Operators still need to grant the minting wallet the minimum roles required to o…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 52 words (max 30): "A Microsoft France study published in February 2026 puts numbers on what many lu…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 39 words (max 30): "Working alongside brands and technical teams in the Origin Labs ecosystem, which…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 54 words (max 30): "The pattern that works is consistent across industries, and luxury is no excepti…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 33 words (max 30): "That is the model behind [in-company AI training programmes](https://www.origin.…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 41 words (max 30): "Origin Labs contributes technical assistance and development support to Galileo …"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 59 words (max 30): "Galileo Protocol is thus one of three projects in the same ecosystem that all an…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 35 words (max 30): "The first one is solved maison by maison, team by team, and it starts earlier th…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 54 words (max 30): "But the registry that will host passports and the standards that will define the…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 32 words (max 30): "Strip away the news cycle and the choice in front of a luxury maison is binary: …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 31 words (max 30): "First, the delegated acts will be drafted around the standards already published…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 46 words (max 30): "Second, the battery passport becomes mandatory in February 2027 and will set the…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 40 words (max 30): "Third, DPP readiness is mostly a data-consolidation project, and data consolidat…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 36 words (max 30): "In July 2026 they were cited in the Official Journal through [Commission Impleme…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 43 words (max 30): "According to the [EU Digital Product Passport Foundation](https://eudigitalprodu…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 42 words (max 30): "The ESPR is a framework regulation: it creates the passport system and empowers …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 45 words (max 30): "The first ESPR working plan, adopted on **16 April 2025**, set the priorities fo…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 41 words (max 30): "And one product-level passport obligation is already scheduled outside the ESPR:…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 36 words (max 30): "First, scope is not the question: the ESPR covers virtually all physical goods p…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 38 words (max 30): "The standards the delegated acts will reference are published and carry presumpt…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 47 words (max 30): "The precise dataset is set per product group by each delegated act, but the fram…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 43 words (max 30): "Six months of pilot on 5,000 units of one line produces three assets the maison …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 33 words (max 30): "The winners will be the brands that treat the passport as a customer-facing asse…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 31 words (max 30): "The losers will treat it as a regulatory tax and pay it twice: once to comply, o…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 36 words (max 30): "*Galileo Protocol is an open protocol for product identity and the tokenization …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 34 words (max 30): "The first six harmonised European standards, published by CEN and CENELEC on 27 …"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 38 words (max 30): "It allowed crypto-asset service providers (CASPs) already operating legally unde…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 39 words (max 30): "Member states could shorten it or skip it entirely, and they did: the Netherland…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 33 words (max 30): "Any platform, custodian or exchange still serving EU clients without authorisati…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 51 words (max 30): "According to the [Stobox State of RWA Tokenization — 2026 Mid-Year Report](https…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 36 words (max 30): "Per **Article 2(4)** of the regulation, MiCA does not apply to crypto-assets tha…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 35 words (max 30): "It comes with an explicit anti-circumvention warning in the regulation's recital…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 45 words (max 30): "What MiCA covers directly is everything left: **asset-referenced tokens** (ARTs)…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 38 words (max 30): "To help authorities and market participants draw the brightest of these lines, E…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 34 words (max 30): "The guidelines matter because the MiFID/MiCA boundary is the most consequential …"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 40 words (max 30): "Walk the checklist: The same physical watch can therefore sit under three differ…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 32 words (max 30): "It deliberately, or by silence, leaves several others open: With care, and witho…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 59 words (max 30): "What holders and users of a utility token in a tokenization ecosystem actually g…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 34 words (max 30): "For physical-asset tokenization specifically, we read the ESPR/MiCA split as a f…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 45 words (max 30): "*Galileo Protocol is an open protocol for the authenticity and tokenization of p…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 36 words (max 30): "LVMH has put its Digital Product Passport strategy in writing — publicly, on its…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 46 words (max 30): "For every maison that was waiting for a market signal before committing to DPP i…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "If you run product, digital or sustainability at a luxury house that has not yet…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 42 words (max 30): "It is a much weaker strategy once the market leader has moved from piloting to w…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 39 words (max 30): "The language is unambiguous: "the introduction of the Digital Product Passport c…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 50 words (max 30): "The page states that **in 2024 LVMH continued to deploy the DPP** under its LIFE…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 66 words (max 30): "In a [June 2025 feature published by La Tribune](https://www.latribune.fr/parten…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 35 words (max 30): "He framed the core challenge as data, not technology — "collect, compute, commun…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 59 words (max 30): "In a [June 2026 interview with the Journal du Luxe](https://www.journalduluxe.fr…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 34 words (max 30): "Those harmonised DPP standards have been published in the Official Journal throu…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 39 words (max 30): "When the group that sells a significant share of the world's luxury goods standa…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "When Aura's CEO lists beauty, wines and spirits, and even yachting as growth seg…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "These ten questions work for any house, with or without a consortium invitation:…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 33 words (max 30): "**Joining a consortium** gives it a proven, luxury-native stack and immediate cr…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 35 words (max 30): "**Waiting** costs nothing this year and quietly compounds: every piece sold with…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "It is question 5, lifecycle coverage: high jewelry lives for generations, its va…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 37 words (max 30): "It chooses the option that treats the passport as a living record, starts with o…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 50 words (max 30): "Intellectual honesty about the signal, because a market read is only worth what …"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 50 words (max 30): "A group of this scale does not publish a group-level strategy, fund a delivery f…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "First, the market will now differentiate between brands that can prove and brand…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 45 words (max 30): "Second, you do not need a consortium seat to move: the standards are published, …"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 36 words (max 30): "*Galileo Protocol is an open protocol for product identity and the tokenization …"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 34 words (max 30): "LVMH publishes a dedicated Digital Product Passport page on lvmh.com stating tha…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 34 words (max 30): "In a June 2026 interview, its CEO stated that Aura counts more than 50 member br…"
+[blog] content/blog/2026-08-29-espr-destruction-ban-luxury-disclosure.mdx: sentence is 53 words (max 30): "Under Article 24 of the ESPR: the number and weight of unsold consumer products …"
+[blog] content/blog/2026-08-29-espr-destruction-ban-luxury-disclosure.mdx: sentence is 49 words (max 30): "Only within the ten derogations of [Commission Delegated Regulation (EU) 2026/29…"
+[blog] content/blog/2026-08-29-espr-destruction-ban-luxury-disclosure.mdx: sentence is 37 words (max 30): "Destruction volumes stop being an internal supply-chain metric and become a publ…"
+[blog] content/blog/2026-05-04-live-base-sepolia-mint.mdx: sentence is 48 words (max 30): "Operators still need to grant the minting wallet the minimum roles required to o…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 54 words (max 30): "But the registry that will host passports and the standards that will define the…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 32 words (max 30): "Strip away the news cycle and the choice in front of a luxury maison is binary: …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 31 words (max 30): "First, the delegated acts will be drafted around the standards already published…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 46 words (max 30): "Second, the battery passport becomes mandatory in February 2027 and will set the…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 40 words (max 30): "Third, DPP readiness is mostly a data-consolidation project, and data consolidat…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 36 words (max 30): "In July 2026 they were cited in the Official Journal through [Commission Impleme…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 43 words (max 30): "According to the [EU Digital Product Passport Foundation](https://eudigitalprodu…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 42 words (max 30): "The ESPR is a framework regulation: it creates the passport system and empowers …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 45 words (max 30): "The first ESPR working plan, adopted on **16 April 2025**, set the priorities fo…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 41 words (max 30): "And one product-level passport obligation is already scheduled outside the ESPR:…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 36 words (max 30): "First, scope is not the question: the ESPR covers virtually all physical goods p…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 38 words (max 30): "The standards the delegated acts will reference are published and carry presumpt…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 47 words (max 30): "The precise dataset is set per product group by each delegated act, but the fram…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 43 words (max 30): "Six months of pilot on 5,000 units of one line produces three assets the maison …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 33 words (max 30): "The winners will be the brands that treat the passport as a customer-facing asse…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 31 words (max 30): "The losers will treat it as a regulatory tax and pay it twice: once to comply, o…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 36 words (max 30): "*Galileo Protocol is an open protocol for product identity and the tokenization …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 34 words (max 30): "The first six harmonised European standards, published by CEN and CENELEC on 27 …"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 52 words (max 30): "A Microsoft France study published in February 2026 puts numbers on what many lu…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 39 words (max 30): "Working alongside brands and technical teams in the Origin Labs ecosystem, which…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 54 words (max 30): "The pattern that works is consistent across industries, and luxury is no excepti…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 33 words (max 30): "That is the model behind [in-company AI training programmes](https://www.origin.…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 41 words (max 30): "Origin Labs contributes technical assistance and development support to Galileo …"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 59 words (max 30): "Galileo Protocol is thus one of three projects in the same ecosystem that all an…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 35 words (max 30): "The first one is solved maison by maison, team by team, and it starts earlier th…"
+[blog] content/blog/2026-02-01-v1-release.mdx: sentence is 63 words (max 30): "Our [identity system](/specifications/identity) implements the ERC-3643 v4.1.3 s…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 38 words (max 30): "It allowed crypto-asset service providers (CASPs) already operating legally unde…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 39 words (max 30): "Member states could shorten it or skip it entirely, and they did: the Netherland…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 33 words (max 30): "Any platform, custodian or exchange still serving EU clients without authorisati…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 51 words (max 30): "According to the [Stobox State of RWA Tokenization — 2026 Mid-Year Report](https…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 36 words (max 30): "Per **Article 2(4)** of the regulation, MiCA does not apply to crypto-assets tha…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 35 words (max 30): "It comes with an explicit anti-circumvention warning in the regulation's recital…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 45 words (max 30): "What MiCA covers directly is everything left: **asset-referenced tokens** (ARTs)…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 38 words (max 30): "To help authorities and market participants draw the brightest of these lines, E…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 34 words (max 30): "The guidelines matter because the MiFID/MiCA boundary is the most consequential …"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 40 words (max 30): "Walk the checklist: The same physical watch can therefore sit under three differ…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 32 words (max 30): "It deliberately, or by silence, leaves several others open: With care, and witho…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 59 words (max 30): "What holders and users of a utility token in a tokenization ecosystem actually g…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 34 words (max 30): "For physical-asset tokenization specifically, we read the ESPR/MiCA split as a f…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 45 words (max 30): "*Galileo Protocol is an open protocol for the authenticity and tokenization of p…"
+[blog] content/blog/2026-02-01-v1-release.mdx: sentence is 63 words (max 30): "Our [identity system](/specifications/identity) implements the ERC-3643 v4.1.3 s…"
+[blog] content/blog/2026-05-04-live-base-sepolia-mint.mdx: sentence is 48 words (max 30): "Operators still need to grant the minting wallet the minimum roles required to o…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 52 words (max 30): "A Microsoft France study published in February 2026 puts numbers on what many lu…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 39 words (max 30): "Working alongside brands and technical teams in the Origin Labs ecosystem, which…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 54 words (max 30): "The pattern that works is consistent across industries, and luxury is no excepti…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 33 words (max 30): "That is the model behind [in-company AI training programmes](https://www.origin.…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 41 words (max 30): "Origin Labs contributes technical assistance and development support to Galileo …"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 59 words (max 30): "Galileo Protocol is thus one of three projects in the same ecosystem that all an…"
+[blog] content/blog/2026-08-02-ai-ready-teams-luxury-dpp-era.mdx: sentence is 35 words (max 30): "The first one is solved maison by maison, team by team, and it starts earlier th…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 54 words (max 30): "But the registry that will host passports and the standards that will define the…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 32 words (max 30): "Strip away the news cycle and the choice in front of a luxury maison is binary: …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 31 words (max 30): "First, the delegated acts will be drafted around the standards already published…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 46 words (max 30): "Second, the battery passport becomes mandatory in February 2027 and will set the…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 40 words (max 30): "Third, DPP readiness is mostly a data-consolidation project, and data consolidat…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 36 words (max 30): "In July 2026 they were cited in the Official Journal through [Commission Impleme…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 43 words (max 30): "According to the [EU Digital Product Passport Foundation](https://eudigitalprodu…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 42 words (max 30): "The ESPR is a framework regulation: it creates the passport system and empowers …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 45 words (max 30): "The first ESPR working plan, adopted on **16 April 2025**, set the priorities fo…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 41 words (max 30): "And one product-level passport obligation is already scheduled outside the ESPR:…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 36 words (max 30): "First, scope is not the question: the ESPR covers virtually all physical goods p…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 38 words (max 30): "The standards the delegated acts will reference are published and carry presumpt…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 47 words (max 30): "The precise dataset is set per product group by each delegated act, but the fram…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 43 words (max 30): "Six months of pilot on 5,000 units of one line produces three assets the maison …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 33 words (max 30): "The winners will be the brands that treat the passport as a customer-facing asse…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 31 words (max 30): "The losers will treat it as a regulatory tax and pay it twice: once to comply, o…"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 36 words (max 30): "*Galileo Protocol is an open protocol for product identity and the tokenization …"
+[blog] content/blog/2026-08-25-eu-dpp-registry-live.mdx: sentence is 34 words (max 30): "The first six harmonised European standards, published by CEN and CENELEC on 27 …"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 38 words (max 30): "It allowed crypto-asset service providers (CASPs) already operating legally unde…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 39 words (max 30): "Member states could shorten it or skip it entirely, and they did: the Netherland…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 33 words (max 30): "Any platform, custodian or exchange still serving EU clients without authorisati…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 51 words (max 30): "According to the [Stobox State of RWA Tokenization — 2026 Mid-Year Report](https…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 36 words (max 30): "Per **Article 2(4)** of the regulation, MiCA does not apply to crypto-assets tha…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 35 words (max 30): "It comes with an explicit anti-circumvention warning in the regulation's recital…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 45 words (max 30): "What MiCA covers directly is everything left: **asset-referenced tokens** (ARTs)…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 38 words (max 30): "To help authorities and market participants draw the brightest of these lines, E…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 34 words (max 30): "The guidelines matter because the MiFID/MiCA boundary is the most consequential …"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 40 words (max 30): "Walk the checklist: The same physical watch can therefore sit under three differ…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 32 words (max 30): "It deliberately, or by silence, leaves several others open: With care, and witho…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 59 words (max 30): "What holders and users of a utility token in a tokenization ecosystem actually g…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 34 words (max 30): "For physical-asset tokenization specifically, we read the ESPR/MiCA split as a f…"
+[blog] content/blog/2026-08-25-mica-transitional-period-rwa.mdx: sentence is 45 words (max 30): "*Galileo Protocol is an open protocol for the authenticity and tokenization of p…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 36 words (max 30): "LVMH has put its Digital Product Passport strategy in writing — publicly, on its…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 46 words (max 30): "For every maison that was waiting for a market signal before committing to DPP i…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "If you run product, digital or sustainability at a luxury house that has not yet…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 42 words (max 30): "It is a much weaker strategy once the market leader has moved from piloting to w…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 39 words (max 30): "The language is unambiguous: "the introduction of the Digital Product Passport c…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 50 words (max 30): "The page states that **in 2024 LVMH continued to deploy the DPP** under its LIFE…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 66 words (max 30): "In a [June 2025 feature published by La Tribune](https://www.latribune.fr/parten…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 35 words (max 30): "He framed the core challenge as data, not technology — "collect, compute, commun…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 59 words (max 30): "In a [June 2026 interview with the Journal du Luxe](https://www.journalduluxe.fr…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 34 words (max 30): "Those harmonised DPP standards have been published in the Official Journal throu…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 39 words (max 30): "When the group that sells a significant share of the world's luxury goods standa…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "When Aura's CEO lists beauty, wines and spirits, and even yachting as growth seg…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "These ten questions work for any house, with or without a consortium invitation:…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 33 words (max 30): "**Joining a consortium** gives it a proven, luxury-native stack and immediate cr…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 35 words (max 30): "**Waiting** costs nothing this year and quietly compounds: every piece sold with…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "It is question 5, lifecycle coverage: high jewelry lives for generations, its va…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 37 words (max 30): "It chooses the option that treats the passport as a living record, starts with o…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 50 words (max 30): "Intellectual honesty about the signal, because a market read is only worth what …"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 50 words (max 30): "A group of this scale does not publish a group-level strategy, fund a delivery f…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "First, the market will now differentiate between brands that can prove and brand…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 45 words (max 30): "Second, you do not need a consortium seat to move: the standards are published, …"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 36 words (max 30): "*Galileo Protocol is an open protocol for product identity and the tokenization …"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 34 words (max 30): "LVMH publishes a dedicated Digital Product Passport page on lvmh.com stating tha…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 34 words (max 30): "In a June 2026 interview, its CEO stated that Aura counts more than 50 member br…"
+[blog] content/blog/2026-08-29-espr-destruction-ban-luxury-disclosure.mdx: sentence is 53 words (max 30): "Under Article 24 of the ESPR: the number and weight of unsold consumer products …"
+[blog] content/blog/2026-08-29-espr-destruction-ban-luxury-disclosure.mdx: sentence is 49 words (max 30): "Only within the ten derogations of [Commission Delegated Regulation (EU) 2026/29…"
+[blog] content/blog/2026-08-29-espr-destruction-ban-luxury-disclosure.mdx: sentence is 37 words (max 30): "Destruction volumes stop being an internal supply-chain metric and become a publ…"
+  Generating static pages using 17 workers (28/115) 
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 36 words (max 30): "LVMH has put its Digital Product Passport strategy in writing — publicly, on its…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 46 words (max 30): "For every maison that was waiting for a market signal before committing to DPP i…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "If you run product, digital or sustainability at a luxury house that has not yet…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 42 words (max 30): "It is a much weaker strategy once the market leader has moved from piloting to w…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 39 words (max 30): "The language is unambiguous: "the introduction of the Digital Product Passport c…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 50 words (max 30): "The page states that **in 2024 LVMH continued to deploy the DPP** under its LIFE…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 66 words (max 30): "In a [June 2025 feature published by La Tribune](https://www.latribune.fr/parten…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 35 words (max 30): "He framed the core challenge as data, not technology — "collect, compute, commun…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 59 words (max 30): "In a [June 2026 interview with the Journal du Luxe](https://www.journalduluxe.fr…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 34 words (max 30): "Those harmonised DPP standards have been published in the Official Journal throu…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 39 words (max 30): "When the group that sells a significant share of the world's luxury goods standa…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "When Aura's CEO lists beauty, wines and spirits, and even yachting as growth seg…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "These ten questions work for any house, with or without a consortium invitation:…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 33 words (max 30): "**Joining a consortium** gives it a proven, luxury-native stack and immediate cr…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 35 words (max 30): "**Waiting** costs nothing this year and quietly compounds: every piece sold with…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "It is question 5, lifecycle coverage: high jewelry lives for generations, its va…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 37 words (max 30): "It chooses the option that treats the passport as a living record, starts with o…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 50 words (max 30): "Intellectual honesty about the signal, because a market read is only worth what …"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 50 words (max 30): "A group of this scale does not publish a group-level strategy, fund a delivery f…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 32 words (max 30): "First, the market will now differentiate between brands that can prove and brand…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 45 words (max 30): "Second, you do not need a consortium seat to move: the standards are published, …"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 36 words (max 30): "*Galileo Protocol is an open protocol for product identity and the tokenization …"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 34 words (max 30): "LVMH publishes a dedicated Digital Product Passport page on lvmh.com stating tha…"
+[blog] content/blog/2026-08-26-lvmh-dpp-strategy.mdx: sentence is 34 words (max 30): "In a June 2026 interview, its CEO stated that Aura counts more than 50 member br…"
+[blog] content/blog/2026-08-29-espr-destruction-ban-luxury-disclosure.mdx: sentence is 53 words (max 30): "Under Article 24 of the ESPR: the number and weight of unsold consumer products …"
+[blog] content/blog/2026-08-29-espr-destruction-ban-luxury-disclosure.mdx: sentence is 49 words (max 30): "Only within the ten derogations of [Commission Delegated Regulation (EU) 2026/29…"
+[blog] content/blog/2026-08-29-espr-destruction-ban-luxury-disclosure.mdx: sentence is 37 words (max 30): "Destruction volumes stop being an internal supply-chain metric and become a publ…"
+  Generating static pages using 17 workers (57/115) 
+  Generating static pages using 17 workers (86/115) 
+✓ Generating static pages using 17 workers (115/115) in 1497ms
+Turbopack build encountered 2 warnings:
+./website/src/lib/specifications.ts:141:29
+Warning: Dynamic filesystem access causes tracing of the whole project
+  [90m139 |[0m
+  [90m140 |[0m     [36mtry[0m {
+[33m[1m>[0m [90m141 |[0m       [36mconst[0m content = [36mawait[0m fs.readFile(filePath, [32m'utf8'[0m);
+  [90m    |[0m                             [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m142 |[0m       [36mconst[0m metadata = parseFileMetadata(content, [32m`[0m${slug[32m}[0m${ext[32m}`[0m);
+  [90m143 |[0m       [36mconst[0m [36mtype[0m = getFileType([32m`[0m${slug[32m}[0m${ext[32m}`[0m);
+  [90m144 |[0m
+
+Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+This can slow down deployments or lead to failures when size limits are exceeded.
+To resolve this, you can
+- make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+- only use them in development, or
+- opt out by adding an ignore comment to the highlighted call: fs.readFile(/*turbopackIgnore: true*/ ...), or
+- remove them.
+
+Import traces:
+  Server Component:
+    ./website/src/lib/specifications.ts
+    ./website/src/app/specifications/[category]/page.tsx
+
+  App Route:
+    ./website/src/lib/specifications.ts
+    ./website/src/app/sitemap.ts
+    ./website/src/app/sitemap--route-entry.js
+
+
+./website/src/lib/specifications.ts:138:22
+Warning: Dynamic filesystem access causes tracing of the whole project
+  [90m136 |[0m   [90m// Try each supported extension[0m
+  [90m137 |[0m   [36mfor[0m ([36mconst[0m ext [36mof[0m [33mSUPPORTED_EXTENSIONS[0m) {
+[33m[1m>[0m [90m138 |[0m     [36mconst[0m filePath = path.join(basePath, [32m`[0m${slug[32m}[0m${ext[32m}`[0m);
+  [90m    |[0m                      [33m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m139 |[0m
+  [90m140 |[0m     [36mtry[0m {
+  [90m141 |[0m       [36mconst[0m content = [36mawait[0m fs.readFile(filePath, [32m'utf8'[0m);
+
+Static analysis determined that this filesystem access causes the whole project to be traced and included in the output.
+This is usually unintentional and leads to all source files (including the public folder) to be deployed as part of the server code.
+This can slow down deployments or lead to failures when size limits are exceeded.
+To resolve this, you can
+- make sure the path is statically scoped to some subfolder, for example path.join(process.cwd(), 'data', bar), or
+- only use them in development, or
+- opt out by adding an ignore comment to the highlighted call: path.join(/*turbopackIgnore: true*/ ...), or
+- remove them.
+
+Import traces:
+  Server Component:
+    ./website/src/lib/specifications.ts
+    ./website/src/app/specifications/[category]/page.tsx
+
+  App Route:
+    ./website/src/lib/specifications.ts
+    ./website/src/app/sitemap.ts
+    ./website/src/app/sitemap--route-entry.js
+
+
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /blog
+├   /blog/[slug]
+│ ├ ● /blog/2026-02-01-v1-release
+│ ├ ● /blog/2026-03-22-production-deployment
+│ ├ ● /blog/2026-05-04-live-base-sepolia-mint
+│ └ ● [+13 more paths]
+├ ƒ /blog/opengraph-image
+├ ○ /changelog
+├ ○ /docs
+├ ○ /docs/architecture
+├ ○ /docs/code-of-conduct
+├ ○ /docs/compliance
+├ ○ /docs/compliance/espr
+├ ○ /docs/compliance/gdpr
+├ ○ /docs/compliance/mica
+├ ○ /docs/concepts
+├ ○ /docs/contributing
+├ ○ /docs/governance/charter
+├ ○ /docs/identity
+├ ○ /docs/identity/did-method
+├ ○ /docs/identity/onchainid
+├ ○ /docs/identity/verifiable-credentials
+├ ○ /docs/license
+├ ƒ /docs/opengraph-image
+├ ○ /docs/quick-start
+├ ○ /docs/rfc-process
+├ ○ /docs/token
+├ ○ /docs/token/ownership-transfer
+├ ○ /docs/versioning
+├ ○ /governance
+├ ƒ /governance/opengraph-image
+├ ○ /governance/tsc
+├ ○ /legal
+├ ○ /llms-full.txt
+├ ○ /llms.txt
+├ ○ /maison
+├ ○ /opengraph-image
+├ ○ /privacy
+├ ○ /roadmap
+├ ○ /robots.txt
+├ ○ /sitemap.xml
+├ ○ /specifications
+├   /specifications/[category]
+│ ├ ● /specifications/architecture
+│ ├ ● /specifications/compliance
+│ ├ ● /specifications/crypto
+│ └ ● [+6 more paths]
+├   /specifications/[category]/[...slug]
+│ ├ ● /specifications/architecture/hybrid-architecture
+│ ├ ● /specifications/compliance/aml-screening
+│ ├ ● /specifications/compliance/guides/espr-readiness
+│ └ ● [+45 more paths]
+├ ƒ /specifications/opengraph-image
+├ ○ /terms
+├ ○ /tools
+├ ○ /tools/faucet
+└ ○ /tools/gas-estimator
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

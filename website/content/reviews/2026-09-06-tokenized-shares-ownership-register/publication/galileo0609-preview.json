@@ -1,0 +1,18 @@
+{
+  "sha": "a17f7b4e026a8f99d41591add936addd7e11b79d",
+  "deployment": "dpl_6Bc6a8h2tiNkRVukGaR7QKX3CmZH",
+  "checks": [
+    {
+      "width": 1440,
+      "http": 200,
+      "text": true,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "http": 200,
+      "text": true,
+      "overflow": false
+    }
+  ]
+}
