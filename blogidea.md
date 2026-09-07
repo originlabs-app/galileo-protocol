@@ -355,7 +355,7 @@ Editorial gap identified: seizure coverage stays episodic local news — nobody 
 
 ## Watch session, 7 September 2026: luxury repairs after the workshop
 
-- [retenu] Issue #23, axis counterfeiting/authentication/provenance, practical repair history. Latest article (6 September) is tokenization/RWA; 5 September concerns credential revocation. This alternates axes.
+- [redige] Issue #23, axis counterfeiting/authentication/provenance, practical repair history. Latest article (6 September) is tokenization/RWA; 5 September concerns credential revocation. This alternates axes.
 - Google Trends RSS US/GB/FR and Google News RSS `luxury repair passport after sales when:21d`, en-US/US, en-GB/GB, fr/FR, read live on 7 September. News returned no items; observed Trends showed no relevant luxury repair overlap. No retained news trigger or growth claim. Captured feed titles will accompany the review dossier.
 - Evergreen angle authorised by Pierre: what travels with a repaired object, from intake and approved scope to replaced parts, return inspection and service warranty. No claim of a September launch.
 - Primary sources verified live: Aura, 16 November 2023, https://auraconsortium.com/insight/unlocking-luxury-digital-product-passport-transforms-the-luxury-industry (supplier-described maintenance uses); AP GB https://www.audemarspiguet.com/gb/en/services/all-services (service-specific warranty and archive/authenticity distinction); Hermès US https://www.hermes.com/us/en/content/278343-maintenance-repair/ (types of physical intervention). AP/Hermès pages undated, accessed today, not presented as current-affairs announcements.

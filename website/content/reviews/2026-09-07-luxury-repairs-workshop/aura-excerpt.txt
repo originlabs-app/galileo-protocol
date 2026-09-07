@@ -1,0 +1,7 @@
+Public text export via web open, captured 2026-09-07T10:12:52.492393+00:00
+URL: https://auraconsortium.com/insight/unlocking-luxury-digital-product-passport-transforms-the-luxury-industry
+Author: Aura Blockchain Consortium
+Published: November 16, 2023
+Section: Maintenance Passport
+Exact short excerpt: e-warranty, insurance, repair assistance
+Direct HTTP export returned 403; public web reader returned the article and date without authentication.
