@@ -1,0 +1,24 @@
+{
+  "canonical": true,
+  "og_article": true,
+  "BlogPosting": true,
+  "BreadcrumbList": true,
+  "FAQPage": true,
+  "sitemap.xml": {
+    "status": 200,
+    "article_present": true
+  },
+  "robots.txt": {
+    "status": 200
+  },
+  "llms.txt": {
+    "status": 200
+  },
+  "llms-full.txt": {
+    "status": 200,
+    "article_present": true
+  },
+  "docs": {
+    "status": 200
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "environment": "independent coordinator, local Next production build,3218,Chrome DevTools uat1",
+  "desktop": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"width\":1440,\"scroll\":1432,\"svg\":{\"x\":380,\"y\":2273.296875,\"width\":672,\"height\":840,\"top\":2273.296875,\"right\":1052,\"bottom\":3113.296875,\"left\":380},\"font\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\",\"corrected\":true,\"title\":\"Luxury Repairs: What Leaves the Workshop with the Item?\",\"canonical\":\"https://www.galileoprotocol.io/blog/2026-09-07-luxury-repairs-workshop\"}\n```"
+      }
+    ]
+  },
+  "mobile": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"http://127.0.0.1:3218/blog/2026-09-07-luxury-repairs-workshop\",\"width\":390,\"scroll\":390,\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\",\"fontsStatus\":\"loaded\",\"svg\":{\"x\":24,\"y\":1062.953125,\"width\":342,\"height\":427.5,\"top\":1062.953125,\"right\":366,\"bottom\":1490.453125,\"left\":24},\"texts\":[{\"text\":\"Intake: identify and photograph\",\"screenFontPx\":15.39,\"marginsScreen\":{\"left\":43.43312454223633,\"right\":43.43314743041992,\"top\":15.780029296875,\"bottom\":41.4599609375},\"bboxSvg\":{\"x\":74.7989730834961,\"y\":42.45614242553711,\"width\":250.40203857421875,\"height\":21.052631378173828},\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\"},{\"text\":\"Condition and requested work\",\"screenFontPx\":14.1075,\"marginsScreen\":{\"left\":55.07374954223633,\"right\":55.06147384643555,\"top\":39.010009765625,\"bottom\":19.22998046875},\"bboxSvg\":{\"x\":88.41374206542969,\"y\":69.62572479248047,\"width\":223.1868896484375,\"height\":19.883039474487305},\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\"},{\"text\":\"Approval: agree the scope\",\"screenFontPx\":15.39,\"marginsScreen\":{\"left\":60.71437454223633,\"right\":60.71442794799805,\"top\":15.780029296875,\"bottom\":41.4600830078125},\"bboxSvg\":{\"x\":95.0109634399414,\"y\":154.4561309814453,\"width\":209.97805786132812,\"height\":21.052631378173828},\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\"},{\"text\":\"Save consent and declined work\",\"screenFontPx\":14.1075,\"marginsScreen\":{\"left\":48.08937454223633,\"right\":48.06980514526367,\"top\":39.010009765625,\"bottom\":19.22998046875},\"bboxSvg\":{\"x\":80.24488067626953,\"y\":181.625732421875,\"width\":239.53314208984375,\"height\":19.883039474487305},\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\"},{\"text\":\"Repair: record what changed\",\"screenFontPx\":15.39,\"marginsScreen\":{\"left\":51.76906204223633,\"right\":51.76908493041992,\"top\":15.780029296875,\"bottom\":41.4599609375},\"bboxSvg\":{\"x\":84.5486068725586,\"y\":266.4561462402344,\"width\":230.90277099609375,\"height\":21.052631378173828},\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\"},{\"text\":\"Parts and unresolved issues\",\"screenFontPx\":14.1075,\"marginsScreen\":{\"left\":61.9018669128418,\"right\":61.90193557739258,\"top\":39.010009765625,\"bottom\":19.22998046875},\"bboxSvg\":{\"x\":96.39984893798828,\"y\":293.625732421875,\"width\":207.20028686523438,\"height\":19.883039474487305},\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\"},{\"text\":\"Return: check and explain\",\"screenFontPx\":15.39,\"marginsScreen\":{\"left\":62.08937454223633,\"right\":62.08942794799805,\"top\":15.780029296875,\"bottom\":65.39990234375},\"bboxSvg\":{\"x\":96.61914825439453,\"y\":378.4561462402344,\"width\":206.76168823242188,\"height\":21.052631378173828},\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\"},{\"text\":\"Checks, warranty and shared copy\",\"screenFontPx\":14.1075,\"marginsScreen\":{\"left\":40.78468704223633,\"right\":40.78474044799805,\"top\":39.0098876953125,\"bottom\":43.1700439453125},\"bboxSvg\":{\"x\":71.70138549804688,\"y\":405.6257019042969,\"width\":256.5971984863281,\"height\":19.883039474487305},\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\"},{\"text\":\"Keep contact details separate\",\"screenFontPx\":14.1075,\"marginsScreen\":{\"left\":56.0971794128418,\"right\":56.09721755981445,\"top\":62.949951171875,\"bottom\":19.22998046875},\"bboxSvg\":{\"x\":89.6107406616211,\"y\":433.6257019042969,\"width\":220.77850341796875,\"height\":19.883039474487305},\"fontFamily\":\"ui-sans-serif, system-ui, sans-serif, \\\"Apple Color Emoji\\\", \\\"Segoe UI Emoji\\\", \\\"Segoe UI Symbol\\\", \\\"Noto Color Emoji\\\"\"}]}\n```"
+      }
+    ]
+  },
+  "seo": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"schema\":[\"BlogPosting\",\"BreadcrumbList\",\"FAQPage\"],\"faq\":[{\"question\":\"What should accompany a luxury item after repair?\",\"count\":1},{\"question\":\"Does a repair record prove authenticity or resale value?\",\"count\":1},{\"question\":\"Does a repair restart the warranty on the whole product?\",\"count\":1},{\"question\":\"Does this form require a digital product passport?\",\"count\":1}],\"ogType\":\"article\",\"hero\":[{\"loaded\":true,\"alt\":\"An unbranded navy leather bag on a workshop bench beside a removed strap, leather tools and a closed folder\"}],\"overflow\":[]}\n```"
+      }
+    ]
+  },
+  "console": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":true,\"hasTouch\":true,\"isLandscape\":false,\"width\":390,\"height\":844}\n## Console messages\n<no console messages found>"
+      }
+    ]
+  },
+  "cta": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"http://127.0.0.1:3218/docs\",\"h1\":\"Introduction to Galileo\"}\n```"
+      }
+    ]
+  }
+}
