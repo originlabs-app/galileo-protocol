@@ -206,7 +206,7 @@ export function AbysseHero() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 min-h-[100dvh] flex flex-col items-center justify-center px-6 md:px-8">
+      <div className="relative z-10 min-h-[100dvh] flex flex-col items-center justify-center px-6 md:px-8 pt-32 pb-12">
         {/* Depth indicator */}
         <div
           className="absolute top-8 left-8 flex items-center gap-3"
@@ -244,7 +244,8 @@ export function AbysseHero() {
 
         {/* Main headline */}
         <div className="text-center max-w-5xl">
-          <h1
+          <div
+            aria-hidden="true"
             className="relative"
             style={{
               opacity: phase >= 1 ? 1 : 0,
@@ -274,21 +275,14 @@ export function AbysseHero() {
                 </span>
               ))}
             </span>
-          </h1>
+          </div>
 
-          {/* Tagline */}
-          <p
-            className="mt-6 text-xl md:text-2xl lg:text-3xl font-extralight text-white/90 tracking-wide"
-            style={{
-              fontFamily: 'var(--font-serif)',
-              textShadow: '0 2px 20px rgba(0,0,0,0.3)',
-              opacity: phase >= 3 ? 1 : 0,
-              transform: `translateY(${phase >= 3 ? 0 : 20}px)`,
-              transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s',
-            }}
+          <h1
+            className="mt-6 text-3xl md:text-4xl lg:text-5xl font-extralight text-white/90 leading-tight max-w-3xl mx-auto"
+            style={{ fontFamily: 'var(--font-serif)', textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}
           >
-            Inspect the evidence.
-          </p>
+            Open protocol for luxury product authentication
+          </h1>
 
           {/* Subtitle */}
           <p
@@ -300,9 +294,9 @@ export function AbysseHero() {
               transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            An open protocol for luxury product authenticity.
+            Inspect identity, provenance and ownership evidence.{" "}
             <br className="hidden md:block" />
-            Built to make verification evidence easier to inspect.
+            A product record still needs a trustworthy link to the physical item.
           </p>
         </div>
 
@@ -338,7 +332,7 @@ export function AbysseHero() {
 
         {/* Scroll indicator */}
         <div
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+          className="mt-10 flex flex-col items-center gap-4"
           style={{
             opacity: phase >= 5 ? 1 : 0,
             transition: 'opacity 1s ease-out 0.5s',

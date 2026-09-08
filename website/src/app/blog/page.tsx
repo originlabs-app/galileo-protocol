@@ -1,15 +1,13 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import { getAllPosts, formatDate } from "@/lib/blog";
 import Link from "next/link";
 import { Calendar, User } from "lucide-react";
 
-export const metadata = {
+export const metadata = pageMetadata("/blog", {
   title: "Blog",
   description:
     "Latest news, announcements, and updates from the Galileo Protocol project. Stay informed about luxury authentication standards, releases, and ecosystem developments.",
-  alternates: {
-    canonical: "/blog",
-  },
-};
+});
 
 export default function BlogPage() {
   const posts = getAllPosts();
