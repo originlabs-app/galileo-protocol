@@ -4,10 +4,18 @@
     "url": "https://newsroom.smx.tech/articles/1214617/luxury-has-an-authentication-problem-smx-is-putting-the-proof-inside-the-product",
     "status": 200,
     "contentType": "text/html; charset=utf-8",
-    "sha256": "fa449540e36b795eddc375f2e32ba699c4dde573d473066ccf8c8684ff479970",
-    "bytes": 23670,
+    "sha256": "545ba46016408da70cc2fe9da8643afeb04f52c956652230c6fd34cfa6229f20",
+    "bytes": 23661,
     "capturedAt": "2026-09-08T08:32:41.065575+00:00",
-    "method": "direct HTTPS public GET"
+    "method": "direct HTTPS public GET",
+    "originalCaptureSha256": "fa449540e36b795eddc375f2e32ba699c4dde573d473066ccf8c8684ff479970",
+    "originalCaptureBytes": 23670,
+    "transformation": {
+      "date": "2026-09-08T09:16:14.442298+00:00",
+      "description": "One Google API key embedded in the public source HTML was replaced by [REDACTED_PUBLIC_EMBEDDED_KEY] for the archived copy. No visible article text or attributed quotation changed. Original capture hash retained for provenance; this file is a sanitized copy, not byte-identical raw HTML.",
+      "replacementCount": 1,
+      "visibleTextUnchanged": true
+    }
   },
   {
     "filename": "nxp-an12196.pdf",
