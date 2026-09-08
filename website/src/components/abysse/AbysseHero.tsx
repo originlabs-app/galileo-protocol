@@ -294,7 +294,7 @@ export function AbysseHero() {
               transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            Inspect identity, provenance and ownership evidence.
+            Inspect identity, provenance and ownership evidence.{" "}
             <br className="hidden md:block" />
             A product record still needs a trustworthy link to the physical item.
           </p>
