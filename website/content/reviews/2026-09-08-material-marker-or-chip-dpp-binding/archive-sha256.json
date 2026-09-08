@@ -1,0 +1,18 @@
+{
+  "galileo-26-hero-prompt.txt": "a5e5a02f8e4bcf288412bd8a7a87d8e206287936ee069a7d6978cb4feb16aa12",
+  "galileo-26-hero-provenance.json": "c96844177978446bd491a2811d8233f60e7967ac2eb666bb1ba0d34c312eccf3",
+  "sources/erc3643.html": "1d0a6e8f28b69b079e52605e3de35f6aa238afc01f0bf7986ef962f0771f982e",
+  "sources/nxp-web-tool-export.txt": "7d171a5c586082159fee7a4cab1b73c81e3e6f9af1ff092ce0d2a5c6433f1265",
+  "sources/nxp-web-tool-tamper-export.txt": "a7a5e7b31387fb5b770f65023544caded8fe5c50974b4a40b1f8a31209892aec",
+  "sources/provenance.json": "fe84b4dcf663c212dc61b60aa3f8cda153d0dc966998ac51fecd62404d0126c5",
+  "sources/smx-20260831.html": "fa449540e36b795eddc375f2e32ba699c4dde573d473066ccf8c8684ff479970",
+  "sources/verification.json": "859a7bac5dcf0d5d4ce67a5119678012d9a9d495c98371e385c0e77db39edf8c",
+  "watch/news-GB.xml": "b4b20d732db43a0a43b1495b62a9b5f3c83c5724aafb0b73183fa1c06bf2190b",
+  "watch/news-US.xml": "035598b55e7f322225cda5ea6e720453634948d8263194e4912cc561c599d900",
+  "watch/news-broad-GB.xml": "962565470aafd09aaf413d1742c01b5dd86f42a1eccb91af193e7c2ee00acbfb",
+  "watch/news-broad-US.xml": "988f49be704d170694161eb297052a4a5ba5d4eca11c205150796b38c65acc8f",
+  "watch/trends-FR.xml": "2a7a3cce6a9d1e217f7a2ba052a7204aaddf37f830511ea177124cc9123caf7e",
+  "watch/trends-GB.xml": "4b0377c548a1a6b76be659a5a86c9123417b55c5eb47698d6c2c57778aafee31",
+  "watch/trends-US.xml": "862e6c4cded7650411183bad927756f64510a9a9bdb02d8a5669025a3054b47c",
+  "watch/watch.json": "f856e7172922c8cfc61c6bcb7756b66289b492840759f0c5ea4cf24ba0bcbef4"
+}

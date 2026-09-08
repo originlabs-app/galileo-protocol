@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "articleSourceSha256": "30d388facd95070f46e4daf791ddef96009d4838339c7b946e5a53c03f88586b",
+  "builtHtmlSha256": "6d80d100da7c767bbc67511956729a930dc52c18aaeeff524c47f78b28678d36",
+  "titleLength": 50,
+  "descriptionLength": 138,
+  "faqCount": 4,
+  "canonical": "https://www.galileoprotocol.io/blog/2026-09-08-material-marker-or-chip-dpp-binding",
+  "checks": [
+    "frontmatter",
+    "canonical, OG and Twitter hero",
+    "BlogPosting, BreadcrumbList, FAQPage",
+    "visible FAQ equals frontmatter and JSON-LD",
+    "internal link build targets",
+    "sitemap, robots, llms, llms-full",
+    "hero hash and size",
+    "static SVG accessibility and class attributes",
+    "blank observation fields and fictional label"
+  ],
+  "limits": [
+    "Built HTML verification only, no served UAT.",
+    "Actual SVG font bounds, four-edge margins and 1440/390 browser layout remain UNVERIFIED by author; reserved for coordinator.",
+    "No supplier trials performed."
+  ]
+}

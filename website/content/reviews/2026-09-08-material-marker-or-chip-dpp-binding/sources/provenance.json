@@ -1,0 +1,50 @@
+[
+  {
+    "filename": "smx-20260831.html",
+    "url": "https://newsroom.smx.tech/articles/1214617/luxury-has-an-authentication-problem-smx-is-putting-the-proof-inside-the-product",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "fa449540e36b795eddc375f2e32ba699c4dde573d473066ccf8c8684ff479970",
+    "bytes": 23670,
+    "capturedAt": "2026-09-08T08:32:41.065575+00:00",
+    "method": "direct HTTPS public GET"
+  },
+  {
+    "filename": "nxp-an12196.pdf",
+    "url": "https://www.nxp.com/docs/en/application-note/AN12196.pdf",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "filename": "erc3643.html",
+    "url": "https://eips.ethereum.org/EIPS/eip-3643",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "sha256": "1d0a6e8f28b69b079e52605e3de35f6aa238afc01f0bf7986ef962f0771f982e",
+    "bytes": 81042,
+    "capturedAt": "2026-09-08T08:32:41.476246+00:00",
+    "method": "direct HTTPS public GET"
+  },
+  {
+    "filename": "nxp-tagtamper.pdf",
+    "url": "https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "filename": "nxp-web-tool-export.txt",
+    "url": "https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf",
+    "method": "web tool open text export, partial lines1443 onward, not raw PDF",
+    "capturedAt": "2026-09-08T08:39:38.627667+00:00",
+    "sha256": "7d171a5c586082159fee7a4cab1b73c81e3e6f9af1ff092ce0d2a5c6433f1265",
+    "bytes": 24698,
+    "limitation": "Direct HTTPS GET returned404; tool-read source available. Reader must verify exact passages and their scope, not infer full PDF archived."
+  },
+  {
+    "filename": "nxp-web-tool-tamper-export.txt",
+    "url": "https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf",
+    "method": "web tool open text export, partial lines2033 onward including section10 Tag Tamper Protection, not raw PDF",
+    "capturedAt": "2026-09-08T08:40:26.981303+00:00",
+    "sha256": "a7a5e7b31387fb5b770f65023544caded8fe5c50974b4a40b1f8a31209892aec",
+    "bytes": 22697,
+    "limitation": "Read section10 for enablement and power/boot measurement conditions, do not infer detection of all transplantation."
+  }
+]
