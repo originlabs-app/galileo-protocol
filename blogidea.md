@@ -366,7 +366,9 @@ Editorial gap identified: seizure coverage stays episodic local news — nobody 
 
 ## Watch session, 8 September 2026: material marker or chip supplier trial
 
-- Status: [rédigé]. Issue #26. Axis: counterfeiting/authentication/provenance. No publication authorised for this lot.
+- Status: [publié le 8 septembre 2026]. Issue #26. Axis: counterfeiting/authentication/provenance. Publication authorised by Pierre.
+- Published URL: https://www.galileoprotocol.io/blog/2026-09-08-material-marker-or-chip-dpp-binding
+- Production verified after merge #27 (`81f1de05e41aa2a8d2d51a1815b9b1d1ca3a2f11`): two independent PASS verdicts, production browser checks at 1440/390 and live content/hero comparison. Evidence: https://github.com/originlabs-app/galileo-protocol/pull/27#issuecomment-5583358190
 - Reader: luxury brand procurement or resale operations lead deciding whether to accept a supplier's physical-to-record binding. Deliverable: comparable copy/replay, transplantation, material replacement and supplier-exit trials with a reusable blank acceptance sheet.
 - Live watch captured 8 September 2026 at 08:58 UTC. Trends RSS US/GB/FR all HTTP 200: US sports/consumer/war topics, GB sports/general topics, FR inflation/media/general topics. No observed overlap with material authentication; no search-growth claim.
 - Google News RSS US/GB (`hl=en-US/en-GB`, `gl=US/GB`, `ceid=US:en/GB:en`): exact query `SMX luxury molecular marker NFC authentication when:21d` returned HTTP 200 and zero items. Broader `SMX luxury when:21d` returned HTTP 200, 11 items in each feed, including Yahoo Finance's 31 August announcement syndication and Stock Titan's supplier-claim summaries. Plastics, metals market and unrelated Manila stories discarded. Feeds are ideation signals only, not evidence of performance or independent corroboration.
