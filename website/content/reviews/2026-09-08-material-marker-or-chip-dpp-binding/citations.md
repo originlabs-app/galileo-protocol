@@ -3,7 +3,7 @@
 Article: `2026-09-08-material-marker-or-chip-dpp-binding`.
 Author: Pierre Beunardeau. Editorial status: drafted, not published.
 
-The article contains **no attributed verbatim quotations**. It paraphrases the three primary sources below. Short exact excerpts here are audit anchors only, not quotations presented in the article. Archives can be read locally without an origin-platform account. Capture times and SHA-256 values below reproduce the supplied provenance, which the author verified against the local files on 8 September 2026.
+The article contains **no attributed verbatim quotations**. It paraphrases the three primary sources below. Short exact excerpts here are audit anchors only, not quotations presented in the article. Archives can be read locally without an origin-platform account. Capture times and SHA-256 values below distinguish original captures from current archived files. The later redaction of the SMX copy is documented below and in `sources/provenance.json`.
 
 ## SMX company update
 
@@ -12,8 +12,9 @@ The article contains **no attributed verbatim quotations**. It paraphrases the t
 - URL: https://newsroom.smx.tech/articles/1214617/luxury-has-an-authentication-problem-smx-is-putting-the-proof-inside-the-product
 - Exact audit anchor: “SMX's technology is designed to provide that continuity.”
 - Capture: 2026-09-08T08:32:41.065575+00:00, public HTTPS GET, HTTP 200.
-- Archive: `sources/smx-20260831.html`.
-- SHA-256: `fa449540e36b795eddc375f2e32ba699c4dde573d473066ccf8c8684ff479970`.
+- Current archive: `sources/smx-20260831.html`, a redacted copy with one publicly embedded Google Maps key replaced. Visible article text and the audit anchor are unchanged.
+- Original capture SHA-256: `fa449540e36b795eddc375f2e32ba699c4dde573d473066ccf8c8684ff479970`.
+- Current redacted archive SHA-256: `545ba46016408da70cc2fe9da8643afeb04f52c956652230c6fd34cfa6229f20`, matching `sources/provenance.json` and `archive-sha256.json`.
 - Article use: supplier-attributed invisible material marking and lifecycle continuity, explicitly not independent performance evidence. No marker dimensions, precision, universal chemistry, resistance or Galileo integration inferred.
 
 ## NXP product datasheet
