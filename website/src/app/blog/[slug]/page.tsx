@@ -7,6 +7,8 @@ import { getAllPostSlugs, getPostBySlug, formatDate } from '@/lib/blog';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Calendar, User, ArrowLeft, ChevronRight } from 'lucide-react';
 
+export const dynamicParams = false;
+
 const SITE_URL = 'https://www.galileoprotocol.io';
 const TWITTER_SITE = '@GalileoProtocol';
 

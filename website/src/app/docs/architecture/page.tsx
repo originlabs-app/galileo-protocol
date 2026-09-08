@@ -1,7 +1,9 @@
-export const metadata = {
+import Link from "next/link";
+import { pageMetadata } from "@/lib/page-metadata";
+export const metadata = pageMetadata("/docs/architecture", {
   title: 'Architecture | Galileo Documentation',
-  description: 'Understand the hybrid on-chain/off-chain architecture of Galileo.',
-};
+  description: 'Plan where Galileo stores product data, ownership proofs and access rules. Review the proposed hybrid architecture before mapping an integration.',
+});
 
 export default function ArchitecturePage() {
   return (
@@ -9,11 +11,16 @@ export default function ArchitecturePage() {
       <h1>Hybrid Architecture</h1>
 
       <p>
-        Galileo uses a hybrid on-chain/off-chain architecture that balances transparency
-        with privacy. This design enables GDPR compliance while maintaining immutable
-        ownership records.
+        Use this guide to decide which data belongs on-chain, which stays off-chain,
+        and how a resolver connects the two. It summarizes the published design;
+        each integration must verify which components and controls are implemented.
       </p>
 
+      <p>
+        Start with the <Link href="/docs">protocol principles</Link>, then review the{" "}
+        <Link href="/specifications/architecture/hybrid-architecture">hybrid architecture specification</Link>.
+        ERC-3643 describes the token transfer layer here, not a universal DPP registry.
+      </p>
       <h2>Three-Layer Model</h2>
 
       <pre className="text-sm"><code>{`
@@ -52,8 +59,8 @@ export default function ArchitecturePage() {
         <li><strong>Compliance Modules</strong> — Pluggable transfer rules</li>
       </ul>
       <p>
-        On-chain data is public and immutable. It contains NO personal data to ensure
-        GDPR compliance.
+        The design keeps personal data off-chain. Implementers must still assess
+        whether identifiers and hashes can be linked to a person.
       </p>
 
       <h2>Off-Chain Layer</h2>
@@ -66,8 +73,9 @@ export default function ArchitecturePage() {
         <li><strong>Personal Data</strong> — Customer information (encrypted, access-controlled)</li>
       </ul>
       <p>
-        Off-chain data is deletable, satisfying GDPR right to erasure while maintaining
-        on-chain integrity via content hashes.
+        Off-chain storage allows deletion workflows. Their effectiveness depends on
+        storage, backups, access controls and key management; the architecture alone
+        does not establish GDPR compliance.
       </p>
 
       <h2>Resolver Layer</h2>
@@ -80,20 +88,18 @@ export default function ArchitecturePage() {
         <li><strong>Linkset Navigation</strong> — Discover related resources</li>
       </ul>
 
-      <h2>CRAB Model (GDPR Compliance)</h2>
-      <p>
-        Galileo uses the CRAB pattern for GDPR compliance:
-      </p>
+      <h2>CRAB: Create, Read, Append, Burn</h2>
+      <p>The architecture specification defines these operations:</p>
       <ul>
-        <li><strong>C</strong>laim hash on-chain — Cryptographic anchor only</li>
-        <li><strong>R</strong>aw data off-chain — Actual content in compliant storage</li>
-        <li><strong>A</strong>ccess controlled — Role-based permissions</li>
-        <li><strong>B</strong>linded deletion — Remove data while preserving hash proofs</li>
+        <li><strong>Create:</strong> store personal data off-chain with a hash reference on-chain.</li>
+        <li><strong>Read:</strong> retrieve data through the reference and access controls.</li>
+        <li><strong>Append:</strong> add new event references without rewriting the chain.</li>
+        <li><strong>Burn:</strong> delete off-chain content and destroy its encryption key.</li>
       </ul>
 
       <h2>Data Flow Example</h2>
       <p>
-        When a product is sold:
+        The proposed transfer flow is:
       </p>
       <ol>
         <li>Buyer&apos;s identity is verified via ONCHAINID claims</li>
@@ -103,11 +109,12 @@ export default function ArchitecturePage() {
         <li>DPP updated with new owner reference</li>
       </ol>
 
+      <p>Next, use the <Link href="/docs/quick-start">integration quick start</Link> to map an example item to these layers.</p>
       <h2>Further Reading</h2>
       <ul>
-        <li><a href="/docs/identity">Identity System</a></li>
-        <li><a href="/docs/token">Token Architecture</a></li>
-        <li><a href="/docs/compliance/gdpr">GDPR Implementation Guide</a></li>
+        <li><Link href="/docs/identity">Identity System</Link></li>
+        <li><Link href="/docs/token">Token Architecture</Link></li>
+        <li><Link href="/docs/compliance/gdpr">GDPR Implementation Guide</Link></li>
       </ul>
     </>
   );

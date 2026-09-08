@@ -1,0 +1,106 @@
+[
+  {
+    "source": "/docs",
+    "label": "deployment report",
+    "target": "/blog/2026-03-22-production-deployment",
+    "observation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Script ran on page and returned:\n```json\n{\"path\":\"/blog/2026-03-22-production-deployment\",\"h1\":\"Production Deployment: Dashboard, Scanner & Infrastructure\",\"canonical\":\"https://www.galileoprotocol.io/blog/2026-03-22-production-deployment\"}\n```"
+        }
+      ]
+    }
+  },
+  {
+    "source": "/docs/quick-start",
+    "label": "DID method specification",
+    "target": "/specifications/identity/DID-METHOD",
+    "observation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Script ran on page and returned:\n```json\n{\"path\":\"/specifications/identity/DID-METHOD\",\"h1\":\"Galileo DID Method Specification\",\"canonical\":\"https://www.galileoprotocol.io/specifications/identity/DID-METHOD\"}\n```"
+        }
+      ]
+    }
+  },
+  {
+    "source": "/docs/quick-start",
+    "label": "resolver access-control specification",
+    "target": "/specifications/resolver/access-control",
+    "observation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Script ran on page and returned:\n```json\n{\"path\":\"/specifications/resolver/access-control\",\"h1\":\"Access Control Specification\",\"canonical\":\"https://www.galileoprotocol.io/specifications/resolver/access-control\"}\n```"
+        }
+      ]
+    }
+  },
+  {
+    "source": "/docs/quick-start",
+    "label": "ownership-transfer rules",
+    "target": "/specifications/token/ownership-transfer",
+    "observation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Script ran on page and returned:\n```json\n{\"path\":\"/specifications/token/ownership-transfer\",\"h1\":\"Ownership Transfer Specification\",\"canonical\":\"https://www.galileoprotocol.io/specifications/token/ownership-transfer\"}\n```"
+        }
+      ]
+    }
+  },
+  {
+    "source": "/docs/compliance/espr",
+    "label": "DPP core schema",
+    "target": "/specifications/schemas/dpp/dpp-core.schema",
+    "observation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Script ran on page and returned:\n```json\n{\"path\":\"/specifications/schemas/dpp/dpp-core.schema\",\"h1\":\"Galileo DPP Core Schema\",\"canonical\":\"https://www.galileoprotocol.io/specifications/schemas/dpp/dpp-core.schema\"}\n```"
+        }
+      ]
+    }
+  },
+  {
+    "source": "/docs/compliance/espr",
+    "label": "leather extension",
+    "target": "/specifications/schemas/dpp/dpp-leather.schema",
+    "observation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Script ran on page and returned:\n```json\n{\"path\":\"/specifications/schemas/dpp/dpp-leather.schema\",\"h1\":\"Galileo DPP Leather Schema\",\"canonical\":\"https://www.galileoprotocol.io/specifications/schemas/dpp/dpp-leather.schema\"}\n```"
+        }
+      ]
+    }
+  },
+  {
+    "source": "/docs/compliance/espr",
+    "label": "readiness specification",
+    "target": "/specifications/compliance/guides/espr-readiness",
+    "observation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Script ran on page and returned:\n```json\n{\"path\":\"/specifications/compliance/guides/espr-readiness\",\"h1\":\"ESPR/DPP Readiness Implementation Guide\",\"canonical\":\"https://www.galileoprotocol.io/specifications/compliance/guides/espr-readiness\"}\n```"
+        }
+      ]
+    }
+  },
+  {
+    "source": "/docs/architecture",
+    "label": "hybrid architecture specification",
+    "target": "/specifications/architecture/hybrid-architecture",
+    "observation": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Script ran on page and returned:\n```json\n{\"path\":\"/specifications/architecture/hybrid-architecture\",\"h1\":\"Hybrid On-Chain/Off-Chain Architecture Specification\",\"canonical\":\"https://www.galileoprotocol.io/specifications/architecture/hybrid-architecture\"}\n```"
+        }
+      ]
+    }
+  }
+]

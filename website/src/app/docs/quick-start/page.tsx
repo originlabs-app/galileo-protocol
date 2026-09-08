@@ -1,19 +1,27 @@
-export const metadata = {
-  title: "Quick Start | Galileo Documentation",
-  description: "Get started with Galileo in 5 minutes.",
-};
+import Link from "next/link";
+import { pageMetadata } from "@/lib/page-metadata";
+export const metadata = pageMetadata("/docs/quick-start", {
+  title: "Integration Quick Start | Galileo Documentation",
+  description: "Map an example item to Galileo identity, passport, token and resolver specifications. Identify the implementation and evidence needed before integration.",
+});
 
 export default function QuickStartPage() {
   return (
     <>
-      <h1>Quick Start</h1>
+      <h1>Integration quick start</h1>
 
       <p>
-        This guide walks you through the key concepts of Galileo in 5 minutes.
-        By the end, you&apos;ll understand how products are identified, tracked,
-        and transferred using the standard.
+        Use this walkthrough to map an item to Galileo&apos;s published specifications.
+        It is a planning example, not a runnable SDK tutorial or a guarantee that
+        every illustrated endpoint is deployed. Review the{" "}
+        <Link href="/docs/architecture">architecture</Link> first to decide where each record belongs.
       </p>
 
+      <p>
+        All product details below are fictional. Choose a test item, document its
+        issuer and physical identifier, and compare each example with the linked
+        specification before implementing it.
+      </p>
       <h2>1. Product Identity</h2>
       <p>
         Every luxury product in Galileo has a unique Decentralized Identifier
@@ -24,8 +32,8 @@ export default function QuickStartPage() {
       </pre>
       <p>
         This DID encodes the GS1 GTIN (product type) and serial number
-        (individual item). It&apos;s globally unique, resolvable, and not
-        controlled by any single party.
+        (individual item). Check identifier allocation and resolution behavior against the{" "}
+        <Link href="/specifications/identity/DID-METHOD">DID method specification</Link>.
       </p>
 
       <h2>2. Digital Product Passport</h2>
@@ -40,7 +48,7 @@ export default function QuickStartPage() {
   "@id": "did:galileo:01:00614141123452:21:ABC123",
   "gtin": "00614141123452",
   "serialNumber": "ABC123",
-  "name": "Capucines MM",
+  "name": "Example bag",
   "brand": {
     "@type": "Brand",
     "name": "Maison Heritage",
@@ -57,7 +65,7 @@ export default function QuickStartPage() {
       </pre>
 
       <h2>3. On-Chain Ownership</h2>
-      <p>Ownership is recorded on an EVM blockchain using ERC-3643 tokens:</p>
+      <p>The token specification proposes ownership records on an EVM blockchain using ERC-3643:</p>
       <ul>
         <li>One token = one physical product (1:1 ratio)</li>
         <li>Transfers require identity verification (KYC/KYB)</li>
@@ -65,7 +73,7 @@ export default function QuickStartPage() {
       </ul>
 
       <h2>4. Lifecycle Events</h2>
-      <p>Every significant event in a product&apos;s life is recorded:</p>
+      <p>Plan which lifecycle events your integration will record:</p>
       <ul>
         <li>
           <strong>Creation</strong> — Product manufactured
@@ -88,29 +96,36 @@ export default function QuickStartPage() {
       </ul>
 
       <h2>5. Resolution</h2>
-      <p>Anyone can look up a product using its GS1 Digital Link:</p>
+      <p>The resolver specification describes lookup through a GS1 Digital Link. This example URL illustrates the format:</p>
       <pre>
         <code>
           https://id.galileoprotocol.io/01/00614141123452/21/ABC123DEF456
         </code>
       </pre>
       <p>
-        The resolver returns different views based on who&apos;s asking:
-        consumers see authenticity info, brands see full history, regulators see
-        compliance data.
+        Map each participant to permitted fields using the{" "}
+        <Link href="/specifications/resolver/access-control">resolver access-control specification</Link>.
+        Test allowed and denied access in your integration before exposing product data.
       </p>
 
+      <h2>Check before integrating</h2>
+      <p>
+        Validate a sample record against the <Link href="/specifications/schemas/dpp/dpp-core.schema">DPP core schema</Link>,
+        review the <Link href="/specifications/token/ownership-transfer">ownership-transfer rules</Link>,
+        and record which behavior your test environment actually supports.
+        For legal scope, use the <Link href="/docs/compliance/espr">luxury DPP guide</Link> separately.
+      </p>
       <h2>Next Steps</h2>
       <ul>
         <li>
-          <a href="/docs/concepts">Core Concepts</a> — Deeper dive into
+          <Link href="/docs/concepts">Core Concepts</Link> — Deeper dive into
           terminology
         </li>
         <li>
-          <a href="/docs/architecture">Architecture</a> — Technical hybrid model
+          <Link href="/docs/architecture">Architecture</Link> — Technical hybrid model
         </li>
         <li>
-          <a href="/docs/identity/did-method">DID Method</a> — Full identity
+          <Link href="/docs/identity/did-method">DID Method</Link> — Full identity
           specification
         </li>
       </ul>

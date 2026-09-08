@@ -1,0 +1,3117 @@
+{
+  "urls": 109,
+  "errors": [
+    "/: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs: og:url ['https://www.galileoprotocol.io']",
+    "/docs: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/quick-start: canonical ['https://www.galileoprotocol.io']",
+    "/docs/quick-start: og:url ['https://www.galileoprotocol.io']",
+    "/docs/quick-start: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/concepts: canonical ['https://www.galileoprotocol.io']",
+    "/docs/concepts: og:url ['https://www.galileoprotocol.io']",
+    "/docs/concepts: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/architecture: canonical ['https://www.galileoprotocol.io']",
+    "/docs/architecture: og:url ['https://www.galileoprotocol.io']",
+    "/docs/architecture: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/token: canonical ['https://www.galileoprotocol.io']",
+    "/docs/token: og:url ['https://www.galileoprotocol.io']",
+    "/docs/token: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/token/ownership-transfer: canonical ['https://www.galileoprotocol.io']",
+    "/docs/token/ownership-transfer: og:url ['https://www.galileoprotocol.io']",
+    "/docs/token/ownership-transfer: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/identity: canonical ['https://www.galileoprotocol.io']",
+    "/docs/identity: og:url ['https://www.galileoprotocol.io']",
+    "/docs/identity: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/identity/did-method: canonical ['https://www.galileoprotocol.io']",
+    "/docs/identity/did-method: og:url ['https://www.galileoprotocol.io']",
+    "/docs/identity/did-method: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/identity/verifiable-credentials: canonical ['https://www.galileoprotocol.io']",
+    "/docs/identity/verifiable-credentials: og:url ['https://www.galileoprotocol.io']",
+    "/docs/identity/verifiable-credentials: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/identity/onchainid: canonical ['https://www.galileoprotocol.io']",
+    "/docs/identity/onchainid: og:url ['https://www.galileoprotocol.io']",
+    "/docs/identity/onchainid: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/compliance: canonical ['https://www.galileoprotocol.io']",
+    "/docs/compliance: og:url ['https://www.galileoprotocol.io']",
+    "/docs/compliance: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/compliance/espr: canonical ['https://www.galileoprotocol.io']",
+    "/docs/compliance/espr: og:url ['https://www.galileoprotocol.io']",
+    "/docs/compliance/espr: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/compliance/gdpr: canonical ['https://www.galileoprotocol.io']",
+    "/docs/compliance/gdpr: og:url ['https://www.galileoprotocol.io']",
+    "/docs/compliance/gdpr: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/compliance/mica: canonical ['https://www.galileoprotocol.io']",
+    "/docs/compliance/mica: og:url ['https://www.galileoprotocol.io']",
+    "/docs/compliance/mica: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/governance/charter: canonical ['https://www.galileoprotocol.io']",
+    "/docs/governance/charter: og:url ['https://www.galileoprotocol.io']",
+    "/docs/governance/charter: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/contributing: canonical ['https://www.galileoprotocol.io']",
+    "/docs/contributing: og:url ['https://www.galileoprotocol.io']",
+    "/docs/contributing: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/versioning: canonical ['https://www.galileoprotocol.io']",
+    "/docs/versioning: og:url ['https://www.galileoprotocol.io']",
+    "/docs/versioning: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/code-of-conduct: canonical ['https://www.galileoprotocol.io']",
+    "/docs/code-of-conduct: og:url ['https://www.galileoprotocol.io']",
+    "/docs/code-of-conduct: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/rfc-process: canonical ['https://www.galileoprotocol.io']",
+    "/docs/rfc-process: og:url ['https://www.galileoprotocol.io']",
+    "/docs/rfc-process: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/license: canonical ['https://www.galileoprotocol.io']",
+    "/docs/license: og:url ['https://www.galileoprotocol.io']",
+    "/docs/license: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications: canonical ['https://www.galileoprotocol.io']",
+    "/specifications: og:url ['https://www.galileoprotocol.io']",
+    "/specifications: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/architecture: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/architecture: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/architecture: lastmod 2026-09-08T13:01:33.967Z, source None",
+    "/specifications/architecture/hybrid-architecture: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/architecture/hybrid-architecture: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/compliance: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/compliance: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/compliance: lastmod 2026-09-08T13:01:35.237Z, source None",
+    "/specifications/compliance/aml-screening: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/aml-screening: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/guides/espr-readiness: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/guides/espr-readiness: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/guides/gdpr-compliance: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/guides/gdpr-compliance: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/jurisdiction-rules: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/jurisdiction-rules: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/kyc-hooks: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/kyc-hooks: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/guides/mica-compliance: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/compliance/guides/mica-compliance: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/crypto: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/crypto: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/crypto: lastmod 2026-09-08T13:01:35.343Z, source None",
+    "/specifications/crypto/crypto-agility: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/crypto/crypto-agility: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/dpia: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/dpia: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/dpia: lastmod 2026-09-08T13:01:35.343Z, source None",
+    "/specifications/dpia/galileo-dpia: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/dpia/galileo-dpia: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/dpia/galileo-dpia: lastmod 2026-09-08T13:01:35.344Z, source None",
+    "/specifications/identity: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/identity: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/identity: lastmod 2026-09-08T13:01:35.344Z, source None",
+    "/specifications/identity/claim-topics: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/identity/claim-topics: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/identity/DID-DOCUMENT: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/identity/DID-DOCUMENT: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/identity/DID-METHOD: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/identity/DID-METHOD: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/identity/onchainid-specification: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/identity/onchainid-specification: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/identity/verifiable-credentials: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/identity/verifiable-credentials: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure: lastmod 2026-09-08T13:01:35.346Z, source None",
+    "/specifications/infrastructure/data-retention: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure/data-retention: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure/hybrid-sync: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure/hybrid-sync: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure/audit-trail: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure/audit-trail: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure/rbac-framework: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/infrastructure/rbac-framework: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/resolver: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/resolver: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/resolver: lastmod 2026-09-08T13:01:35.347Z, source None",
+    "/specifications/resolver/access-control: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/resolver/access-control: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/resolver/context-routing: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/resolver/context-routing: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/resolver/linkset-schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/resolver/linkset-schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/resolver/linkset-schema: lastmod 2026-09-08T13:01:35.349Z, source None",
+    "/specifications/resolver/digital-link-uri: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/resolver/digital-link-uri: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/resolver/resolution-protocol: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/resolver/resolution-protocol: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas: lastmod 2026-09-08T13:01:35.349Z, source None",
+    "/specifications/schemas/alignment/cbv-mapping: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/alignment/cbv-mapping: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/espr: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/espr: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/espr: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/contexts/galileo: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/galileo: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/galileo: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/extensions/artisan-attribution.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/artisan-attribution.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/artisan-attribution.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/events/commission.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/commission.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/commission.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/events/creation.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/creation.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/creation.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/events/decommission.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/decommission.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/decommission.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/dpp/dpp-core.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/dpp/dpp-core.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/dpp/dpp-core.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/dpp/dpp-leather.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/dpp/dpp-leather.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/dpp/dpp-leather.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/dpp/dpp-textile.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/dpp/dpp-textile.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/dpp/dpp-textile.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/dpp/dpp-watch.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/dpp/dpp-watch.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/dpp/dpp-watch.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/events/event-base.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/event-base.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/event-base.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/events/sale.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/sale.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/sale.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/README: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/README: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/README: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/extensions/leather-signature.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/leather-signature.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/leather-signature.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/extensions/molecular-signature.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/molecular-signature.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/molecular-signature.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/events/repair.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/repair.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/repair.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/events/resale.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/resale.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/events/resale.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/extensions/spectral-fingerprint.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/spectral-fingerprint.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/spectral-fingerprint.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/extensions/terroir-provenance.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/terroir-provenance.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/extensions/terroir-provenance.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/identity/galileo-vc.schema: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/identity/galileo-vc.schema: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/identity/galileo-vc.schema: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/alignment/gs1-integration: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/alignment/gs1-integration: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/luxury: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/luxury: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/luxury: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/schemas/contexts/molecular: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/molecular: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/schemas/contexts/molecular: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/token: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/token: og:url ['https://www.galileoprotocol.io']",
+    "/specifications/token: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/specifications/token/ownership-transfer: canonical ['https://www.galileoprotocol.io']",
+    "/specifications/token/ownership-transfer: og:url ['https://www.galileoprotocol.io']",
+    "/governance: canonical ['https://www.galileoprotocol.io']",
+    "/governance: og:url ['https://www.galileoprotocol.io']",
+    "/governance: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/governance/tsc: canonical ['https://www.galileoprotocol.io']",
+    "/governance/tsc: og:url ['https://www.galileoprotocol.io']",
+    "/governance/tsc: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/maison: canonical ['https://www.galileoprotocol.io']",
+    "/maison: og:url ['https://www.galileoprotocol.io']",
+    "/maison: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/blog: og:url ['https://www.galileoprotocol.io']",
+    "/blog: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/changelog: og:url ['https://www.galileoprotocol.io']",
+    "/changelog: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/roadmap: og:url ['https://www.galileoprotocol.io']",
+    "/roadmap: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/tools: og:url ['https://www.galileoprotocol.io']",
+    "/tools: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/tools/faucet: og:url ['https://www.galileoprotocol.io']",
+    "/tools/faucet: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/tools/gas-estimator: og:url ['https://www.galileoprotocol.io']",
+    "/tools/gas-estimator: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/privacy: canonical ['https://www.galileoprotocol.io']",
+    "/privacy: og:url ['https://www.galileoprotocol.io']",
+    "/privacy: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/terms: canonical ['https://www.galileoprotocol.io']",
+    "/terms: og:url ['https://www.galileoprotocol.io']",
+    "/terms: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/legal: canonical ['https://www.galileoprotocol.io']",
+    "/legal: og:url ['https://www.galileoprotocol.io']",
+    "/legal: lastmod 2026-09-08T13:01:35.379Z, source None"
+  ],
+  "broken_internal_links": [
+    {
+      "from": "/specifications/compliance",
+      "href": "/specifications/compliance/espr-readiness"
+    },
+    {
+      "from": "/specifications/compliance",
+      "href": "/specifications/compliance/gdpr-compliance"
+    },
+    {
+      "from": "/specifications/compliance",
+      "href": "/specifications/compliance/mica-compliance"
+    },
+    {
+      "from": "/specifications/crypto/crypto-agility",
+      "href": "../identity/onchainid-specification.md"
+    },
+    {
+      "from": "/specifications/crypto/crypto-agility",
+      "href": "../token/ownership-transfer.md"
+    },
+    {
+      "from": "/specifications/crypto/crypto-agility",
+      "href": "../resolver/resolution-protocol.md"
+    },
+    {
+      "from": "/specifications/identity/claim-topics",
+      "href": "../contracts/identity/ITrustedIssuersRegistry.sol"
+    },
+    {
+      "from": "/specifications/identity/claim-topics",
+      "href": "../contracts/identity/IClaimTopicsRegistry.sol"
+    },
+    {
+      "from": "/specifications/identity/claim-topics",
+      "href": "./DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/identity/claim-topics",
+      "href": "../../governance/rfcs/README.md"
+    },
+    {
+      "from": "/specifications/identity/claim-topics",
+      "href": "../../governance/VERSIONING.md"
+    },
+    {
+      "from": "/specifications/identity/DID-DOCUMENT",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/identity/DID-DOCUMENT",
+      "href": "../crypto/crypto-agility.md"
+    },
+    {
+      "from": "/specifications/identity/DID-DOCUMENT",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/identity/DID-DOCUMENT",
+      "href": "./DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/identity/DID-DOCUMENT",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/identity/DID-DOCUMENT",
+      "href": "../crypto/crypto-agility.md"
+    },
+    {
+      "from": "/specifications/identity/DID-METHOD",
+      "href": "./DID-DOCUMENT.md"
+    },
+    {
+      "from": "/specifications/identity/DID-METHOD",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/identity/DID-METHOD",
+      "href": "../crypto/crypto-agility.md"
+    },
+    {
+      "from": "/specifications/identity/onchainid-specification",
+      "href": "./claim-topics.md"
+    },
+    {
+      "from": "/specifications/identity/onchainid-specification",
+      "href": "./verifiable-credentials.md"
+    },
+    {
+      "from": "/specifications/identity/onchainid-specification",
+      "href": "./DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/identity/onchainid-specification",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/identity/onchainid-specification",
+      "href": "../crypto/crypto-agility.md"
+    },
+    {
+      "from": "/specifications/identity/verifiable-credentials",
+      "href": "./onchainid-specification.md"
+    },
+    {
+      "from": "/specifications/identity/verifiable-credentials",
+      "href": "./claim-topics.md"
+    },
+    {
+      "from": "/specifications/identity/verifiable-credentials",
+      "href": "./DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/identity/verifiable-credentials",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/infrastructure/audit-trail",
+      "href": "./rbac-framework.md"
+    },
+    {
+      "from": "/specifications/infrastructure/audit-trail",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/infrastructure/audit-trail",
+      "href": "./rbac-framework.md"
+    },
+    {
+      "from": "/specifications/infrastructure/audit-trail",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/infrastructure/audit-trail",
+      "href": "../identity/claim-topics.md"
+    },
+    {
+      "from": "/specifications/infrastructure/rbac-framework",
+      "href": "../resolver/access-control.md"
+    },
+    {
+      "from": "/specifications/infrastructure/rbac-framework",
+      "href": "../identity/claim-topics.md"
+    },
+    {
+      "from": "/specifications/infrastructure/rbac-framework",
+      "href": "../contracts/identity/IIdentityRegistry.sol"
+    },
+    {
+      "from": "/specifications/infrastructure/rbac-framework",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/infrastructure/rbac-framework",
+      "href": "../resolver/access-control.md"
+    },
+    {
+      "from": "/specifications/infrastructure/rbac-framework",
+      "href": "../identity/claim-topics.md"
+    },
+    {
+      "from": "/specifications/infrastructure/rbac-framework",
+      "href": "../contracts/identity/IIdentityRegistry.sol"
+    },
+    {
+      "from": "/specifications/infrastructure/rbac-framework",
+      "href": "./audit-trail.md"
+    },
+    {
+      "from": "/specifications/resolver/access-control",
+      "href": "./resolution-protocol.md"
+    },
+    {
+      "from": "/specifications/resolver/access-control",
+      "href": "./context-routing.md"
+    },
+    {
+      "from": "/specifications/resolver/access-control",
+      "href": "../identity/claim-topics.md"
+    },
+    {
+      "from": "/specifications/resolver/access-control",
+      "href": "../identity/DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/resolver/access-control",
+      "href": "../identity/DID-METHOD.md#24-examples"
+    },
+    {
+      "from": "/specifications/resolver/access-control",
+      "href": "./resolution-protocol.md"
+    },
+    {
+      "from": "/specifications/resolver/access-control",
+      "href": "./context-routing.md"
+    },
+    {
+      "from": "/specifications/resolver/access-control",
+      "href": "../identity/claim-topics.md"
+    },
+    {
+      "from": "/specifications/resolver/access-control",
+      "href": "../identity/DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/resolver/context-routing",
+      "href": "./resolution-protocol.md"
+    },
+    {
+      "from": "/specifications/resolver/context-routing",
+      "href": "./access-control.md"
+    },
+    {
+      "from": "/specifications/resolver/context-routing",
+      "href": "./linkset-schema.json"
+    },
+    {
+      "from": "/specifications/resolver/context-routing",
+      "href": "../schemas/alignment/gs1-integration.md"
+    },
+    {
+      "from": "/specifications/resolver/context-routing",
+      "href": "./resolution-protocol.md"
+    },
+    {
+      "from": "/specifications/resolver/context-routing",
+      "href": "./access-control.md"
+    },
+    {
+      "from": "/specifications/resolver/context-routing",
+      "href": "./linkset-schema.json"
+    },
+    {
+      "from": "/specifications/resolver/context-routing",
+      "href": "../identity/claim-topics.md"
+    },
+    {
+      "from": "/specifications/resolver/context-routing",
+      "href": "../schemas/alignment/gs1-integration.md"
+    },
+    {
+      "from": "/specifications/resolver/digital-link-uri",
+      "href": "../identity/DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/resolver/digital-link-uri",
+      "href": "../schemas/alignment/gs1-integration.md"
+    },
+    {
+      "from": "/specifications/resolver/digital-link-uri",
+      "href": "../identity/DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/resolver/digital-link-uri",
+      "href": "../identity/DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/resolver/digital-link-uri",
+      "href": "../schemas/alignment/gs1-integration.md"
+    },
+    {
+      "from": "/specifications/resolver/digital-link-uri",
+      "href": "./linkset-schema.json"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./digital-link-uri.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./linkset-schema.json"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "../identity/DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./digital-link-uri.md#4-gtin-normalization"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./context-routing.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "../identity/DID-METHOD.md#2-method-syntax"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "../identity/DID-METHOD.md#26-normalization"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./context-routing.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./linkset-schema.json"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "../identity/claim-topics.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./access-control.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./digital-link-uri.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./linkset-schema.json"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./context-routing.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "./access-control.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "../identity/DID-METHOD.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "../identity/claim-topics.md"
+    },
+    {
+      "from": "/specifications/resolver/resolution-protocol",
+      "href": "../architecture/hybrid-architecture.md"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/cbv-mapping"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/gs1-integration"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/espr"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/galileo"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/luxury"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/molecular"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/dpp-core.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/dpp-leather.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/dpp-textile.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/dpp-watch.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/commission.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/creation.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/decommission.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/event-base.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/sale.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/repair.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/resale.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/artisan-attribution.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/leather-signature.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/molecular-signature.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/spectral-fingerprint.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/terroir-provenance.schema"
+    },
+    {
+      "from": "/specifications/schemas",
+      "href": "/specifications/schemas/galileo-vc.schema"
+    },
+    {
+      "from": "/specifications/schemas/alignment/gs1-integration",
+      "href": "../../identity/DID-METHOD.md"
+    }
+  ],
+  "pages": [
+    {
+      "url": "https://www.galileoprotocol.io",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "The Open Standard for Luxury Authentication",
+      "description": [
+        "Galileo Protocol is the open standard for luxury product authentication. Blockchain-powered digital product passports to protect brands against counterfeiting."
+      ],
+      "h1": [
+        "ABYSSE"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/docs"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Introduction to Galileo Documentation | Galileo Protocol",
+      "description": [
+        "Learn about the Galileo open standard for luxury product authenticity. Discover core principles, specifications, and how blockchain protects brand heritage."
+      ],
+      "h1": [
+        "Introduction to Galileo"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/quick-start",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Quick Start | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "Get started with Galileo in 5 minutes."
+      ],
+      "h1": [
+        "Quick Start"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/concepts",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Core Concepts | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "Understand the key terminology and concepts in Galileo."
+      ],
+      "h1": [
+        "Core Concepts"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/architecture",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Architecture | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "Understand the hybrid on-chain/off-chain architecture of Galileo."
+      ],
+      "h1": [
+        "Hybrid Architecture"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/token",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Token | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "ERC-3643 token architecture for luxury product ownership."
+      ],
+      "h1": [
+        "Token Architecture"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/token/ownership-transfer",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Ownership Transfer | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "How ownership transfers work in Galileo tokens."
+      ],
+      "h1": [
+        "Ownership Transfer"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/identity",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Identity | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "Learn about the Galileo identity system based on W3C DIDs."
+      ],
+      "h1": [
+        "Identity System"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/identity/did-method",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "DID Method | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "The did:galileo method specification for product and entity identifiers."
+      ],
+      "h1": [
+        "DID Method: did:galileo"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/identity/verifiable-credentials",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Verifiable Credentials | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "W3C Verifiable Credentials for product and entity claims."
+      ],
+      "h1": [
+        "Verifiable Credentials"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/identity/onchainid",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "ONCHAINID | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "On-chain identity contracts for participant verification."
+      ],
+      "h1": [
+        "ONCHAINID Integration"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/compliance",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Compliance | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "Regulatory compliance guides for GDPR, MiCA, and ESPR."
+      ],
+      "h1": [
+        "Compliance Overview"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/compliance/espr",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "ESPR Guide | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "Digital Product Passport readiness for ESPR 2027."
+      ],
+      "h1": [
+        "ESPR Readiness Guide"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/compliance/gdpr",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "GDPR Guide | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "Implementing GDPR compliance with Galileo."
+      ],
+      "h1": [
+        "GDPR Compliance Guide"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/compliance/mica",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "MiCA Guide | Galileo Documentation | Galileo Protocol",
+      "description": [
+        "Preparing for MiCA compliance with Galileo."
+      ],
+      "h1": [
+        "MiCA Compliance Guide"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/governance/charter",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Governance Charter | Galileo Protocol",
+      "description": [
+        "Full governance charter for the Galileo Luxury Standard. Defines the Governing Board, TSC structure, membership categories, veto mechanism, anti-dominance rules, and amendment procedures."
+      ],
+      "h1": [
+        "Governance Charter"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/contributing",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Contributing Guide | Galileo Protocol",
+      "description": [
+        "How to contribute to the Galileo Luxury Standard. Learn about the RFC process, DCO sign-off requirements, review periods, and recognition."
+      ],
+      "h1": [
+        "Contributing to the Galileo Luxury Standard"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/versioning",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Versioning Policy | Galileo Protocol",
+      "description": [
+        "Versioning and release policy for the Galileo Luxury Standard. Semantic versioning, semiannual release cadence, 10-year deprecation sunset, veto mechanism for breaking changes, and security hotfix process."
+      ],
+      "h1": [
+        "Versioning and Release Policy"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/code-of-conduct",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Code of Conduct | Galileo Protocol",
+      "description": [
+        "Community standards for the Galileo Luxury Standard. Based on Contributor Covenant 2.1, adapted for luxury industry collaboration with four-level enforcement and appeals process."
+      ],
+      "h1": [
+        "Code of Conduct"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/rfc-process",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "RFC Process | Galileo Protocol",
+      "description": [
+        "How to propose specification changes to the Galileo Luxury Standard. Complete guide to the RFC lifecycle: draft, champion assignment, review, and TSC decision via lazy consensus."
+      ],
+      "h1": [
+        "RFC Process"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/docs/license",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "License | Galileo Protocol",
+      "description": [
+        "Apache 2.0 license details for the Galileo Luxury Standard. Understand what you can do, your obligations, the patent grant, and why this license fits luxury brands."
+      ],
+      "h1": [
+        "License"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Technical Specifications | Galileo Protocol",
+      "description": [
+        "Browse all Galileo Protocol technical specifications across identity, token, data, infrastructure, and compliance domains. Includes schemas and implementation guides."
+      ],
+      "h1": [
+        "Technical Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/architecture",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Architecture Specifications | Galileo",
+      "description": [
+        "Browse 1 specifications in the Architecture category."
+      ],
+      "h1": [
+        "Architecture Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:33.967Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:33.967Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/architecture/hybrid-architecture",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Hybrid On-Chain/Off-Chain Architecture Specification | Galileo Specifications",
+      "description": [
+        "Hybrid On-Chain/Off-Chain Architecture Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Hybrid On-Chain/Off-Chain Architecture Specification",
+        "Hybrid On-Chain/Off-Chain Architecture Specification"
+      ],
+      "lastmod": "2026-01-30T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/compliance",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Compliance Specifications | Galileo",
+      "description": [
+        "Browse 6 specifications in the Compliance category."
+      ],
+      "h1": [
+        "Compliance Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:35.237Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.237Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/compliance/aml-screening",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "AML/Sanctions Screening Specification | Galileo Specifications",
+      "description": [
+        "AML/Sanctions Screening Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "AML/Sanctions Screening Specification",
+        "AML/Sanctions Screening Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/compliance/guides/espr-readiness",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "ESPR/DPP Readiness Implementation Guide | Galileo Specifications",
+      "description": [
+        "ESPR/DPP Readiness Implementation Guide - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "ESPR/DPP Readiness Implementation Guide",
+        "ESPR/DPP Readiness Implementation Guide"
+      ],
+      "lastmod": "2026-02-01T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/compliance/guides/gdpr-compliance",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "GDPR Compliance Implementation Guide | Galileo Specifications",
+      "description": [
+        "GDPR Compliance Implementation Guide - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "GDPR Compliance Implementation Guide",
+        "GDPR Compliance Implementation Guide"
+      ],
+      "lastmod": "2026-02-01T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/compliance/jurisdiction-rules",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Jurisdiction Rules Specification | Galileo Specifications",
+      "description": [
+        "Jurisdiction Rules Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Jurisdiction Rules Specification",
+        "Jurisdiction Rules Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/compliance/kyc-hooks",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "KYC/KYB Verification Hooks Specification | Galileo Specifications",
+      "description": [
+        "KYC/KYB Verification Hooks Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "KYC/KYB Verification Hooks Specification",
+        "KYC/KYB Verification Hooks Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/compliance/guides/mica-compliance",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "MiCA/CASP Compliance Implementation Guide | Galileo Specifications",
+      "description": [
+        "MiCA/CASP Compliance Implementation Guide - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "MiCA/CASP Compliance Implementation Guide",
+        "MiCA/CASP Compliance Implementation Guide"
+      ],
+      "lastmod": "2026-02-01T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/crypto",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Crypto Specifications | Galileo",
+      "description": [
+        "Browse 1 specifications in the Crypto category."
+      ],
+      "h1": [
+        "Crypto Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:35.343Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.343Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/crypto/crypto-agility",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Crypto-Agility Specification | Galileo Specifications",
+      "description": [
+        "Crypto-Agility Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Crypto-Agility Specification",
+        "Crypto-Agility Specification"
+      ],
+      "lastmod": "2026-01-30T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/dpia",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Dpia Specifications | Galileo",
+      "description": [
+        "Browse 1 specifications in the Dpia category."
+      ],
+      "h1": [
+        "Dpia Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:35.343Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.343Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/dpia/galileo-dpia",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Data Protection Impact Assessment (DPIA) \u2014 Galileo Protocol | Galileo Specifications",
+      "description": [
+        "Data Protection Impact Assessment (DPIA) \u2014 Galileo Protocol - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Data Protection Impact Assessment (DPIA) \u2014 Galileo Protocol",
+        "Data Protection Impact Assessment (DPIA) \u2014 Galileo Protocol"
+      ],
+      "lastmod": "2026-09-08T13:01:35.344Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.344Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/identity",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Identity Specifications | Galileo",
+      "description": [
+        "Browse 5 specifications in the Identity category."
+      ],
+      "h1": [
+        "Identity Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:35.344Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.344Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/identity/claim-topics",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Claim Topics Specification | Galileo Specifications",
+      "description": [
+        "Galileo Claim Topics Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Galileo Claim Topics Specification",
+        "Galileo Claim Topics Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/identity/DID-DOCUMENT",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo DID Document Specification | Galileo Specifications",
+      "description": [
+        "Galileo DID Document Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Galileo DID Document Specification",
+        "Galileo DID Document Specification"
+      ],
+      "lastmod": "2026-01-30T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/identity/DID-METHOD",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo DID Method Specification | Galileo Specifications",
+      "description": [
+        "Galileo DID Method Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Galileo DID Method Specification",
+        "Galileo DID Method Specification"
+      ],
+      "lastmod": "2026-01-30T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/identity/onchainid-specification",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "ONCHAINID Specification for Galileo | Galileo Specifications",
+      "description": [
+        "ONCHAINID Specification for Galileo - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "ONCHAINID Specification for Galileo",
+        "ONCHAINID Specification for Galileo"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/identity/verifiable-credentials",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "W3C Verifiable Credentials Specification for Galileo | Galileo Specifications",
+      "description": [
+        "W3C Verifiable Credentials Specification for Galileo - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "W3C Verifiable Credentials Specification for Galileo",
+        "W3C Verifiable Credentials Specification for Galileo"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/infrastructure",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Infrastructure Specifications | Galileo",
+      "description": [
+        "Browse 4 specifications in the Infrastructure category."
+      ],
+      "h1": [
+        "Infrastructure Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:35.346Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.346Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/infrastructure/data-retention",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Data Retention Policies Specification | Galileo Specifications",
+      "description": [
+        "Data Retention Policies Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Data Retention Policies Specification",
+        "Data Retention Policies Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/infrastructure/hybrid-sync",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Hybrid Storage Synchronization Protocol Specification | Galileo Specifications",
+      "description": [
+        "Hybrid Storage Synchronization Protocol Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Hybrid Storage Synchronization Protocol Specification",
+        "Hybrid Storage Synchronization Protocol Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/infrastructure/audit-trail",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Immutable Audit Trail Specification | Galileo Specifications",
+      "description": [
+        "Immutable Audit Trail Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Immutable Audit Trail Specification",
+        "Immutable Audit Trail Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/infrastructure/rbac-framework",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Role-Based Access Control (RBAC) Framework Specification | Galileo Specifications",
+      "description": [
+        "Role-Based Access Control (RBAC) Framework Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Role-Based Access Control (RBAC) Framework Specification",
+        "Role-Based Access Control (RBAC) Framework Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/resolver",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Resolver Specifications | Galileo",
+      "description": [
+        "Browse 5 specifications in the Resolver category."
+      ],
+      "h1": [
+        "Resolver Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:35.347Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.347Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/resolver/access-control",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Access Control Specification | Galileo Specifications",
+      "description": [
+        "Access Control Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Access Control Specification",
+        "Access Control Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/resolver/context-routing",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Context-Aware Routing Specification | Galileo Specifications",
+      "description": [
+        "Context-Aware Routing Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Context-Aware Routing Specification",
+        "Context-Aware Routing Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/resolver/linkset-schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo GS1 Linkset Response Schema | Galileo Specifications",
+      "description": [
+        "Galileo GS1 Linkset Response Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo GS1 Linkset Response Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.349Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.349Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/resolver/digital-link-uri",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "GS1 Digital Link URI Specification | Galileo Specifications",
+      "description": [
+        "GS1 Digital Link URI Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "GS1 Digital Link URI Specification",
+        "GS1 Digital Link URI Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/resolver/resolution-protocol",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "GS1-Conformant Resolution Protocol Specification | Galileo Specifications",
+      "description": [
+        "GS1-Conformant Resolution Protocol Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "GS1-Conformant Resolution Protocol Specification",
+        "GS1-Conformant Resolution Protocol Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Schemas Specifications | Galileo",
+      "description": [
+        "Browse 24 specifications in the Schemas category."
+      ],
+      "h1": [
+        "Schemas Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:35.349Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.349Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/alignment/cbv-mapping",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "CBV 2.0 Vocabulary Mapping for Galileo Luxury Protocol | Galileo Specifications",
+      "description": [
+        "CBV 2.0 Vocabulary Mapping for Galileo Luxury Protocol - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "CBV 2.0 Vocabulary Mapping for Galileo Luxury Protocol",
+        "CBV 2.0 Vocabulary Mapping for Galileo Luxury Protocol"
+      ],
+      "lastmod": "2026-01-30T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/contexts/espr",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "ESPR | Galileo Specifications",
+      "description": [
+        "ESPR - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "ESPR"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/contexts/galileo",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo | Galileo Specifications",
+      "description": [
+        "Galileo - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/extensions/artisan-attribution.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Artisan Attribution Schema | Galileo Specifications",
+      "description": [
+        "Galileo Artisan Attribution Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Artisan Attribution Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/events/commission.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Commission Event Schema | Galileo Specifications",
+      "description": [
+        "Galileo Commission Event Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Commission Event Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/events/creation.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Creation Event Schema | Galileo Specifications",
+      "description": [
+        "Galileo Creation Event Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Creation Event Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/events/decommission.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Decommission Event Schema | Galileo Specifications",
+      "description": [
+        "Galileo Decommission Event Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Decommission Event Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/dpp/dpp-core.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo DPP Core Schema | Galileo Specifications",
+      "description": [
+        "Galileo DPP Core Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo DPP Core Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/dpp/dpp-leather.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo DPP Leather Schema | Galileo Specifications",
+      "description": [
+        "Galileo DPP Leather Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo DPP Leather Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/dpp/dpp-textile.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo DPP Textile Schema | Galileo Specifications",
+      "description": [
+        "Galileo DPP Textile Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo DPP Textile Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/dpp/dpp-watch.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo DPP Watch Schema | Galileo Specifications",
+      "description": [
+        "Galileo DPP Watch Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo DPP Watch Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/events/event-base.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Event Base Schema | Galileo Specifications",
+      "description": [
+        "Galileo Event Base Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Event Base Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/events/sale.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo First Sale Event Schema | Galileo Specifications",
+      "description": [
+        "Galileo First Sale Event Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo First Sale Event Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/README",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo JSON Schemas | Galileo Specifications",
+      "description": [
+        "Galileo JSON Schemas - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Galileo JSON Schemas",
+        "Galileo JSON Schemas"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/extensions/leather-signature.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Leather Signature Schema | Galileo Specifications",
+      "description": [
+        "Galileo Leather Signature Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Leather Signature Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/extensions/molecular-signature.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Molecular Authentication Schema | Galileo Specifications",
+      "description": [
+        "Galileo Molecular Authentication Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Molecular Authentication Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/events/repair.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Repair/MRO Event Schema | Galileo Specifications",
+      "description": [
+        "Galileo Repair/MRO Event Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Repair/MRO Event Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/events/resale.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Resale Event Schema | Galileo Specifications",
+      "description": [
+        "Galileo Resale Event Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Resale Event Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/extensions/spectral-fingerprint.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Spectral Fingerprint Schema | Galileo Specifications",
+      "description": [
+        "Galileo Spectral Fingerprint Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Spectral Fingerprint Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/extensions/terroir-provenance.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Terroir Provenance Schema | Galileo Specifications",
+      "description": [
+        "Galileo Terroir Provenance Schema - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Terroir Provenance Schema"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/identity/galileo-vc.schema",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Galileo Verifiable Credential | Galileo Specifications",
+      "description": [
+        "Galileo Verifiable Credential - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Galileo Verifiable Credential"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/alignment/gs1-integration",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "GS1 Digital Link Integration for Galileo Protocol | Galileo Specifications",
+      "description": [
+        "GS1 Digital Link Integration for Galileo Protocol - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "GS1 Digital Link Integration for Galileo Protocol",
+        "GS1 Digital Link Integration for Galileo Protocol"
+      ],
+      "lastmod": "2026-01-30T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/contexts/luxury",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Luxury | Galileo Specifications",
+      "description": [
+        "Luxury - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Luxury"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/schemas/contexts/molecular",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Molecular | Galileo Specifications",
+      "description": [
+        "Molecular - Version 1.0.0 (Standard)"
+      ],
+      "h1": [
+        "Molecular"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/token",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Token Specifications | Galileo",
+      "description": [
+        "Browse 1 specifications in the Token category."
+      ],
+      "h1": [
+        "Token Specifications"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/specifications/token/ownership-transfer",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Ownership Transfer Specification | Galileo Specifications",
+      "description": [
+        "Ownership Transfer Specification - Version 1.0.0 (Draft)"
+      ],
+      "h1": [
+        "Ownership Transfer Specification",
+        "Ownership Transfer Specification"
+      ],
+      "lastmod": "2026-01-31T00:00:00.000Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/governance",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Governance | Galileo Protocol",
+      "description": [
+        "Explore the Galileo Protocol governance model. A neutral framework enabling competing luxury brands to collaborate on shared authentication infrastructure via the TSC."
+      ],
+      "h1": [
+        "GOVERNANCE CHARTER"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/governance/tsc",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Technical Steering Committee | Galileo Luxury Standard | Galileo Protocol",
+      "description": [
+        "The TSC is the meritocratic council that holds final authority over technical decisions for the Galileo Luxury Standard. Learn about seat composition, elections, and responsibilities."
+      ],
+      "h1": [
+        "TECHNICAL STEERING COMMITTEE"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/maison",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "La Maison | Galileo Protocol",
+      "description": [
+        "Discover Galileo Network, the organization behind the Galileo Protocol open standard. Our mission: protect luxury brand heritage and human craftsmanship."
+      ],
+      "h1": [
+        "Galileo Network"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Blog | Galileo Protocol",
+      "description": [
+        "Latest news, announcements, and updates from the Galileo Protocol project. Stay informed about luxury authentication standards, releases, and ecosystem developments."
+      ],
+      "h1": [
+        "Blog"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/changelog",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/changelog"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Changelog | Galileo Protocol",
+      "description": [
+        "Release history and updates for Galileo Protocol. Track every version and feature shipped."
+      ],
+      "h1": [
+        "Changelog"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/roadmap",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/roadmap"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Roadmap | Galileo Protocol",
+      "description": [
+        "The technical roadmap for Galileo Protocol \u2014 from foundation to open standard for luxury product traceability."
+      ],
+      "h1": [
+        "Roadmap"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/tools",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/tools"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Tools | Galileo Protocol",
+      "description": [
+        "Developer tools for the Galileo Protocol ecosystem on Base Sepolia."
+      ],
+      "h1": [
+        "Tools"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/tools/faucet",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/tools/faucet"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Testnet Faucet | Galileo Protocol",
+      "description": [
+        "Request free Base Sepolia ETH to pay for gas when minting Digital Product Passports on the Galileo Protocol testnet."
+      ],
+      "h1": [
+        "Testnet Faucet"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/tools/gas-estimator",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/tools/gas-estimator"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Gas Estimator | Galileo Protocol",
+      "description": [
+        "Real-time gas cost estimates for Galileo Protocol operations on Base Sepolia \u2014 token minting, token transfer, and identity registration."
+      ],
+      "h1": [
+        "Gas Estimator"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/privacy",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Privacy Policy | Galileo Protocol",
+      "description": [
+        "Privacy policy for galileoprotocol.io. Learn how the Galileo Protocol website handles your data with minimal collection, no tracking cookies, and full transparency."
+      ],
+      "h1": [
+        "Privacy Policy"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/terms",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Terms of Use | Galileo Protocol",
+      "description": [
+        "Terms of use for the Galileo Protocol website and documentation. Understand your rights and obligations for this Apache 2.0 licensed open-source standard."
+      ],
+      "h1": [
+        "Terms of Use"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/legal",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io"
+      ],
+      "title": "Legal Notice | Galileo Protocol",
+      "description": [
+        "Legal notice (mentions legales) for galileoprotocol.io. Published by Galileo Network EURL, Bordeaux, France. Hosting, intellectual property, and contact information."
+      ],
+      "h1": [
+        "Legal Notice"
+      ],
+      "lastmod": "2026-09-08T13:01:35.379Z",
+      "errors": [
+        "canonical ['https://www.galileoprotocol.io']",
+        "og:url ['https://www.galileoprotocol.io']",
+        "lastmod 2026-09-08T13:01:35.379Z, source None"
+      ]
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-09-08-material-marker-or-chip-dpp-binding",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-09-08-material-marker-or-chip-dpp-binding"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-09-08-material-marker-or-chip-dpp-binding"
+      ],
+      "title": "Material Marker or NFC Chip? A Supplier Trial PlanSupplier acceptance decision flow",
+      "description": [
+        "Compare material markers and NFC chips with proposed supplier tests for copied reads, moved parts, material replacement and supplier exit."
+      ],
+      "h1": [
+        "Material Marker or NFC Chip? A Supplier Trial Plan"
+      ],
+      "lastmod": "2026-09-08T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-09-07-luxury-repairs-workshop",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-09-07-luxury-repairs-workshop"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-09-07-luxury-repairs-workshop"
+      ],
+      "title": "Luxury Repairs: What Leaves the Workshop with the Item?From intake to a repair record ready to share",
+      "description": [
+        "Give the next owner a useful repair history: approved work, replaced parts, remaining defects and warranty terms, with a reusable workshop handoff form."
+      ],
+      "h1": [
+        "Luxury Repairs: What Leaves the Workshop with the Item?"
+      ],
+      "lastmod": "2026-09-07T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-09-06-tokenized-shares-ownership-register"
+      ],
+      "title": "Tokenized Shares: Who Records Your Ownership Today?",
+      "description": [
+        "A token in your wallet is a starting point. Follow the share, the ownership record and the responsible party through the SEC's proposed changes."
+      ],
+      "h1": [
+        "Tokenized Shares: Who Records Your Ownership Today?"
+      ],
+      "lastmod": "2026-09-06T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-09-05-product-passport-revocation-resale",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-09-05-product-passport-revocation-resale"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-09-05-product-passport-revocation-resale"
+      ],
+      "title": "Product Passport Revocation: What Resale Must Check",
+      "description": [
+        "A revoked product credential does not prove a fake. A resale guide to checking current status, handling stale results and protecting owner privacy."
+      ],
+      "h1": [
+        "Product Passport Revocation: What Resale Must Check"
+      ],
+      "lastmod": "2026-09-05T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-09-03-mica-bitpanda-marketing-paper-trail",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-09-03-mica-bitpanda-marketing-paper-trail"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-09-03-mica-bitpanda-marketing-paper-trail"
+      ],
+      "title": "MiCA Enforcement: Bitpanda's \u20ac70,000 Paperwork Fine",
+      "description": [
+        "Bitpanda's \u20ac70,000 sanction shows that MiCA marketing depends on sequencing. Here is the release file a tokenized handbag needs before launch."
+      ],
+      "h1": [
+        "MiCA Enforcement: Bitpanda's \u20ac70,000 Paperwork Fine"
+      ],
+      "lastmod": "2026-09-03T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-09-02-chanel-serial-code-not-identity",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-09-02-chanel-serial-code-not-identity"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-09-02-chanel-serial-code-not-identity"
+      ],
+      "title": "One Chanel Serial Number, 127 Reports, 36 Countries",
+      "description": [
+        "A Chanel serial code appeared 127 times in a reseller database. The case shows why a copied identifier cannot prove which physical bag is genuine."
+      ],
+      "h1": [
+        "One Chanel Serial Number, 127 Reports, 36 Countries"
+      ],
+      "lastmod": "2026-09-02T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets"
+      ],
+      "title": "From T-Bills to Handbags: Tokenization Leaves Finance",
+      "description": [
+        "Beezie and The Luxury Closet announced Solana tokens for resale luxury on 3 September 2026. Token, vault, reseller check and maison proof are distinct."
+      ],
+      "h1": [
+        "From T-Bills to Handbags: Tokenization Leaves Finance"
+      ],
+      "lastmod": "2026-09-04T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-08-30-fpjourne-secondary-market-portable-proof",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-08-30-fpjourne-secondary-market-portable-proof"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-08-30-fpjourne-secondary-market-portable-proof"
+      ],
+      "title": "F.P. Journe Asks to Be Called First: The Portable Proof Gap",
+      "description": [
+        "F.P. Journe warns collectors on its own site: contact us before purchasing. Its certificate is nominative; no portable proof is publicly documented."
+      ],
+      "h1": [
+        "F.P. Journe Asks to Be Called First: The Portable Proof Gap"
+      ],
+      "lastmod": "2026-08-30T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-08-29-espr-destruction-ban-luxury-disclosure",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-08-29-espr-destruction-ban-luxury-disclosure"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-08-29-espr-destruction-ban-luxury-disclosure"
+      ],
+      "title": "ESPR Destruction Ban: What Luxury Must Now Disclose",
+      "description": [
+        "Since 19 July 2026, large enterprises cannot destroy unsold apparel and footwear in the EU, and every large maison must publish what it discards."
+      ],
+      "h1": [
+        "ESPR Destruction Ban: What Luxury Must Now Disclose"
+      ],
+      "lastmod": "2026-08-29T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-08-28-tods-gommino-two-passports-renoon-aura",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-08-28-tods-gommino-two-passports-renoon-aura"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-08-28-tods-gommino-two-passports-renoon-aura"
+      ],
+      "title": "Tod's Gommino: Two Passport Stacks, One Source of Truth?",
+      "description": [
+        "Tod's now runs two digital passports on its Gommino line: Aura NFC for authenticity, Renoon QR for sustainability data. Which one wins the scan?"
+      ],
+      "h1": [
+        "Tod's Gommino: Two Passport Stacks, One Source of Truth?"
+      ],
+      "lastmod": "2026-08-28T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-08-27-cbp-louisville-fake-watches-border-enforcement",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-08-27-cbp-louisville-fake-watches-border-enforcement"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-08-27-cbp-louisville-fake-watches-border-enforcement"
+      ],
+      "title": "Louisville's Fake Watch Seizures: What Borders Can't Prove",
+      "description": [
+        "CBP seized 1,027 suspected counterfeit watches across four Louisville shipments in summer 2026. What the releases prove and what borders cannot authenticate."
+      ],
+      "h1": [
+        "Louisville's Fake Watch Seizures: What Borders Can't Prove"
+      ],
+      "lastmod": "2026-09-01T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-08-26-lvmh-dpp-strategy",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-08-26-lvmh-dpp-strategy"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-08-26-lvmh-dpp-strategy"
+      ],
+      "title": "LVMH's DPP Strategy in Writing: The Signal Luxury Awaited",
+      "description": [
+        "LVMH has put its Digital Product Passport strategy in writing. What the move signals for every luxury house still deciding when to build DPP capability."
+      ],
+      "h1": [
+        "LVMH's DPP Strategy in Writing: The Signal Luxury Awaited"
+      ],
+      "lastmod": "2026-08-26T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-08-25-eu-dpp-registry-live",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-08-25-eu-dpp-registry-live"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-08-25-eu-dpp-registry-live"
+      ],
+      "title": "EU DPP Registry Is Live: What Luxury Brands Must Do Now",
+      "description": [
+        "The EU Digital Product Passport registry opened on 20 July 2026 and the first CEN-CENELEC DPP standards are out. Timeline and action plan for luxury brands."
+      ],
+      "h1": [
+        "EU DPP Registry Is Live: What Luxury Brands Must Do Now"
+      ],
+      "lastmod": "2026-08-26T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-08-25-mica-transitional-period-rwa",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-08-25-mica-transitional-period-rwa"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-08-25-mica-transitional-period-rwa"
+      ],
+      "title": "MiCA Transition Ends: RWA Tokenization Leaves the Grey Zone",
+      "description": [
+        "The MiCA grandfathering window closed on 1 July 2026 across the EU as on-chain RWAs hit $33.5 billion. What changes for tokenization, luxury and LEOX."
+      ],
+      "h1": [
+        "MiCA Transition Ends: RWA Tokenization Leaves the Grey Zone"
+      ],
+      "lastmod": "2026-08-25T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-08-02-ai-ready-teams-luxury-dpp-era",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-08-02-ai-ready-teams-luxury-dpp-era"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-08-02-ai-ready-teams-luxury-dpp-era"
+      ],
+      "title": "AI-Ready Teams: The Key to Luxury's DPP Transition",
+      "description": [
+        "Digital Product Passports are a data challenge before a blockchain challenge. The maisons that succeed will have teams trained to work with AI."
+      ],
+      "h1": [
+        "AI-Ready Teams: The Key to Luxury's DPP Transition"
+      ],
+      "lastmod": "2026-08-02T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-05-04-live-base-sepolia-mint",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-05-04-live-base-sepolia-mint"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-05-04-live-base-sepolia-mint"
+      ],
+      "title": "Live Base Sepolia Mint Verified",
+      "description": [
+        "Galileo verified a live constructor-path mint on Base Sepolia and aligned its public roadmap around identity role administration before API-driven minting."
+      ],
+      "h1": [
+        "Live Base Sepolia Mint Verified"
+      ],
+      "lastmod": "2026-05-04T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-03-22-production-deployment",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-03-22-production-deployment"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-03-22-production-deployment"
+      ],
+      "title": "Production Deployment: Dashboard, Scanner & Infrastructure",
+      "description": [
+        "The Galileo dashboard and scanner are now live on Vercel, with production deployment fixes, Cloudflare R2 storage and a new automated changelog pipeline."
+      ],
+      "h1": [
+        "Production Deployment: Dashboard, Scanner & Infrastructure"
+      ],
+      "lastmod": "2026-03-22T00:00:00.000Z",
+      "errors": []
+    },
+    {
+      "url": "https://www.galileoprotocol.io/blog/2026-02-01-v1-release",
+      "status": 200,
+      "canonical": [
+        "https://www.galileoprotocol.io/blog/2026-02-01-v1-release"
+      ],
+      "og": [
+        "https://www.galileoprotocol.io/blog/2026-02-01-v1-release"
+      ],
+      "title": "Galileo Protocol v1.0.0: Open Luxury Authenticity Standard",
+      "description": [
+        "Galileo Protocol v1.0.0 is live: an open-source framework for luxury goods authentication and traceability, built on blockchain for regulatory compliance."
+      ],
+      "h1": [
+        "Galileo Protocol v1.0.0: Open Luxury Authenticity Standard"
+      ],
+      "lastmod": "2026-02-01T00:00:00.000Z",
+      "errors": []
+    }
+  ]
+}

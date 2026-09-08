@@ -1,15 +1,13 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { Metadata } from 'next';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/changelog", {
   title: 'Changelog',
   description:
     'Release history and updates for Galileo Protocol. Track every version and feature shipped.',
-  alternates: {
-    canonical: '/changelog',
-  },
-};
+});
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 

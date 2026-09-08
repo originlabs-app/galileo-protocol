@@ -1,0 +1,12 @@
+{
+  "urls": 109,
+  "errors": 240,
+  "broken_internal_links": 110,
+  "sample_errors": [
+    "/: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs: og:url ['https://www.galileoprotocol.io']",
+    "/docs: lastmod 2026-09-08T13:01:35.379Z, source None",
+    "/docs/quick-start: canonical ['https://www.galileoprotocol.io']",
+    "/docs/quick-start: og:url ['https://www.galileoprotocol.io']"
+  ]
+}
