@@ -1,0 +1,202 @@
+{
+  "capturedAt": "2026-09-08T09:08:32.675126+00:00",
+  "status": "PASS scoped local article UAT; no production or supplier trial claim",
+  "environment": "Next production build served locally at127.0.0.1:8473; Chrome uat1/9301 isolated profile /tmp/chrome-galileo-26-uat",
+  "source_git_blob": "09aae0b85478ceb698ca942c34efabfe0d6cebb3",
+  "source_sha256": "30d388facd95070f46e4daf791ddef96009d4838339c7b946e5a53c03f88586b",
+  "served_html_sha256": "6d80d100da7c767bbc67511956729a930dc52c18aaeeff524c47f78b28678d36",
+  "canonical": "https://www.galileoprotocol.io/blog/2026-09-08-material-marker-or-chip-dpp-binding",
+  "canonical_count": 1,
+  "title": "Material Marker or NFC Chip? A Supplier Trial Plan",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.galileoprotocol.io/#organization",
+          "name": "Galileo Network",
+          "alternateName": "Galileo Protocol",
+          "url": "https://www.galileoprotocol.io",
+          "logo": "https://www.galileoprotocol.io/favicon.svg",
+          "sameAs": [
+            "https://github.com/originlabs-app/galileo-protocol"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.galileoprotocol.io/#website",
+          "name": "Galileo Protocol",
+          "url": "https://www.galileoprotocol.io",
+          "publisher": {
+            "@id": "https://www.galileoprotocol.io/#organization"
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://www.galileoprotocol.io/blog/2026-09-08-material-marker-or-chip-dpp-binding#article",
+          "headline": "Material Marker or NFC Chip? A Supplier Trial Plan",
+          "description": "Compare material markers and NFC chips with proposed supplier tests for copied reads, moved parts, material replacement and supplier exit.",
+          "image": "https://www.galileoprotocol.io/images/blog/material-marker-or-chip-dpp-binding-v1.jpg",
+          "datePublished": "2026-09-08",
+          "dateModified": "2026-09-08",
+          "inLanguage": "en",
+          "author": {
+            "@type": "Person",
+            "name": "Pierre Beunardeau"
+          },
+          "publisher": {
+            "@id": "https://www.galileoprotocol.io/#organization"
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.galileoprotocol.io/blog/2026-09-08-material-marker-or-chip-dpp-binding"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.galileoprotocol.io"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://www.galileoprotocol.io/blog"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Material Marker or NFC Chip? A Supplier Trial Plan",
+              "item": "https://www.galileoprotocol.io/blog/2026-09-08-material-marker-or-chip-dpp-binding"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Should a luxury brand choose a material marker or an NFC chip?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Choose against an agreed supplier trial for the product and decision you need. Compare copied readings, moved components, material replacement and supplier exit. Accept only the scope supported by recorded observations; an incomplete trial does not establish a winner."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Has SMX proved that its markers authenticate every luxury product?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No such independent result is established here. SMX's 31 August 2026 company update claims invisible markers in luxury materials and continuity through their lifecycle. Those supplier claims need product-specific evidence before procurement relies on them."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does a fresh NFC reading rule out a transplanted chip?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Verifying a chip response does not establish that the chip remains on its original product. A fresh reading also does not exclude every real-time relay. Test the actual attachment and server rules separately."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What should the trial sheet record before supplier acceptance?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Record the sample, unchanged control, authorised manipulation, configuration, evidence, observed result, limitation and conditional decision. Leave observations blank until the trial is performed. Require follow-up for missing results and distinguish historical record access from the ability to make a new reading."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "internal_links": [
+    {
+      "path": "/blog/2026-09-07-luxury-repairs-workshop",
+      "status": 200
+    },
+    {
+      "path": "/docs",
+      "status": 200
+    }
+  ],
+  "discovery": [
+    {
+      "path": "/blog",
+      "status": 200,
+      "contains_slug": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "contains_slug": true
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "contains_slug": false
+    },
+    {
+      "path": "/llms.txt",
+      "status": 200,
+      "contains_slug": true
+    },
+    {
+      "path": "/llms-full.txt",
+      "status": 200,
+      "contains_slug": true
+    }
+  ],
+  "desktop": {
+    "innerWidth": 1440,
+    "documentScrollWidth": 1432,
+    "svgWidth": 384,
+    "svgMinTextPx": 21.6,
+    "svgMinimumFourEdgeMarginPx": 15.4
+  },
+  "mobile": {
+    "innerWidth": 390,
+    "documentScrollWidth": 390,
+    "svgWidth": 342,
+    "svgMinTextPx": 19.2375,
+    "svgMinimumFourEdgeMarginPx": 14.13125
+  },
+  "svgFont": "system-ui, sans-serif, computed and rendered",
+  "hero": {
+    "complete": true,
+    "naturalWidth": 1200,
+    "bytes": 71074,
+    "dimensions": [
+      1200,
+      630
+    ],
+    "conceptual": true
+  },
+  "visualInspection": "Hero desktop/mobile and both complete SVG captures inspected with image tool; no text collisions or clipping. Mobile acceptance sheet inspected, observation fields intentionally blank. Fictional case and supplier-claim attribution present in real article text.",
+  "console_error_warn": [],
+  "cta": {
+    "clicked": "Galileo documentation",
+    "url": "http://127.0.0.1:8473/docs",
+    "title": "Introduction to Galileo Documentation | Galileo Protocol",
+    "h1": "Introduction to Galileo",
+    "viewport": 390,
+    "documentScrollWidth": 390,
+    "submitted": false
+  },
+  "limits": [
+    "No physical supplier trials performed; content is a proposed protocol.",
+    "NXP partial text export provenance and direct GET404 remain disclosed.",
+    "Preview and production not tested or authorized."
+  ]
+}

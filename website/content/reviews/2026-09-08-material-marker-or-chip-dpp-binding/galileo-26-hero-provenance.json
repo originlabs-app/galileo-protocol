@@ -1,0 +1,12 @@
+{
+  "source": "/Users/pierrebeunardeau/.codex/generated_images/01a07b42-2828-7d10-a39e-4eeb45cb05f4/exec-d1d17ecf-ac36-46d2-ba26-4a68df8dd9ed.png",
+  "output": "/Users/pierrebeunardeau/dev/internal/galileo-luxury-standard/.worktrees/blog-20260908-marker-chip/website/public/images/blog/material-marker-or-chip-dpp-binding-v1.jpg",
+  "size": [
+    1200,
+    630
+  ],
+  "bytes": 71074,
+  "sha256": "ec15a4830a84a0a63b4254914a561cd5c69dffb6eb0398054ba3b0428a878a66",
+  "mode": "native image_gen tool",
+  "visualInspection": "Original native PNG and final 1200x630 JPEG both inspected via view_image by coordinator 8 September 2026. Conceptual test bench, leather samples, separate NFC inlay, unbranded reader; no visible material marker, text or test outcome. Local asset approval only, no publication GO."
+}

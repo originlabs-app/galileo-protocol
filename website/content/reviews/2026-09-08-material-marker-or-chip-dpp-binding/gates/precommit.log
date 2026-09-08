@@ -1,0 +1,17 @@
+VERDICT: WARN
+repo: /Users/pierrebeunardeau/dev/internal/galileo-luxury-standard/.worktrees/blog-20260908-marker-chip
+intent: edit
+branch: blog/20260908-marker-chip
+upstream: none
+ahead/behind(local refs): ahead=? behind=?
+remote(origin): ok - main
+status: ## blog/20260908-marker-chip
+hot-files: none modified
+warn-reasons:
+- branch has no upstream
+- worktree has staged, unstaged, or untracked changes
+checked:
+  git status -sb --untracked-files=all
+  git worktree list --porcelain
+  git branch -vv
+  git ls-remote --heads origin <branch> main master

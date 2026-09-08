@@ -1,0 +1,164 @@
+---
+title: "Material Marker or NFC Chip? A Supplier Trial Plan"
+date: "2026-09-08"
+modified: "2026-09-08"
+author: "Pierre Beunardeau"
+excerpt: "Compare material markers and NFC chips with proposed supplier tests for copied reads, moved parts, material replacement and supplier exit."
+description: "Compare material markers and NFC chips with proposed supplier tests for copied reads, moved parts, material replacement and supplier exit."
+tags: [authentication, provenance, luxury, dpp]
+published: true
+coverImage: "/images/blog/material-marker-or-chip-dpp-binding-v1.jpg"
+coverImageAlt: "Conceptual comparison bench with leather samples, a separate NFC inlay and an unbranded reader under cyan light"
+faq:
+  - question: "Should a luxury brand choose a material marker or an NFC chip?"
+    answer: "Choose against an agreed supplier trial for the product and decision you need. Compare copied readings, moved components, material replacement and supplier exit. Accept only the scope supported by recorded observations; an incomplete trial does not establish a winner."
+  - question: "Has SMX proved that its markers authenticate every luxury product?"
+    answer: "No such independent result is established here. SMX's 31 August 2026 company update claims invisible markers in luxury materials and continuity through their lifecycle. Those supplier claims need product-specific evidence before procurement relies on them."
+  - question: "Does a fresh NFC reading rule out a transplanted chip?"
+    answer: "No. Verifying a chip response does not establish that the chip remains on its original product. A fresh reading also does not exclude every real-time relay. Test the actual attachment and server rules separately."
+  - question: "What should the trial sheet record before supplier acceptance?"
+    answer: "Record the sample, unchanged control, authorised manipulation, configuration, evidence, observed result, limitation and conditional decision. Leave observations blank until the trial is performed. Require follow-up for missing results and distinguish historical record access from the ability to make a new reading."
+---
+
+Choose a material marker or an NFC chip only after a supplier trial tests copied readings, moved components, material replacement and supplier exit. Accept the specific product and verification process supported by the evidence, rather than treating a successful scan as approval of the whole system.
+
+For a luxury brand or resale operator, the practical question is whether staff can make the same defensible acceptance decision after something goes wrong. NFC means near-field communication, the short-range radio connection used to read a compatible chip. A material marker is a detectable addition to the material itself.
+
+The protocol below is an **editorial proposal, not a report of tests performed**. The cover is a conceptual illustration, not an SMX instrument, a visible molecular marker or evidence of a successful trial.
+
+## What the supplier documents actually establish
+
+In its [31 August 2026 company update](https://newsroom.smx.tech/articles/1214617/luxury-has-an-authentication-problem-smx-is-putting-the-proof-inside-the-product), SMX says it embeds invisible molecular markers in materials including textiles, leather and precious metals. SMX presents this approach as a way to connect material to a digital record through its lifecycle. These are supplier claims; no independent comparative performance result is established here.
+
+Treat that announcement as an invitation to request evidence for your material, finish and intended intervention. It does not establish universal resistance, reading accuracy or suitability for every finished product. The announcement dates from August, not a new September launch.
+
+A chip offers a different testable mechanism. [NXP's NTAG 424 DNA TT datasheet](https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf), Rev. 3.0 of 31 January 2019, describes Secure Dynamic Messaging, or SDM, a protected read message. Section 9.3 explains how a read counter and verifying-server rules can limit replay, the reuse of an earlier valid reading. This is one chip and configuration, not a property of all NFC tags.
+
+NXP also describes TagTamper, a wire-loop opening check. Section 10 says it is disabled at delivery and needs activation. Measurements depend on documented power, activation and command events. A loop result therefore depends on both configuration and physical mounting; it cannot establish that every transplantation will be detected.
+
+These sources support different questions, not a ranking. The proposed trials below compare what the complete supplier service lets your team observe and decide.
+
+## Define the decision before asking for samples
+
+Write one sentence describing the intended acceptance: for example, whether a specific bag body remains associated with its original supplier record. Ask the marker supplier whether its reading distinguishes a material type, a batch or an individual item. A batch match alone would not satisfy that item-specific objective.
+
+Use sacrificial samples approved for manipulation, plus an unchanged control, meaning a known reference kept alongside the test pieces. Include an unmarked or unregistered comparison sample where appropriate. Agree sample counts, materials, finishes, reading locations, equipment, software versions and acceptance thresholds before testing. Record unreadable and inconclusive results as well as matches.
+
+Have your own assessor retain the evidence and the link between each physical sample and its file. A supplier-selected demonstration can help design the trial, but it should not silently become the acceptance sample. Keep destructive work within the expressly agreed scope.
+
+<svg viewBox="0 0 320 600" role="img" aria-labelledby="supplier-trial-title supplier-trial-desc" className="block w-full max-w-sm mx-auto my-8" fontFamily="system-ui, sans-serif">
+  <title id="supplier-trial-title">Supplier acceptance decision flow</title>
+  <desc id="supplier-trial-desc">Define the claim and control. Run the four proposed trials. Retain observations. Accept only the supported scope, or hold for missing evidence and retest.</desc>
+  <rect x="0" y="0" width="320" height="600" rx="16" fill="#000810" />
+  <g stroke="#22D3EE" strokeWidth="2" fill="none">
+    <path d="M160 110 V142 M154 135 L160 142 L166 135" />
+    <path d="M160 256 V288 M154 281 L160 288 L166 281" />
+    <path d="M160 370 V402 M154 395 L160 402 L166 395" />
+  </g>
+  <g fill="#052332" stroke="#22D3EE">
+    <rect x="16" y="16" width="288" height="94" rx="10" />
+    <rect x="16" y="146" width="288" height="110" rx="10" />
+    <rect x="16" y="292" width="288" height="78" rx="10" />
+    <rect x="16" y="406" width="288" height="178" rx="10" />
+  </g>
+  <g fill="#ECF8FC" fontSize="18" textAnchor="middle">
+    <text x="160" y="47">Define the claim</text>
+    <text x="160" y="77">Keep a control sample</text>
+    <text x="160" y="180">Copy / replay</text>
+    <text x="160" y="208">Move / replace material</text>
+    <text x="160" y="236">Change supplier</text>
+    <text x="160" y="323">Keep observations</text>
+    <text x="160" y="353">and evidence</text>
+    <text x="160" y="438" fill="#22D3EE">Evidence supports scope?</text>
+    <text x="160" y="471">Yes: accept that scope</text>
+    <text x="160" y="504">No or unclear: hold</text>
+    <text x="160" y="537">Resolve the gap</text>
+    <text x="160" y="567">Then retest</text>
+  </g>
+</svg>
+
+## Run four comparable trials
+
+### 1. Copy a reading and try to reuse it
+
+**Proposed manipulation:** retain a valid reading, submit it again, then try an older reading after a newer one. Run the same record-submission exercise for the marker service where it accepts saved results. Ask what proves that the supplied measurement belongs to this sample and this session. If only the supplier can submit readings, require a witnessed trial of that boundary.
+
+For a configured SDM chip, retain the response, counter, server verdict and rule applied, without exposing secret keys. [NXP section 9.3](https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf) calls for tracking counters and rejecting previously seen or out-of-order values, while acknowledging residual risk. Verifying the chip does not authenticate the whole product. A fresh response also does not exclude every real-time relay, where a reading is forwarded from a genuine chip elsewhere.
+
+**Conditional decision:** accept the tested replay control only if the observed server behaviour meets the agreed rule. A screen showing the same product page twice is insufficient evidence either way. For a marker, rejection of an old report would test the reporting service, not prove the material marking cannot be copied.
+
+### 2. Move the responding part to another sample
+
+**Proposed manipulation:** have the authorised specialist attempt to transfer the chip attachment, or a marked material component, to a different sacrificial object. Preserve photographs and readings before and after, including the unchanged control. For a tamper-loop design, record enablement, the mounting and when the opening was measured.
+
+Ask the assessor to distinguish a response from the moved component from a claim about the receiving object. For the material option, define the area the reading covers. A response from one marked panel should not silently authenticate every other panel. Do not prescribe an assumed SMX chemistry or extraction method; the agreed specialist procedure must specify what can actually be attempted.
+
+**Conditional decision:** if a moved component still causes unconditional acceptance of the receiving object, hold that whole-object use case. A narrower component-level claim may remain useful if staff and customers can see its boundary. No transplant attempt performed means no conclusion about transplant resistance.
+
+### 3. Replace the material that the check relies on
+
+**Proposed manipulation:** agree a repair operation that removes or replaces the marked area or chip-bearing component. Separately test an allowed treatment on retained material, with its conditions recorded. Compare the removed component, replacement and unchanged control using the agreed reading method.
+
+The procurement question is whether the proposed system handles a changed object honestly. Ask it to show when an old reference no longer covers the replacement, who can authorise a new association and what evidence supports that action. Do not set “the old reading must always survive” as the success criterion: a replacement may properly require new evidence.
+
+**Conditional decision:** accept the repair scenario only when the observed reading and record make the remaining coverage clear. Missing readings or unexplained reassignment require follow-up. This tests future supplier behaviour; the separate [workshop guide](/blog/2026-09-07-luxury-repairs-workshop) covers documenting an actual repair job.
+
+### 4. Change supplier without losing the ability to check
+
+**Proposed manipulation:** in an isolated trial environment, export the agreed sample records and move verification to a nominated replacement operator. With authorised access, try retrieving an earlier record, making a new reading and correcting a deliberately erroneous trial entry. Then test the agreed loss of access to the original service.
+
+For a marker, request evidence that the replacement operator can obtain the reader, reference library and rights needed for a new measurement. For a chip, request an authorised plan for verification keys, server rules and counter history. Test each dependency rather than assuming that possession of an export supplies it.
+
+If a proposal cites [ERC-3643](https://eips.ethereum.org/EIPS/eip-3643), ask which part of this exit exercise it supports. The standard describes permissioned security tokens and conditional transfers. It is not a universal digital product passport registry, and its presence does not demonstrate portable physical verification.
+
+**Conditional decision:** distinguish access to historical records from the ability to authenticate a new reading. If only the former survives, accept at most that archival scope. Put the unresolved operational dependency into the supplier decision before contracting.
+
+## Copy this acceptance sheet for each trial
+
+Use one copy per candidate, sample and manipulation. Complete the plan before testing and the observation fields afterwards. **All observation fields below are deliberately blank.** A blank means untested, never passed.
+
+- **Trial reference and assessor:** ____________________
+- **Candidate, material, finish and claimed coverage:** ____________________
+- **Decision this trial must support:** ____________________
+- **Test sample and physical identification evidence:** ____________________
+- **Unchanged control and negative comparison sample:** ____________________
+- **Sample count, repeats and acceptance threshold agreed before testing:** ____________________
+- **Reader, configuration, software and server-rule version:** ____________________
+- **Authorised manipulation, person, scope and conditions:** ____________________
+- **Evidence to retain:** sample photographs; reading or measurement files; relevant configuration; server decisions; timestamps; control results; assessor notes. File references: ____________________
+- **Observed test result:** ____________________
+- **Observed control result:** ____________________
+- **Unreadable, inconclusive or missing results:** ____________________
+- **Limit of the observation and untested conditions:** ____________________
+- **Conditional decision:** accept the stated scope only if ____________________; otherwise hold pending ____________________.
+- **Decision owner, date and required retest:** ____________________
+
+Keep sensitive keys and personal information out of the shareable evidence pack. Retain enough configuration detail for an authorised reviewer to reproduce the decision. The sheet is a procurement aid, not a certification or a substitute for specialist testing.
+
+## A fictional decision before a resale pilot
+
+**This example is fictional, including the brand, samples and decision. No vendor performance or trial outcome is asserted.** A resale team plans to accept bags only if staff can verify the body after a strap replacement. Its procurement lead compares a proposed marked strap with a proposed chip mounted in the body.
+
+At the planning stage, the lead puts the strap-only proposal on hold for this use case: checking the replaced strap would not answer the agreed question about the body. The lead requests a body-specific marker proposal and the transplant trial for the chip mounting. Neither candidate has passed; both still need observations in the sheet.
+
+This is a decision about scope before spending on a pilot. It does not infer that a marker is weaker, that the chip is secure or that either supplier failed an actual test. Nothing in this proposed workflow establishes a Galileo deployment or integration with these suppliers.
+
+## Frequently asked questions
+
+### Should a luxury brand choose a material marker or an NFC chip?
+
+Choose against an agreed supplier trial for the product and decision you need. Compare copied readings, moved components, material replacement and supplier exit. Accept only the scope supported by recorded observations; an incomplete trial does not establish a winner.
+
+### Has SMX proved that its markers authenticate every luxury product?
+
+No such independent result is established here. SMX's 31 August 2026 company update claims invisible markers in luxury materials and continuity through their lifecycle. Those supplier claims need product-specific evidence before procurement relies on them.
+
+### Does a fresh NFC reading rule out a transplanted chip?
+
+No. Verifying a chip response does not establish that the chip remains on its original product. A fresh reading also does not exclude every real-time relay. Test the actual attachment and server rules separately.
+
+### What should the trial sheet record before supplier acceptance?
+
+Record the sample, unchanged control, authorised manipulation, configuration, evidence, observed result, limitation and conditional decision. Leave observations blank until the trial is performed. Require follow-up for missing results and distinguish historical record access from the ability to make a new reading.
+
+For the protocol context behind a future integration discussion, read the [Galileo documentation](/docs). Bring the completed trial sheet and unresolved dependencies so that the discussion starts with what your evidence actually supports.

@@ -1,0 +1,403 @@
+NTAG 424 DNA TT – Secure NFC T4T compliant IC with Tag Tamper feature (https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf)
+citeturn47view0 [wordlim: 200] Crawled: today; Content type: application/pdf; Number of pages: 102; Source: open({"ref_id":"https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf","lineno":2150}); Total lines: 5430
+L2035@P41: AES mode secure messaging, see Section 9.1.3.
+L2036@P41: The SDMMAC is defined as follows:
+L2037@P41: SDMMAC = MACt (SesSDMFileReadMACKey; DynamicFileData[SDMMACInputOffset ...
+L2038@P41: SDMMACOffset - 1])
+L2039@P41: with DynamicFileData being the file data as how it is put on the contactless interface, i.e.
+L2040@P41: replacing any placeholders by the dynamic data.
+L2041@P41: 9.3.9.2 LRP mode MAC calculation
+L2042@P41: The 8-byte SDMMAC is calculated using a CMAC construction on top of the LRP
+L2043@P41: primitive. This is specified in [10].
+L2044@P41: It is identical to the MAC calculation of LRP secure messaging, see Section 9.2.3, also
+L2045@P41: applying the same truncation.
+L2046@P41: Therefore SDMMAC is defined as follows:
+L2047@P41: SDMMAC = MACtLRP (SesSDMFileReadMACKey;
+L2048@P41: DynamicFileData[SDMMACInputOffset ... SDMMACOffset - 1])
+L2049@P41: with DynamicFileData being the file data as how it is put on the contactless interface, i.e.
+L2050@P41: replacing any placeholders by the dynamic data.
+L2051@P41: 9.3.10 SDM Session Key Generation
+L2052@P41: For Secure Dynamic Messaging for reading, the following session keys are calculated:
+L2053@P41: • SesSDMFileReadMACKey for MACing of file data.
+L2054@P41: • SesSDMFileReadENCKey for encryption of file data
+L2055@P41: The session key generation is according to NIST SP 800-108 [8] in counter mode.
+L2056@P41: The pseudo random function applied during the key generation is the CMAC algorithm
+L2057@P41: described in NIST Special Publication 800-38B [6]. The key derivation key is the
+L2058@P41: SDMFileReadKey as configured with the SDMFileRead access right.
+L2059@P41: 9.3.10.1 AES mode session key generation for SDM
+L2060@P41: The input data is constructed using the following fields as defined by [8]. Note that NIST
+L2061@P41: SP 800-108 allows defining a different order than proposed by the standard as long as it
+L2062@P41: is unambiguously defined.
+L2063@P41: • a 2-byte label, distinguishing the purpose of the key: 3CC3h for MACing and C33Ch for
+L2064@P41-42: encryption.NXP Semiconductors NT4H2421Tx
+L2065@P42: NTAG 424 DNA TT – Secure NFC T4T compliant IC with Tag Tamper feature
+L2066@P42: 465530 All information provided in this document is subject to legal disclaimers. © NXP B.V. 2019. All rights reserved.
+L2067@P42: Product data sheet Rev. 3.0 — 31 January 2019
+L2068@P42: COMPANY PUBLIC 465530 43 / 102
+L2069@P42: • a 2-byte counter, fixed to 0001h as only 128-bit keys are generated.
+L2070@P42: • a 2-byte length, fixed to 0080h as only 128-bit keys are generated.
+L2071@P42: • a context, constructed using the UID and/or SDMReadCtr, followed by zero-byte
+L2072@P42: padding if needed.
+L2073@P42: Firstly, the input session vectors SV x are derived as follows:
+L2074@P42: SV1 = C3h || 3Ch || 00h || 01h || 00h || 80h || UID || SDMReadCtr
+L2075@P42: SV2 = 3Ch || C3h || 00h || 01h || 00h || 80h [ || UID] [ || SDMReadCtr] [ || ZeroPadding]
+L2076@P42: Whether or not the UID and/or SDMReadCtr are included in session vector SV2,
+L2077@P42: depends on whether they are mirrored, see Section 9.3.3. Note that in case of encrypting
+L2078@P42: file data, mirroring of both is mandatory.
+L2079@P42: Therefore they are always included in SV1.
+L2080@P42: Padding with zeros is done up to a multiple of 16 bytes. So in case of 7-byte UID and
+L2081@P42: both elements are mirrored, no padding is added. Then, the 16-byte session keys are
+L2082@P42: constructed as follows:
+L2083@P42: SesSDMFileReadENCKey = MAC(SDMFileReadKey; SV1)
+L2084@P42: SesSDMFileReadMACKey = MAC(SDMFileReadKey; SV2)
+L2085@P42: 9.3.10.2 LRP mode session key generation for SDM
+L2086@P42: The input data is constructed using the following fields as defined by [8]. Note that NIST
+L2087@P42: SP 800-108 allows defining a different order than proposed by the standard as long as it
+L2088@P42: is unambiguously defined.
+L2089@P42: • a 2-byte counter, fixed to 0001h as only 128-bit keys are generated.
+L2090@P42: • a 2-byte length, fixed to 0080h as only 128-bit keys are generated.
+L2091@P42: • a context, constructed using the UID and/or SDMReadCtr, followed by zero-byte
+L2092@P42: padding if needed.
+L2093@P42: • a 2-byte label: 1EE1h
+L2094@P42: Firstly, the input session vector SV is derived as follows:
+L2095@P42: SV = 00h || 01h || 00h || 80h [ || UID] [ || SDMReadCtr] [ || ZeroPadding] || 1Eh || E1h
+L2096@P42: Whether or not the UID and/or SDMReadCtr are included in the session vectors,
+L2097@P42: depends on whether they are mirrored, see Section 9.3.3. Note that in case of encrypting
+L2098@P42: file data, mirroring of both is mandatory. Padding with zeros is done up to a multiple of
+L2099@P42: 16 bytes. So in case of 7-byte UID and both elements are mirrored, no padding is added.
+L2100@P42: Then, the session key material is constructed as follows:
+L2101@P42: SDMFileReadSPT = generatePlaintexts(4; SDMFileReadKey)
+L2102@P42: {SDMFileReadUpdateKey} = generateUpdatedKeys(1; SDMFileReadKey)
+L2103@P42: SesSDMFileReadMasterKey = MACLRP (SDMFileReadKey; SV)
+L2104@P42: SesSDMFileReadSPT = generatePlaintexts(4; SesSDMFileReadMasterKey)
+L2105@P42: {SesSDMFileReadMACUpdateKey; SesSDMFileReadENCUpdateKey} =
+L2106@P42: generateUpdatedKeys(2; SesSDMFileReadMasterKey)
+L2107@P42: with generatePlaintexts and generateUpdatedKeys the functions from [10]. Note that the
+L2108@P42-43: output of generateUpdatedKeys is shown in the order that the keys are generated.NXP Semiconductors NT4H2421Tx
+L2109@P43: NTAG 424 DNA TT – Secure NFC T4T compliant IC with Tag Tamper feature
+L2110@P43: 465530 All information provided in this document is subject to legal disclaimers. © NXP B.V. 2019. All rights reserved.
+L2111@P43: Product data sheet Rev. 3.0 — 31 January 2019
+L2112@P43: COMPANY PUBLIC 465530 44 / 102
+L2113@P43: The actual SesSDMFileReadMACKey then consists for LRP of the set of
+L2114@P43: plaintexts SesSDMFileReadSPT (consisting of 16 16-byte values) and
+L2115@P43: SesSDMFileReadMACUpdateKey. The SesSDMFileReadENCKey consists of the same
+L2116@P43: set of plaintexts SesSDMFileReadSPT and SesSDMFileReadENCUpdateKey.
+L2117@P43: 9.3.11 Output Mapping Examples
+L2118@P43: The following figure shows an example with the static file content and how it will be read.
+L2119@P43: MAC(SesSDMFileReadMACKey, “www.nxp.com/index.html?p= || “04E134FE9D7CD3x000001xCC
+L2120@P43: || “&c= | | “E(SesSDMFileReadENCKey, 20h, 21h, 22h, ... 2Dh, 2Eh, 2Fh) || “&m= )
+L2121@P43: aaa-032484
+L2122@P43: “E(SesSDMFileReadENCKey,
+L2123@P43: 20h, 21h, 22h, ... 2Dh, 2Eh, 2Fh)
+L2124@P43: `'&m=''
+L2125@P43: NLen
+L2126@P43: Encrypted File Data
+L2127@P43: (ASCII encoded)
+L2128@P43: 41h, 42h, ... 4Fh
+L2129@P43: Plain File Data
+L2130@P43: (typically not read out)
+L2131@P43: Computed MAC
+L2132@P43: (ASCII encoded)
+L2133@P43: Plain File
+L2134@P43: Data
+L2135@P43: “&c=''
+L2136@P43: Plain File
+L2137@P43: Data
+L2138@P43: SDMENCOffset
+L2139@P43: SDMMACOffset
+L2140@P43: SDMENCOffset
+L2141@P43: +
+L2142@P43: SDMENCLength
+L2143@P43: TTStatus
+L2144@P43: Offset
+L2145@P43: + 2 SDMMACOffset
+L2146@P43: + 16
+L2147@P43: “MACt
+L2148@P43: `'&m=''
+L2149@P43: SDMMACInputOffset
+L2150@P43: 41h, 42h, ... 4Fh
+L2151@P43: Placeholder data Plain File Data
+L2152@P43: Plain File
+L2153@P43: Data
+L2154@P43: 20h, 21h, ... 2Fh
+L2155@P43: Plain File Data
+L2156@P43: `'http://www.nxp.com/index.html?p=''
+L2157@P43: Plain File Data
+L2158@P43: “&c=''
+L2159@P43: Plain File
+L2160@P43: Data
+L2161@P43: “x''
+L2162@P43: Plain
+L2163@P43: File
+L2164@P43: Data
+L2165@P43: “x''
+L2166@P43: Plain
+L2167@P43: File
+L2168@P43: Data
+L2169@P43: Place
+L2170@P43: holder
+L2171@P43: data
+L2172@P43: XXh .. XXh
+L2173@P43: Placeholder
+L2174@P43: data
+L2175@P43: Placeholder
+L2176@P43: data
+L2177@P43: Nlen =
+L2178@P43: SDMMAC
+L2179@P43: Offset + 16
+L2180@P43: SDMENCOffset
+L2181@P43: Static File Output
+L2182@P43: Dynamic File Output
+L2183@P43: SDMMACOffset
+L2184@P43: FileLength
+L2185@P43: FileLength
+L2186@P43: VCUIDOffset
+L2187@P43: SDMENCOffset
+L2188@P43: +
+L2189@P43: SDMENCLength
+L2190@P43: TTStatus
+L2191@P43: Offset
+L2192@P43: + 2
+L2193@P43: TTStatus
+L2194@P43: Offset
+L2195@P43: SDMReadCtrOffset
+L2196@P43: + 6
+L2197@P43: SDMENCOffset
+L2198@P43: +
+L2199@P43: SDMENCLength/2
+L2200@P43: VCUIDOffset
+L2201@P43: + 14
+L2202@P43: SDMReadCtrOffset SDMMACOffset
+L2203@P43: + 16
+L2204@P43: XXh, XXh, XXh, .. XXh
+L2205@P43: XXh
+L2206@P43: XXh
+L2207@P43: Place
+L2208@P43: holder
+L2209@P43: data
+L2210@P43: 43h
+L2211@P43: 43h
+L2212@P43: Place
+L2213@P43: holder
+L2214@P43: data
+L2215@P43: XXh ..
+L2216@P43: XXh
+L2217@P43: SDMMACInputOffset
+L2218@P43: `'http://www.nxp.com/index.html?p=''
+L2219@P43: Plain File Data
+L2220@P43: “x''
+L2221@P43: Plain
+L2222@P43: File
+L2223@P43: Data
+L2224@P43: Nlen =
+L2225@P43: SDMMAC
+L2226@P43: Offset + 16
+L2227@P43: VCUIDOffset
+L2228@P43: “x''
+L2229@P43: Plain
+L2230@P43: File
+L2231@P43: Data
+L2232@P43: TTStatus
+L2233@P43: Offset
+L2234@P43: SDMReadCtrOffset
+L2235@P43: + 6
+L2236@P43: VCUIDOffset
+L2237@P43: + 14
+L2238@P43: SDMReadCtrOffset
+L2239@P43: “04E134FE9
+L2240@P43: D7CD3
+L2241@P43: Plain UID
+L2242@P43: (ASCII)
+L2243@P43: “000001''
+L2244@P43: Plain File
+L2245@P43: SDMReadCtr
+L2246@P43: (ASCII)
+L2247@P43: XXh .. XXh
+L2248@P43: Figure 12. Secure Dynamic Messaging for Reading example
+L2249@P43: 10 Tag Tamper Protection
+L2250@P43: NT4H2421Tx offers an NFC Forum-compliant solution to reflect e.g. if the sealing of
+L2251@P43: a product is opened. This solution works without a dedicated application on a mobile
+L2252@P43: phone. It only requires the capability of reading out NFC Forum Type 4 Tag [14].
+L2253@P43: NT4H2421Tx contains four pads, where two are used for antenna connection and the
+L2254@P43: other two will connect a detection wire as illustrated in Figure 13. During the execution
+L2255@P43: of the first command that is sent after ISO/IEC 14443-4 activation, the IC checks the tag
+L2256@P43: tamper wire. If opened, this status will be recorded as permanent status in NVM. The
+L2257@P43: result can be reflected in the NDEF message. Next to this, NT4H2421Tx also supports
+L2258@P43: a specific command that triggers a measurement and returns both the permanent and
+L2259@P43: current status. This chapter describes how the feature is enabled, when the check is
+L2260@P43-44: executed and how the status can be retrieved.NXP Semiconductors NT4H2421Tx
+L2261@P44: NTAG 424 DNA TT – Secure NFC T4T compliant IC with Tag Tamper feature
+L2262@P44: 465530 All information provided in this document is subject to legal disclaimers. © NXP B.V. 2019. All rights reserved.
+L2263@P44: Product data sheet Rev. 3.0 — 31 January 2019
+L2264@P44: COMPANY PUBLIC 465530 45 / 102
+L2265@P44: aaa-032479
+L2266@P44: Figure 13. Tag Tamper illustration
+L2267@P44: 10.1 Enabling the Tag Tamper feature
+L2268@P44: At delivery, NT4H2421Tx has the tag tamper feature disabled. The feature can be
+L2269@P44: enabled by SetConfiguration with Option 07h, see Section 11.5.1. Once enabled,
+L2270@P44: the NT4H2421Tx starts Tag Tamper measurements, see Section 10.2 from the next
+L2271@P44: activation onwards. A measurement can always be triggered by issuing a GetTTStatus
+L2272@P44: command.
+L2273@P44: When enabling the Tag Tamper feature using SetConfiguration, the access right related
+L2274@P44: with TTStatusKey for GetTTStatus for Tag Tamper Status retrieval can be set, see
+L2275@P44: Section 10.3.2. Enabling the Tag Tamper feature is permanent, it cannot be disabled
+L2276@P44: once enabled.
+L2277@P44: 10.2 Tag Tamper measurements
+L2278@P44: NT4H2421Tx maintains a permanent Tag Tamper status TTPermStatus. The
+L2279@P44: TTPermStatus and the current status TTCurrStatus can be mirrored together in the
+L2280@P44: NDEF file, and included in the Secure Dynamic Messaging, see Section 9.3. Both
+L2281@P44: statuses can also be retrieved with GetTTStatus. The following values are supported:
+L2282@P44: • Close: 43h, i.e. ASCII encoding of ‘C’. This is the initial value when the seal is still
+L2283@P44: closed.
+L2284@P44: • Open: 4Fh, i.e. ASCII encoding of ‘O’. This is the value when the seal was opened.
+L2285@P44: • Invalid: 49h, i.e. ASCII encoding of ‘I’. This is the value when the feature has not been
+L2286@P44: enabled yet and no measurements are executed.
+L2287@P44: Once the feature has been enabled, NT4H2421Tx measures whether the seal is opened
+L2288@P44: by applying a measurement on the detection wire. As the NTAG 424 DNA TT is a
+L2289@P44: passive tag, it cannot trigger measurements itself. The measurement will be done, each
+L2290@P44: time the tag is powered and booted. If the current TTPermStatus is still set to Close, the
+L2291@P44: measurement will only be done after complete ISO/IEC 14443-4 activation and during
+L2292@P44: processing of the first command.
+L2293@P44: If a measurement detects the seal to be opened, the TTPermStatus is updated to
+L2294@P44: Open. Once set to Open, the measurement on boot will not be triggered anymore. The
+L2295@P44: TTPermStatus cannot be reset to Close anymore.
+L2296@P44: The following commands also trigger a measurement once the feature is enabled:
+L2297@P44-45: • GetTTStatus, see Section 10.3.2.NXP Semiconductors NT4H2421Tx
+L2298@P45: NTAG 424 DNA TT – Secure NFC T4T compliant IC with Tag Tamper feature
+L2299@P45: 465530 All information provided in this document is subject to legal disclaimers. © NXP B.V. 2019. All rights reserved.
+L2300@P45: Product data sheet Rev. 3.0 — 31 January 2019
+L2301@P45: COMPANY PUBLIC 465530 46 / 102
+L2302@P45: • ReadData and ISOReadBinary, if required for the Secure Dynamic Messaging and
+L2303@P45: Mirroring, see Section 9.3.5.
+L2304@P45: 10.3 Tag Tamper status retrieval
+L2305@P45: 10.3.1 Mirroring in the NDEF message
+L2306@P45: The TTPermStatus and the TTCurrStatus can be mirrored within the NDEF messaging.
+L2307@P45: In this way, the status can be protected by the Secure Dynamic Messaging, as defined
+L2308@P45: in Section 9.3 and more specifically Section 9.3.5. To enable this mirroring, the
+L2309@P45: configuration needs to be done with ChangeFileSettings, see Section 11.7.1.
+L2310@P45: 10.3.2 GetTTStatus command
+L2311@P45: The GetTTStatus command supports retrieving of the permanent and current Tag
+L2312@P45: Tamper Status: TTPermStatus and TTCurrStatus. For the latter, once the feature has
+L2313@P45: been enabled, a Tag Tamper measurement as defined in Section 10 will be triggered. If
+L2314@P45: detected as open, the TTPermStatus will be updated to Open.
+L2315@P45-46: Under active authentication, the command GetTTStatus requires CommMode.Full.NXP Semiconductors NT4H2421Tx
+L2316@P46: NTAG 424 DNA TT – Secure NFC T4T compliant IC with Tag Tamper feature
+L2317@P46: 465530 All information provided in this document is subject to legal disclaimers. © NXP B.V. 2019. All rights reserved.
+L2318@P46: Product data sheet Rev. 3.0 — 31 January 2019
+L2319@P46: COMPANY PUBLIC 465530 47 / 102
+L2320@P46: 11 Command set
+L2321@P46: 11.1 Introduction
+L2322@P46: This section contains the full command set of NTAG 424 DNA TT.
+L2323@P46: Remark: In the figures and tables, always CommMode.Plain is presented and the field
+L2324@P46: length is valid for the plain data length. For the CommMode.MAC and CommMode.Full,
+L2325@P46: the cryptogram needs to be calculated according to the secure messaging Section 9,
+L2326@P46: then data field needs to fill with the cryptogram (Plain; CMAC; encrypted data with
+L2327@P46: CMAC). Communication mode and condition are mentioned in the command description.
+L2328@P46: 11.2 Supported commands and APDUs
+L2329@P46: Table 22. APDUs
+L2330@P46: Command C-APDU (hex) R-APDU (hex) Communication mode
+L2331@P46: INS CLA INS P1 P2 Lc Data Le Data SW1SW2
+L2332@P46: Succ
+L2333@P46: essful
+L2334@P46: AuthenticateEV2First - Part1 90 71 00 00 XX Data 00 Data 91AF N/A (command specific)
+L2335@P46: AuthenticateEV2First - Part2 90 AF 00 00 20 Data 00 Data 9100
+L2336@P46: AuthenticateEV2NonFirst -
+L2337@P46: Part1
+L2338@P46: 90 77 00 00 XX Data 00 Data 91AF N/A (command specific)
+L2339@P46: AuthenticateEV2NonFirst -
+L2340@P46: Part2
+L2341@P46: 90 AF 00 00 20 Data 00 Data 9100
+L2342@P46: AuthenticateLRPFirst - Part1 90 71 00 00 XX Data 00 Data 91AF N/A (command specific)
+L2343@P46: AuthenticateLRPFirst - Part2 90 AF 00 00 20 Data 00 Data 9100
+L2344@P46: AuthenticateLRPNonFirst -
+L2345@P46: Part1
+L2346@P46: 90 77 00 00 XX Data 00 Data 91AF N/A (command specific)
+L2347@P46: AuthenticateLRPNonFirst -
+L2348@P46: Part2
+L2349@P46: 90 AF 00 00 20 Data 00 Data 9100
+L2350@P46: ChangeFileSettings 90 5F 00 00 XX Data 00 - 9100 CommMode.Full
+L2351@P46: ChangeKey 90 C4 00 00 XX Data 00 - 9100 CommMode.Full
+L2352@P46: GetCardUID 90 51 00 00 - - 00 Data 9100 CommMode.Full
+L2353@P46: GetFileCounters 90 F6 00 00 - File ID 00 Data 9100 CommMode.Full
+L2354@P46: GetFileSettings 90 F5 00 00 01 File number 00 Data 9100 CommMode.MAC
+L2355@P46: GetKeyVersion 90 64 00 00 01 Key number 00 Data 9100 CommMode.MAC
+L2356@P46: GetTTStatus 90 F7 00 00 - - 00 Data 9100 CommMode.Full
+L2357@P46: GetVersion - Part1 90 60 00 00 - - 00 Data 91AF CommMode.MAC[1]
+L2358@P46: GetVersion - Part2 90 AF 00 00 - - 00 Data 91AF CommMode.MAC
+L2359@P46: GetVersion - Part3 90 AF 00 00 - - 00 Data 9100 CommMode.MAC
+L2360@P46: ISOReadBinary 00 B0 XX XX - - XX Data 9000 CommMode.Plain
+L2361@P46: ReadData 90 AD 00 00 XX Reference 00 Data 9100 Comm. mode of targeted file
+L2362@P46: Read_Sig 90 3C 00 00 01 00 00 Data 9100 CommMode.Full
+L2363@P46: ISOSelectFile 00 A4 XX XX XX Data to send XX FCI 9000 CommMode.Plain
+L2364@P46-47: SetConfiguration 90 5C 00 00 XX Data 00 - 9100 CommMode.FullNXP Semiconductors NT4H2421Tx
+L2365@P47: NTAG 424 DNA TT – Secure NFC T4T compliant IC with Tag Tamper feature
+L2366@P47: 465530 All information provided in this document is subject to legal disclaimers. © NXP B.V. 2019. All rights reserved.
+L2367@P47: Product data sheet Rev. 3.0 — 31 January 2019
+L2368@P47: COMPANY PUBLIC 465530 48 / 102
+L2369@P47: Command C-APDU (hex) R-APDU (hex) Communication mode
+L2370@P47: ISOUpdateBinary 00 D6 XX XX XX Data to write - - 9000 CommMode.Plain
+L2371@P47: WriteData 90 8D 00 00 XX Data 00 - 9100 Comm. mode of targeted file
+L2372@P47: [1] MAC on command and returned with the last response, calculated over all 3 responses
+L2373@P47: 11.3 Status word
+L2374@P47: Table 23. SW1 SW2 for CLA byte 0x90
+L2375@P47: SW1 SW2 Name Description
+L2376@P47: 0x9100 OPERATION_OK Successful operation.
+L2377@P47: 0x911C ILLEGAL_COMMAND_CODE Command code not supported.
+L2378@P47: 0x911E INTEGRITY_ERROR CRC or MAC does not match data. Padding bytes not valid.
+L2379@P47: 0x9140 NO_SUCH_KEY Invalid key number specified.
+L2380@P47: 0x917E LENGTH_ERROR Length of command string invalid.
+L2381@P47: 0x919D PERMISSION_DENIED Current configuration / status does not allow the re- quested command.
+L2382@P47: 0x919E PARAMETER_ERROR Value of the parameter(s) invalid.
+L2383@P47: 0x91AD AUTHENTICATION_DELAY Currently not allowed to authenticate. Keep trying until full delay is spent.
+L2384@P47: 0x91AE AUTHENTICATION_ERROR Current authentication status does not allow the re- quested command.
+L2385@P47: 0x91AF ADDITIONAL_FRAME Additionaldata frame is expected to be sent.
+L2386@P47: 0x91BE BOUNDARY_ERROR Attempt toread/write data from/to beyond the file’s/record’s limits.
+L2387@P47: Attempt to exceed the limits of a value file.
+L2388@P47: 0x91CA COMMAND_ABORTED Previous Command was not fully completed. Not all Frames were
+L2389@P47: requested or provided by the PCD.
+L2390@P47: 0x91F0 FILE_NOT_FOUND Specified file number does not exist.
+L2391@P47: Table 24.  SW1 SW2 for CLA byte 0x00
+L2392@P47: SW1 SW2 Description
+L2393@P47: 0x6700 Wrong length; no further indication
+L2394@P47: 0x6982 Security status not satisfied
+L2395@P47: 0x6985 Conditions of use not satisfied
+L2396@P47: 0x6A80 Incorrect parameters in the command data field
+L2397@P47: 0x6A82 File or application not found
+L2398@P47: 0x6A86 Incorrect parameters P1-P2
+L2399@P47: 0x6A87 Lc inconsistent with parameters P1-P2
+L2400@P47: 0x6C00 Wrong Le field
+L2401@P47: 0x6CXX Wrong Le field; SW2 encodes the exact number of avail- able data bytes.
+L2402@P47: 0x6D00 Instruction code not supported or invalid
+L2403@P47: 0x6E00 Class not supported
+L2404@P47-48: 0x9000 Normal processing (no further qualification)NXP Semiconductors NT4H2421Tx
+L2405@P48: NTAG 424 DNA TT – Secure NFC T4T compliant IC with Tag Tamper feature
+L2406@P48: 465530 All information provided in this document is subject to legal disclaimers. © NXP B.V. 2019. All rights reserved.
+L2407@P48: Product data sheet Rev. 3.0 — 31 January 2019
+L2408@P48-49: COMPANY PUBLIC 465530 49 / 102NXP Semiconductors NT4H2421Tx
+L2409@P49: NTAG 424 DNA TT – Secure NFC T4T compliant IC with Tag Tamper feature
+L2410@P49: 465530 All information provided in this document is subject to legal disclaimers. © NXP B.V. 2019. All rights reserved.
+L2411@P49: Product data sheet Rev. 3.0 — 31 January 2019
+L2412@P49: COMPANY PUBLIC 465530 50 / 102
+L2413@P49: 11.4 Authentication commands
+L2414@P49: Authentication with the defined key is required to access the protected file according to
+L2415@P49: access rights. Based on successful authentication session keys are generated, which are
+L2416@P49: used for secure messaging between the terminal and NT4H2421Tx.
+L2417@P49: Remark:Default FWI settings for authentication and secure messaging are set according
+L2418@P49: to GSMA specification v2.0 to the value 7h. This value is stored in the User ATS.
+L2419@P49: 11.4.1 AuthenticateEV2First
+L2420@P49: This command initiates an authentication based on standard AES. After this
+L2421@P49: authentication, AES secure messaging is applied. This authentication command is
+L2422@P49: used to authenticate for the first time in a transaction and can always be used within
+L2423@P49: a transaction. AuthenticateEV2First starts a transaction with a Transaction Identifier
+L2424@P49: (TI) and AuthenticateEV2NonFirst continues the transaction with that TI. This 3-pass
+L2425@P49: challenge-response-based mutual authentication command is completed in two parts:
+L2426@P49: PICC to PCD
+L2427@P49: PCD to PICC
+L2428@P49: aaa-032196
+L2429@P49: CLA
+L2430@P49: 90
+L2431@P49: Response data
+L2432@P49: E(Kx, RndB)
+L2433@P49: CMD
+L2434@P49: 71
+
