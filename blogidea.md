@@ -8,6 +8,16 @@ Before every brainstorm, run the news watch (below) and log the session as a dat
 
 ---
 
+## Session of 9 September 2026: counterfeit convergence and visual authentication failure
+
+### [drafted on 2026-09-09] Why Visual Authentication Fails Against Super-Clones
+- Slug: `2026-09-09-visual-authentication-dead-superclones-provenance` (`website/content/blog/2026-09-09-visual-authentication-dead-superclones-provenance.mdx`).
+- Axis: counterfeiting & provenance, focusing on the mechanical and optical convergence of modern super-clones.
+- Angle: sub-micron CNC machining and high-resolution finishing have eliminated visible defects in high-end replicas. Why computer vision and manual loupes fail, and why unbroken cryptographic provenance anchored to physical objects is the only mathematical defense.
+- Anti-duplication: distinct from NFC/marker physical comparison (`2026-09-08-marker-vs-nfc-luxury-authentication`) and status revocation (`2026-09-05-product-passport-revocation-resale`). This post focuses on the obsolescence of visual appraisal in isolation.
+- Validation: Next.js Turbopack build validated clean with zero frontmatter or sentence warnings. Cover image `visual-authentication-dead-superclones-provenance.jpg` (100 KB).
+
+---
 
 ## Session of 5 September 2026 (issue #14, four-channel watch)
 
