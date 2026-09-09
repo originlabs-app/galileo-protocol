@@ -10,7 +10,9 @@ Before every brainstorm, run the news watch (below) and log the session as a dat
 
 ## Session of 9 September 2026: counterfeit convergence and visual authentication failure
 
-### [drafted on 2026-09-09] Why Visual Authentication Fails Against Super-Clones
+### [published on 2026-09-09] Why Visual Authentication Fails Against Super-Clones
+- Published URL: https://www.galileoprotocol.io/blog/2026-09-09-visual-authentication-dead-superclones-provenance
+- PR #31 merged. Vercel deployment verified in production.
 - Slug: `2026-09-09-visual-authentication-dead-superclones-provenance` (`website/content/blog/2026-09-09-visual-authentication-dead-superclones-provenance.mdx`).
 - Axis: counterfeiting & provenance, focusing on the mechanical and optical convergence of modern super-clones.
 - Angle: sub-micron CNC machining and high-resolution finishing have eliminated visible defects in high-end replicas. Why computer vision and manual loupes fail, and why unbroken cryptographic provenance anchored to physical objects is the only mathematical defense.
