@@ -1,0 +1,18 @@
+{
+  "console": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":1000}\n## Console messages\n<no console messages found>"
+      }
+    ]
+  },
+  "network": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":1000}\n## Network requests\nShowing 1-9 of 9 (Page 1 of 1).\nreqid=125 GET http://127.0.0.1:3197/blog/2026-09-11-dpp-provider-exit [200]\nreqid=126 GET http://127.0.0.1:3197/_next/static/media/01e4147cff8141ee-s.p.3huc2loe0ie8a.woff2 [200]\nreqid=127 GET http://127.0.0.1:3197/_next/static/media/051742360c26797e-s.p.1bkzbscqrt8rl.woff2 [200]\nreqid=128 GET http://127.0.0.1:3197/_next/static/media/1b99372b3eaef0c8-s.p.1gsd1jahc5dg_.woff2 [200]\nreqid=129 GET http://127.0.0.1:3197/_next/static/media/83afe278b6a6bb3c-s.p.2bn3s6zvc0dyp.woff2 [200]\nreqid=130 GET http://127.0.0.1:3197/_next/static/media/8bd76523131fa0fc-s.p.1pvupmngxrt5z.woff2 [200]\nreqid=131 GET http://127.0.0.1:3197/images/blog/dpp-provider-exit-v1.jpg [304]\nreqid=132 GET http://127.0.0.1:3197/_next/static/chunks/%5Broot-of-the-server%5D__0odq6_r._.css [304]\nreqid=148 GET http://127.0.0.1:3197/__nextjs_font/geist-latin.woff2 [200]"
+      }
+    ]
+  }
+}
