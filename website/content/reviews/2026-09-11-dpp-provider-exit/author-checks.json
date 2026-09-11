@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-09-11T08:05:04.823Z",
+  "article": "website/content/blog/2026-09-11-dpp-provider-exit.mdx",
+  "sha256": "23147e01160012139cad1474707c53b67a54a98f5ca057360de6a02ced6bb590",
+  "status": "PASS",
+  "checks": [
+    "frontmatter ranges",
+    "ISO dates",
+    "draft visibility",
+    "5 FAQ exact mirrors",
+    "internal link source paths",
+    "MDX compilation",
+    "no em dash"
+  ],
+  "titleCharacters": 52,
+  "descriptionCharacters": 138,
+  "bodyWords": 2644,
+  "dependencies": "Read existing main-checkout node_modules without installing or changing dependencies",
+  "limits": [
+    "Full website lint and build not run by author",
+    "No browser layout check",
+    "Cover and body visual owned by coordinator",
+    "No supplier migration performed",
+    "Independent final editorial review pending"
+  ]
+}

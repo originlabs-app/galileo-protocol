@@ -1,0 +1,184 @@
+---
+title: "DPP Provider Exit: Keep Product Passports Accessible"
+date: "2026-09-11"
+modified: "2026-09-11"
+author: "Pierre Beunardeau"
+excerpt: "Before choosing a digital product passport provider, test how records, printed links and access rights would survive a change of supplier."
+description: "Before choosing a digital product passport provider, test how records, printed links and access rights would survive a change of supplier."
+tags: [dpp, espr, infrastructure, interoperability]
+published: false
+faq:
+  - question: "Will our passports keep working if the provider closes?"
+    answer: "That depends on your recoverable records, control of existing links, access permissions and replacement arrangements. Ask for a demonstrated handover before relying on a continuity promise. A contract or export file alone does not demonstrate that customers can still reach the right record."
+  - question: "Is a spreadsheet export enough to change providers?"
+    answer: "It may be one useful component. Check whether it preserves field definitions, units, attachments, record references, versions and the permissions needed for continued service. Then test an import elsewhere and scan an existing product label."
+  - question: "Can we keep the QR codes already printed on products?"
+    answer: "Possibly, if the existing address or identifier can still direct readers to the correct record under the replacement arrangement. Establish who controls that route and demonstrate it. If the failed supplier exclusively controls the printed address, a data export cannot by itself repair the link."
+  - question: "Does the European DPP registry back up every passport?"
+    answer: "Do not treat registration as your recovery copy. The Commission distinguishes registration information from the complete product information held by an economic operator or provider. Your continuity plan should identify where the usable passport copy is held and how an authorised replacement retrieves it."
+  - question: "What should we test before accepting an exit plan?"
+    answer: "Run an authorised trial that recovers representative records, imports them into the replacement and makes the original test service unavailable. Scan the existing labels, retrieve attachments, inspect corrections and check permitted and refused access. Record the tested scope and unresolved dependencies before deciding whether to accept the service."
+---
+If your digital product passport (DPP) provider disappears, continued access depends on recoverable records, working product links and an authorised replacement. Before signing, ask the provider to demonstrate that handover using a label already attached to a product.
+
+This matters to the person scanning a bag in a resale store as much as to the team maintaining the records. An export sitting in a procurement folder is useful only if an authorised operator can turn it into an accessible, understandable passport.
+
+The EU framework supports interoperability and continuity. The practical question for a brand is how its chosen arrangement would deliver them. This guide separates that framework, checked on 11 September 2026, from an editorial method for evaluating a supplier and preparing an exit.
+
+## Start with the scan that must still work
+
+In a fictional example, a brand has printed passport labels for 500,000 products. Its provider announces that the service will close. The quantity and events are invented to illustrate the decision; they describe no existing brand or Galileo deployment.
+
+The brand's operations lead receives a spreadsheet containing product identifiers and material descriptions. That is a promising start. She takes a sample product, scans its original label and reaches an address controlled by the outgoing supplier. Downloading the spreadsheet has not changed where that label sends the customer.
+
+She also discovers that the spreadsheet contains links to workshop documents, while the documents themselves remain behind the provider's login. Some product histories include corrections, but the export does not explain which entry is current.
+
+Her task now has three parts: recover usable information, preserve the route from the physical product, and establish who can operate the replacement service. Each needs a named owner and evidence. Calling the whole package portable would hide the unanswered questions.
+
+## What the European framework establishes
+
+The [Ecodesign for Sustainable Products Regulation, Articles 9 and 10](https://eur-lex.europa.eu/eli/reg/2024/1781/2024-06-28/eng), links product-specific DPP requirements to delegated acts. It provides for open standards, data exchange between systems without supplier lock-in, and a backup copy made available by the economic operator through a DPP service provider.
+
+[Article 11(e)](https://eur-lex.europa.eu/eli/reg/2024/1781/2024-06-28/eng) requires availability for the specified period, including after insolvency, liquidation or cessation of activity in the Union of the economic operator responsible for creating the passport. That subject matters: the provision does not itself describe an automatic rescue of a failed software supplier.
+
+The contract questions and exercises below are our practical recommendations. Their timings, evidence requests and acceptance decisions are not additional requirements stated in those articles. They help a team investigate how its arrangements would support continuity under the requirements applicable to its products.
+
+## Six things to settle before choosing a provider
+
+### 1. Define a usable export
+
+Ask for a representative export and its documentation during procurement. Include ordinary records and awkward cases: an updated material description, an attachment, a corrected identifier association, and information visible only to an authorised repairer.
+
+For each field, the receiving team should be able to establish its meaning, unit, source and relationship to the product. A column called status needs a documented vocabulary. A date needs an explanation of the event it records. An empty value should be distinguishable from information that was never collected or intentionally withheld.
+
+Check referenced files separately. A list of attachment addresses is insufficient if those addresses stop working when the old account closes. Agree which files are included, how they remain associated with the record and which rights permit their continued use.
+
+Ask the proposed replacement to import the sample and describe what it could not interpret. The useful result is a list of preserved information and unresolved differences, with examples you can inspect.
+
+### 2. Trace the route behind the printed label
+
+Have the provider draw the path from the label to the information a reader sees. A resolver is the service that directs an identifier or address to the appropriate record. Establish who controls each address and resolver in that path.
+
+For a web address, identify who manages the domain name, its renewal and the settings that direct visitors to a server. A brand-controlled domain can give the brand more control over that route. It still needs maintained services, valid access arrangements and a tested mapping to the replacement records.
+
+Ask to see an existing label reach the same product record on the proposed replacement service. The identifier should not silently refer to a different item after migration.
+
+If the printed address belongs exclusively to the outgoing supplier, record the dependency explicitly. Redirection or continued hosting may require its cooperation. A contractual promise helps define responsibilities, but technical control and a functioning handover still need to be demonstrated.
+
+### 3. Preserve permissions along with the information
+
+An export must remain usable by the people entitled to receive it. That does not mean publishing every field to everyone who scans a label.
+
+List the reader groups in your actual service and what each should see. A shopper, workshop and internal administrator may need different information. Include restricted attachments and any personal information in the review with the people responsible for data protection and the relevant contracts.
+
+The replacement should demonstrate both access and refusal. An authorised workshop account should reach the agreed workshop information. A public visitor should remain outside restricted records. Old supplier accounts should lose access when their authority ends.
+
+Avoid copying permissions mechanically without understanding them. An account name in the old system may have no equivalent in the new one. Assign responsibility for mapping roles, approving exceptions and checking the result before the replacement becomes operational.
+
+### 4. Keep the record's meaning and history
+
+A material description, a repair event and an authenticity assessment are different statements. Preserve who supplied each one and what evidence it refers to. Migration should not make an imported statement appear to have been issued or verified by the receiving provider.
+
+Ask how corrections, withdrawn statements and unresolved cases are represented. A replacement display that turns every imported record into a green success message may be easier to build, but it loses information a reader needs.
+
+Where the service uses digital signatures, ask a qualified technical owner how previous signatures and their status will remain verifiable. Historical verification and authority to issue new statements are separate responsibilities. Do not assume that moving data requires handing over an issuer's private signing keys.
+
+For physical authentication, a record export may leave dependencies on a reader, reference library or verification service. Our [material marker and chip trial guide](/blog/2026-09-08-material-marker-or-chip-dpp-binding) provides a separate exercise for that question. Keep its outcome distinct from the ability to recover passport information.
+
+### 5. Make the recovery copy reachable during failure
+
+Ask where the recovery copy is held, who can retrieve it and how often it is updated. Then consider whether those arrangements still work when the original provider's account or support desk is unavailable.
+
+Two copies under the same inaccessible login may share the same practical failure. The same applies to files held elsewhere but encrypted with a key that only the failed provider can release. Review the credentials, encryption arrangements and permissions needed for an authorised recovery.
+
+Agree how much recent work the brand could tolerate losing, and how quickly it needs access restored. Those are service requirements to negotiate for the actual operation. They should not be invented from a generic industry benchmark.
+
+Demonstrate retrieval using the agreed alternative access route. Record the date of the recovered copy and reconcile changes made afterwards. A successful recovery of last month's records does not explain what happened to yesterday's updates.
+
+### 6. Name the people who can complete the handover
+
+The data owner, technical operator and contract contact may be different organisations. Put names, responsibilities and contact routes against each part of the exit.
+
+Ask who can authorise export, change the destination behind a label, supply attachments, approve access and resolve disputed records. Include the proposed replacement and any specialist on which it depends. Obtain agreement on the documentation and assistance each will receive.
+
+Cover an orderly termination and an abrupt loss of service separately. A paid migration service may be useful while the supplier remains operational. Consider what can still be done if its staff are unavailable.
+
+Have the contract reviewed for the actual legal arrangements, including insolvency-related limits. An exit clause cannot by itself establish that personnel, infrastructure or rights will remain available after a supplier fails.
+
+## Rehearse the exit before accepting the service
+
+Use an isolated trial with authorised participants and representative test records. Agree the pass conditions in advance. The exercise below is a proposed method, not a report of a trial already performed.
+
+**Choose a small but varied sample.** Include a current record, one with a correction, a restricted attachment and a reference to an older event. Add a deliberately unresolved case so that reviewers can see whether uncertainty survives the move. Choose the sample size to suit the decision; this guide sets no statistical acceptance threshold.
+
+**Record the starting position.** Keep the sample identifiers, current displays, document versions and permitted actions. Scan the existing test labels and record their destinations. Have an operational colleague explain which information they rely on to answer a customer or workshop request.
+
+**Recover and import.** Use the documented export and the agreed recovery credentials. Have the replacement operator import the information without undocumented assistance. Log missing fields, broken references, unreadable files and permission differences. Successful file transfer is one observation; successful reconstruction is another.
+
+**Remove the old dependency within the trial.** Agree a reversible way to make the original test account or service unavailable. Keep production outside the exercise. Then scan the original test label again, retrieve an older attachment, inspect the correction history and try an authorised update. Verify that a public visitor still cannot open restricted information.
+
+**Explain the result to someone who was not in the room.** Record what remained accessible, what failed, the conditions tested and the changes needed. A colleague should be able to follow the evidence without relying on the supplier's presentation. If a result depends on an untested emergency intervention, leave that dependency open.
+
+Return to the fictional brand with 500,000 labelled products. Suppose its trial recovers the public product descriptions, but workshop files remain inaccessible. The useful decision is to record public-record recovery as demonstrated within the trial and retain the workshop dependency as unresolved. It would be premature to announce a complete exit capability.
+
+The brand can then obtain the missing files or adjust the proposed service before expanding its reliance on it. If the remaining dependency is essential, it can defer acceptance until the next trial resolves it.
+
+## Put the results into the supplier agreement
+
+Ask procurement, operations and the technical owner to maintain one exit schedule attached to the agreement. Use the trial to make each entry concrete:
+
+- **Records and files:** the data, documentation and attachments to be supplied, with formats, versions and permitted uses.
+- **Existing labels:** the addresses and identifiers to preserve, the party controlling each route, and the actions required for handover.
+- **Recovery access:** where the copy is kept, who can retrieve it and how access works if the ordinary account is unavailable.
+- **Service continuity:** the agreed update frequency, recoverable period, restoration target and responsibilities during a transition.
+- **Permissions and evidence:** how reader roles, provenance, corrections and unresolved records are transferred and checked.
+- **Assistance and cost:** the migration tasks, named contacts, response commitments, charges and dependencies on other parties.
+- **Completion:** the acceptance evidence, treatment of retained copies and access removal after a verified handover, subject to applicable retention duties.
+
+Do not leave a critical field at *available on request*. Request the specimen, instruction or agreed commitment while the provider is able to answer. Keep any qualification beside the relevant promise so a future colleague can understand it.
+
+Repeat the exercise when a material dependency changes. A new hosting arrangement, identifier service or export format can change what the previous trial proved. The record should name the configuration that was actually tested.
+
+## If the provider has already announced its departure
+
+Begin by establishing what is still working. Preserve the notice, current contacts, service scope and the latest available records. Record the accounts, domains and services your team is authorised to control.
+
+Request a current export and its documentation while access remains available. Prioritise existing product links and information needed for customer, repair or regulatory operations. Ask colleagues to record any updates made after the export so those changes can be reconciled during the move.
+
+Test a recoverable copy before closing the old account or deleting records. If key files or permissions are missing, make that gap visible to the people deciding when to switch. Avoid describing a partial archive as an operational replacement.
+
+Give customer-facing teams a factual explanation of any interruption: which information is unavailable, what can still be checked and where a query should go. An unavailable passport should not silently become an authenticity verdict. Keep document availability separate from an assessment of the physical item.
+
+Once the replacement has been tested, record who accepted the handover and the remaining limits. Keep the recovery instructions somewhere the operations team can reach without the former provider's account.
+
+## What the registry changes, and what to keep checking
+
+[Commission Implementing Regulation (EU) 2026/1778](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32026R1778), adopted on 16 July 2026, specifies the registry arrangements. Article 3 provides for a software interface, or API, a platform checking passport existence and completeness, and a list of verified DPP service providers. That provision alone does not establish that any particular supplier has been approved. Recital 16 also distinguishes automated registration checks from proof of product compliance.
+
+The [Commission's DPP explanation](https://single-market-economy.ec.europa.eu/single-market/digital-product-passport_en) distinguishes registry information from the complete product information stored by the economic operator or a provider. Registering a passport should therefore not be treated as your demonstrated recovery procedure.
+
+The same page's indicative timeline places further provider requirements in 2027. Product requirements follow their own measures and dates. Recheck the applicable texts when contracting or changing the service; that timetable does not establish a universal 2027 deadline for every luxury product.
+
+## Frequently asked questions
+
+### Will our passports keep working if the provider closes?
+
+That depends on your recoverable records, control of existing links, access permissions and replacement arrangements. Ask for a demonstrated handover before relying on a continuity promise. A contract or export file alone does not demonstrate that customers can still reach the right record.
+
+### Is a spreadsheet export enough to change providers?
+
+It may be one useful component. Check whether it preserves field definitions, units, attachments, record references, versions and the permissions needed for continued service. Then test an import elsewhere and scan an existing product label.
+
+### Can we keep the QR codes already printed on products?
+
+Possibly, if the existing address or identifier can still direct readers to the correct record under the replacement arrangement. Establish who controls that route and demonstrate it. If the failed supplier exclusively controls the printed address, a data export cannot by itself repair the link.
+
+### Does the European DPP registry back up every passport?
+
+Do not treat registration as your recovery copy. The Commission distinguishes registration information from the complete product information held by an economic operator or provider. Your continuity plan should identify where the usable passport copy is held and how an authorised replacement retrieves it.
+
+### What should we test before accepting an exit plan?
+
+Run an authorised trial that recovers representative records, imports them into the replacement and makes the original test service unavailable. Scan the existing labels, retrieve attachments, inspect corrections and check permitted and refused access. Record the tested scope and unresolved dependencies before deciding whether to accept the service.
+
+For a supplier discussion, take one existing product label, a representative export and the proposed exit schedule. Ask the receiving team to show how those pieces become an accessible record. If you are considering Galileo, [read the documentation](/docs) and compare its documented scope with the requirements and evidence your own handover needs.
