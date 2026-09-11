@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-09-11T08:18:53.751Z",
+  "article": "content/blog/2026-09-11-dpp-provider-exit.mdx",
+  "sha256": "626a9aa7f48c0c013f79ca0a67551eb9d23b27430bfab76654f6427001b3a42e",
+  "status": "PASS",
+  "titleCharacters": 52,
+  "descriptionCharacters": 138,
+  "proseWords": 2666,
+  "wordCountMethod": "Whitespace tokens in MDX body, excluding figure",
+  "faqExactMirrors": 5,
+  "published": false,
+  "mdxCompilation": "PASS",
+  "coverExists": true,
+  "noEmDash": true
+}

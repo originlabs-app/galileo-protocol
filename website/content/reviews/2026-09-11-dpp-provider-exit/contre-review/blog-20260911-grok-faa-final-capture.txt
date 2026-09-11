@@ -1,0 +1,110 @@
+  ┌───────────┬───────────────────┐
+  │ Article   │ Verdict           │
+  ├───────────┼───────────────────┤
+  │ Labs      │ PASS (AMRAE clos) │
+  ├───────────┼───────────────────┤
+  │ Education │ PASS              │
+  ├───────────┼───────────────────┤
+  │ Kepler ×3 │ PASS              │
+  ├───────────┼───────────────────┤
+  │ AeroCert  │ PASS              │
+  ├───────────┼───────────────────┤
+  │ Galileo   │ PASS              │
+  └───────────┴───────────────────┘
+
+  Pas de HOLD. Pas de cmux-bridge reply (Ask) ; cb2-20260911T082012Z-ccaf2f04.
+
+                                                                                                  
+  [cmux-bridge] @codex-orch-blog-a49239b8 -> toi : request "AeroCert : contrôle final date        
+  GovInfo volume 2" (th-blog-20260911-review-grok), lis avec: cmux-bridge inbox --unread          
+                                                                                                  
+
+  $ cmux-bridge inbox --unread 691ms
+    … 12 output lines hidden · ctrl+o to expand
+      reply with: cmux-bridge reply cb2-20260911T083614Z-4e8836d3 -f <file>
+
+    Read, grepped 1 file, 1 grep
+    Read ...-a49239b8/cb2-20260911T083614Z-4e8836d3.body.md
+    Grepped "...tion|61\.17|Last-Modified|September 4" in 
+    ...-temporary-pilot-certificate-permanent-delay.md
+
+  $ python3 - <<'PY'
+    import hashlib, pathlib 549ms
+    … 7 input + 1 output lines hidden · ctrl+o to expand
+    match True
+    bytes 20140
+
+  $ python3 - <<'PY'
+    from pathlib import Path 796ms
+    … 51 input + 33 output lines hidden · ctrl+o to expand
+    61.17 in vol1 slice? False
+    61.17 contained after volume ('?', 'Aug. 31, 2026', 3791067)
+
+  $ python3 - <<'PY'
+    from pathlib import Path 384ms
+    … 26 input + 35 output lines hidden · ctrl+o to expand
+    61.17 in first volume slice False
+    part 61 in first volume slice True
+
+  $ cd /Users/pierrebeunardeau/dev/internal/aerocert-co/.worktrees/blog-20260911-faa-temporary-ce
+    rtificate && git rev-parse HEAD && git log -1 --oneline && git diff
+    80edb8fa19d17da9e2cc654d4e4ec15c061c3ab6 --
+    aerocert-frontend/blog/content/faa-temporary-pilot-certificate-permanent-delay.md 687ms
+    80edb8fa19d17da9e2cc654d4e4ec15c061c3ab6
+    80edb8fa docs(blog): use FAA rule volume consolidation date
+
+    Read 2 files
+    Read ...-temporary-pilot-certificate-permanent-delay.md lines 37-44
+    Read ...-temporary-pilot-certificate-permanent-delay.md lines 173-184
+
+  $ python3 - <<'PY'
+    from pathlib import Path 322ms
+    … 23 input + 8 output lines hidden · ctrl+o to expand
+    14:2.0.1.1.2.1.1.14
+    archive mtime 2026-09-11 10:12:44.003561
+
+  VERDICT AeroCert (hash final) : PASS
+
+  Contrôle ciblé seulement. Pas de revue globale. SHA256 du fichier :
+  109752151c6b823fe4581729d56117cb601b6353e96ee03304416d4f865987ae (attendu, 20140 octets).
+  HEAD 80edb8fa déjà sur cette version.
+
+  ────────────────────────────────────────
+
+  XML officiel /tmp/blog-faa-ECFR-title14.xml (source GovInfo title-14, 16 131 803 octets) :
+  cinq <ECFRBRWS> :
+
+  ┌────────┬───────────────────┬──────────────────────────────────┐
+  │ Volume │ AMDDATE           │ § 61.17                          │
+  ├────────┼───────────────────┼──────────────────────────────────┤
+  │ 1      │ July 24, 2026     │ non                              │
+  ├────────┼───────────────────┼──────────────────────────────────┤
+  │ 2      │ Aug. 31, 2026     │ oui (NODE="14:2.0.1.1.2.1.1.14") │
+  ├────────┼───────────────────┼──────────────────────────────────┤
+  │ 3      │ July 31, 2026(fm) │ non                              │
+  ├────────┼───────────────────┼──────────────────────────────────┤
+  │ 4      │ Sept. 3, 2026     │ non                              │
+  ├────────┼───────────────────┼──────────────────────────────────┤
+  │ 5      │ Aug. 17, 2026     │ non                              │
+  └────────┴───────────────────┴──────────────────────────────────┘
+
+  § 61.17 : issued for up to 120 days + les trois événements d’expiration. Absent du volume 1.
+
+  Article (faa-temporary-pilot-certificate-permanent-delay.md:39, :175, :181) : consolidation
+  August 31, 2026, Last-Modified 4 septembre, récupération 11 septembre, réserve « does not
+  establish whether the rule changed after that consolidation date ». Conforme. Pas d’extension
+  de fraîcheur.
+
+  Optional : le texte dit « the GovInfo XML consolidated through August 31 » sans nommer le
+  volume 2. C’est vrai pour la section citée, pas pour les cinq volumes. Pas bloquant.
+
+  Pas de HOLD. cb2-20260911T083614Z-4e8836d3 — Ask, pas de reply fichier.
+
+
+ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+  → Add a follow-up                                                                               
+ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+  Ask (shift+tab to cycle)
+  Cursor Grok 4.6 High · 75.2%                                                     Run Everything
+  ~/dev/internal/origin-site/.worktrees/blog-20260911-assurance-agent-ia · 
+  blog/2026-09-11-assurance-agent-ia

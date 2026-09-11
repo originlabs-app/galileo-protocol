@@ -1,0 +1,320 @@
+
+
+
+    Read, globbed 2 files, 2 globs
+    Read ...r-article-blog/references/editorial-contract.md
+    Read ...0260911-da42-pad-26096/kepler-site/docs/blog.md
+    Globbed "**/*blog*SKILL.md" in ...rktrees/blog-20260911-faa-temporary-certificate
+    Globbed "**/*{blog,editorial}*" in ...dard/.worktrees/blog-20260911-dpp-provider-exit
+
+    WebFetch https://ad.easa.europa.eu/blob/EASA_PAD_26_096.pdf/PAD_26-096_1
+
+
+
+    WebFetch https://usas.faa.gov/faq
+    Error: Error fetching URL, status code: 422 Unprocessable Entity
+
+    WebSearch décret 2026-496 passeport prévention article 2 septembre 2025 décembre formations
+    Found 1 reference
+
+    WebSearch Commission Implementing Regulation (EU) 2026/1778 digital product passport 
+              registry
+    Found 3 references
+
+    WebSearch Code des assurances article L112-3 avenant note de couverture 
+              site:legifrance.gouv.fr
+    Found 3 references
+
+    WebSearch AMRAE Atout Risk Manager n°49 été 2026 responsabilité civile mandataires sociaux 
+              IA
+    Found 1 reference
+
+    WebFetch https://single-market-economy.ec.europa.eu/single-market/digital-product-passport_
+             en
+
+    WebFetch https://www.amrae.fr/atout-risk-manager-ndeg49-ete-2026
+
+    WebFetch https://www.munichre.com/content/dam/munichre/hsb/hsb-iic/documents/hsb-ai-liabili
+             ty-insurance.pdf/_jcr_content/renditions/original./hsb-ai-liability-insurance.pdf
+
+  $ python3 - <<'PY'
+    import hashlib, pathlib 250ms
+    … 40 input + 24 output lines hidden · ctrl+o to expand
+    gal t: 52
+    gal d: 138
+
+
+    WebFetch https://passeport-prevention.travail-emploi.gouv.fr/aide/quelles-sont-mes-obligati
+             ons-en-tant-quemployeur
+
+
+    WebSearch FAA Airmen Certification temporary certificates issued approximately July 2026 
+              processing
+    Found 1 reference
+
+    WebSearch FAA Airmen Certification Branch contact 866-878-2498 405-954-3261 7:30 a.m. 4:00 
+              p.m. Central
+    Found 1 reference
+
+    WebSearch AC 61-143 Change 1 temporary certificate 120 days 10.3.1.2 FAA-EASA conversion
+    Found 4 references
+
+    WebSearch FAA USAS foreign address of record April 2 2025 July 7 2025 agent for service
+    Found 3 references
+
+    Grepped, read 5 greps, 2 files
+    … 4 earlier items hidden
+    Read tool output lines 3010-3069
+    Read tool output lines 255-304
+    Grepped "....1\.2|61\.75|page 19|excludes|Purpose" in tool output
+
+    WebSearch Regulation (EU) 2024/1781 Article 11 digital product passport insolvency 
+              liquidation cessation of activity
+    Found 3 references
+
+    WebFetch https://www.faa.gov/licenses_certificates/airmen_certification
+
+    WebFetch https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02024R1781-20240628
+
+    WebFetch https://passeport-prevention.travail-emploi.gouv.fr/espace-public/aide/quelles-for
+             mations-dois-je-declarer-dans-le-passeport-de-prevention
+
+    Grepped, read, globbed 2 greps, 1 file, 1 glob
+    Grepped "...liance|verified DPP service providers" in tool output
+    Read ...r-article-blog/references/editorial-contract.md
+    Globbed "**/fiche-tri-passeport-prevention-2026*" in 
+    ...n/.worktrees/blog-20260911-passeport-prevention
+    Grepped "Article 3" in tool output
+
+    WebSearch sauvetage secourisme du travail catégorie 3 passeport prévention liste exemples
+    Found 1 reference
+
+    Globbed, grepped, read 1 glob, 1 grep, 1 file
+    Globbed "**/2026-09-08-material-marker*" in 
+    ...dard/.worktrees/blog-20260911-dpp-provider-exit
+    Grepped "...in|Apport Kepler|AeroCert's editorial" in 
+    ...revention-formations-declarer-septembre-2026.md
+    Used cmux-bridge
+
+    WebFetch https://passeport-prevention.travail-emploi.gouv.fr/espace-public/sites/pp/files/2
+             025-12/Simulateur_Liste%20exemples%20cat%C3%A9gories%20formations%20SST.pdf
+
+    WebSearch Passeport prévention catégorie 2 exemples habilitation électrique pyrotechnique 
+              CACES liste officielle
+    Found 1 reference
+
+    Grepped, read 1 grep, 1 file
+    Grepped "Article 3" in tool output
+    Read tool output lines 220-264
+
+  Revue indépendante faite à partir des cinq textes et des sources primaires, sans les rapports
+  auteur. Je n’ai pas pu poster le cmux-bridge reply en mode Ask.
+
+  ────────────────────────────────────────
+
+  VERDICT LOT : 4 PASS, 1 PASS_WITH_FIXES. Pas de HOLD de contenu.
+
+  Méthode : articles + sources citées + vérif web au 11 septembre 2026. Pas lu les reviews
+  auteur ni l’autre reviewer. Builds/rendu hors scope.
+
+  ────────────────────────────────────────
+
+  1. origin-site — assurance-agent-ia-questions-courtier.md — PASS_WITH_FIXES
+
+  SHA256: 0f1128f8e5553ec4281846d479b51a97ecb64659e57850e48a2c7a07c5e2db7f
+
+  Required — AMRAE n°49 p. 23 non relue.
+  assurance-agent-ia-questions-courtier.md:52 affirme une session d’avril sans reco de
+  couverture IA, avec points sur supervision, données biaisées et usages non maîtrisés. La page
+  publique AMRAE n°49 (https://www.amrae.fr/atout-risk-manager-ndeg49-ete-2026) ne donne que 
+  le sommaire (dossier Commission Responsabilités / RCMS). Le magazine n’est pas lisible ici.
+  Correction : joindre un extrait public ou une capture de la p. 23, ou réduire la phrase à ce
+  que le sommaire établit.
+
+  Limite d’accès, pas un finding : Légifrance a renvoyé un challenge Cloudflare. Le fond de
+  L112-3 (avenant + note de couverture) correspond au texte historique ; l’URL datée
+  …/2026-04-27 n’a pas été rouverte.
+
+  Vérifié OK :
+  • Citation France Assureurs : fiche 28/04/2021 (https://www.franceassureurs.fr/lassurance-p
+    rotege-finance-et-emploie/lassurance-protege/lassurance-en-pratique-pour-les-professionne
+    ls/assurance-de-la-responsabilite-civile-de-entreprise/) (« les libellés exacts des
+    garanties varient en fonction des contrats ») ; sous-traitance vs responsabilité
+    personnelle : conforme.
+  • HSB 18/03/2026, partenaires, pas de vente directe, IP limitée à la publicité : communiqué 
+    (https://www.munichre.com/hsb/en/press-and-publications/press-releases/2026/2026-03-18-int
+    roducing-ai-liability-insurance-for-small-businesses.html) + brochure 2026-031 
+    (https://www.munichre.com/content/dam/munichre/hsb/hsb-iic/documents/hsb-ai-liability-insu
+    rance.pdf/_jcr_content/renditions/original./hsb-ai-liability-insurance.pdf). Les 91 % /
+    25–50 k$ ne sont pas repris. Bon.
+  • Scénarios, grille et message clairement fictifs / méthode Origin. Pas de conseil «
+    achetez X ». **Apport Origin :** présent. seoTitle 48 c.
+
+  ────────────────────────────────────────
+
+  2. origin-education — passeport-prevention-formations-declarer-septembre-2026.md — PASS
+
+  SHA256: 27d3b704327155587f84fa3ca032f7aa3bfb3477a1481b3e4a2f1b64e0397320
+
+  La réserve décret / portail sur oct.–déc. 2025 est réelle et bien cadrée.
+
+  Vérifié OK :
+  • OF, T1 2026 = 31 mars + 6 mois = 30 sept. ; cat. 1–2 jusqu’au 30 juin, 4 cat. au 1er
+    juillet : FAQ OF (https://passeport-prevention.travail-emploi.gouv.fr/aide/quelles-sont-m
+    es-obligations-en-tant-quorganisme-de-formation).
+  • Portail (FAQ OF + actualité 15/06/2026 (https://passeport-prevention.travail-emploi.gouv.f
+    r/actualites/actualites-dans-le-deploiement-du-passeport-de-prevention)) : sept.–déc. 2025
+    à déclarer au 30 sept. 2026. Synthèses du décret 2026-496 
+    (https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054245439) : la dérogation nomme sept.
+    2025, pas oct.–déc. Légifrance consolidé 14/06 bloqué (Cloudflare) ; le JORF et les
+    lecteurs juridiques concordent. La reco « traiter sans garantir l’absence de retard » est
+    la bonne.
+  • Employeur : 9 mois, 16–31 mars 2026 jusqu’au 31 mars 2027 inclus, 4 cat. au 01/01/2027,
+    déclaration subsidiaire à partir de l’expiration du délai OF : FAQ employeur 
+    (https://passeport-prevention.travail-emploi.gouv.fr/aide/quelles-sont-mes-obligations-en
+    -tant-quemployeur).
+  • SST sauveteur = cat. 3 ; « certaines conduites d’engins » en cat. 2 (CACES) : liste 
+    13/11/2025 (https://passeport-prevention.travail-emploi.gouv.fr/espace-public/sites/pp/fi
+    les/2025-12/Simulateur_Liste%20exemples%20cat%C3%A9gories%20formations%20SST.pdf).
+  • Donneur d’ordre / sous-traitant : citation exacte de la FAQ éligibilité 
+    (https://passeport-prevention.travail-emploi.gouv.fr/espace-public/aide/quelles-formation
+    s-dois-je-declarer-dans-le-passeport-de-prevention).
+  • Cas pratique fictif, fiche Origin, pas de verdict de conformité.
+
+  Optional : le dictionnaire OF (https://passeport-prevention.travail-emploi.gouv.fr/espace-pub
+  lic/sites/pp/files/2025-04/20250313_PREV_Dictionnaire%20des%20donn%C3%A9es.pdf) n’a pas été
+  ouvert ici ; la distinction attestation / justificatif est déjà dans les FAQ.
+
+  ────────────────────────────────────────
+
+  3. kepler-aviation — da42-pad-26-096-maintenance-dossier.{fr,en,de}.mdx — PASS
+
+  SHA256
+  FR f17ee8aedf2d7b2da907e438fc8c7bbb01cebf4f94c4369d608dc6f324f62e87
+  EN 9649d6fb428ea967827921ec956db618205b21a140e7d8cee66c92fe4cdcf41e
+  DE 6a6d3c92f800079559f5700f96fcb97e141c0f0786b2f57c7e247b7920b85c0a
+
+  Vérifié OK (PAD + fiche EASA (https://ad.easa.europa.eu/ad/26-096) + PDF 
+  (https://ad.easa.europa.eu/blob/EASA_PAD_26_096.pdf/PAD_26-096_1)) :
+  • Projet, 24/08/2026, consultation au 21/09/2026, date d’effet TBD.
+  • DA 42 / M / NG / M-NG, tous S/N ; actions selon modèle/configuration.
+  • Ch. 04 déjà obligatoire ; ne pas attendre l’AD.
+  • §1 remplacement dès date d’effet ; §3 AMP sous 12 mois après date d’effet — pas depuis le
+    24 août.
+  • Vérin / gas spring / Gasfeder : limite citée, sans valeur numérique.
+  • AMM 7.02.01 R6 17/03/2025 ; AMM 7.02.15 R6 12/05/2025 ; MSB 42-152 / 42NG-100 04/08/2026
+    ; AMM-TR-MÄM 42-1368 02/02/2026. Umlaut MÄM conforme au PDF (la page HTML EASA a aplati
+    en MAM).
+  • FR/EN/DE alignés (dates, modèles, §, liens internes localisés, FAQ). Titres 53/46/52 c. ;
+    descriptions 144/152/138 c.
+  • Fiche = méthode Kepler, pas une preuve de navigabilité. Cas facture clairement fictif.
+
+  Nit : « §3, page 3 » : le fond est bon ; le n° de page PDF n’a pas été recompté à la main.
+
+  ────────────────────────────────────────
+
+  4. aerocert-co — faa-temporary-pilot-certificate-permanent-delay.md — PASS
+
+  SHA256: ce7c1c03001b8f1d975533c59419419373d528e4473ef9ca3e2a505a6ba8f582
+
+  Vérifié OK :
+  • 14 CFR 61.17 (https://www.ecfr.gov/current/title-14/chapter-I/subchapter-D/part-61/subpar
+    t-A/section-61.17) : jusqu’à 120 jours ; 3 événements d’expiration. Un retard de carte
+    n’étend pas le temporaire.
+  • Traitement live au 11/09/2026 : « approximately July 29, 2026 » sur Airmen Certification 
+    (https://www.faa.gov/licenses_certificates/airmen_certification). Conforme. (Un snippet
+    de recherche disait July 17 ; la page live dit 29.)
+  • Tél. 866-878-2498 / 405-954-3261, 7h30–16h CT : contact (https://www.faa.gov/licenses_cer
+    tificates/airmen_certification/contact_airmen_certification).
+  • AC 61-143 CHG 1 
+    (https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_61-143_CHG_1.pdf) :
+    périmètre ≠ 61.75 ; 10.3.1.2 (temporaire plus valable après 120 j) ; 10.3.2.1 (adresse
+    8710-1).
+  • USAS : adresse étrangère + pas d’adresse US + Part 61 ; pas la nationalité ; 02/04/2025
+    candidats, 07/07/2025 titulaires : FAQ USAS (https://usas.faa.gov/faq) (fetch 422 ; 
+    contenu recoupé via la FAQ et le Federal Register).
+  • Cas Alex fictif. AeroCert ne délivre pas de certificat FAA. École : un screenshot
+    n’autorise pas le vol.
+
+  Optional : IACRA FAQ et « printed page 19 » de l’AC non recomptés. Le fond 10.3.1.2 est bon.
+  La page USAS n’a pas été ouverte (422).
+
+  ────────────────────────────────────────
+
+  5. galileo — 2026-09-11-dpp-provider-exit.mdx — PASS
+
+  SHA256: 626a9aa7f48c0c013f79ca0a67551eb9d23b27430bfab76654f6427001b3a42e
+
+  Vérifié OK :
+  • IR (EU) 2026/1778 
+    (https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202601778) 16/07/2026 :
+    structure du registre = API, plateforme d’existence/complétude, liste de prestataires
+    vérifiés. Recital 16 : vérif auto ≠ preuve de conformité produit.
+  • Page Commission DPP 
+    (https://single-market-economy.ec.europa.eu/single-market/digital-product-passport_en) :
+    registre ≠ copie complète ; exigences prestataires plutôt 2027 ; calendrier indicatif,
+    pas un délai luxe universel. Conforme.
+  • Art. 11(e) ESPR (insolvabilité / cessation de l’opérateur économique, pas un sauvetage
+    auto du logiciel) : HTML EUR-Lex 2024/1781 bloqué (JS) ; lectures secondaires alignées
+    (spilma (https://www.spilma.com/en/guides/espr-sustainable-products-regulation), 
+    qrregistry (https://qrregistry.io/compliance/library/espr-explained-for-smes)). L’article 
+    ne survend pas Galileo.
+  • 500 000 labels = exemple inventé. Essai = méthode, pas un essai déjà fait.
+
+  Optional : « software interface, or API » comprime le site + l’API de l’art. 3. published: 
+  false = brouillon local, pas un finding de fond.
+
+  ────────────────────────────────────────
+
+  Limites d’accès (non lues, pas inventées)
+
+  ┌──────────────────────────────────────────────────────┬────────────────────────────┐
+  │ Source                                               │ Statut                     │
+  ├──────────────────────────────────────────────────────┼────────────────────────────┤
+  │ Légifrance L112-3 daté + décret consolidé 14/06/2026 │ Cloudflare                 │
+  ├──────────────────────────────────────────────────────┼────────────────────────────┤
+  │ AMRAE n°49 p. 23                                     │ Sommaire seulement         │
+  ├──────────────────────────────────────────────────────┼────────────────────────────┤
+  │ usas.faa.gov/faq                                     │ HTTP 422 (contenu recoupé) │
+  ├──────────────────────────────────────────────────────┼────────────────────────────┤
+  │ EUR-Lex HTML 2024/1781                               │ Challenge JS               │
+  ├──────────────────────────────────────────────────────┼────────────────────────────┤
+  │ Dictionnaire OF PDF                                  │ Non ouvert                 │
+  ├──────────────────────────────────────────────────────┼────────────────────────────┤
+  │ IACRA FAQ                                            │ Non relue ligne à ligne    │
+  └──────────────────────────────────────────────────────┴────────────────────────────┘
+
+  ────────────────────────────────────────
+
+  Synthèse
+
+  ┌────────────────────────────────────┬───────────────────────────────┐
+  │ Article                            │ Verdict                       │
+  ├────────────────────────────────────┼───────────────────────────────┤
+  │ Labs assurance courtier            │ PASS_WITH_FIXES (AMRAE p. 23) │
+  ├────────────────────────────────────┼───────────────────────────────┤
+  │ Education passeport prévention     │ PASS                          │
+  ├────────────────────────────────────┼───────────────────────────────┤
+  │ Kepler DA42 PAD 26-096 (3 locales) │ PASS                          │
+  ├────────────────────────────────────┼───────────────────────────────┤
+  │ AeroCert FAA temporary             │ PASS                          │
+  ├────────────────────────────────────┼───────────────────────────────┤
+  │ Galileo DPP provider exit          │ PASS                          │
+  └────────────────────────────────────┴───────────────────────────────┘
+
+  Pas de conseil dangereux, pas de montant inventé, traductions Kepler alignées, exemples
+  fictifs marqués, claims produit modestes.
+
+  ────────────────────────────────────────
+
+  Je suis en mode Ask : cmux-bridge reply cb2-20260911T081136Z-13136b66 n’a pas été envoyé.
+  Passe en mode Agent si tu veux que je poste ce corps tel quel.
+
+
+ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+  → Add a follow-up                                                                               
+ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+  Ask (shift+tab to cycle)
+  Cursor Grok 4.6 High · 64.1%                                                     Run Everything
+  ~/dev/internal/origin-site/.worktrees/blog-20260911-assurance-agent-ia · 
+  blog/2026-09-11-assurance-agent-ia
