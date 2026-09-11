@@ -1,0 +1,140 @@
+    1139:<HEAD>§ 3.405   Incorrect statement or omission</HEAD>
+    1160:<HEAD>PART 5—SAFETY MANAGEMENT SYSTEMS
+
+  $ curl -sL -A 'Mozilla/5.0' 'https://www.govinfo.gov/bulkdata/ECFR/title-14/ECFR-title14.xml' |
+    rg -n 'DIV8.*61.17|Temporary certificate|issued for up to 120 days|expiration date shown on
+    the certificate' | head -20 7.4s
+    … 7 output lines hidden · ctrl+o to expand
+    93527:<HEAD>§ 107.64   Temporary certificate.</HEAD>
+    93532:<P>(1) On the expiration date shown on the certificate;
+
+  $ cd
+    /Users/pierrebeunardeau/dev/internal/origin-site/.worktrees/blog-20260911-assurance-agent-ia
+    && git diff --stat -- content/blog/assurance-agent-ia-questions-courtier.md && echo '====
+    LABS DIFF ====' && git diff -- content/blog/assurance-agent-ia-questions-courtier.md | head
+    -80 194ms
+    … 77 output lines hidden · ctrl+o to expand
+     Nous recommandons de le rouvrir lorsque l'usage décrit change : nouveau type d'action, accè…
+     
+
+  $ cd /Users/pierrebeunardeau/dev/internal/origin-education/.worktrees/blog-20260911-passeport-p
+    revention && git diff --stat --
+    site/src/content/blog/passeport-prevention-formations-declarer-septembre-2026.md && echo
+    '==== EDU DIFF ====' && git diff --
+    site/src/content/blog/passeport-prevention-formations-declarer-septembre-2026.md | head -80
+    160ms
+    ==== EDU DIFF ====
+
+  $ cd /Users/pierrebeunardeau/dev/internal/aerocert-co/.worktrees/blog-20260911-faa-temporary-ce
+    rtificate && git diff --
+    aerocert-frontend/blog/content/faa-temporary-pilot-certificate-permanent-delay.md 144ms
+
+  $ python3 - <<'PY'
+    print(len("Agent IA : quelle assurance couvre ses erreurs ?")) 218ms
+    … 2 input lines hidden · ctrl+o to expand
+    48
+    edu bytes 37932
+
+  VERDICT : finding AMRAE clos. Lot PASS sur les cinq fichiers actuels.
+
+  Relu la source AMRAE, pas les autres reviews. Capturé à l’écran seulement.
+
+  ────────────────────────────────────────
+
+  AMRAE — PASS (finding clos)
+
+  La page publique Atout Risk Manager n°49 
+  (https://www.amrae.fr/atout-risk-manager-ndeg49-ete-2026) contient bien le texte intégral.
+  Recherche affirmative dans le HTML.
+
+  Passage lu (GT4 RCMS, session avril 2026, Sandrine Turpault) :
+
+  │ Il n’est pas ressorti de recommandation en matière d’affirmative cover ou d’ajout de 
+    définitions supplémentaires (IA, données). En revanche, des points d’attention ont été mis
+    en avant […] supervision humaine intégrée (Human in the loop), données d’entraînement 
+    biaisées, shadow IA (usage invisible de l'IA), utilisation illégale, violation du droit 
+    d’auteur.
+
+  Le paragraphe Labs (assurance-agent-ia-questions-courtier.md:52) reste une paraphrase fidèle,
+  bornée à ce groupe et à cette session. Pas de claim de doctrine générale. Le finding d’accès
+  de la première revue était une limite du fetch, pas une invention.
+
+  Optional : l’article dit « couverture explicitement dédiée à l’IA » pour affirmative cover,
+  et « usages non maîtrisés » pour shadow IA / usage illégal. Acceptable. La page web n’est pas
+  paginée ; « page 23 » n’est pas recomptee ici.
+
+  ────────────────────────────────────────
+
+  Corrections d’auteur
+
+  AeroCert — PASS. Repli CFR 2025 remplacé par le bulk GovInfo. Vérifié le 11/09/2026 :
+  • XML : <AMDDATE>July 24, 2026</AMDDATE>
+  • Last-Modified: Fri, 04 Sep 2026 20:32:50 GMT
+  • § 61.17 : issued for up to 120 days + les trois événements d’expiration
+
+  L’article date la consolidation au 24 juillet, la modification fichier au 4 septembre, et dit
+  explicitement que cela ne prouve pas l’absence de changement après le 24 juillet. Pas
+  d’extension de fraîcheur.
+
+  Labs : titre aligné sur le seoTitle (48 c.) + espaces insécables avant ?. Le fond AMRAE n’a
+  pas bougé.
+
+  Education : hash changé (typo) ; Kepler et Galileo inchangés.
+
+  ────────────────────────────────────────
+
+  SHA256 finaux
+
+  ┌──────────────────────────────────────────┬────────────────────────────────────────────────┐
+  │ Fichier                                  │ SHA256                                         │
+  ├──────────────────────────────────────────┼────────────────────────────────────────────────┤
+  │ assurance-agent-ia-questions-courtier.md │ 6dcf1be56e9192f84b9356a900b04b7c07e65ae1892fb3 │
+  │                                          │ cc4c7b73c8628f2dc2                             │
+  ├──────────────────────────────────────────┼────────────────────────────────────────────────┤
+  │ passeport-prevention-formations-declarer │ 02b25851d6c49520d5ed2f5692fe580c9679f2b8a597db │
+  │ -septembre-2026.md                       │ 980755acee366e5ed4                             │
+  ├──────────────────────────────────────────┼────────────────────────────────────────────────┤
+  │ da42-pad-26-096-maintenance-dossier.fr.m │ f17ee8aedf2d7b2da907e438fc8c7bbb01cebf4f94c436 │
+  │ dx                                       │ 9d608dc6f324f62e87                             │
+  ├──────────────────────────────────────────┼────────────────────────────────────────────────┤
+  │ da42-pad-26-096-maintenance-dossier.en.m │ 9649d6fb428ea967827921ec956db618205b21a140e7d8 │
+  │ dx                                       │ cee66c92fe4cdcf41e                             │
+  ├──────────────────────────────────────────┼────────────────────────────────────────────────┤
+  │ da42-pad-26-096-maintenance-dossier.de.m │ 6a6d3c92f800079559f5700f96fcb97e141c0f0786b2f5 │
+  │ dx                                       │ 7c7e247b7920b85c0a                             │
+  ├──────────────────────────────────────────┼────────────────────────────────────────────────┤
+  │ faa-temporary-pilot-certificate-permanen │ 0718b857c8ce63762591a33b27099b36f78f989eefb251 │
+  │ t-delay.md                               │ 01ec793d78eeb5936c                             │
+  ├──────────────────────────────────────────┼────────────────────────────────────────────────┤
+  │ 2026-09-11-dpp-provider-exit.mdx         │ 626a9aa7f48c0c013f79ca0a67551eb9d23b27430bfab7 │
+  │                                          │ 6654f6427001b3a42e                             │
+  └──────────────────────────────────────────┴────────────────────────────────────────────────┘
+
+  Kepler FR/EN/DE et Galileo : mêmes hashes que la première revue.
+
+  ────────────────────────────────────────
+
+  ┌───────────┬───────────────────┐
+  │ Article   │ Verdict           │
+  ├───────────┼───────────────────┤
+  │ Labs      │ PASS (AMRAE clos) │
+  ├───────────┼───────────────────┤
+  │ Education │ PASS              │
+  ├───────────┼───────────────────┤
+  │ Kepler ×3 │ PASS              │
+  ├───────────┼───────────────────┤
+  │ AeroCert  │ PASS              │
+  ├───────────┼───────────────────┤
+  │ Galileo   │ PASS              │
+  └───────────┴───────────────────┘
+
+  Pas de HOLD. Pas de cmux-bridge reply (Ask) ; cb2-20260911T082012Z-ccaf2f04.
+
+
+ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+  → Add a follow-up                                                                               
+ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+  Ask (shift+tab to cycle)
+  Cursor Grok 4.6 High · 72.4%                                                     Run Everything
+  ~/dev/internal/origin-site/.worktrees/blog-20260911-assurance-agent-ia · 
+  blog/2026-09-11-assurance-agent-ia
