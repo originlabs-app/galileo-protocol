@@ -226,8 +226,9 @@ export function Footer() {
             {/* Protocol */}
             <div>
               <h3
-                className="text-[10px] tracking-[0.3em] uppercase mb-6"
+                className="tracking-[0.3em] uppercase mb-6"
                 style={{
+                  fontSize: "10px",
                   background:
                     "linear-gradient(180deg, #00FFFF 0%, #00FF88 100%)",
                   WebkitBackgroundClip: "text",
@@ -276,8 +277,9 @@ export function Footer() {
             {/* Explore */}
             <div>
               <h3
-                className="text-[10px] tracking-[0.3em] uppercase mb-6"
+                className="tracking-[0.3em] uppercase mb-6"
                 style={{
+                  fontSize: "10px",
                   background:
                     "linear-gradient(180deg, #00FFFF 0%, #00FF88 100%)",
                   WebkitBackgroundClip: "text",
@@ -318,8 +320,9 @@ export function Footer() {
             {/* Company */}
             <div>
               <h3
-                className="text-[10px] tracking-[0.3em] uppercase mb-6"
+                className="tracking-[0.3em] uppercase mb-6"
                 style={{
+                  fontSize: "10px",
                   background:
                     "linear-gradient(180deg, #00FFFF 0%, #00FF88 100%)",
                   WebkitBackgroundClip: "text",
