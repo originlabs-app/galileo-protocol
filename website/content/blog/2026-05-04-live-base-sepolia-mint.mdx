@@ -1,58 +1,53 @@
 ---
-title: "Live Base Sepolia Mint Verified"
-date: "2026-05-04"
-author: "Galileo Core Team"
-excerpt: "Galileo has verified a live constructor-path mint on Base Sepolia and aligned the public roadmap around the remaining identity role administration before full API-driven minting."
-description: "Galileo verified a live constructor-path mint on Base Sepolia and aligned its public roadmap around identity role administration before API-driven minting."
+title: 'Galileo''s Base Sepolia Mint: What the Record Proves'
+date: '2026-05-04'
+author: Galileo Core Team
+excerpt: >-
+  A successful Base Sepolia transaction records Galileo's test-network mint. See
+  what the receipt proves and what remains outside that evidence.
+description: >-
+  A successful Base Sepolia transaction records Galileo's test-network mint. See
+  what the receipt proves and what remains outside that evidence.
 tags:
   - release
   - blockchain
   - base
   - open-source
 published: true
+modified: '2026-09-12'
+faq:
+  - question: Was this a production sale of a physical product?
+    answer: >-
+      No. The cited transaction is on Base Sepolia, a test network. It records
+      contract creation and token issuance, not a sale, physical authentication
+      or a complete customer journey.
 ---
+Galileo verified a token issuance on **Base Sepolia, a blockchain test network**. The public transaction records the creation of a contract and an issuance during that creation; it does not establish a complete API-driven product journey.
 
-## Live Mint Evidence
+## The transaction to inspect
 
-Galileo has now verified a real Base Sepolia mint against the deployed ERC-3643 contract set. This confirms that the deployed token can mint on-chain and that the public deployment manifest is aligned with the current testnet state.
+The [Base Sepolia transaction](https://sepolia.basescan.org/tx/0x9cca203f8c3d988ac79bd5ea5c17cfd23a76d0d1393f32e0fb0f82875ccbc026) identifies the operation reported in this May milestone. Its receipt has a successful status and a Transfer event from the zero address, the event used here to record issuance.
 
-Public evidence:
+The contract was created at address `0x11ef46e76ae5fbd0b14e29ac7b1fd93ad5ea01f9`. Issuing during contract creation is sometimes called a constructor-path mint. It proves that this particular operation completed on the test network.
 
-- **Minting wallet:** `0xf9e9633D6f23dEa639B64c5A16b5BB22636599B9`
-- **GalileoToken:** `0x11ef46e76ae5fbd0b14e29ac7b1fd93ad5ea01f9`
-- **GalileoCompliance:** `0x688e071B5C7C09c7A9aA6fF0fdd204AD8a7a95Ee`
-- **Mint transaction:** [`0x9cca203f8c3d988ac79bd5ea5c17cfd23a76d0d1393f32e0fb0f82875ccbc026`](https://sepolia.basescan.org/tx/0x9cca203f8c3d988ac79bd5ea5c17cfd23a76d0d1393f32e0fb0f82875ccbc026)
+A reader can use the receipt to distinguish an executed transaction from a planned feature. It says nothing on its own about the authenticity, ownership or condition of a physical object.
 
-The current verified path is intentionally narrow: it proves the on-chain minting capability before expanding the dashboard/API workflow into a full role-gated production flow.
+## What remains a separate demonstration
 
----
+Creating a product through an application involves more than sending this transaction. The application must establish the caller's permissions, apply the intended product rules and return a record that the recipient can use.
 
-## What Remains Before Full API Minting
+The [project changelog](https://github.com/originlabs-app/galileo-protocol/blob/main/CHANGELOG.md) distinguishes this milestone from the remaining identity-role administration needed for the full API-driven flow. That distinction matters when evaluating the system: a successful low-level operation is evidence for one part of the journey.
 
-The next blockchain gate is identity role administration. Operators still need to grant the minting wallet the minimum roles required to operate the identity infrastructure:
+For example, a fictional brand could use a test record to explore how a product identifier appears in a scanner. Before using the same process commercially, it would also need to demonstrate who may create the record, how errors are corrected and how the identifier remains associated with the physical product.
 
-- `REGISTRY_ADMIN_ROLE` on `GalileoTrustedIssuersRegistry`
-- `AGENT_ROLE` on `GalileoIdentityRegistry`
+## Use the evidence at its proper scope
 
-Once these grants are executed, the identity setup can be re-run from the minting wallet and the API path can move from simulated minting to a real, compliance-checked Base Sepolia transaction.
+Keep the transaction as a reproducible technical milestone. Ask for a separate demonstration of any wider workflow on which your business intends to rely.
 
----
+## Frequently asked questions
 
-## Public Repository Hygiene
+### Was this a production sale of a physical product?
 
-The open-source readiness pass is complete. The repository documentation now separates public evidence from private operator material:
+No. The cited transaction is on Base Sepolia, a test network. It records contract creation and token issuance, not a sale, physical authentication or a complete customer journey.
 
-- Public addresses, contract addresses, and transaction hashes are documented.
-- Local environment files remain ignored by Git.
-- Mnemonics and private keys are not documented in the website, roadmap, changelog, or Git-tracked files.
-- Wallet recovery material must stay in an offline backup or password manager, never in a prompt, chat, public note, or repository file.
-
-This keeps the project useful for public review without exposing operational secrets.
-
----
-
-## Next Milestones
-
-The immediate roadmap is now focused on finishing role administration, running the full API-driven mint, and validating the product flow in a browser from dashboard creation through QR scanner verification.
-
-After that, the next larger product goal is enterprise readiness: multi-tenant workspace hardening, webhook delivery history, richer audit exports, API key management, and a clearer brand onboarding path.
+The [Galileo documentation](/docs) provides the next starting point for understanding product records, identity and supported interfaces.

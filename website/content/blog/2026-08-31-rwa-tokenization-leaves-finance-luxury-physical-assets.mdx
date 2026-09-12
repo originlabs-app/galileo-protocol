@@ -1,10 +1,14 @@
 ---
-title: "From T-Bills to Handbags: Tokenization Leaves Finance"
-date: "2026-08-31"
-modified: "2026-09-04"
-author: "Pierre Beunardeau"
-excerpt: "On 3 September 2026 Beezie and The Luxury Closet announced Solana tokens for authenticated pre-owned luxury. Coinbase had already put US equities on Base. A token, a vault, a reseller check and a maison proof are four layers. Hermès is not a party to the deal."
-description: "Beezie and The Luxury Closet announced Solana tokens for resale luxury on 3 September 2026. Token, vault, reseller check and maison proof are distinct."
+title: 'From Shares to Handbags: What a Token Really Gives You'
+date: '2026-08-31'
+modified: '2026-09-12'
+author: Pierre Beunardeau
+excerpt: >-
+  Compare tokenized shares with Beezie's announced luxury marketplace. Check the
+  holder's rights, stored item, redemption terms and authentication.
+description: >-
+  Compare tokenized shares with Beezie's announced luxury marketplace. Check the
+  holder's rights, stored item, redemption terms and authentication.
 tags:
   - rwa
   - tokenization
@@ -12,212 +16,77 @@ tags:
   - provenance
   - regulation
 published: true
-coverImage: "/images/blog/rwa-tokenization-leaves-finance-luxury-physical-assets.jpg"
-coverImageAlt: "A black leather luxury handbag on a dark obsidian surface, a translucent cyan holographic coin dissolving into luminous particles that flow toward the bag, tech-noir editorial illustration"
+coverImage: /images/blog/rwa-tokenization-leaves-finance-luxury-physical-assets.jpg
+coverImageAlt: A black handbag beside an illustrated cyan ring dissolving into particles
 faq:
-  - question: "Did Coinbase really put US stocks on a blockchain?"
-    answer: "Yes. On 24 August 2026, Coinbase launched Tokenized Stocks on its Base network for eligible users outside the United States. The tokens — NVDAc, METAc, AAPLc, GOOGLc and others — are real equity securities issued under Base's B20 standard. Each is backed 1:1 by a share held in regulated custody with Alpaca under the Abu Dhabi Global Market framework. Chainlink supplies the official price feeds that let DeFi protocols accept them as collateral."
-  - question: "How large had the tokenized RWA market become by mid-2026?"
-    answer: "No single end-of-August total is used here because live dashboards are dynamic and methodologies differ. Reproducible dated benchmarks put the market in the same range. a16z crypto reported more than $30 billion on 8 May and near $34 billion excluding stablecoins on 22 May. The Stobox mid-year report counted $33.5 billion excluding stablecoins on 10 July. These figures establish the scale without pretending to a live point estimate."
-  - question: "Is a tokenized stock the same thing as a tokenized handbag?"
-    answer: "No, and the distinction is regulatory before it is technical. A tokenized stock is a financial instrument because of the rights it carries: in the EU it lives under securities law, MiFID II, with KYC, custody and prospectus duties. The DLT Pilot Regime is an authorization-based framework for DLT market infrastructures, not an automatic rulebook. A token linked to a physical luxury good is product data: authenticity, provenance, ownership. That layer is governed by the ESPR's Digital Product Passport framework, not by securities law. Mixing the two rulebooks is the classic tokenization mistake."
-  - question: "Is anyone in luxury already tokenizing physical products?"
-    answer: "Yes, on two different models. Maisons and their consortia ship brand-operated passports (Aura with LVMH maisons and Tod's; Renoon QR layers). Separately, on 3 September 2026 Beezie and The Luxury Closet announced Solana tokens for authenticated pre-owned goods. That is a reseller token with third-party authentication and vault custody. It is not a manufacturer-issued proof, and Hermès is not a party to the announcement."
-  - question: "Did Hermès partner with Beezie on 3 September 2026?"
-    answer: "No source published that day names Hermès as a contracting party. The joint Beezie and The Luxury Closet release lists an Hermès Birkin 40 among celebration inventory: a pre-owned item to be sourced and vetted by The Luxury Closet, then tokenized. Naming a bag is not a maison partnership."
-  - question: "Does a Solana token prove a bag is genuine from the maison?"
-    answer: "No. A token records an on-chain claim. Custody is where the object sits. Third-party authentication is The Luxury Closet's in-house check, as the companies describe it. Manufacturer-issued proof would be a signature from the maison itself. The 3 September announcement establishes the first three layers as their own stack. It does not establish the fourth."
-  - question: "What would tokenization change for a physical luxury good?"
-    answer: "It would make the proof portable. Item-level identity signed once by the maison, verifiable by anyone at the moment of a transaction, transferable to the buyer with ownership, and silent about who holds it. Authenticity and provenance would travel with the watch or the bag instead of being re-established through the brand at every resale."
+  - question: Was Beezie's luxury activation already launched on 3 September?
+    answer: >-
+      The 3 September 2026 release announced the partnership and described the
+      luxury activation as launching in late 2026. An announcement is not
+      evidence that the complete service was already operating.
+  - question: Does a quoted swap value of up to 92% guarantee a minimum return?
+    answer: >-
+      No. Beezie's release refers to up to 92% of fair market value. That is not
+      a guaranteed minimum or a promise to recover 92% of the purchase price.
+      The valuation and applicable terms need checking.
+  - question: Does one B20 token always equal one underlying share?
+    answer: >-
+      No. Base's documentation says to apply the current multiplier when
+      converting token units to underlying shares. Corporate actions can change
+      that relationship without changing the raw token balance.
 ---
+A token can represent rights in a financial asset or rights connected to a stored physical item. Before buying, establish exactly what the holder can claim, who must fulfil it and how the underlying asset is checked.
 
-The last week of August 2026 settled one question: tokenization works for finance, at scale, under regulated custody. On 3 September 2026, Beezie and The Luxury Closet put authenticated pre-owned luxury on Solana as tokens, which is not a manufacturer-issued proof.
+Recent tokenized-share services and Beezie's announced luxury marketplace illustrate different arrangements. They should not be treated as interchangeable because both use a blockchain.
 
-On 24 August, Coinbase put US equities on its Base blockchain, after dated May and July benchmarks had placed the tokenized real-world asset market above $30 billion. What that week did not settle is the other half of the story: the physical object. The watch, the handbag, the piece of jewelry: assets whose value events are not dividends but authenticity, provenance and resale. That is where tokenization has yet to leave finance.
+**Updated 12 September 2026:** this article retains its original August publication date and includes the Beezie partnership announced on 3 September.
 
-This is an analysis, not a news dispatch. The Coinbase hook is a week old, and the pattern it reveals will outlive the week.
+## What Beezie and The Luxury Closet announced
 
-*Update of 4 September 2026: Beezie and The Luxury Closet announced a Solana listing for authenticated pre-owned luxury on 3 September. The case is integrated below. It does not change the finance milestone of 24 August, and no published source that day names Hermès as a party to the deal.*
+The [3 September 2026 release issued by Beezie](https://www.globenewswire.com/news-release/2026/09/03/3355924/0/en/beezie-and-the-luxury-closet-launch-on-chain-marketplace-for-authenticated-luxury-goods.html) describes luxury goods sourced and checked by The Luxury Closet, represented on Solana and held in vault storage. It schedules the luxury activation for **late 2026**, initially through blind shopping bags whose contents are revealed after opening.
 
-## The week tokenization put stocks on-chain
+The release mentions swaps for **up to 92% of fair market value**. This is not a guaranteed minimum, nor a promise to recover that percentage of the original purchase price. A participant would need the valuation method, fees, eligibility and terms before relying on a proposed exit value.
 
-On Monday 24 August 2026, [Coinbase launched Tokenized Stocks on Base](https://www.nasdaq.com/press-release/coinbase-selects-chainlink-bring-new-tokenized-stocks-millions-defi-users-2026-08-24), for eligible users outside the United States. The structure deserves a careful read. It is the most regulated version of tokenization yet shipped by a major exchange.
+These are the companies' announced plans and service claims. Naming designer items in the inventory does not establish that their manufacturers participate in the partnership.
 
-- **Real securities, not derivatives.** Each token — NVDAc, METAc, AAPLc, GOOGLc and others — is backed 1:1 by an underlying share. The holder has a direct claim on that share.
-- **Regulated custody.** Shares sit with Alpaca, a regulated broker-custodian, in a bankruptcy-remote structure under the Abu Dhabi Global Market (ADGM) framework.
-- **A purpose-built standard.** The tokens are issued under [B20, Base's native token standard](https://docs.base.org/base-chain/specs/reference/b20/tokenized-stocks-on-base) — an ERC-20 extension designed for real-world assets, with corporate-action multipliers, allowlist and blocklist policies, and KYC enforced at mint and redeem by authorized participants. Secondary trading itself is permissionless.
-- **Institutional market data.** Chainlink is the official oracle, streaming continuous pricing so DeFi lending markets and exchanges can treat the tokens as composable collateral.
+## A tokenized share has a different underlying claim
 
-Within days, coverage framed the launch as the convergence of traditional markets and on-chain finance. Galaxy Research noted the asymmetry on 28 August: [the tokens are live; the SEC's framework for them is not](https://www.galaxy.com/insights/research/coinbase-tokenized-stocks-base-third-party-issuer-sec-innovation-exemption) — one reason the product is unavailable to US users. The launch also landed in a risk-on market: [bitcoin crossed $80,000 on 25 August 2026](https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-august-25-2026-highest-opening-for-bitcoin-in-over-three-months-123338376.html), a three-month high.
+[Coinbase's Tokenize page](https://www.coinbase.com/tokenize), consulted on 12 September, describes its tokenized stocks as beneficial claims backed by underlying shares in custody. That arrangement is different from receiving the physical asset in a luxury redemption.
 
-None of this is hype. It is the financial half of tokenization reaching production grade.
+Coinbase limits availability by jurisdiction and reserves primary creation and redemption to onboarded institutional partners and authorised participants. A reader should not assume that being outside the United States makes every operation available to them.
 
-## A $30 billion market whose dashboard tracks only finance
+[Base's B20 documentation](https://docs.base.org/build-on-base/integrate-defi/list-tokenized-stocks) also explains a multiplier, a factor used to convert token units into the relevant underlying share quantity. Corporate actions can change it without changing the raw token balance. One token does not permanently equal one share.
 
-The numbers, each dated and attributed:
+The comparison shows why a wallet balance is only the beginning of the inquiry. Read the instrument's terms and follow the responsible parties and records, as developed in our [ownership-register guide](/blog/2026-09-06-tokenized-shares-ownership-register).
 
-- **$30 billion crossed in May.** a16z crypto documented tokenized RWAs [topping $30 billion — roughly 10x in two years](https://a16zcrypto.com/posts/article/real-world-assets-market-cap-data-chart/), with nearly half in US Treasury debt, on 8 May 2026 (data: rwa.xyz).
-- **Near $34 billion later that month.** On 22 May, [a16z crypto reported the market near $34 billion](https://a16zcrypto.com/posts/article/tokenized-asset-rwa-market-data-charts/) excluding stablecoins, while warning that published totals vary with methodology.
-- **$33.5 billion by another methodology.** The [Stobox State of RWA mid-year report](https://www.stobox.io/reports/state-of-rwa-2026) counted $33.5 billion excluding stablecoins as of 10 July 2026, across 167 platforms, with Ethereum holding 47.9% of value. As we noted when [MiCA's transitional period ended](/blog/2026-08-25-mica-transitional-period-rwa), that report carries the honest caveat: issuance is not liquidity.
-- **Tokenized equities at a record $2.3 billion** by mid-July 2026, per the Coinbase–Chainlink announcement — the category Coinbase just entered.
+## Follow a physical item from token to delivery
 
-Now look at what the sector's reference dashboard actually tracks. rwa.xyz's asset classes as of 31 August 2026: government securities, non-US government debt, private credit, stocks, commodities, real estate, private equity and venture capital, active strategies. Every category is a financial claim. **There is no luxury-goods category. There is no collectibles category.** A Google News scan of "RWA tokenization" on 31 August 2026 returns asset managers, stablecoin launches and securities platforms. The top hits: BlackRock's BUIDL, World Liberty's USD1 on Canton, Shinhan Asset Management signing with Plume. Not one physical-goods story in the first 20 results.
+Consider a fictional buyer choosing a token redeemable for one stored handbag. The buyer needs to know which bag is reserved, where it is held and what evidence supports its authenticity and condition.
 
-<div style={{ margin: '2rem 0', padding: '1.25rem 1rem', background: 'var(--graphite)', border: '1px solid rgba(0, 255, 255, 0.1)', borderRadius: '0.75rem' }}>
-  <svg viewBox="0 0 440 324" role="img" aria-label="Diagram of what the RWA market dashboard tracks and what it does not. Left column, the rwa.xyz asset classes as of 31 August 2026: government securities, non-US government debt, private credit, stocks, commodities, real estate, private equity and VC, active strategies — all financial claims. Right column, dashed, the asset classes with no category in the tracker: watches, handbags, jewelry, art and collectibles — physical objects whose value events are authenticity, provenance and resale. Bottom band: no luxury-goods category exists in the tracker as of 31 August 2026." style={{ width: '100%', height: 'auto', display: 'block' }} fontFamily="ui-sans-serif, system-ui, sans-serif">
-    <text x="20" y="26" fontSize="14" fontWeight="600" fill="#FFFFFF">What the RWA dashboard tracks — and what it doesn't</text>
-    <rect x="20" y="44" width="200" height="200" rx="6" fill="#0E7490" opacity="0.35" />
-    <text x="34" y="66" fontSize="10" fontWeight="600" fill="#FFFFFF">rwa.xyz asset classes</text>
-    <text x="34" y="92" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Government securities</text>
-    <text x="34" y="114" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Non-US govt debt</text>
-    <text x="34" y="136" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Private credit</text>
-    <text x="34" y="158" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Stocks</text>
-    <text x="34" y="180" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Commodities</text>
-    <text x="34" y="202" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Real estate</text>
-    <text x="34" y="224" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· PE / VC, active strategies</text>
-    <rect x="240" y="44" width="180" height="200" rx="6" fill="none" stroke="#22D3EE" strokeWidth="1" strokeDasharray="5 4" opacity="0.8" />
-    <text x="254" y="66" fontSize="10" fontWeight="600" fill="#FFFFFF">No category for</text>
-    <text x="254" y="92" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Watches</text>
-    <text x="254" y="114" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Handbags</text>
-    <text x="254" y="136" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Jewelry</text>
-    <text x="254" y="158" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">· Art &amp; collectibles</text>
-    <text x="254" y="190" fontSize="9" fill="rgba(255, 255, 255, 0.55)">Value events: authenticity,</text>
-    <text x="254" y="203" fontSize="9" fill="rgba(255, 255, 255, 0.55)">provenance, resale —</text>
-    <text x="254" y="216" fontSize="9" fill="rgba(255, 255, 255, 0.55)">not yield</text>
-    <rect x="20" y="258" width="400" height="36" rx="6" fill="#041c30" stroke="rgba(0, 255, 255, 0.35)" strokeWidth="1" />
-    <text x="220" y="273" textAnchor="middle" fontSize="10" fontWeight="600" fill="#22D3EE">Every tracked category is a financial claim</text>
-    <text x="220" y="287" textAnchor="middle" fontSize="9" fill="rgba(255, 255, 255, 0.7)">No luxury-goods category exists in the tracker</text>
-    <text x="20" y="314" fontSize="9.5" fill="rgba(255, 255, 255, 0.55)">Source: rwa.xyz asset-class tabs, consulted 31 August 2026.</text>
-  </svg>
-</div>
+Next comes the delivery promise. Who must release the bag? What identification, fees and shipping conditions apply? What happens if the bag is damaged, the custodian fails or the record points to the wrong item?
 
-The market is real, and its map stops at the boundary of finance.
+A successful token transfer answers none of those questions by itself. It may establish a digital operation while the physical item remains in someone else's custody. Likewise, a reseller's authentication is not automatically a manufacturer-issued attestation.
 
-## Two machines, two rulebooks
+For this fictional purchase, a useful record would connect the specific item, the custodian, the assessment and the redemption obligation. Each claim should remain attributable to the party responsible for it.
 
-Why has the physical object been left behind? Part of the answer is that the two tokenizations look similar and obey different laws.
+## Classify the rights before choosing the technology
 
-**A tokenized security is a financial instrument — because of the rights it carries, not its wrapper.** Qualification comes first: a token that grants the rights of a transferable security is a security, whatever the technical standard. In the EU it then falls under securities law, [MiFID II](https://eur-lex.europa.eu/eli/dir/2014/65/oj), outside MiCA's scope — the qualification exercise we detailed when [the MiCA transitional period ended](/blog/2026-08-25-mica-transitional-period-rwa). The [DLT Pilot Regime](https://eur-lex.europa.eu/eli/reg/2022/858/oj) sits one level down: an authorization-based framework for DLT market infrastructures, not an automatic rulebook for every tokenized security. Its compliance burden is market conduct: KYC, custody, prospectus, suitability. Its technical needs are cash flows, corporate actions and price feeds. Coinbase's B20 launch is this machine, running well.
+Linking a token to a physical product does not automatically remove it from financial regulation. The rights and services require assessment; [MiCA article 2](https://www.esma.europa.eu/publications-and-data/interactive-single-rulebook/mica/article-2-scope) distinguishes its scope from, among other things, financial instruments.
 
-**A token bound to a physical luxury good is product data.** Its compliance burden is not securities law but the [ESPR's Digital Product Passport framework](/blog/2026-08-25-eu-dpp-registry-live): identity, composition, provenance, repairability. The framework is in force; the passport obligation phases in by product group, through delegated acts. Its value events are not dividends but authentication, condition, service history and the transfer of ownership at resale. It does not need an oracle price feed. It needs a proof a stranger can check.
+An ordinary product passport that supplies care information is not the same arrangement as a transferable investment or redemption claim. Describe the customer promise first, then identify the applicable rules and the infrastructure needed to support it.
 
-Mixing the two rulebooks is the classic industry mistake. Treat a security as a utility token and you get an enforcement action. Treat a handbag passport as a financial asset and you import a compliance machine built for the wrong problem — which is one reason maisons have moved slowly.
+## Frequently asked questions
 
-## The missing middle: physical luxury
+### Was Beezie's luxury activation already launched on 3 September?
 
-None of this means luxury is absent from tokenization — claiming a vacuum would be wrong, and our own coverage documents the exceptions. The Aura Blockchain Consortium has shipped product passports with LVMH maisons and Tod's since 2023. Tod's runs [two passport stacks on the Gommino line](/blog/2026-08-28-tods-gommino-two-passports-renoon-aura) — an Aura NFC certificate, and a Renoon QR layer live on tods.com since 28 August 2026. [LVMH has put a group-level DPP strategy in writing](/blog/2026-08-26-lvmh-dpp-strategy). Standards are maturing too: ERC-7943 reached Final status as an Ethereum RWA standard in May 2026, per the Stobox report.
+The 3 September 2026 release announced the partnership and described the luxury activation as launching in late 2026. An announcement is not evidence that the complete service was already operating.
 
-What these programmes ship are brand-operated certificates and data layers. What they do not yet ship is the portable proof — item-level identity a buyer, dealer or auction house can verify at the moment of transaction and receive with the object. The gap is visible in the most documented case of the season. F.P. Journe warns collectors on its own site and issues [a nominative Certificate of Authenticity through its Boutiques](/blog/2026-08-30-fpjourne-secondary-market-portable-proof) — but its public pages describe no proof that travels with the watch. And the regulatory wind pushes the same direction: once [destroyed volumes become public numbers under the ESPR](/blog/2026-08-29-espr-destruction-ban-luxury-disclosure), a certified, authenticated resale channel stops being marketing and starts being compliance arithmetic.
+### Does a quoted swap value of up to 92% guarantee a minimum return?
 
-That is the missing middle of tokenization. Not another Treasury fund — the object layer, where authenticity and resale create the need for proof. The ESPR sets the framework there; obligations arrive category by category, via delegated acts that do not yet cover watches or jewelry.
+No. Beezie's release refers to up to 92% of fair market value. That is not a guaranteed minimum or a promise to recover 92% of the purchase price. The valuation and applicable terms need checking.
 
-## A 3 September test: Beezie, The Luxury Closet, Solana
+### Does one B20 token always equal one underlying share?
 
-On 3 September 2026, [Beezie and The Luxury Closet issued a joint release from Boston](https://lifestyle.fictiontalk.com/story/831098/beezie-and-the-luxury-closet-launch-on-chain-marketplace-for-authenticated-luxury-goods/). The dateline is GlobeNewswire. The companies say they will put authenticated pre-owned handbags, watches, jewelry and accessories on Solana as digital twins, one token per object, with a late-2026 launch. [The Crypto Times](https://www.cryptotimes.io/2026/09/03/hermes-birkins-head-to-solana-in-beezie-luxury-closet-deal/) reported the same release the same day.
+No. Base's documentation says to apply the current multiplier when converting token units to underlying shares. Corporate actions can change that relationship without changing the raw token balance.
 
-This is the first dated physical-luxury token story in this dossier. It does not fill the missing middle. It shows why four layers must stay separate.
-
-**Token.** The release says each authenticated item is tokenized on Solana. The token is the transferable claim. A Solana transfer records that claim. It does not inspect leather, stitching or a serial.
-
-**Custody.** The same release says each item is "held in secure vault storage until it is redeemed or shipped directly to the collector." It does not name the vault operator for this activation, nor publish insurance terms, redemption fees or a shipping schedule. Beezie's [collectibles FAQ](https://docs.beezie.com/additional-information/general-faq) names Brink's as vault partner for that product. That published claim is not restated here as a fact of the luxury drop.
-
-**Third-party authentication.** Every piece, the companies say, will be "sourced and vetted by The Luxury Closet's in-house authentication team" before listing. Kunal Kapoor, CEO of The Luxury Closet, said in the release: "Through this partnership, we apply our same rigor in sourcing and authentication to onchain ownership." That is a reseller's check. It is not a maison attestation.
-
-**Manufacturer-issued proof.** The celebration inventory names an Hermès Birkin 40, a Chanel handbag, Dior and Louis Vuitton duffels, a Rolex GMT-Master II and a Van Cleef & Arpels necklace. Those are brand names on pre-owned stock. The release does not say Hermès, Chanel, Dior, Louis Vuitton, Rolex or Van Cleef signed, vaulted or sold the items. Naming a Birkin is not a partnership with Hermès.
-
-Andrea Miele, founder and CEO of Beezie, put the companies' claim this way. "Luxury has always had the characteristics of a collectible: scarcity, cultural value and a secondary market. What's been missing is the infrastructure that lets people interact with those assets as easily as they do digital ones." Infrastructure for trading a claim is not identity issued by the maker.
-
-The companies also state, as a promotional figure, that collectors can swap items back "for up to 92% of their fair market value." How that floor is calculated, funded and enforced is not published. The same release says the Claw machines have crossed "more than 1 million pulls." That count is self-declared. The release dates the launch as "late 2026" and promises published odds and an always-on catalogue of thousands of items. Those modalities are not in the 3 September text. Until listings go live, they remain unpublished.
-
-<div style={{ margin: '2rem 0', padding: '1.25rem 1rem', background: 'var(--graphite)', border: '1px solid rgba(0, 255, 255, 0.1)', borderRadius: '0.75rem' }}>
-  <svg viewBox="0 0 440 268" role="img" aria-label="Four proof layers in the 3 September 2026 Beezie and The Luxury Closet announcement. Token: Solana digital twin, one claim per object. Custody: vault storage named in the release without an operator. Third-party authentication: The Luxury Closet in-house team. Manufacturer-issued proof: not claimed; Hermès is not a party." style={{ width: '100%', height: 'auto', display: 'block' }} fontFamily="ui-sans-serif, system-ui, sans-serif">
-    <text x="20" y="24" fontSize="13" fontWeight="600" fill="#FFFFFF">Four layers the 3 September release must not mix</text>
-    <rect x="20" y="40" width="190" height="88" rx="6" fill="#0E7490" opacity="0.35" />
-    <text x="34" y="62" fontSize="10" fontWeight="600" fill="#22D3EE">1. Token</text>
-    <text x="34" y="82" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">Solana digital twin</text>
-    <text x="34" y="98" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">One claim per object</text>
-    <text x="34" y="114" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">Transfer is not inspection</text>
-    <rect x="230" y="40" width="190" height="88" rx="6" fill="#0E7490" opacity="0.35" />
-    <text x="244" y="62" fontSize="10" fontWeight="600" fill="#22D3EE">2. Custody</text>
-    <text x="244" y="82" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">Vault storage, unnamed</text>
-    <text x="244" y="98" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">operator in this release</text>
-    <text x="244" y="114" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">Fees and insurance unpublished</text>
-    <rect x="20" y="140" width="190" height="88" rx="6" fill="#0E7490" opacity="0.35" />
-    <text x="34" y="162" fontSize="10" fontWeight="600" fill="#22D3EE">3. Third-party check</text>
-    <text x="34" y="182" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">The Luxury Closet</text>
-    <text x="34" y="198" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">in-house authentication</text>
-    <text x="34" y="214" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">A reseller check, not a maison</text>
-    <rect x="230" y="140" width="190" height="88" rx="6" fill="none" stroke="#22D3EE" strokeWidth="1" strokeDasharray="5 4" opacity="0.85" />
-    <text x="244" y="162" fontSize="10" fontWeight="600" fill="#22D3EE">4. Maison proof</text>
-    <text x="244" y="182" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">Not claimed on 3 Sept</text>
-    <text x="244" y="198" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">Hermès is not a party</text>
-    <text x="244" y="214" fontSize="9.5" fill="rgba(255, 255, 255, 0.75)">A Birkin name is inventory</text>
-    <text x="20" y="252" fontSize="9.5" fill="rgba(255, 255, 255, 0.55)">Source: Beezie / The Luxury Closet GlobeNewswire release, 3 September 2026.</text>
-  </svg>
-</div>
-
-A transaction on Solana can move the token. It cannot, by itself, establish that Hermès issued the bag.
-
-## The limits of what we know
-
-Intellectual honesty about this analysis.
-
-- **The $30 billion crossing is not this week's event.** a16z documented it on 8 May 2026. This week's milestone is the Coinbase launch.
-- **Methodologies diverge.** a16z reported the market near $34 billion excluding stablecoins on 22 May; Stobox counted $33.5 billion on 10 July. We deliberately publish no exact 31 August total: live dashboard point estimates are dynamic and cannot be independently reproduced after the fact.
-- **"Every headline was finance" is a snapshot.** It reflects one Google News query — 20 results scanned, archived — on 31 August 2026, not a systematic media study.
-- **The dashboard can change.** The absence of a luxury category on rwa.xyz is an observation as of 31 August 2026, not a permanent state.
-- **B20's reach is unproven.** It is a Base-native standard today; whether it travels beyond Base is an open question we do not speculate on.
-- **Adoption is unknown.** Coinbase publishes no usage figures one week after launch, and the product remains unavailable to US users.
-- **The 3 September luxury figures are self-declared.** "Up to 92% of their fair market value" and "more than 1 million pulls" come from the companies' own release. They are not independently audited here.
-- **Launch modalities are unpublished.** The release does not give a calendar day, a redemption-fee schedule, insurance terms, luxury-drop odds, or the vault operator for this activation.
-- **Hermès is not documented as a partner.** The Birkin 40 is named as inventory. No maison statement confirming the listing was found on 4 September 2026.
-
-## Galileo's take
-
-**Galileo's take: the financial half of tokenization just reached production grade — and that is precisely when the object half becomes visible.** When equities settle on-chain under ADGM custody with institutional oracles, "can we tokenize it?" stops being the question. The question becomes which assets still lack their proof layer. The 3 September Beezie case is the object layer arriving as a reseller token: useful as a dated test, insufficient as manufacturer-issued identity. Physical luxury remains the largest gap: high-value objects, a structured secondary market, counterfeiting pressure manufactures themselves flag publicly, and a regulator phasing in passport obligations category by category. The object does not need a price feed or a corporate-action multiplier. It needs identity signed once by the maison, verifiable by anyone, transferable with the item, silent about who holds it. Personal data stays off-chain, with schemas published openly in our [specifications](/specifications). That is the layer Galileo Protocol builds. Explore the [documentation](/docs) or [contact us](mailto:info@galileoprotocol.io).
-
-## Sources
-
-- [Chainlink / Coinbase press release, "Coinbase Selects Chainlink to Bring New Tokenized Stocks to Millions of DeFi Users"](https://www.nasdaq.com/press-release/coinbase-selects-chainlink-bring-new-tokenized-stocks-millions-defi-users-2026-08-24), 24 August 2026: B20 tokens on Base, 1:1 backing, Alpaca custody under ADGM, Chainlink as official oracle, NVDAc/METAc/AAPLc/GOOGLc, tokenized equities at a record $2.3 billion by mid-July 2026, non-US availability. Consulted 31 August 2026.
-- [Base documentation, "Tokenized Stocks on Base"](https://docs.base.org/base-chain/specs/reference/b20/tokenized-stocks-on-base): B20 as a Base-native ERC-20 extension, corporate-action multipliers, allow/blocklist policies, KYC at mint/redeem by authorized participants, permissionless secondary trading. Consulted 31 August 2026.
-- [a16z crypto, "Tokenized RWAs top $30B"](https://a16zcrypto.com/posts/article/real-world-assets-market-cap-data-chart/), 8 May 2026: $30 billion crossed, ~10x in two years, nearly half in US Treasury debt (data: rwa.xyz).
-- [a16z crypto, "Tokenized assets: The charts and numbers that matter"](https://a16zcrypto.com/posts/article/tokenized-asset-rwa-market-data-charts/), 22 May 2026: market near $34 billion excluding stablecoins and an explanation of why market totals vary by methodology.
-- [Stobox, "State of RWA Tokenization — 2026 Mid-Year Report"](https://www.stobox.io/reports/state-of-rwa-2026): $33.5 billion excluding stablecoins as of 10 July 2026, 167 platforms, Ethereum at 47.9%, ERC-7943 Final in May 2026.
-- [rwa.xyz dashboard](https://rwa.xyz): asset-class taxonomy only; no live point-in-time total is used in this article. Category observation captured 31 August 2026.
-- [Galaxy Research, "Coinbase Enters Tokenized Stock Fray on Third-Party 'Wrapper' Side"](https://www.galaxy.com/insights/research/coinbase-tokenized-stocks-base-third-party-issuer-sec-innovation-exemption), 28 August 2026: the tokens are live, the SEC framework is not.
-- [Yahoo Finance, "Bitcoin and ethereum prices today, Tuesday, August 25, 2026"](https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-tuesday-august-25-2026-highest-opening-for-bitcoin-in-over-three-months-123338376.html): bitcoin crossed $80,000 intraday (high $81,023.41), a three-month high. Consulted 31 August 2026.
-- Google News RSS scan, query "RWA tokenization" (hl=en-US, gl=US), 31 August 2026: first 20 results all financial (BlackRock BUIDL, World Liberty USD1 on Canton, Shinhan × Plume, Stellar, Tether real estate); method and full list archived in blogidea.md.
-- [MiFID II — Directive 2014/65/EU](https://eur-lex.europa.eu/eli/dir/2014/65/oj) and [DLT Pilot Regime — Regulation (EU) 2022/858](https://eur-lex.europa.eu/eli/reg/2022/858/oj): the EU rulebooks for tokenized financial instruments.
-- GlobeNewswire dateline BOSTON, Sept. 03, 2026, [Beezie and The Luxury Closet Launch On-Chain Marketplace for Authenticated Luxury Goods](https://lifestyle.fictiontalk.com/story/831098/beezie-and-the-luxury-closet-launch-on-chain-marketplace-for-authenticated-luxury-goods/): Solana digital twins, The Luxury Closet in-house authentication, vault storage, late-2026 launch, self-declared swap of up to 92% of fair market value, Birkin 40 named as inventory. Consulted 4 September 2026. Quoted remarks by Andrea Miele and Kunal Kapoor archived in `website/content/reviews/2026-08-31-rwa-tokenization-leaves-finance-luxury-physical-assets/citations.md`.
-- [The Crypto Times, "Hermès Birkins Head to Solana in Beezie, Luxury Closet Deal"](https://www.cryptotimes.io/2026/09/03/hermes-birkins-head-to-solana-in-beezie-luxury-closet-deal/), 3 September 2026: independent rewrite of the Boston joint release; Hermès not named as a party; redemption fees, insurance and a specific go-live date unpublished.
-- [Beezie docs, General FAQ, vault security](https://docs.beezie.com/additional-information/general-faq): Brink's named as vault partner for Beezie's collectibles product. Consulted 4 September 2026. Not used as proof of the luxury-activation operator.
-
-## FAQ
-
-### Did Coinbase really put US stocks on a blockchain?
-
-Yes. On 24 August 2026, [Coinbase launched Tokenized Stocks on Base](https://www.nasdaq.com/press-release/coinbase-selects-chainlink-bring-new-tokenized-stocks-millions-defi-users-2026-08-24) for eligible users outside the United States. The tokens — NVDAc, METAc, AAPLc, GOOGLc and others — are real equity securities issued under Base's B20 standard. Each is backed 1:1 by a share held in regulated custody with Alpaca under the Abu Dhabi Global Market framework. Chainlink supplies the official price feeds that let DeFi protocols accept them as collateral.
-
-### How large had the tokenized RWA market become by mid-2026?
-
-No single end-of-August total is used here because live dashboards are dynamic and methodologies differ. Reproducible dated benchmarks put the market in the same range. [a16z crypto](https://a16zcrypto.com/posts/article/real-world-assets-market-cap-data-chart/) reported more than $30 billion on 8 May and [near $34 billion excluding stablecoins](https://a16zcrypto.com/posts/article/tokenized-asset-rwa-market-data-charts/) on 22 May. The [Stobox mid-year report](https://www.stobox.io/reports/state-of-rwa-2026) counted $33.5 billion excluding stablecoins on 10 July. These figures establish the scale without pretending to a live point estimate.
-
-### Is a tokenized stock the same thing as a tokenized handbag?
-
-No, and the distinction is regulatory before it is technical. A tokenized stock is a financial instrument because of the rights it carries: in the EU it lives under securities law, [MiFID II](https://eur-lex.europa.eu/eli/dir/2014/65/oj), with KYC, custody and prospectus duties. The [DLT Pilot Regime](https://eur-lex.europa.eu/eli/reg/2022/858/oj) is an authorization-based framework for DLT market infrastructures, not an automatic rulebook. A token linked to a physical luxury good is product data: authenticity, provenance, ownership. That layer is governed by the [ESPR's Digital Product Passport framework](/blog/2026-08-25-eu-dpp-registry-live), not by securities law. Mixing the two rulebooks is the classic tokenization mistake.
-
-### Is anyone in luxury already tokenizing physical products?
-
-Yes. The Aura Blockchain Consortium has shipped product passports with LVMH maisons and Tod's since 2023, and Renoon builds QR-based passport data layers. Tod's even runs [two passport stacks on the Gommino line](/blog/2026-08-28-tods-gommino-two-passports-renoon-aura). These are brand-operated certificates and data stacks, not yet proofs a buyer can verify independently and receive with the object at resale. Separately, on 3 September 2026 [Beezie and The Luxury Closet](https://lifestyle.fictiontalk.com/story/831098/beezie-and-the-luxury-closet-launch-on-chain-marketplace-for-authenticated-luxury-goods/) announced Solana tokens for authenticated pre-owned goods: a reseller token with third-party authentication and vault custody, not a manufacturer-issued proof.
-
-### Did Hermès partner with Beezie on 3 September 2026?
-
-No source published that day names Hermès as a contracting party. The joint Beezie and The Luxury Closet release lists an Hermès Birkin 40 among celebration inventory: a pre-owned item to be sourced and vetted by The Luxury Closet, then tokenized. Naming a bag is not a maison partnership.
-
-### Does a Solana token prove a bag is genuine from the maison?
-
-No. A token records an on-chain claim. Custody is where the object sits. Third-party authentication is The Luxury Closet's in-house check, as the companies describe it. Manufacturer-issued proof would be a signature from the maison itself. The 3 September announcement establishes the first three layers as their own stack. It does not establish the fourth.
-
-### What would tokenization change for a physical luxury good?
-
-It would make the proof portable. Item-level identity signed once by the maison, verifiable by anyone at the moment of a transaction, transferable to the buyer with ownership, and silent about who holds it. Authenticity and provenance would travel with the watch or the bag instead of being re-established through the brand at every resale — the gap we documented in the [F.P. Journe certificate analysis](/blog/2026-08-30-fpjourne-secondary-market-portable-proof).
+Use the [Galileo documentation](/docs) to explore product identity and records while keeping custody, legal rights and physical assessment explicit.
