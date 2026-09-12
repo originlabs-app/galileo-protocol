@@ -1,8 +1,0 @@
-2026-09-07T10:12:52.492393+00:00 Worker executor accepted #23; base 107739f55291267ac88a344c5f87b84262f1ba09.
-Preflight WARN: new branch without upstream, supplied hero only.
-Watch-only commit 3d2a561 precedes article.
-Primary source reads and article completed, browser/build validation pending.
-Final article lint/build exit 0. SVG labels shortened and gates rerun.
-Restarted local Next server after rebuild to remove cached earlier render; final browser evidence verifies shortened labels.
-Chrome resize window did not set viewport; used device emulation and verified actual innerWidth 1440/390.
-Browser and isolated SVG inspected. Task Chrome and Next server stopped; ports checked clear.

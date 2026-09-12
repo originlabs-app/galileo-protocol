@@ -1,33 +1,63 @@
 name: Lighthouse CI
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
 
     steps:
       - uses: actions/checkout@v6
-
-      - name: Wait for Vercel Preview
-        uses: patrickedqvist/wait-for-vercel-preview@v1.3.3
-        id: vercel-preview
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 300
-          check_interval: 5
-        continue-on-error: true
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
-      - name: Audit URLs with Lighthouse
-        if: steps.vercel-preview.outcome == 'success'
-        uses: treosh/lighthouse-ci-action@v12
+      - uses: actions/setup-node@v4
         with:
-          urls: |
-            ${{ steps.vercel-preview.outputs.url }}
-            ${{ steps.vercel-preview.outputs.url }}/docs
-            ${{ steps.vercel-preview.outputs.url }}/blog
-          budgetPath: ./website/lighthouse-budget.json
-          uploadArtifacts: true
-          temporaryPublicStorage: true
+          node-version: 22
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install website dependencies
+        working-directory: website
+        run: npm ci
+
+      - name: Build tested website
+        working-directory: website
+        run: npm run build
+
+      - name: Test report validation
+        run: node --test scripts/check-lighthouse-reports.test.mjs
+
+      - name: Collect three measurements per route
+        run: npx --yes @lhci/cli@0.15.1 collect --config=website/lighthouserc.json
+
+      - name: Verify complete measurements
+        run: node scripts/check-lighthouse-reports.mjs
+
+      - name: Assert category thresholds
+        run: npx --yes @lhci/cli@0.15.1 assert --config=website/lighthouserc.json
+
+      - name: Record tested commit
+        if: always()
+        run: |
+          mkdir -p .lighthouseci
+          git rev-parse HEAD > .lighthouseci/tested-commit.txt
+
+      - name: Upload Lighthouse reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-${{ github.event.pull_request.head.sha || github.sha }}
+          path: .lighthouseci/
+          include-hidden-files: true
+          if-no-files-found: error

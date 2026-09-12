@@ -109,8 +109,8 @@ contract FullLifecycleTest is Test {
             admin, address(tir), address(ctr), address(idStorage)
         );
 
-        // --- Compliance (test contract is owner so it can addModule) ---
-        compliance = new GalileoCompliance(address(this), address(reg));
+        // --- Compliance (admin owns configuration and token binding) ---
+        compliance = new GalileoCompliance(admin, address(reg));
 
         // --- Modules (test contract is owner) ---
         brandModule     = new BrandAuthorizationModule(
@@ -131,11 +131,13 @@ contract FullLifecycleTest is Test {
         sanctionsModule.setStrictMode(false);
 
         // --- Wire modules into compliance ---
+        vm.startPrank(admin);
         compliance.addModule(address(brandModule));
         compliance.addModule(address(cpoModule));
         compliance.addModule(address(jurisdModule));
         compliance.addModule(address(sanctionsModule));
         compliance.addModule(address(scModule));
+        vm.stopPrank();
 
         // --- Bind identity registry storage to registry ---
         vm.prank(admin);
@@ -192,12 +194,12 @@ contract FullLifecycleTest is Test {
         _mockMissingClaim(mockSCCertifierId, TOPIC_AUTHENTICATOR);  // scCertifier lacks AUTH
 
         // --- Predict token address and transfer compliance ownership ---
-        // Contract nonces only increment on CREATE (not on CALL).
-        // transferOwnership is a CALL so it does NOT change the nonce.
-        // The next CREATE (new GalileoToken) uses the current nonce.
+        // Foundry's isolated transactions increment the caller's nonce on CALL.
+        // Transfer as admin so the test contract's next CREATE nonce stays unchanged.
         address predictedToken = vm.computeCreateAddress(
             address(this), vm.getNonce(address(this))
         );
+        vm.prank(admin);
         compliance.transferOwnership(predictedToken);
 
         // --- Deploy token (minted to brandWallet at construction) ---
@@ -329,6 +331,7 @@ contract FullLifecycleTest is Test {
     function test_Deployment_ComplianceBoundToToken() public view {
         assertEq(address(token.compliance()), address(compliance));
         assertEq(compliance.getTokenBound(),  address(token));
+        assertEq(compliance.owner(),          address(token));
     }
 
     function test_Deployment_FiveModulesInstalled() public view {
@@ -602,6 +605,14 @@ contract FullLifecycleTest is Test {
     // ═══════════════════════════════════════════════════════════════════
     // TESTS — ACCESS CONTROL
     // ═══════════════════════════════════════════════════════════════════
+
+    function test_AccessControl_PreviousComplianceOwnerCannotUnbindToken() public {
+        vm.prank(admin);
+        vm.expectRevert("Ownable: caller is not the owner");
+        compliance.unbindToken(address(token));
+
+        assertEq(compliance.getTokenBound(), address(token));
+    }
 
     function test_AccessControl_OnlyAgentCanUnpause() public {
         vm.prank(buyer1);
