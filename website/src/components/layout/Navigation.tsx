@@ -140,6 +140,7 @@ export function Navigation() {
 
       {/* Mobile Menu Overlay */}
       <div
+        inert={!isOpen}
         className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
