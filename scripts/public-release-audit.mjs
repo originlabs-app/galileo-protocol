@@ -134,7 +134,7 @@ export function auditFiles(files, read = file => readFileSync(file)) {
   return failures;
 }
 
-async function readGitHub(path) {
+async function readGitHub(path, projection) {
   if (process.env.GH_TOKEN || process.env.GITHUB_TOKEN) {
     const response = await fetch(`https://api.github.com/repos/${repository}/${path}`, {
       headers: {
@@ -148,16 +148,17 @@ async function readGitHub(path) {
     if (!response.ok) throw new Error('GitHub verification failed');
     return response.json();
   }
-  return JSON.parse(execFileSync('gh', ['api', '--hostname', 'github.com', `repos/${repository}/${path}`], {
+  // Commit diffs can exceed the CLI buffer; retain every proof field, not patches.
+  return JSON.parse(execFileSync('gh', ['api', '--hostname', 'github.com', `repos/${repository}/${path}`, '--jq', projection], {
     encoding: 'utf8', timeout: 20000, stdio: ['ignore', 'pipe', 'pipe'],
   }));
 }
 
 async function verifyGitHubMerge(sha) {
   if (!/^[a-f0-9]{40}$/.test(sha)) throw new Error('Invalid commit');
-  const remote = await readGitHub(`commits/${sha}`);
+  const remote = await readGitHub(`commits/${sha}`, '{sha,author,committer,parents,commit}');
   if (remote.parents?.length === 1) {
-    remote.pullRequests = await readGitHub(`commits/${sha}/pulls?per_page=100`);
+    remote.pullRequests = await readGitHub(`commits/${sha}/pulls?per_page=100`, 'map({state,merged_at,merge_commit_sha,base})');
   }
   return remote;
 }

@@ -173,7 +173,7 @@ test('CLI rejects staged secrets, private files and foreign identities in PR and
 
 test('CLI accepts a signed squash only when the associated pull request API confirms the merge', () => {
   const script = fileURLToPath(new URL('./public-release-audit.mjs', import.meta.url));
-  for (const scenario of ['merged', 'unmerged', 'unavailable']) {
+  for (const scenario of ['merged', 'large-commit', 'unmerged', 'unavailable']) {
     const cwd = mkdtempSync(join(tmpdir(), 'public-audit-squash-'));
     try {
       const env = { ...process.env, GH_TOKEN: '', GITHUB_TOKEN: '',
@@ -196,13 +196,18 @@ test('CLI accepts a signed squash only when the associated pull request API conf
         scenario, commit: { ...verifiedMerge, sha: head, parents: [{ sha: parent }] },
         pullRequests: [{ ...mergedPullRequest, merge_commit_sha: head, merged_at: scenario === 'unmerged' ? null : mergedPullRequest.merged_at }],
       };
+      if (scenario === 'large-commit') fixture.commit.files = [{ patch: 'x'.repeat(2 * 1024 * 1024) }];
       const fixturePath = join(cwd, 'api-fixture.json');
       writeFileSync(fixturePath, JSON.stringify(fixture));
       writeFileSync(join(cwd, 'gh'), `#!${process.execPath}
 const fixture = JSON.parse(require('node:fs').readFileSync(process.env.PUBLIC_AUDIT_FIXTURE, 'utf8'));
 const commitPath = 'repos/originlabs-app/galileo-protocol/commits/' + fixture.commit.sha;
-const endpoint = process.argv.at(-1);
-if (endpoint === commitPath) process.stdout.write(JSON.stringify(fixture.commit));
+const endpoint = process.argv.find(arg => arg.startsWith('repos/'));
+if (endpoint === commitPath) {
+  const projection = process.argv.indexOf('--jq');
+  const fields = projection === -1 ? Object.keys(fixture.commit) : process.argv[projection + 1].replace(/[{} ]/g, '').split(',');
+  process.stdout.write(JSON.stringify(Object.fromEntries(fields.map(key => [key, fixture.commit[key]]))));
+}
 else if (endpoint === commitPath + '/pulls?per_page=100' && fixture.scenario !== 'unavailable') process.stdout.write(JSON.stringify(fixture.pullRequests));
 else process.exit(1);
 `, { mode: 0o755 });
@@ -210,7 +215,7 @@ else process.exit(1);
         ...env, PATH: `${cwd}:${process.env.PATH}`, PUBLIC_AUDIT_FIXTURE: fixturePath,
         GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: 'push', GITHUB_SHA: head,
       } });
-      assert.equal(result.status, scenario === 'merged' ? 0 : 1, `${scenario}: ${result.stderr}`);
+      assert.equal(result.status, ['merged', 'large-commit'].includes(scenario) ? 0 : 1, `${scenario}: ${result.stderr}`);
     } finally { rmSync(cwd, { recursive: true, force: true }); }
   }
 });
