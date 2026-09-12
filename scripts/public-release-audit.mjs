@@ -14,7 +14,7 @@ const allowedEnvExamples = new Set([
 const deniedTrackedPathPatterns = [
   /(^|\/)\.env($|\.)(?!.*\.example$)/,
   /(^|\/)(AGENTS|CLAUDE|GEMINI)\.md$/,
-  /(^|\/)\.(agents|claude|codex|cursor|factory|windsurf)(\/|$)/,
+  /(^|\/)\.(agents|claude|codex|cursor|factory|windsurf|playwright-mcp)(\/|$)/,
   /^docs\/(investor-[^/]*|exec-plans|plans|screenshots)(\/|$)/,
   /^(geo|website\/content\/reviews)(\/|$)/,
   /^blogidea\.md$/,
@@ -25,16 +25,6 @@ const deniedTrackedPathPatterns = [
   /^docs\/PILOT_DEMO_ROOM/i,
   /(^|\/)(id_rsa|id_ed25519)(\.|$)/,
   /\.(pem|p12|pfx|key|keystore)$/i,
-];
-
-const ignoredContentPatterns = [
-  /^contracts\/lib\//,
-  /^contracts\/out\//,
-  /^contracts\/cache\//,
-  /^apps\/api\/src\/services\/blockchain\/bytecode\.ts$/,
-  /^pnpm-lock\.yaml$/,
-  /^website\/package-lock\.json$/,
-  /^package-lock\.json$/,
 ];
 
 const secretPatterns = [
@@ -117,12 +107,10 @@ export function auditFiles(files, read = file => readFileSync(file)) {
     if (deniedTrackedPathPatterns.some(pattern => pattern.test(file)) && !allowedEnvExamples.has(file)) {
       failures.push(`${file}: tracked path is not public-release safe`);
     }
-    if (ignoredContentPatterns.some(pattern => pattern.test(file))) continue;
     let content;
     try {
       const bytes = read(file);
-      // Scan text regardless of its extension. Binary assets are not prose.
-      if (Buffer.isBuffer(bytes) && bytes.includes(0)) continue;
+      // Scan every indexed blob, including binary data and generated files.
       content = bytes.toString();
     } catch {
       failures.push(`${file}: tracked content could not be read`);

@@ -53,15 +53,16 @@ test('a GitHub merge requires matching signed API evidence', async () => {
 });
 
 test('private paths and secrets cannot enter the release tree', () => {
-  for (const file of ['AGENTS.md', '.agents/task.md', 'nested/.codex/config.toml', 'geo/prompts.json', 'blogidea.md', 'website/content/reviews/proof.jsonl', 'docs/investor-demo-pack/report.md', '.env.production', 'id_ed25519']) {
+  for (const file of ['AGENTS.md', '.agents/task.md', 'nested/.codex/config.toml', '.playwright-mcp/screenshot.png', 'geo/prompts.json', 'blogidea.md', 'website/content/reviews/proof.jsonl', 'docs/investor-demo-pack/report.md', '.env.production', 'id_ed25519']) {
     assert.ok(auditFiles([file], () => 'fixture').length > 0, file);
   }
   const token = ['ghp', '_', 'a'.repeat(36)].join('');
-  for (const file of ['README.md', 'apps/api/test/fixture.ts', 'apps/dashboard/e2e/test.ts', 'unexpected.data']) {
+  for (const file of ['README.md', 'apps/api/test/fixture.ts', 'apps/dashboard/e2e/test.ts', 'unexpected.data', 'pnpm-lock.yaml', 'website/package-lock.json', 'contracts/lib/example.json', 'apps/api/src/services/blockchain/bytecode.ts']) {
     const errors = auditFiles([file], () => token);
     assert.ok(errors.length > 0, file);
     assert.ok(!errors.join('\n').includes(token), 'diagnostics must not echo secrets');
   }
+  assert.ok(auditFiles(['binary.data'], () => Buffer.from(`\0${token}`)).length > 0);
   assert.deepEqual(auditFiles(['CONTRIBUTING.md', 'website/content/blog/example.mdx', '.env.example'], () => 'Normal contributor documentation'), []);
   assert.ok(auditFiles(['README.md'], () => { throw new Error('missing'); }).length > 0);
 });
