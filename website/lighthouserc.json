@@ -40,6 +40,9 @@
         "http://localhost:3000/blog/2026-09-11-dpp-provider-exit"
       ],
       "numberOfRuns": 3,
+      "settings": {
+        "saveAssets": true
+      },
       "startServerCommand": "npm --prefix website run start -- --hostname 127.0.0.1",
       "startServerReadyPattern": "Ready in",
       "startServerReadyTimeout": 60000

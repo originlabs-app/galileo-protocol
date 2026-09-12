@@ -1,231 +1,57 @@
 ---
-title: "Galileo Protocol v1.0.0: Open Luxury Authenticity Standard"
-date: "2026-02-01"
-author: "Galileo Core Team"
-excerpt: "Today we release Galileo Protocol v1.0.0 - a comprehensive open-source framework for luxury goods authentication and traceability, built on blockchain technology and designed for regulatory compliance."
-description: "Galileo Protocol v1.0.0 is live: an open-source framework for luxury goods authentication and traceability, built on blockchain for regulatory compliance."
+title: 'Galileo v1.0: An Open Framework for Product Records'
+date: '2026-02-01'
+author: Galileo Core Team
+excerpt: >-
+  Galileo v1.0 provides specifications and reference code for product records.
+  Understand the release, its scope and what adoption still requires.
+description: >-
+  Galileo v1.0 provides specifications and reference code for product records.
+  Understand the release, its scope and what adoption still requires.
 tags:
   - release
   - announcement
   - v1.0
   - milestone
 published: true
+modified: '2026-09-12'
+faq:
+  - question: Does adopting Galileo make a product legally compliant?
+    answer: >-
+      No. A technical framework does not determine which laws apply to a product
+      or prove that an implementation meets them. Identify the applicable
+      requirements and verify the deployed system against those requirements.
 ---
+Galileo v1.0 provides open specifications and reference code for recording information about physical products. It gives implementers a starting point for product identity and traceability; it does not certify the authenticity of every object or the legal compliance of a deployment.
 
-## A New Era for Luxury Authenticity
+**Updated 12 September 2026:** the formal [v1.0.0 release](https://github.com/originlabs-app/galileo-protocol/releases/tag/v1.0.0) was published on 5 May 2026. This page retains its original February publication date and distinguishes that earlier announcement from the dated release.
 
-Today marks a significant milestone for the luxury industry. After months of rigorous specification, implementation, and community collaboration, we are proud to announce **Galileo Protocol v1.0.0** - an open-source standard for luxury goods authentication and provenance tracking.
+## What an implementer can use
 
-Galileo Protocol establishes a common, interoperable language for protecting brand heritage and human craftsmanship in an increasingly digital world.
+A product record brings together claims such as who made an item, which identifier refers to it and what happened during its life. Shared specifications help different systems exchange those claims without inventing a new format for each partner.
 
----
+The [v1.0 release notes](https://github.com/originlabs-app/galileo-protocol/blob/v1.0.0/release/v1.0.0/RELEASE-NOTES.md) describe the released package. Start there when selecting a version, then follow the [protocol documentation](/docs) for its interfaces and examples. A reference implementation shows one way to apply a specification; a business still needs to configure, secure and operate its own service.
 
-## The Problem We Solve
+For example, consider a fictional repair shop receiving a watch with a manufacturer record. A shared identifier can help the shop attach its service record to the right product. The shop must still examine the watch and describe the work accurately. A digital signature can help identify the record's issuer and detect changes to signed data, but it cannot establish that the physical watch has never been substituted.
 
-### The Counterfeiting Crisis
+## Where the regulatory boundary lies
 
-The global counterfeiting market exceeds **$500 billion annually**, with luxury goods among the most targeted sectors. Traditional authentication methods - holograms, certificates, serial numbers - are easily replicated or forged. Consumers lack reliable tools to verify authenticity, and brands struggle to protect their heritage.
+A Digital Product Passport, or DPP, makes specified product information accessible through a data carrier such as a QR code. The EU framework develops through requirements for particular product groups. The [European Commission's guidance for economic operators](https://single-market-economy.ec.europa.eu/single-market/digital-product-passport/economic-operators_en) does not set a universal 2027 deadline for every luxury product.
 
-### Regulatory Pressure
+Choose the relevant product category before treating a format or feature as a compliance requirement. Data protection also depends on the information collected, access permissions, retention and actual operation. An open protocol cannot settle those choices on its own.
 
-The European Union's **ESPR (Ecodesign for Sustainable Products Regulation)** mandates Digital Product Passports (DPPs) for regulated goods by 2027. Brands face a choice: build proprietary solutions that create data silos, or adopt open standards that enable interoperability.
+## What to establish before adoption
 
-### Data Fragmentation
+Begin with one record that another organisation needs to read. Agree who can issue and correct it, how the recipient checks its status and what happens if the service becomes unavailable. Then test that exchange with the chosen implementation.
 
-Each brand's authentication system is an island. Resale platforms cannot verify items. Customs agencies lack standardized verification protocols. Consumers accumulate incompatible certificates that become worthless the moment they leave the original ecosystem.
+The governance documents describe a proposed structure as well as participation arrangements. They should not be read as proof that every planned committee seat is occupied. Likewise, dates in an earlier roadmap describe intentions at the time; use a dated release to establish what became available.
 
-**Galileo Protocol solves all three problems with one unified standard.**
+These distinctions make the framework easier to evaluate: the released material is inspectable, while a proposed integration or future capability remains something to demonstrate.
 
----
+## Frequently asked questions
 
-## What's Included in v1.0.0
+### Does adopting Galileo make a product legally compliant?
 
-Version 1.0.0 delivers **65 specifications** (26 markdown documents + 22 JSON/JSON-LD schemas + 17 Solidity contracts) across 8 technical domains, providing complete coverage for luxury goods authentication.
+No. A technical framework does not determine which laws apply to a product or prove that an implementation meets them. Identify the applicable requirements and verify the deployed system against those requirements.
 
-### Architecture
-
-The foundational [hybrid on/off-chain architecture](/docs/architecture) balances transparency with privacy. On-chain components provide immutable authenticity records, while off-chain storage handles sensitive data with GDPR-compliant access controls.
-
-- **CRAB Model**: Create, Read, Archive, Burn operations for complete lifecycle management
-- **ML-DSA-65/87**: Post-quantum cryptographic signatures protecting against future threats
-
-### Identity Framework
-
-Our [identity system](/specifications/identity) implements the ERC-3643 v4.1.3 standard with 12 claim topics covering:
-
-- Brand identity verification
-- Artisan and craftsperson credentials
-- Manufacturing facility certification
-- Supply chain participant validation
-- Consumer privacy-preserving authentication
-
-### Token Standard
-
-The [ownership transfer specification](/specifications/token/ownership-transfer) enforces a strict 1:1 relationship between physical items and digital certificates:
-
-- 5 compliance modules for regulatory requirements
-- 8-step validation pipeline ensuring data integrity
-- Burn-on-transfer support for ownership transitions
-
-### Resolver System
-
-The [GS1 Digital Link 1.6.0 resolver](/specifications/resolver/digital-link-uri) enables universal lookups:
-
-- 14-digit GTIN compatibility
-- 4 stakeholder role types with granular permissions
-- QR code and NFC integration patterns
-
-### Data Schemas
-
-[EPCIS 2.0-aligned schemas](/specifications/schemas/alignment/cbv-mapping) for:
-
-- Digital Product Passport (DPP) records
-- Provenance events with 5 quality grades
-- Material composition and sustainability metrics
-
-### Compliance
-
-Built-in support for [regulatory frameworks](/docs/compliance):
-
-- **GDPR**: Full compliance via CRAB access model
-- **MiCA**: Crypto-asset regulatory readiness (July 2026)
-- **ESPR**: Digital Product Passport requirements (2027)
-
-### Infrastructure
-
-Enterprise-grade [operational specifications](/specifications/infrastructure):
-
-- 5 RBAC roles for access control
-- 7-year audit trail retention
-- Multi-region deployment patterns
-
-### Cryptography
-
-[Post-quantum security](/specifications/crypto/crypto-agility) future-proofing:
-
-- ML-DSA-65 for standard operations
-- ML-DSA-87 for high-security contexts
-- Hybrid classical/PQC transition paths
-
----
-
-## Use Cases
-
-### For Luxury Brands
-
-Deploy Galileo Protocol to issue verifiable digital certificates for every product. Track items through the supply chain, enable authorized resale verification, and provide customers with evidence-backed authenticity records.
-
-```json
-{
-  "@context": "https://galileo.example/v1",
-  "@type": "LuxuryItem",
-  "gtin": "01234567890123",
-  "brand": "Maison Example",
-  "category": "Haute Horlogerie",
-  "authenticity": {
-    "verified": true,
-    "verifier": "did:galileo:brand:maison-example",
-    "timestamp": "2026-02-01T00:00:00Z"
-  }
-}
-```
-
-### For Resale Platforms
-
-Integrate the resolver API to verify items listed on your marketplace. Provide buyers with confidence and reduce fraud-related chargebacks. Support the circular economy with trusted provenance data.
-
-### For Regulators
-
-Access standardized Digital Product Passport data through documented APIs. Verify compliance with ESPR requirements without requiring proprietary integrations with each brand.
-
-### For Consumers
-
-Scan any Galileo-enabled product to view its complete history: where it was made, who made it, every ownership transfer. Take control of your luxury investments with portable, verifiable certificates.
-
----
-
-## What's NOT in v1.0.0
-
-Transparency about scope is as important as feature announcements. Version 1.0.0 does **not** include:
-
-- **Mobile SDKs**: Native iOS/Android libraries are planned for v1.1
-- **Reference UI Components**: React/Vue component libraries coming in v1.2
-- **Multi-chain Deployments**: v1.0.0 targets EVM-compatible chains; cross-chain bridges planned for v1.3
-- **AI-powered Verification**: Computer vision authenticity checking is in research phase
-- **Marketplace Integration Templates**: Shopify/WooCommerce plugins planned for future releases
-
-These features are on our roadmap and will be delivered in subsequent minor versions.
-
----
-
-## Getting Started
-
-### For Developers
-
-1. **Read the Quick Start Guide**: [/docs/quick-start](/docs/quick-start)
-2. **Explore the Architecture**: [/docs/architecture](/docs/architecture)
-3. **Browse Specifications**: [/specifications](/specifications)
-4. **Join the Community**: GitHub discussions and contribution guidelines
-
-### For Brands
-
-1. **Review Compliance Requirements**: [/docs/compliance](/docs/compliance)
-2. **Assess Integration Scope**: Contact our partnership team
-3. **Plan Your Pilot**: We offer guided implementations for early adopters
-
-### For Researchers
-
-All specifications are published under **Apache 2.0** license. Academic use is encouraged and citations are appreciated. Contact us for research collaboration opportunities.
-
----
-
-## Roadmap
-
-### v1.1 (Q2 2026)
-- Mobile SDK for iOS and Android
-- Enhanced analytics dashboard
-- Additional language localizations
-
-### v1.2 (Q3 2026)
-- React and Vue component libraries
-- Shopify integration template
-- Extended EPCIS event types
-
-### v1.3 (Q4 2026)
-- Cross-chain bridge protocols
-- Advanced privacy features (ZK proofs)
-- AI verification research preview
-
----
-
-## Governance
-
-Galileo Protocol is developed under transparent, community-driven governance:
-
-- **License**: Apache 2.0
-- **Contributor Agreement**: DCO 1.1 (Developer Certificate of Origin)
-- **Technical Steering Committee**: 11 members with anti-dominance provisions (max 2 seats per organization)
-- **Decision Process**: Proposal-based with community review periods
-
-We believe open standards are only valuable if they remain truly open.
-
----
-
-## Thank You
-
-This release would not be possible without the contributions of many individuals and organizations:
-
-- The cryptography researchers who reviewed our post-quantum implementations
-- The luxury brands who provided real-world requirements and pilot feedback
-- The regulatory experts who ensured compliance framework accuracy
-- The open-source community who reviewed specifications and submitted improvements
-
-Galileo Protocol is built by the community, for the community.
-
-**The future of luxury authenticity is open. It starts today.**
-
----
-
-*Ready to dive in? Start with the [Quick Start Guide](/docs/quick-start) or explore the complete [Technical Documentation](/docs).*
-
-*Have questions? Open an issue on GitHub or join our community discussions.*
+Read the [v1.0.0 release](https://github.com/originlabs-app/galileo-protocol/releases/tag/v1.0.0) and the [documentation](/docs), then identify the smallest product-record exchange your team needs to prove.

@@ -1,30 +1,60 @@
 ---
-title: "Product Passport Revocation: What Resale Must Check"
-date: "2026-09-05"
-modified: "2026-09-05"
-author: "Pierre Beunardeau"
-excerpt: "A revoked product credential does not prove a fake. A resale guide to checking current status, handling stale results and protecting owner privacy."
-description: "A revoked product credential does not prove a fake. A resale guide to checking current status, handling stale results and protecting owner privacy."
-tags: [provenance, authentication, infrastructure, luxury]
+title: 'Product Passport Revocation: What Resale Must Check'
+date: '2026-09-05'
+modified: '2026-09-12'
+author: Pierre Beunardeau
+excerpt: >-
+  A revoked product certificate does not prove a fake. A resale guide to checking
+  current status, handling stale results and protecting owner privacy.
+description: >-
+  A revoked product certificate does not prove a fake. A resale guide to checking
+  current status, handling stale results and protecting owner privacy.
+tags:
+  - provenance
+  - authentication
+  - infrastructure
+  - luxury
 published: true
-coverImage: "/images/blog/product-passport-revocation-resale.jpg"
-coverImageAlt: "An intact black leather handbag beside a separate glass certificate with an interrupted amber ring and cyan edges"
+coverImage: /images/blog/product-passport-revocation-resale.jpg
+coverImageAlt: >-
+  An intact black leather handbag beside a separate glass certificate with an
+  interrupted amber ring and cyan edges
 faq:
-  - question: "Does a revoked product passport mean the item is counterfeit?"
-    answer: "No. Revocation concerns a particular credential and must be interpreted under its issuer's policy. It may reflect compromised signing material or replacement of a record. The product's authenticity, ownership and condition need separate evidence. Stop relying on the revoked credential and ask the issuer for clarification."
-  - question: "Can a reseller accept a cached passport status?"
-    answer: "Only within a defined verification policy that respects the credential's validity and the applicable status mechanism. A recent download does not make an old signed statement current. Record the statement's time and the check time, refresh when required, and hold a certificate-dependent decision if the evidence is too old or unavailable."
-  - question: "Does an unavailable status service mean a credential is revoked?"
-    answer: "No. A timeout, unsupported format or failed status retrieval means the check could not establish the status. It must not become either a counterfeit accusation or an automatic approval. Explain the missing check, retry through the documented service and offer an issuer or specialist review."
-  - question: "Can checking passport status expose a customer's activity?"
-    answer: "It can. Requests tied to one credential can reveal when and where it is presented. Shared status lists and controlled caching can reduce this exposure, but do not guarantee anonymity. Avoid attaching customer identity to public status requests and keep transaction records under access controls."
+  - question: Does a revoked product passport mean the item is counterfeit?
+    answer: >-
+      No. Revocation concerns a particular signed product statement and must be interpreted
+      under its issuer's policy. It may reflect compromised signing material or
+      replacement of a record. The product's authenticity, ownership and
+      condition need separate evidence. Stop relying on the revoked credential
+      and ask the issuer for clarification.
+  - question: Can a reseller accept a cached passport status?
+    answer: >-
+      Only within a defined verification policy that respects the credential's
+      validity and the applicable status mechanism. A recent download does not
+      make an old signed statement current. Record the statement's time and the
+      check time, refresh when required, and hold a certificate-dependent
+      decision if the evidence is too old or unavailable.
+  - question: Does an unavailable status service mean a credential is revoked?
+    answer: >-
+      No. A timeout, unsupported format or failed status retrieval means the
+      check could not establish the status. It must not become either a
+      counterfeit accusation or an automatic approval. Explain the missing
+      check, retry through the documented service and offer an issuer or
+      specialist review.
+  - question: Can checking passport status expose a customer's activity?
+    answer: >-
+      It can. Requests tied to one credential can reveal when and where it is
+      presented. Shared status lists and controlled caching can reduce this
+      exposure, but do not guarantee anonymity. Avoid attaching customer
+      identity to public status requests and keep transaction records under
+      access controls.
 ---
 
-A revoked product credential does not, by itself, prove that the physical item is counterfeit. A reseller should stop relying on that credential, establish what changed and keep an unavailable or outdated status separate from an authenticity verdict.
+A revoked product credential (a digitally signed statement about an item) does not, by itself, prove that the item is counterfeit. A reseller should stop relying on that statement, establish what changed and keep an unavailable or outdated status separate from an authenticity verdict.
 
 That distinction becomes practical at the resale counter. The seller has a bag, the phone displays a certificate, and the buyer wants a decision. A signature can still check out while the issuer has withdrawn the statement. A perfectly genuine object can also arrive with a damaged tag, a replaced credential or an inaccessible service.
 
-This is an operational guide for teams using digitally signed product records. It is not a claim that every Digital Product Passport uses W3C credentials, a new regulatory obligation, or a description of a deployed Galileo verification feature.
+This guide concerns digitally signed product records. Other passport formats may use different verification mechanisms.
 
 ## Start with the claim that the certificate actually makes
 
@@ -40,9 +70,7 @@ Write those distinctions into the intake form before choosing a colour for the s
 
 ## A revoked credential is not a counterfeit finding
 
-W3C explains in [Bitstring Status List v1.0, section 1.1](https://www.w3.org/TR/vc-bitstring-status-list/#conceptual-framework) that status information **“is about the verifiable credential itself and might not apply to any underlying or backing credential”**. This excerpt concerns the credential status, not the underlying object. The Recommendation is dated 15 May 2025.
-
-The note uses a degree as an example: compromised signing material can invalidate a digital credential while the underlying qualification remains valid. Applied to a product record, the same distinction prevents a technical withdrawal from becoming an unsupported accusation about a bag.
+[W3C Bitstring Status List v1.0, section 1.1](https://www.w3.org/TR/vc-bitstring-status-list/#conceptual-framework), a Recommendation dated 15 May 2025, distinguishes the status of a digital credential from the underlying qualification it describes. For a product record, withdrawal likewise needs to be interpreted separately from the physical item's authenticity.
 
 This application is our analysis. An issuer might withdraw a product credential after discovering an error, or replace it under a documented recovery process. Those are possible scenarios, not asserted explanations for a real revocation. The reseller needs the issuer's authenticated explanation and any replacement evidence before relying on either.
 
@@ -83,7 +111,7 @@ That separation also makes escalation useful. The issuer can explain its credent
 
 Caching means keeping a local copy to avoid fetching the same information repeatedly. It can improve speed and availability, but it changes what a verifier knows at the moment of sale.
 
-In its January 2026 [Digital Signatures Technical Implementation Guideline](https://ref.gs1.org/guidelines/digital-signatures/), GS1 describes caching a DigSig Certificate in constrained connectivity. Its qualification on printed page 35 is direct: **“Note that revocation checks should be done online.”** This guidance concerns that DigSig workflow; it should not be misrepresented as the operating rule of every credential format.
+In its January 2026 [Digital Signatures Technical Implementation Guideline](https://ref.gs1.org/guidelines/digital-signatures/), GS1 discusses keeping a local copy of a DigSig Certificate while checking revocation online. That guidance concerns the DigSig workflow; use the documented rules for the credential format your team actually receives.
 
 For a resale team, the practical implication is to distinguish locally verified material from a current status check. A screenshot taken yesterday may record a genuine result from yesterday. It says nothing reliable about changes since then.
 
@@ -131,7 +159,7 @@ Before relying on a provider's scan result, ask for a demonstration with deliber
 - Replace a credential through the issuer's documented process. Can the reviewer follow the relationship without losing the earlier record?
 - Inspect a status request. Is customer identity disclosed when the mechanism does not need it?
 
-These are procurement questions and recommended acceptance checks. They are not assertions about an existing provider's implementation, including Galileo's. The provider should show the relevant version, configuration and evidence rather than answer with a standards logo.
+Ask the provider to demonstrate the relevant version, configuration and results for these cases.
 
 This is the operational continuation of [portable proof in the secondary market](/blog/2026-08-30-fpjourne-secondary-market-portable-proof). A record needs to travel, but the next holder must also understand when it can be relied upon and how uncertainty is resolved.
 
@@ -139,7 +167,7 @@ This is the operational continuation of [portable proof in the secondary market]
 
 ### Does a revoked product passport mean the item is counterfeit?
 
-No. Revocation concerns a particular credential and must be interpreted under its issuer's policy. It may reflect compromised signing material or replacement of a record. The product's authenticity, ownership and condition need separate evidence. Stop relying on the revoked credential and ask the issuer for clarification.
+No. Revocation concerns a particular signed product statement and must be interpreted under its issuer's policy. It may reflect compromised signing material or replacement of a record. The product's authenticity, ownership and condition need separate evidence. Stop relying on the revoked credential and ask the issuer for clarification.
 
 ### Can a reseller accept a cached passport status?
 
