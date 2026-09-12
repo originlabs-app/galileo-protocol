@@ -75,17 +75,24 @@ export async function auditIdentity(commit, verifyMerge) {
   if (author === allowedIdentity && committer === allowedIdentity) return [];
   // Names alone are forgeable. Only GitHub's verified, matching merge object
   // may use the repository owner's account alias and the web-flow committer.
-  if (author === githubAuthor && committer === githubCommitter && parents.length === 2 && verifyMerge) {
+  if (author === githubAuthor && committer === githubCommitter &&
+      (parents.length === 1 || parents.length === 2) && verifyMerge) {
     try {
       const remote = await verifyMerge(sha);
       const verification = remote.commit?.verification;
+      // A signed one-parent web commit is not necessarily a squash merge.
+      // Bind that exception to the merged PR that introduced this exact SHA.
+      const isMergedSquash = Array.isArray(remote.pullRequests) && remote.pullRequests.some(pull =>
+        pull?.state === 'closed' && typeof pull.merged_at === 'string' && Number.isFinite(Date.parse(pull.merged_at)) &&
+        pull.merge_commit_sha === sha && pull.base?.ref === 'main' && pull.base?.repo?.full_name === repository);
       if (remote.sha === sha && remote.author?.login === 'originlabs-app' &&
           remote.committer?.login === 'web-flow' &&
           identity(remote.commit?.author) === author && identity(remote.commit?.committer) === committer &&
           JSON.stringify(remote.parents?.map(parent => parent.sha)) === JSON.stringify(parents) &&
           verification?.verified === true && verification.reason === 'valid' &&
           typeof verification.signature === 'string' && verification.signature.trim() &&
-          typeof verification.payload === 'string' && verification.payload.trim()) return [];
+          typeof verification.payload === 'string' && verification.payload.trim() &&
+          (parents.length === 2 || isMergedSquash)) return [];
     } catch {
       return [`${sha}: GitHub merge verification unavailable`];
     }
@@ -127,10 +134,9 @@ export function auditFiles(files, read = file => readFileSync(file)) {
   return failures;
 }
 
-async function verifyGitHubMerge(sha) {
-  if (!/^[a-f0-9]{40}$/.test(sha)) throw new Error('Invalid commit');
+async function readGitHub(path) {
   if (process.env.GH_TOKEN || process.env.GITHUB_TOKEN) {
-    const response = await fetch(`https://api.github.com/repos/${repository}/commits/${sha}`, {
+    const response = await fetch(`https://api.github.com/repos/${repository}/${path}`, {
       headers: {
         Accept: 'application/vnd.github+json',
         Authorization: `Bearer ${process.env.GH_TOKEN || process.env.GITHUB_TOKEN}`,
@@ -142,9 +148,18 @@ async function verifyGitHubMerge(sha) {
     if (!response.ok) throw new Error('GitHub verification failed');
     return response.json();
   }
-  return JSON.parse(execFileSync('gh', ['api', '--hostname', 'github.com', `repos/${repository}/commits/${sha}`], {
+  return JSON.parse(execFileSync('gh', ['api', '--hostname', 'github.com', `repos/${repository}/${path}`], {
     encoding: 'utf8', timeout: 20000, stdio: ['ignore', 'pipe', 'pipe'],
   }));
+}
+
+async function verifyGitHubMerge(sha) {
+  if (!/^[a-f0-9]{40}$/.test(sha)) throw new Error('Invalid commit');
+  const remote = await readGitHub(`commits/${sha}`);
+  if (remote.parents?.length === 1) {
+    remote.pullRequests = await readGitHub(`commits/${sha}/pulls?per_page=100`);
+  }
+  return remote;
 }
 
 async function main() {

@@ -20,6 +20,14 @@ const verifiedMerge = {
     verification: { verified: true, reason: 'valid', signature: 'signed payload', payload: 'commit payload' },
   },
 };
+const squash = { ...merge, parents: [parents[0]] };
+const mergedPullRequest = {
+  state: 'closed', merged_at: '2026-01-01T12:00:00Z', merge_commit_sha: sha,
+  base: { ref: 'main', repo: { full_name: 'originlabs-app/galileo-protocol' } },
+};
+const verifiedSquash = {
+  ...verifiedMerge, parents: [{ sha: parents[0] }], pullRequests: [mergedPullRequest],
+};
 
 test('ordinary contributions require both approved identities', async () => {
   assert.deepEqual(await auditIdentity({ sha, parents: [], author: owner, committer: owner }), []);
@@ -50,6 +58,53 @@ test('a GitHub merge requires matching signed API evidence', async () => {
   assert.ok((await auditIdentity(merge, async () => { throw new Error('unavailable'); })).length > 0);
   assert.ok((await auditIdentity({ ...merge, parents: [parents[0]] }, async () => verifiedMerge)).length > 0);
   assert.ok((await auditIdentity({ ...merge, author: 'some-bot <bot@example.org>' }, async () => verifiedMerge)).length > 0);
+});
+
+test('a signed GitHub squash requires its exact merged pull request into this repository main branch', async () => {
+  assert.deepEqual(await auditIdentity(squash, async () => verifiedSquash), []);
+  for (const alter of [
+    x => { delete x.pullRequests; },
+    x => { x.pullRequests = []; },
+    x => { x.pullRequests = {}; },
+    x => { x.pullRequests[0].state = 'open'; },
+    x => { x.pullRequests[0].merged_at = null; },
+    x => { x.pullRequests[0].merged_at = ''; },
+    x => { x.pullRequests[0].merged_at = 'invalid'; },
+    x => { x.pullRequests[0].merge_commit_sha = parents[0]; },
+    x => { x.pullRequests[0].base.ref = 'other-branch'; },
+    x => { x.pullRequests[0].base.repo.full_name = 'other/repository'; },
+  ]) {
+    const evidence = structuredClone(verifiedSquash);
+    alter(evidence);
+    assert.ok((await auditIdentity(squash, async () => evidence)).length > 0);
+  }
+});
+
+test('a squash cannot bypass commit identity, SHA, parents or signature verification', async () => {
+  for (const alter of [
+    x => { x.sha = 'd'.repeat(40); },
+    x => { x.parents = []; },
+    x => { x.parents[0].sha = parents[1]; },
+    x => { x.parents.push({ sha: parents[1] }); },
+    x => { x.author.login = 'other'; },
+    x => { x.committer.login = 'other'; },
+    x => { x.commit.author.email = 'other@example.org'; },
+    x => { x.commit.committer.name = 'Other'; },
+    x => { x.commit.verification.verified = false; },
+    x => { x.commit.verification.reason = 'unsigned'; },
+    x => { x.commit.verification.signature = ''; },
+    x => { x.commit.verification.payload = ''; },
+  ]) {
+    const evidence = structuredClone(verifiedSquash);
+    alter(evidence);
+    assert.ok((await auditIdentity(squash, async () => evidence)).length > 0);
+  }
+  for (const invalidParents of [[], [...parents, 'd'.repeat(40)]]) {
+    const evidence = { ...verifiedSquash, parents: invalidParents.map(sha => ({ sha })) };
+    assert.ok((await auditIdentity({ ...squash, parents: invalidParents }, async () => evidence)).length > 0);
+  }
+  assert.ok((await auditIdentity(squash, async () => { throw new Error('unavailable'); })).length > 0);
+  assert.ok((await auditIdentity(squash)).length > 0);
 });
 
 test('private paths and secrets cannot enter the release tree', () => {
@@ -113,5 +168,49 @@ test('CLI rejects staged secrets, private files and foreign identities in PR and
         assert.equal(result.status, scenario === 'clean' ? 0 : 1, `${eventName}/${scenario}: ${result.stderr}`);
       } finally { rmSync(cwd, { recursive: true, force: true }); }
     }
+  }
+});
+
+test('CLI accepts a signed squash only when the associated pull request API confirms the merge', () => {
+  const script = fileURLToPath(new URL('./public-release-audit.mjs', import.meta.url));
+  for (const scenario of ['merged', 'unmerged', 'unavailable']) {
+    const cwd = mkdtempSync(join(tmpdir(), 'public-audit-squash-'));
+    try {
+      const env = { ...process.env, GH_TOKEN: '', GITHUB_TOKEN: '',
+        GIT_AUTHOR_NAME: 'Pierre Beunardeau', GIT_COMMITTER_NAME: 'Pierre Beunardeau',
+        GIT_AUTHOR_EMAIL: 'pierre.beunardeau@originlabs.app', GIT_COMMITTER_EMAIL: 'pierre.beunardeau@originlabs.app' };
+      const git = args => execFileSync('git', args, { cwd, env, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+      git(['init', '--quiet']);
+      writeFileSync(join(cwd, 'README.md'), 'Contributor documentation');
+      git(['add', 'README.md']);
+      git(['-c', 'commit.gpgsign=false', 'commit', '--quiet', '-m', 'Initial contribution']);
+      const parent = git(['rev-parse', 'HEAD']).trim();
+      env.GIT_AUTHOR_NAME = 'originlabs-app';
+      env.GIT_COMMITTER_NAME = 'GitHub';
+      env.GIT_COMMITTER_EMAIL = 'noreply@github.com';
+      writeFileSync(join(cwd, 'README.md'), 'Updated contributor documentation');
+      git(['add', 'README.md']);
+      git(['-c', 'commit.gpgsign=false', 'commit', '--quiet', '-m', 'Squashed contribution']);
+      const head = git(['rev-parse', 'HEAD']).trim();
+      const fixture = {
+        scenario, commit: { ...verifiedMerge, sha: head, parents: [{ sha: parent }] },
+        pullRequests: [{ ...mergedPullRequest, merge_commit_sha: head, merged_at: scenario === 'unmerged' ? null : mergedPullRequest.merged_at }],
+      };
+      const fixturePath = join(cwd, 'api-fixture.json');
+      writeFileSync(fixturePath, JSON.stringify(fixture));
+      writeFileSync(join(cwd, 'gh'), `#!${process.execPath}
+const fixture = JSON.parse(require('node:fs').readFileSync(process.env.PUBLIC_AUDIT_FIXTURE, 'utf8'));
+const commitPath = 'repos/originlabs-app/galileo-protocol/commits/' + fixture.commit.sha;
+const endpoint = process.argv.at(-1);
+if (endpoint === commitPath) process.stdout.write(JSON.stringify(fixture.commit));
+else if (endpoint === commitPath + '/pulls?per_page=100' && fixture.scenario !== 'unavailable') process.stdout.write(JSON.stringify(fixture.pullRequests));
+else process.exit(1);
+`, { mode: 0o755 });
+      const result = spawnSync(process.execPath, [script], { cwd, encoding: 'utf8', env: {
+        ...env, PATH: `${cwd}:${process.env.PATH}`, PUBLIC_AUDIT_FIXTURE: fixturePath,
+        GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: 'push', GITHUB_SHA: head,
+      } });
+      assert.equal(result.status, scenario === 'merged' ? 0 : 1, `${scenario}: ${result.stderr}`);
+    } finally { rmSync(cwd, { recursive: true, force: true }); }
   }
 });
