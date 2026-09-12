@@ -1,5 +1,6 @@
 import { getAllPosts, formatDate } from "@/lib/blog";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, User } from "lucide-react";
 
 export const metadata = {
@@ -73,10 +74,20 @@ export default function BlogPage() {
                         className="relative h-44 overflow-hidden"
                         style={{
                           background: post.frontmatter.coverImage
-                            ? `url(${post.frontmatter.coverImage}) center/cover`
+                            ? undefined
                             : `linear-gradient(${angle}deg, var(--ocean-bathypelagic) 0%, var(--ocean-mesopelagic) 40%, var(--ocean-epipelagic) 100%)`,
                         }}
                       >
+                        {post.frontmatter.coverImage && (
+                          <Image
+                            src={post.frontmatter.coverImage}
+                            alt=""
+                            fill
+                            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                            preload={index === 0}
+                            className="object-cover"
+                          />
+                        )}
                         {/* Abstract pattern overlay */}
                         {!post.frontmatter.coverImage && (
                           <>

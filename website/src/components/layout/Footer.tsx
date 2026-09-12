@@ -225,9 +225,10 @@ export function Footer() {
 
             {/* Protocol */}
             <div>
-              <h4
-                className="text-[10px] tracking-[0.3em] uppercase mb-6"
+              <h3
+                className="tracking-[0.3em] uppercase mb-6"
                 style={{
+                  fontSize: "10px",
                   background:
                     "linear-gradient(180deg, #00FFFF 0%, #00FF88 100%)",
                   WebkitBackgroundClip: "text",
@@ -236,7 +237,7 @@ export function Footer() {
                 }}
               >
                 Protocol
-              </h4>
+              </h3>
               <ul className="space-y-3">
                 <li>
                   <Link
@@ -275,9 +276,10 @@ export function Footer() {
 
             {/* Explore */}
             <div>
-              <h4
-                className="text-[10px] tracking-[0.3em] uppercase mb-6"
+              <h3
+                className="tracking-[0.3em] uppercase mb-6"
                 style={{
+                  fontSize: "10px",
                   background:
                     "linear-gradient(180deg, #00FFFF 0%, #00FF88 100%)",
                   WebkitBackgroundClip: "text",
@@ -286,7 +288,7 @@ export function Footer() {
                 }}
               >
                 Explore
-              </h4>
+              </h3>
               <ul className="space-y-3">
                 <li>
                   <Link
@@ -317,9 +319,10 @@ export function Footer() {
 
             {/* Company */}
             <div>
-              <h4
-                className="text-[10px] tracking-[0.3em] uppercase mb-6"
+              <h3
+                className="tracking-[0.3em] uppercase mb-6"
                 style={{
+                  fontSize: "10px",
                   background:
                     "linear-gradient(180deg, #00FFFF 0%, #00FF88 100%)",
                   WebkitBackgroundClip: "text",
@@ -328,7 +331,7 @@ export function Footer() {
                 }}
               >
                 Company
-              </h4>
+              </h3>
               <ul className="space-y-3">
                 <li>
                   <Link
@@ -381,7 +384,7 @@ export function Footer() {
       <section className="py-6">
         <div className="container mx-auto px-6 md:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-[10px] text-white/40">
+            <p className="text-[10px] text-white/60">
               © {new Date().getFullYear()} Galileo Network EURL. Licensed under
               Apache 2.0.
             </p>
@@ -390,21 +393,21 @@ export function Footer() {
             <div className="flex items-center gap-4">
               <Link
                 href="/privacy"
-                className="text-[10px] text-white/40 hover:text-cyan-400 transition-colors"
+                className="text-[10px] text-white/60 hover:text-cyan-400 transition-colors"
               >
                 Privacy
               </Link>
               <span className="text-white/20">·</span>
               <Link
                 href="/legal"
-                className="text-[10px] text-white/40 hover:text-cyan-400 transition-colors"
+                className="text-[10px] text-white/60 hover:text-cyan-400 transition-colors"
               >
                 Legal
               </Link>
               <span className="text-white/20">·</span>
               <Link
                 href="/terms"
-                className="text-[10px] text-white/40 hover:text-cyan-400 transition-colors"
+                className="text-[10px] text-white/60 hover:text-cyan-400 transition-colors"
               >
                 Terms
               </Link>
@@ -413,7 +416,7 @@ export function Footer() {
             {/* Signature */}
             <div className="flex items-center gap-2">
               <div className="w-1 h-1 bg-cyan-400/70 rounded-full" />
-              <span className="text-[9px] tracking-[0.4em] uppercase text-white/40">
+              <span className="text-[9px] tracking-[0.4em] uppercase text-white/60">
                 ABYSSE · MMXXVI
               </span>
               <div className="w-1 h-1 bg-cyan-400/70 rounded-full" />

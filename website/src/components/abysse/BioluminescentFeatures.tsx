@@ -232,6 +232,7 @@ export function BioluminescentFeatures() {
               opacity: 0.3,
               animationDuration: `${particle.duration}s`,
               animationDelay: `${particle.delay}s`,
+              animationPlayState: isVisible ? "running" : "paused",
             }}
           />
         ))}

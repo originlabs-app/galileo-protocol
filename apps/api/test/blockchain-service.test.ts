@@ -398,13 +398,13 @@ describe("isBlockchainWriteConfigured", () => {
 
   it("returns false when only private key is set (no RPC URL)", () => {
     process.env.MINTING_PRIVATE_KEY =
-      "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+      "test-minting-credential";
     expect(isBlockchainWriteConfigured()).toBe(false);
   });
 
   it("returns true when both MINTING_PRIVATE_KEY and BASE_SEPOLIA_RPC_URL are set", () => {
     process.env.MINTING_PRIVATE_KEY =
-      "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+      "test-minting-credential";
     process.env.BASE_SEPOLIA_RPC_URL = "https://sepolia.base.org";
     expect(isBlockchainWriteConfigured()).toBe(true);
   });
@@ -418,7 +418,7 @@ describe("isBlockchainWriteConfigured", () => {
 
   it("accepts BASE_SEPOLIA_RPC as a backwards-compatible RPC alias", () => {
     process.env.MINTING_PRIVATE_KEY =
-      "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+      "test-minting-credential";
     process.env.BASE_SEPOLIA_RPC = "https://sepolia.base.org";
     expect(getBaseSepoliaRpcUrl()).toBe("https://sepolia.base.org");
     expect(isBlockchainWriteConfigured()).toBe(true);

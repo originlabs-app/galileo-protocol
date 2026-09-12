@@ -13,6 +13,22 @@ node_modules
 .github
 .planning
 .claude
+**/AGENTS.md
+**/CLAUDE.md
+**/GEMINI.md
+**/.agents
+**/.codex
+**/.claude
+**/.cursor
+**/.factory
+**/.windsurf
+**/.cursorrules
+**/copilot-instructions.md
+geo
+blogidea.md
+proof-packs
+dogfood-output
+docs
 
 # Non-API apps and docs (not needed for API image)
 website

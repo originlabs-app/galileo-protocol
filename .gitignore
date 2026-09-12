@@ -41,6 +41,15 @@ yarn-debug.log*
 pnpm-debug.log*
 
 # Internal dev artifacts (not for public)
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.agents/
+.cursorrules
+copilot-instructions.md
+/geo/
+/blogidea.md
+/website/content/reviews/
 .factory/
 .codex/
 .claude/
@@ -83,3 +92,6 @@ uploads/
 # Misc
 .vercel
 *.tsbuildinfo
+
+# Local performance reports
+.lighthouseci/
