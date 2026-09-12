@@ -162,6 +162,7 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
+                prefetch={isOpen ? null : false}
                 onClick={() => setIsOpen(false)}
                 className="py-4 text-2xl font-light text-white/80 hover:text-cyan-400 transition-colors border-b border-white/5"
                 style={{
@@ -178,6 +179,7 @@ export function Navigation() {
           <div className="mt-8">
             <Link
               href="/docs/quick-start"
+              prefetch={isOpen ? null : false}
               onClick={() => setIsOpen(false)}
               className="block w-full py-4 text-center bg-gradient-to-r from-cyan-500 to-emerald-500 text-black font-medium tracking-wide"
             >
