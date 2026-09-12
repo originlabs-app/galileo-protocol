@@ -41,6 +41,15 @@ jobs:
       - name: Collect three measurements per route
         run: npx --yes @lhci/cli@0.15.1 collect --config=website/lighthouserc.json
 
+      - name: Preserve traces from the same measurements
+        if: always()
+        run: |
+          mkdir -p .lighthouseci
+          shopt -s nullglob
+          assets=(*.trace.json *.devtoolslog.json)
+          test "${#assets[@]}" -gt 0
+          mv -- "${assets[@]}" .lighthouseci/
+
       - name: Verify complete measurements
         run: node scripts/check-lighthouse-reports.mjs
 
