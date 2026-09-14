@@ -1,0 +1,18 @@
+[
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"viewport\":[1440,1000],\"h1\":\"Open protocol for luxury product authentication\",\"h1Rect\":{\"x\":332,\"y\":382.40625,\"width\":768,\"height\":158.375,\"top\":382.40625,\"right\":1100,\"bottom\":540.78125,\"left\":332},\"ctaBottom\":717.96875,\"cueTop\":757.96875,\"overflow\":false,\"scrollY\":0}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"viewport\":[390,844],\"h1\":\"Open protocol for luxury product authentication\",\"h1Rect\":{\"x\":24,\"y\":268.71875,\"width\":342,\"height\":132,\"top\":268.71875,\"right\":366,\"bottom\":400.71875,\"left\":24},\"ctaBottom\":689.34375,\"cueTop\":709.34375,\"overflow\":false,\"scrollY\":0}\n```"
+      }
+    ]
+  }
+]

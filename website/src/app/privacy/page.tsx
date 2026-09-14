@@ -1,10 +1,11 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import { Footer } from "@/components/layout/Footer";
 
-export const metadata = {
+export const metadata = pageMetadata("/privacy", {
   title: "Privacy Policy",
   description:
     "Privacy policy for galileoprotocol.io. Learn how the Galileo Protocol website handles your data with minimal collection, no tracking cookies, and full transparency.",
-};
+});
 
 export default function PrivacyPage() {
   return (

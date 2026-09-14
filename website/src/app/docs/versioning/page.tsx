@@ -1,8 +1,9 @@
-export const metadata = {
+import { pageMetadata } from "@/lib/page-metadata";
+export const metadata = pageMetadata("/docs/versioning", {
   title: "Versioning Policy",
   description:
     "Versioning and release policy for the Galileo Luxury Standard. Semantic versioning, semiannual release cadence, 10-year deprecation sunset, veto mechanism for breaking changes, and security hotfix process.",
-};
+});
 
 export default function VersioningPage() {
   return (

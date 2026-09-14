@@ -71,7 +71,6 @@ export const metadata: Metadata = {
     title: "Galileo Protocol | The Open Standard for Luxury Authentication",
     description:
       "Galileo Protocol is the open standard for luxury product authentication and provenance, leveraging blockchain technology to protect brands and consumers.",
-    url: "https://www.galileoprotocol.io",
     siteName: "Galileo Protocol",
     locale: "en_US",
     type: "website",
@@ -84,9 +83,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
-  },
-  alternates: {
-    canonical: "/",
   },
 };
 

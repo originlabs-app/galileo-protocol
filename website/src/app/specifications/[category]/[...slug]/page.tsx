@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -12,6 +13,8 @@ import {
 } from "@/lib/specifications";
 import { SpecMetadata } from "@/components/specifications/SpecMetadata";
 import { JSONSchemaViewer } from "@/components/specifications/JSONSchemaViewer";
+
+export const dynamicParams = false;
 
 // ============================================================================
 // Static Generation
@@ -71,10 +74,10 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return pageMetadata(`/specifications/${category}/${slug.join("/")}`, {
     title: `${spec.metadata.title} | Galileo Specifications`,
     description: `${spec.metadata.title} - Version ${spec.metadata.version} (${spec.metadata.status})`,
-  };
+  });
 }
 
 // ============================================================================

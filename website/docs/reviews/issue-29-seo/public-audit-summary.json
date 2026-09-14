@@ -1,0 +1,152 @@
+[
+  {
+    "url": "https://www.galileoprotocol.io/",
+    "path": "/",
+    "status": 200
+  },
+  {
+    "url": "https://www.galileoprotocol.io/robots.txt",
+    "path": "/robots.txt",
+    "status": 200
+  },
+  {
+    "url": "https://www.galileoprotocol.io/sitemap.xml",
+    "path": "/sitemap.xml",
+    "status": 200
+  },
+  {
+    "url": "https://www.galileoprotocol.io/llms.txt",
+    "path": "/llms.txt",
+    "status": 200
+  },
+  {
+    "url": "https://www.galileoprotocol.io",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io",
+    "h1": [
+      "A B Y S S E"
+    ],
+    "title": "The Open Standard for Luxury Authentication",
+    "description": "Galileo Protocol is the open standard for luxury product authentication. Blockchain-powered digital product passports to protect brands against counterfeiting."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/docs",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io/docs",
+    "h1": [
+      "Introduction to Galileo"
+    ],
+    "title": "Introduction to Galileo Documentation | Galileo Protocol",
+    "description": "Learn about the Galileo open standard for luxury product authenticity. Discover core principles, specifications, and how blockchain protects brand heritage."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/docs/quick-start",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io",
+    "h1": [
+      "Quick Start"
+    ],
+    "title": "Quick Start | Galileo Documentation | Galileo Protocol",
+    "description": "Get started with Galileo in 5 minutes."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/docs/concepts",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io",
+    "h1": [
+      "Core Concepts"
+    ],
+    "title": "Core Concepts | Galileo Documentation | Galileo Protocol",
+    "description": "Understand the key terminology and concepts in Galileo."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/docs/architecture",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io",
+    "h1": [
+      "Hybrid Architecture"
+    ],
+    "title": "Architecture | Galileo Documentation | Galileo Protocol",
+    "description": "Understand the hybrid on-chain/off-chain architecture of Galileo."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/docs/token",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io",
+    "h1": [
+      "Token Architecture"
+    ],
+    "title": "Token | Galileo Documentation | Galileo Protocol",
+    "description": "ERC-3643 token architecture for luxury product ownership."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/docs/token/ownership-transfer",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io",
+    "h1": [
+      "Ownership Transfer"
+    ],
+    "title": "Ownership Transfer | Galileo Documentation | Galileo Protocol",
+    "description": "How ownership transfers work in Galileo tokens."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/docs/identity",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io",
+    "h1": [
+      "Identity System"
+    ],
+    "title": "Identity | Galileo Documentation | Galileo Protocol",
+    "description": "Learn about the Galileo identity system based on W3C DIDs."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/docs/identity/did-method",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io",
+    "h1": [
+      "DID Method: did:galileo"
+    ],
+    "title": "DID Method | Galileo Documentation | Galileo Protocol",
+    "description": "The did:galileo method specification for product and entity identifiers."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/docs/identity/verifiable-credentials",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io",
+    "h1": [
+      "Verifiable Credentials"
+    ],
+    "title": "Verifiable Credentials | Galileo Documentation | Galileo Protocol",
+    "description": "W3C Verifiable Credentials for product and entity claims."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/blog/2026-05-04-live-base-sepolia-mint",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io/blog/2026-05-04-live-base-sepolia-mint",
+    "h1": [
+      "Live Base Sepolia Mint Verified"
+    ],
+    "title": "Live Base Sepolia Mint Verified",
+    "description": "Galileo verified a live constructor-path mint on Base Sepolia and aligned its public roadmap around identity role administration before API-driven minting."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/blog/2026-03-22-production-deployment",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io/blog/2026-03-22-production-deployment",
+    "h1": [
+      "Production Deployment: Dashboard, Scanner & Infrastructure"
+    ],
+    "title": "Production Deployment: Dashboard, Scanner & Infrastructure",
+    "description": "The Galileo dashboard and scanner are now live on Vercel, with production deployment fixes, Cloudflare R2 storage and a new automated changelog pipeline."
+  },
+  {
+    "url": "https://www.galileoprotocol.io/blog/2026-02-01-v1-release",
+    "status": 200,
+    "canonical": "https://www.galileoprotocol.io/blog/2026-02-01-v1-release",
+    "h1": [
+      "Galileo Protocol v1.0.0: Open Luxury Authenticity Standard"
+    ],
+    "title": "Galileo Protocol v1.0.0: Open Luxury Authenticity Standard",
+    "description": "Galileo Protocol v1.0.0 is live: an open-source framework for luxury goods authentication and traceability, built on blockchain for regulatory compliance."
+  }
+]

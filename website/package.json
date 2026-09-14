@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:seo": "python3 scripts/check-seo.py --baseline docs/reviews/issue-29-seo/base.json"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

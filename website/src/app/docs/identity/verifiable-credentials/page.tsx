@@ -1,7 +1,8 @@
-export const metadata = {
+import { pageMetadata } from "@/lib/page-metadata";
+export const metadata = pageMetadata("/docs/identity/verifiable-credentials", {
   title: 'Verifiable Credentials | Galileo Documentation',
   description: 'W3C Verifiable Credentials for product and entity claims.',
-};
+});
 
 export default function VerifiableCredentialsPage() {
   return (
