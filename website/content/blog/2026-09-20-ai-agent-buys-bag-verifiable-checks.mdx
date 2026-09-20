@@ -78,7 +78,7 @@ A fictional collector, "Nadia", configures her agent with a simple rule: spend u
 
 ## What this cannot tell you
 
-Two honest limits. First, this particular rail is days old: the Alchemy announcement is a product launch, not observed buyer behaviour at scale, and "anywhere Mastercard is accepted online" describes reach, not adoption. Second, credential coverage in luxury remains partial. An agent told to require verifiable credentials will simply find fewer items to bid on; a missing credential is a filter, not a verdict, and plenty of genuine objects carry no digital record at all.
+Two honest limits. First, this particular rail is days old: the Alchemy announcement is an integration launch, not observed buyer behaviour at scale, and "anywhere Mastercard is accepted online" describes reach, not adoption. Second, credential coverage in luxury remains partial. An agent told to require verifiable credentials will simply find fewer items to bid on; a missing credential is a filter, not a verdict, and plenty of genuine objects carry no digital record at all.
 
 ## Galileo's take: agents are the reader credentials were written for
 
@@ -87,10 +87,10 @@ The interesting shift in the AgentCard news is not that software can pay; it is 
 ## Frequently asked questions
 
 ### Can an AI agent already pay for a luxury purchase?
-The payment rail now exists. On 17 September 2026, Alchemy announced that its AgentCard integrates Mastercard Agent Pay, giving agents one-time-use payment credentials with spending limits, merchant-category restrictions and pre-checkout approval. Whether an agent should pay is a separate question from whether it can.
+The payment rail now exists. On 17 September 2026, Alchemy announced that its AgentCard integrates Mastercard Agent Pay, giving agents one-time-use payment credentials bounded by user authorization and issuer controls such as spending limits, merchant categories and allowed geographies. Whether an agent should pay is a separate question from whether it can.
 
 ### What can an agent verify about a product before paying?
-Everything that is machine-readable: the issuer's signature on a verifiable credential, the credential's status (revoked or still valid), its conformance to the expected schema, and the consistency of a documented custody trail. What it cannot run is the comparison between the credential and the physical object in the box.
+The checks that are machine-verifiable, not merely machine-readable: the issuer's signature on a verifiable credential, the credential's status (revoked or still valid), its conformance to the expected schema, and the consistency of a documented custody trail. What it cannot run is the comparison between the credential and the physical object in the box.
 
 ### Does a valid credential prove the item is authentic?
 No. A valid credential proves that an issuer signed a set of claims and has not revoked them. It does not prove the claims were true when made, nor that the object shipped is the object described. That binding between record and item remains the hardest problem in luxury verification.
