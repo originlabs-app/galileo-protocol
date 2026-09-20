@@ -4,14 +4,14 @@ date: "2026-09-20"
 modified: "2026-09-20"
 author: "Pierre Beunardeau"
 excerpt: "AI agents can now hold payment credentials and complete a checkout. What they cannot do is touch the object, so the checks that matter before paying are the ones a machine can actually run."
-description: "AI agents can now pay for luxury goods. What an agent can verify before checkout, and what still needs a human judgment."
+description: "Agent payment rails are launching. What a buyer's agent can verify about a product before checkout, and what still needs a human judgment."
 tags: [agentic-commerce, authentication, verifiable-credentials, luxury, provenance]
 published: true
 coverImage: "/images/blog/ai-agent-buys-bag-verifiable-checks.jpg"
 coverImageAlt: "A luxury handbag on a dark obsidian counter beside a floating cyan holographic checklist of abstract glowing shapes, cinematic tech-noir lighting"
 faq:
   - question: "Can an AI agent already pay for a luxury purchase?"
-    answer: "The payment rail now exists. On 17 September 2026, Alchemy announced that its AgentCard integrates Mastercard Agent Pay, giving agents one-time-use payment credentials bounded by user authorization and issuer controls such as spending limits, merchant categories and allowed geographies. Whether an agent should pay is a separate question from whether it can."
+    answer: "The payment rails are being built. On 17 September 2026, Alchemy announced that AgentCard will support Mastercard payment credentials through an integration with Mastercard Agent Pay, with user authorization and issuer controls such as purchase limits, merchant categories and where transactions are allowed. Whether an agent should pay is a separate question from whether it can."
   - question: "What can an agent verify about a product before paying?"
     answer: "The checks that are machine-verifiable, not merely machine-readable: the issuer's signature on a verifiable credential, the credential's status (revoked or still valid), its conformance to the expected schema, and the consistency of a documented custody trail. What it cannot run is the comparison between the credential and the physical object in the box."
   - question: "Does a valid credential prove the item is authentic?"
@@ -24,7 +24,7 @@ faq:
 
 An AI agent can now hold a payment credential and complete a checkout. What it cannot do is pick up the bag, smell the leather or weigh the clasp, so before it pays, its job is to run every check a machine can run and to surface clearly the ones it cannot.
 
-The rail widened again this week. On 17 September 2026, [Alchemy announced](https://www.prnewswire.com/news-releases/alchemy-unlocks-ai-agent-purchases-anywhere-mastercard-is-accepted-online-via-agentcard-302882149.html) that its AgentCard product now integrates Mastercard Agent Pay, giving AI agents one-time-use Mastercard payment credentials usable anywhere Mastercard is accepted online. AgentCard itself is not new: it [launched on 18 June 2026](https://www.prnewswire.com/news-releases/alchemy-introduces-agentcard-a-payments-and-identity-platform-for-ai-agents-built-on-visa-intelligent-commerce-302803786.html) built on Visa Intelligent Commerce, and the September announcement extends it to Mastercard's rails. Users and issuers can set "purchase limits, merchant categories, and where transactions are allowed," and Mastercard's Agent Pay framework adds what it calls Verifiable Intent: a record of who authorized the agent, what it was told to do and the transaction that followed. Meta launched its [Muse personal agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) earlier this month in the United States, and on 17 September it added a Mac app that works across files, messages, calendar and notes, [reported by The Verge](https://www.theverge.com/tech/997332/metas-muse-ai-agent-now-has-a-mac-app). The direction is clear enough that the question is no longer whether agents will buy things, but what they can check before they do.
+The rail widened again this week. On 17 September 2026, [Alchemy announced](https://www.prnewswire.com/news-releases/alchemy-unlocks-ai-agent-purchases-anywhere-mastercard-is-accepted-online-via-agentcard-302882149.html) that AgentCard will support Mastercard payment credentials through an integration with Mastercard Agent Pay, giving AI agents one-time-use Mastercard credentials the company says will work anywhere Mastercard is accepted online. AgentCard itself is not new: it [launched on 18 June 2026](https://www.prnewswire.com/news-releases/alchemy-introduces-agentcard-a-payments-and-identity-platform-for-ai-agents-built-on-visa-intelligent-commerce-302803786.html) built on Visa Intelligent Commerce, and the September announcement extends it to Mastercard's rails. Users and issuers can set "purchase limits, merchant categories, and where transactions are allowed," and Mastercard's Agent Pay framework adds what it calls Verifiable Intent: a record of who authorized the agent, what it was told to do and the transaction that followed. Meta launched its [Muse personal agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) in the United States on 8 September, and says Muse "checks with the person before sensitive actions like sending an email or making a purchase"; on 17 September it added a Mac app that works across files, messages, calendar and notes, [reported by The Verge](https://www.theverge.com/tech/997332/metas-muse-ai-agent-now-has-a-mac-app). The direction is clear enough that the question is no longer whether agents will buy things, but what they can check before they do.
 
 ## What a paying agent can actually verify
 
@@ -33,7 +33,7 @@ An agent buying a pre-owned Hermès Kelly cannot inspect it. Its universe is doc
 For a credential built on the W3C Verifiable Credentials model, the checks a buyer's agent can run are mechanical:
 
 <figure>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" className="mx-auto block h-auto w-full max-w-[600px]" aria-label="Five checks an agent can run before paying. 1. Parse: is the credential well-formed JSON-LD. 2. Resolve: who is the issuer, identified by a DID. 3. Verify: does the issuer's signature check out against its public key. 4. Status: has the credential been revoked or suspended. 5. Schema: does it carry the claims this product category requires.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" className="mx-auto block h-auto w-full max-w-[600px]" aria-label="Five checks an agent can run before paying, plus one question outside the list. 1. Parse: is the credential well-formed JSON-LD. 2. Resolve: who is the issuer, identified by a DID. 3. Verify: does the issuer's signature check out against its public key. 4. Status: has the credential been revoked or suspended. 5. Schema: does it carry the claims this product category requires. Not on this list: whether the bag matches its record.">
 <rect width="600" height="300" rx="18" fill="#000810" />
 <rect x="24" y="20" width="270" height="52" rx="10" fill="#082f49" stroke="#22D3EE" />
 <text x="44" y="42" fill="#22D3EE" fontSize="15">1. Parse</text>
@@ -50,15 +50,15 @@ For a credential built on the W3C Verifiable Credentials model, the checks a buy
 <rect x="24" y="156" width="270" height="52" rx="10" fill="#082f49" stroke="#22D3EE" />
 <text x="44" y="178" fill="#22D3EE" fontSize="15">5. Validate schema</text>
 <text x="44" y="196" fill="#cbd5e1" fontSize="11">Required claims present for the category</text>
-<rect x="306" y="156" width="270" height="52" rx="10" fill="#7c2d12" stroke="#f97316" />
-<text x="326" y="178" fill="#fdba74" fontSize="15">Not on this list:</text>
-<text x="326" y="196" fill="#fed7aa" fontSize="11">whether the bag matches its record</text>
+<rect x="306" y="156" width="270" height="52" rx="10" fill="#082f49" stroke="#D4AF37" />
+<text x="326" y="178" fill="#D4AF37" fontSize="15">Not on this list:</text>
+<text x="326" y="196" fill="#F5E6C8" fontSize="11">whether the bag matches its record</text>
 <text x="300" y="244" fill="#94a3b8" fontSize="11" textAnchor="middle">Five mechanical checks, then one question no signature answers.</text>
 </svg>
 <figcaption>What an agent can compute before checkout, and the question that stays outside the cryptography.</figcaption>
 </figure>
 
-Each of these steps exists today in credential-based systems. Resolving the issuer's identifier returns the keys that should have signed the credential; verifying the signature confirms the claims were issued by that party and not altered since; the status list answers whether the issuer has since revoked or suspended the attestation; schema validation answers whether the credential carries the claims this kind of object requires. In [Galileo's documentation](/docs/identity/verifiable-credentials), that is exactly the published verification sequence: parse, resolve the issuer DID, verify the signature, check the credential status, validate against the schema. None of it requires a human in the loop, and none of it trusts the seller's word.
+Each of these steps exists today in credential-based systems. Resolving the issuer's identifier returns the keys that should have signed the credential; verifying the signature confirms the claims were issued by that party and not altered since; the status list answers whether the issuer has since revoked or suspended the attestation; schema validation answers whether the credential carries the claims this kind of object requires. The W3C credential model itself does not mandate DIDs: resolving the issuer DID is how [Galileo's documentation](/docs/identity/verifiable-credentials) anchors the issuer's keys, in the published verification sequence parse, resolve the issuer DID, verify the signature, check the credential status, validate against the schema. None of it requires a human in the loop, and none of it trusts the seller's word.
 
 There is a second, quieter check agents are well suited to: consistency across the custody trail. Invoices, auction lots, service records and prior transfers each carry dates and parties. An agent can flag that the "original 2019 invoice" references a model discontinued in 2017, or that two documents name different sellers for the same period. That is not proof of anything; it is a list of questions priced into the offer.
 
@@ -78,7 +78,7 @@ A fictional collector, "Nadia", configures her agent with a simple rule: spend u
 
 ## What this cannot tell you
 
-Two honest limits. First, this particular rail is days old: the Alchemy announcement is an integration launch, not observed buyer behaviour at scale, and "anywhere Mastercard is accepted online" describes reach, not adoption. Second, credential coverage in luxury remains partial. An agent told to require verifiable credentials will simply find fewer items to bid on; a missing credential is a filter, not a verdict, and plenty of genuine objects carry no digital record at all.
+Two honest limits. First, this particular rail is days old: the Alchemy announcement is an announced integration, not observed buyer behaviour at scale, and "anywhere Mastercard is accepted online" describes reach, not adoption. Second, credential coverage in luxury remains partial. An agent told to require verifiable credentials will simply find fewer items to bid on; a missing credential is a filter, not a verdict, and plenty of genuine objects carry no digital record at all.
 
 ## Galileo's take: agents are the reader credentials were written for
 
@@ -87,7 +87,7 @@ The interesting shift in the AgentCard news is not that software can pay; it is 
 ## Frequently asked questions
 
 ### Can an AI agent already pay for a luxury purchase?
-The payment rail now exists. On 17 September 2026, Alchemy announced that its AgentCard integrates Mastercard Agent Pay, giving agents one-time-use payment credentials bounded by user authorization and issuer controls such as spending limits, merchant categories and allowed geographies. Whether an agent should pay is a separate question from whether it can.
+The payment rails are being built. On 17 September 2026, Alchemy announced that AgentCard will support Mastercard payment credentials through an integration with Mastercard Agent Pay, with user authorization and issuer controls such as purchase limits, merchant categories and where transactions are allowed. Whether an agent should pay is a separate question from whether it can.
 
 ### What can an agent verify about a product before paying?
 The checks that are machine-verifiable, not merely machine-readable: the issuer's signature on a verifiable credential, the credential's status (revoked or still valid), its conformance to the expected schema, and the consistency of a documented custody trail. What it cannot run is the comparison between the credential and the physical object in the box.
