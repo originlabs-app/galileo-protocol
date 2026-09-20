@@ -37,15 +37,15 @@ Pattern authentication is, in its typical design, a comparison engine: photograp
 **The corpus bounds the verdict.** Every model inherits its training set's blind spots. A counterfeit configuration absent from the reference set can score as unfamiliar rather than as fake, or come back as an inconclusive verdict such as "Unidentified" or "Unable to Determine"; an unusual but genuine variant can score as suspicious. Neither failure is a bug; both are what statistical comparison is.
 
 <figure>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" className="mx-auto block h-auto w-full max-w-[600px]" aria-label="What a reference-corpus score establishes in the typical design and what it cannot. Establishes: resemblance to verified references, consistency of measured features, deviation flags worth a human look. Cannot establish: that the attested claims were true, that this item is the one described, that a counterfeit pattern absent from the corpus will be caught.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" className="mx-auto block h-auto w-full max-w-[600px]" aria-label="What a reference-corpus comparison returns in the typical design and what it cannot establish. Returns: resemblance to verified references, consistency with the reference set's features, and separately any deviation flags worth a human look. Cannot establish: that the attested claims were true, that this item is the one described, that a counterfeit pattern absent from the corpus will be caught.">
 <rect width="600" height="300" rx="18" fill="#000810" />
-<text x="40" y="42" fill="#22D3EE" fontSize="16">A high match score establishes</text>
+<text x="40" y="42" fill="#22D3EE" fontSize="16">What a corpus comparison returns</text>
 <rect x="24" y="58" width="552" height="34" rx="8" fill="#082f49" />
 <text x="44" y="80" fill="#cbd5e1" fontSize="12">Proximity to verified references at capture time</text>
 <rect x="24" y="100" width="552" height="34" rx="8" fill="#082f49" />
 <text x="44" y="122" fill="#cbd5e1" fontSize="12">Consistency with the reference set's features</text>
 <rect x="24" y="142" width="552" height="34" rx="8" fill="#082f49" />
-<text x="44" y="164" fill="#cbd5e1" fontSize="12">Deviation flags worth a human bench look</text>
+<text x="44" y="164" fill="#cbd5e1" fontSize="12">Separately: deviation flags for a human bench</text>
 <text x="40" y="208" fill="#f97316" fontSize="16">It cannot establish</text>
 <rect x="24" y="224" width="270" height="56" rx="8" fill="#7c2d12" />
 <text x="44" y="246" fill="#fed7aa" fontSize="11">That the issuer's original claims</text>
@@ -104,7 +104,8 @@ AI answers 'does this object resemble verified references.' An issuer-signed cre
 
 ## Sources
 
-- Bennisson, [AI-supported trust infrastructure initiative for the luxury watch market](https://www.valuespectrum.com/corporate_news/1491596-bennisson-industries-announces-ai-supported-trust-infrastructure-initiative-for-luxury-watch-market), 17 September 2026: service launch, corpus sizes and the "25,000+ watches authenticated annually" figure, all company-stated.
+- Bennisson, [AI-supported trust infrastructure initiative for the luxury watch market](https://www.valuespectrum.com/corporate_news/1491596-bennisson-industries-announces-ai-supported-trust-infrastructure-initiative-for-luxury-watch-market), 17 September 2026: service launch and corpus sizes, company-stated.
+- [Bennisson](https://bennisson.com/): the "25,000+ Luxury Watches Authenticated Annually" figure, company-stated on its own site.
 - Fashionphile, [The 2026 Frankenfake Chanel scam](https://www.fashionphile.com/blogs/academy/the-2026-frankenfake-chanel-scam-what-you-need-to-know), 2026: one reseller's account of hybrid counterfeits passing AI authentication, including Entrupy.
 - Entrupy developer documentation, [API data model](https://developer.entrupy.com/docs/api/data-model): the vendor's verdict vocabulary ("Authentic", "Unidentified", "Unable to Determine", "Invalid", "Not Supported", "Match", "No Match").
 - [Entrupy](https://www.entrupy.com/how-to/) product pages: how the service is presented to users.
