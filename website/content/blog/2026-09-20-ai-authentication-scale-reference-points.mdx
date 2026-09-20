@@ -32,20 +32,20 @@ Pattern authentication is, in its typical design, a comparison engine: photograp
 
 **Coverage is real.** A corpus of millions of references sees variation no individual expert encounters in a career: factory drift across years, regional dial variants, the subtle markers of known counterfeit workshops. Bennisson's stated advantage is exactly this: aggregation of verified datasets at a scale a single bench cannot match.
 
-**The score is a distance, not a fact.** The output is fundamentally "this item's features are consistent with reference class X." It is strong evidence, and it is still probabilistic. A 98% match is a statement about the corpus, not about the object.
+**In the typical design, the score is a distance, not a fact.** The output is fundamentally "this item's features are consistent with reference class X." It is strong evidence, and it is still probabilistic. A 98% match is a statement about the corpus, not about the object.
 
-**The corpus bounds the verdict.** Every model inherits its training set's blind spots. A counterfeit configuration never seen before scores as unfamiliar rather than as fake; an unusual but genuine variant can score as suspicious. Neither failure is a bug; both are what statistical comparison is.
+**The corpus bounds the verdict.** Every model inherits its training set's blind spots. A counterfeit configuration absent from the reference set can score as unfamiliar rather than as fake, or come back as an inconclusive verdict such as "Unidentified" or "Unable to Determine"; an unusual but genuine variant can score as suspicious. Neither failure is a bug; both are what statistical comparison is.
 
 <figure>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" className="mx-auto block h-auto w-full max-w-[600px]" aria-label="What a reference-corpus score establishes and what it cannot. Establishes: distance from verified references, consistency of documented features, anomalies worth a human look. Cannot establish: that the attested claims were true, that this item is the one described, that an unseen counterfeit pattern is counterfeit.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" className="mx-auto block h-auto w-full max-w-[600px]" aria-label="What a reference-corpus score establishes in the typical design and what it cannot. Establishes: resemblance to verified references, consistency of measured features, deviation flags worth a human look. Cannot establish: that the attested claims were true, that this item is the one described, that a counterfeit pattern absent from the corpus will be caught.">
 <rect width="600" height="300" rx="18" fill="#000810" />
 <text x="40" y="42" fill="#22D3EE" fontSize="16">A high match score establishes</text>
 <rect x="24" y="58" width="552" height="34" rx="8" fill="#082f49" />
 <text x="44" y="80" fill="#cbd5e1" fontSize="12">Proximity to verified references at capture time</text>
 <rect x="24" y="100" width="552" height="34" rx="8" fill="#082f49" />
-<text x="44" y="122" fill="#cbd5e1" fontSize="12">Internal consistency of measured features</text>
+<text x="44" y="122" fill="#cbd5e1" fontSize="12">Consistency with the reference set's features</text>
 <rect x="24" y="142" width="552" height="34" rx="8" fill="#082f49" />
-<text x="44" y="164" fill="#cbd5e1" fontSize="12">Anomalies worth routing to a human bench</text>
+<text x="44" y="164" fill="#cbd5e1" fontSize="12">Deviation flags worth a human bench look</text>
 <text x="40" y="208" fill="#f97316" fontSize="16">It cannot establish</text>
 <rect x="24" y="224" width="270" height="56" rx="8" fill="#7c2d12" />
 <text x="44" y="246" fill="#fed7aa" fontSize="11">That the issuer's original claims</text>
@@ -61,7 +61,7 @@ Pattern authentication is, in its typical design, a comparison engine: photograp
 
 The clearest stress test of pure pattern matching arrived this month. [Fashionphile reported](https://www.fashionphile.com/blogs/academy/the-2026-frankenfake-chanel-scam-what-you-need-to-know) a wave of "Frankenfake" Chanel bags: at least 30 vintage Classic Flaps and Kellys resold since May 2026 at prices between $20,000 and $100,000, built by combining authentic parts with fabricated components, including a porosus crocodile exterior on a Kelly model that, per Fashionphile, Chanel only ever produced in alligator. According to Fashionphile, some of these pieces passed AI authentication software, including Entrupy, and obtained certificates.
 
-The mechanism is instructive: the genuine hardware, serial cards and vintage components scored as authentic because they were authentic. A reference-corpus comparison measured real parts. The fraud lived in the assembly, exactly where a per-feature score does not look. Fashionphile's own conclusion is that the software "was able to identify traditional authenticity markers" while the fake materials carrying them went unflagged. Whether that framing fully explains the failure is the company's view, reported as such; the structural lesson stands regardless: a hybrid object is the adversarial case for any engine that scores features independently.
+The mechanism, as Fashionphile describes it, is instructive: the genuine hardware, serial cards and vintage components scored as authentic because they were authentic. In its account, a reference-corpus comparison measured real parts, while the fraud lived in the assembly, where a per-feature comparison does not necessarily look. Fashionphile's own conclusion is that the software "was able to identify traditional authenticity markers" while the fake materials carrying them went unflagged. Whether that framing fully explains the failure is the company's view, reported as such; the structural lesson stands regardless: a hybrid object is the adversarial case for any engine that scores features without scoring how they were put together.
 
 ## Where an issuer record bounds the AI verdict
 
@@ -101,5 +101,12 @@ Bennisson's own framing argues the opposite: its CTO says the technology amplifi
 
 ### Where does an anchored issuer record fit next to AI authentication?
 AI answers 'does this object resemble verified references.' An issuer-signed credential answers a different question: 'what did an identified party attest about this item, and has that attestation been revoked.' The first is statistical and reversible; the second is a standing record a third party can check without trusting the seller.
+
+## Sources
+
+- Bennisson, [AI-supported trust infrastructure initiative for the luxury watch market](https://www.valuespectrum.com/corporate_news/1491596-bennisson-industries-announces-ai-supported-trust-infrastructure-initiative-for-luxury-watch-market), 17 September 2026: service launch, corpus sizes and the "25,000+ watches authenticated annually" figure, all company-stated.
+- Fashionphile, [The 2026 Frankenfake Chanel scam](https://www.fashionphile.com/blogs/academy/the-2026-frankenfake-chanel-scam-what-you-need-to-know), 2026: one reseller's account of hybrid counterfeits passing AI authentication, including Entrupy.
+- Entrupy developer documentation, [API data model](https://developer.entrupy.com/docs/api/data-model): the vendor's verdict vocabulary ("Authentic", "Unidentified", "Unable to Determine", "Invalid", "Not Supported", "Match", "No Match").
+- [Entrupy](https://www.entrupy.com/how-to/) product pages: how the service is presented to users.
 
 See the [Galileo documentation](/docs) for how issuer-signed records are structured, and the [visual-authentication analysis](/blog/2026-09-09-visual-authentication-dead-superclones-provenance) for why provenance outlives the loupe.
