@@ -1,0 +1,104 @@
+---
+title: "When an AI Agent Buys the Bag: What It Can Check"
+date: "2026-09-20"
+modified: "2026-09-20"
+author: "Pierre Beunardeau"
+excerpt: "AI agents can now hold payment credentials and complete a checkout. What they cannot do is touch the object, so the checks that matter before paying are the ones a machine can actually run."
+description: "AI agents can now pay for luxury goods. What an agent can verify before checkout, and what still needs a human judgment."
+tags: [agentic-commerce, authentication, verifiable-credentials, luxury, provenance]
+published: true
+coverImage: "/images/blog/ai-agent-buys-bag-verifiable-checks.jpg"
+coverImageAlt: "A luxury handbag on a dark obsidian counter beside a floating cyan holographic checklist of abstract glowing shapes, cinematic tech-noir lighting"
+faq:
+  - question: "Can an AI agent already pay for a luxury purchase?"
+    answer: "The payment rail now exists. On 17 September 2026, Alchemy announced that its AgentCard integrates Mastercard Agent Pay, giving agents one-time-use payment credentials with spending limits, merchant-category restrictions and pre-checkout approval. Whether an agent should pay is a separate question from whether it can."
+  - question: "What can an agent verify about a product before paying?"
+    answer: "Everything that is machine-readable: the issuer's signature on a verifiable credential, the credential's status (revoked or still valid), its conformance to the expected schema, and the consistency of a documented custody trail. What it cannot run is the comparison between the credential and the physical object in the box."
+  - question: "Does a valid credential prove the item is authentic?"
+    answer: "No. A valid credential proves that an issuer signed a set of claims and has not revoked them. It does not prove the claims were true when made, nor that the object shipped is the object described. That binding between record and item remains the hardest problem in luxury verification."
+  - question: "What is Verifiable Intent in agent payments?"
+    answer: "Mastercard's Agent Pay design includes a record of who authorized an agent, what it was instructed to buy, and the transaction that followed, intended as an audit trail when a purchase is disputed. It documents the buyer's side of the deal, not the object's side."
+  - question: "What should stay a human decision in agentic luxury purchases?"
+    answer: "The physical-digital match (does this bag carry the identity its credential describes), the condition judgment (does 'excellent' mean the same thing to this seller), and the dispute risk a buyer is willing to carry. An agent can surface all three as open questions; answering them is not a signature check."
+---
+
+An AI agent can now hold a payment credential and complete a checkout. What it cannot do is pick up the bag, smell the leather or weigh the clasp, so before it pays, the only checks that matter are the ones a machine can actually run.
+
+This stopped being hypothetical this week. On 17 September 2026, [Alchemy announced](https://www.prnewswire.com/news-releases/alchemy-unlocks-ai-agent-purchases-anywhere-mastercard-is-accepted-online-via-agentcard-302882149.html) that its AgentCard product integrates Mastercard Agent Pay, giving AI agents one-time-use Mastercard payment credentials usable anywhere Mastercard is accepted online. Users and issuers can set "purchase limits, merchant categories, and where transactions are allowed," and Mastercard's Agent Pay framework adds what it calls Verifiable Intent: a record of who authorized the agent, what it was told to do and the transaction that followed. Meta launched its [Muse personal agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) earlier this month in the United States, and its Mac app arrived on 17 September. The direction is clear enough that the question is no longer whether agents will buy things, but what they can check before they do.
+
+## What a paying agent can actually verify
+
+An agent buying a pre-owned Hermès Kelly cannot inspect it. Its universe is documents, and documents are only useful if they are machine-verifiable rather than machine-readable. A PDF scan of a receipt is machine-readable: any agent can parse it, and any forger can produce one. A signed verifiable credential is different: it can be checked without trusting the party presenting it.
+
+For a credential built on the W3C Verifiable Credentials model, the checks a buyer's agent can run are mechanical:
+
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" className="mx-auto block h-auto w-full max-w-[600px]" aria-label="Five checks an agent can run before paying. 1. Parse: is the credential well-formed JSON-LD. 2. Resolve: who is the issuer, identified by a DID. 3. Verify: does the issuer's signature check out against its public key. 4. Status: has the credential been revoked or suspended. 5. Schema: does it carry the claims this product category requires.">
+<rect width="600" height="300" rx="18" fill="#000810" />
+<rect x="24" y="20" width="270" height="52" rx="10" fill="#082f49" stroke="#22D3EE" />
+<text x="44" y="42" fill="#22D3EE" fontSize="15">1. Parse</text>
+<text x="44" y="60" fill="#cbd5e1" fontSize="11">Well-formed credential, expected fields</text>
+<rect x="306" y="20" width="270" height="52" rx="10" fill="#082f49" stroke="#22D3EE" />
+<text x="326" y="42" fill="#22D3EE" fontSize="15">2. Resolve</text>
+<text x="326" y="60" fill="#cbd5e1" fontSize="11">Issuer identity via its DID document</text>
+<rect x="24" y="88" width="270" height="52" rx="10" fill="#082f49" stroke="#22D3EE" />
+<text x="44" y="110" fill="#22D3EE" fontSize="15">3. Verify signature</text>
+<text x="44" y="128" fill="#cbd5e1" fontSize="11">Cryptographic proof against issuer key</text>
+<rect x="306" y="88" width="270" height="52" rx="10" fill="#082f49" stroke="#22D3EE" />
+<text x="326" y="110" fill="#22D3EE" fontSize="15">4. Check status</text>
+<text x="326" y="128" fill="#cbd5e1" fontSize="11">Revoked, suspended or still valid</text>
+<rect x="24" y="156" width="270" height="52" rx="10" fill="#082f49" stroke="#22D3EE" />
+<text x="44" y="178" fill="#22D3EE" fontSize="15">5. Validate schema</text>
+<text x="44" y="196" fill="#cbd5e1" fontSize="11">Required claims present for the category</text>
+<rect x="306" y="156" width="270" height="52" rx="10" fill="#7c2d12" stroke="#f97316" />
+<text x="326" y="178" fill="#fdba74" fontSize="15">Not on this list:</text>
+<text x="326" y="196" fill="#fed7aa" fontSize="11">whether the bag matches its record</text>
+<text x="300" y="244" fill="#94a3b8" fontSize="11" textAnchor="middle">Five mechanical checks, then one question no signature answers.</text>
+</svg>
+<figcaption>What an agent can compute before checkout, and the question that stays outside the cryptography.</figcaption>
+</figure>
+
+Each of these steps exists today in credential-based systems. Resolving the issuer's identifier returns the keys that should have signed the credential; verifying the signature confirms the claims were issued by that party and not altered since; the status list answers whether the issuer has since revoked or suspended the attestation; schema validation answers whether the credential carries the claims this kind of object requires. In [Galileo's documentation](/docs/identity/verifiable-credentials), that is exactly the published verification sequence: parse, resolve the issuer DID, verify the signature, check the credential status, validate against the schema. None of it requires a human in the loop, and none of it trusts the seller's word.
+
+There is a second, quieter check agents are well suited to: consistency across the custody trail. Invoices, auction lots, service records and prior transfers each carry dates and parties. An agent can flag that the "original 2019 invoice" references a model discontinued in 2017, or that two documents name different sellers for the same period. That is not proof of anything; it is a list of questions priced into the offer.
+
+## What the signature cannot settle
+
+Here is the part the payment announcements do not cover. A valid credential proves that an identified issuer signed a set of claims and has not revoked them. It says nothing about whether those claims were true when made, and nothing about whether the object that arrives is the object described. The three gaps worth naming:
+
+**Issuance truth.** A credential attests what the issuer recorded at a point in time. If the authentication behind it was sloppy, rushed or wrong, the signature is still valid. Cryptography certifies the claim's origin, not its accuracy; that is why who issued the credential, and under what process, remains a judgment.
+
+**Physical-digital binding.** A credential describes an item: serial, model, materials, condition. Whether the physical bag carries that identity, rather than a borrowed or transplanted one, is a physical question. [Our piece on supplier binding trials](/blog/2026-09-08-material-marker-or-chip-dpp-binding) covered how fragile that link is even when the binding is engineered; a document check alone never re-establishes it.
+
+**Status versus condition.** A credential that has not been revoked says nothing about the bag today: wear, replaced parts, undocumented repairs. Revocation registries answer "is this attestation still standing," not "is this bag still as described." The [revocation guide](/blog/2026-09-05-product-passport-revocation-resale) goes deeper on what a live status does and does not mean.
+
+## A fictional example: the approved ceiling
+
+A fictional collector, "Nadia", configures her agent with a simple rule: spend up to $8,000 on a pre-owned Kelly, only from sellers whose items carry an issuer-signed product credential. The agent finds a listing, resolves the credential, verifies the signature, confirms the status list shows no revocation, and checks that the schema includes the fields a handbag passport should carry. All five checks pass in seconds. Then the agent does the part that is not a signature check: it notes that the credential was issued by a reseller rather than the maison, that the custody trail has a four-year gap, and that the seller's condition claim is asserted but not attested. It reports the item as verifiable-in-records and unresolved-in-object, and holds the payment pending her answer.
+
+## What this cannot tell you
+
+Two honest limits. First, the agentic payment rail is days old: the Alchemy announcement is a product launch, not observed buyer behaviour at scale, and "anywhere Mastercard is accepted online" describes reach, not adoption. Second, credential coverage in luxury remains partial. An agent told to require verifiable credentials will simply find fewer items to bid on; a missing credential is a filter, not a verdict, and plenty of genuine objects carry no digital record at all.
+
+## Galileo's take: agents are the reader credentials were written for
+
+The interesting shift in the AgentCard news is not that software can pay; it is that the buyer's side of the transaction now runs on machine-readable evidence. Issuer-signed, status-listed credentials were designed for exactly this reader: a party that cannot touch the object and must decide from proof alone. That is the layer [Galileo's specifications](/specifications/identity) standardize, and the part that will still be human is the part that was always human: deciding how much uncertainty a purchase is worth.
+
+## Frequently asked questions
+
+### Can an AI agent already pay for a luxury purchase?
+The payment rail now exists. On 17 September 2026, Alchemy announced that its AgentCard integrates Mastercard Agent Pay, giving agents one-time-use payment credentials with spending limits, merchant-category restrictions and pre-checkout approval. Whether an agent should pay is a separate question from whether it can.
+
+### What can an agent verify about a product before paying?
+Everything that is machine-readable: the issuer's signature on a verifiable credential, the credential's status (revoked or still valid), its conformance to the expected schema, and the consistency of a documented custody trail. What it cannot run is the comparison between the credential and the physical object in the box.
+
+### Does a valid credential prove the item is authentic?
+No. A valid credential proves that an issuer signed a set of claims and has not revoked them. It does not prove the claims were true when made, nor that the object shipped is the object described. That binding between record and item remains the hardest problem in luxury verification.
+
+### What is Verifiable Intent in agent payments?
+Mastercard's Agent Pay design includes a record of who authorized an agent, what it was instructed to buy, and the transaction that followed, intended as an audit trail when a purchase is disputed. It documents the buyer's side of the deal, not the object's side.
+
+### What should stay a human decision in agentic luxury purchases?
+The physical-digital match (does this bag carry the identity its credential describes), the condition judgment (does 'excellent' mean the same thing to this seller), and the dispute risk a buyer is willing to carry. An agent can surface all three as open questions; answering them is not a signature check.
+
+See the [Galileo documentation](/docs) for how issuer-signed credentials are structured, and the [authentication coverage piece](/blog/2026-09-09-visual-authentication-dead-superclones-provenance) for why the object itself still resists pure document checks.
