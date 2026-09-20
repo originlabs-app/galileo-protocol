@@ -11,9 +11,9 @@ coverImage: "/images/blog/ai-agent-buys-bag-verifiable-checks.jpg"
 coverImageAlt: "A luxury handbag on a dark obsidian counter beside a floating cyan holographic checklist of abstract glowing shapes, cinematic tech-noir lighting"
 faq:
   - question: "Can an AI agent already pay for a luxury purchase?"
-    answer: "The payment rail now exists. On 17 September 2026, Alchemy announced that its AgentCard integrates Mastercard Agent Pay, giving agents one-time-use payment credentials with spending limits, merchant-category restrictions and pre-checkout approval. Whether an agent should pay is a separate question from whether it can."
+    answer: "The payment rail now exists. On 17 September 2026, Alchemy announced that its AgentCard integrates Mastercard Agent Pay, giving agents one-time-use payment credentials bounded by user authorization and issuer controls such as spending limits, merchant categories and allowed geographies. Whether an agent should pay is a separate question from whether it can."
   - question: "What can an agent verify about a product before paying?"
-    answer: "Everything that is machine-readable: the issuer's signature on a verifiable credential, the credential's status (revoked or still valid), its conformance to the expected schema, and the consistency of a documented custody trail. What it cannot run is the comparison between the credential and the physical object in the box."
+    answer: "The checks that are machine-verifiable, not merely machine-readable: the issuer's signature on a verifiable credential, the credential's status (revoked or still valid), its conformance to the expected schema, and the consistency of a documented custody trail. What it cannot run is the comparison between the credential and the physical object in the box."
   - question: "Does a valid credential prove the item is authentic?"
     answer: "No. A valid credential proves that an issuer signed a set of claims and has not revoked them. It does not prove the claims were true when made, nor that the object shipped is the object described. That binding between record and item remains the hardest problem in luxury verification."
   - question: "What is Verifiable Intent in agent payments?"
@@ -22,9 +22,9 @@ faq:
     answer: "The physical-digital match (does this bag carry the identity its credential describes), the condition judgment (does 'excellent' mean the same thing to this seller), and the dispute risk a buyer is willing to carry. An agent can surface all three as open questions; answering them is not a signature check."
 ---
 
-An AI agent can now hold a payment credential and complete a checkout. What it cannot do is pick up the bag, smell the leather or weigh the clasp, so before it pays, the only checks that matter are the ones a machine can actually run.
+An AI agent can now hold a payment credential and complete a checkout. What it cannot do is pick up the bag, smell the leather or weigh the clasp, so before it pays, its job is to run every check a machine can run and to surface clearly the ones it cannot.
 
-This stopped being hypothetical this week. On 17 September 2026, [Alchemy announced](https://www.prnewswire.com/news-releases/alchemy-unlocks-ai-agent-purchases-anywhere-mastercard-is-accepted-online-via-agentcard-302882149.html) that its AgentCard product integrates Mastercard Agent Pay, giving AI agents one-time-use Mastercard payment credentials usable anywhere Mastercard is accepted online. Users and issuers can set "purchase limits, merchant categories, and where transactions are allowed," and Mastercard's Agent Pay framework adds what it calls Verifiable Intent: a record of who authorized the agent, what it was told to do and the transaction that followed. Meta launched its [Muse personal agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) earlier this month in the United States, and its Mac app arrived on 17 September. The direction is clear enough that the question is no longer whether agents will buy things, but what they can check before they do.
+This stopped being hypothetical this week. On 17 September 2026, [Alchemy announced](https://www.prnewswire.com/news-releases/alchemy-unlocks-ai-agent-purchases-anywhere-mastercard-is-accepted-online-via-agentcard-302882149.html) that its AgentCard product integrates Mastercard Agent Pay, giving AI agents one-time-use Mastercard payment credentials usable anywhere Mastercard is accepted online. Users and issuers can set "purchase limits, merchant categories, and where transactions are allowed," and Mastercard's Agent Pay framework adds what it calls Verifiable Intent: a record of who authorized the agent, what it was told to do and the transaction that followed. Meta launched its [Muse personal agent](https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/) earlier this month in the United States, with a Mac app following on 17 September according to launch coverage. The direction is clear enough that the question is no longer whether agents will buy things, but what they can check before they do.
 
 ## What a paying agent can actually verify
 
@@ -78,7 +78,7 @@ A fictional collector, "Nadia", configures her agent with a simple rule: spend u
 
 ## What this cannot tell you
 
-Two honest limits. First, the agentic payment rail is days old: the Alchemy announcement is a product launch, not observed buyer behaviour at scale, and "anywhere Mastercard is accepted online" describes reach, not adoption. Second, credential coverage in luxury remains partial. An agent told to require verifiable credentials will simply find fewer items to bid on; a missing credential is a filter, not a verdict, and plenty of genuine objects carry no digital record at all.
+Two honest limits. First, this particular rail is days old: the Alchemy announcement is a product launch, not observed buyer behaviour at scale, and "anywhere Mastercard is accepted online" describes reach, not adoption. Second, credential coverage in luxury remains partial. An agent told to require verifiable credentials will simply find fewer items to bid on; a missing credential is a filter, not a verdict, and plenty of genuine objects carry no digital record at all.
 
 ## Galileo's take: agents are the reader credentials were written for
 
