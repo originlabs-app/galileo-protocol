@@ -1,7 +1,8 @@
-export const metadata = {
+import { pageMetadata } from "@/lib/page-metadata";
+export const metadata = pageMetadata("/docs/compliance/mica", {
   title: 'MiCA Guide | Galileo Documentation',
   description: 'Preparing for MiCA compliance with Galileo.',
-};
+});
 
 export default function MiCAGuidePage() {
   return (

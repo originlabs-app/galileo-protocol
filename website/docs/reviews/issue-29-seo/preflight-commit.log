@@ -1,0 +1,17 @@
+VERDICT: WARN
+repo: /Users/pierrebeunardeau/dev/internal/galileo-luxury-standard/.worktrees/issue-29-seo-canonicals
+intent: commit
+branch: fix/29-seo-canonicals
+upstream: none
+ahead/behind(local refs): ahead=? behind=?
+remote(origin): ok - main
+status: ## fix/29-seo-canonicals
+hot-files: none modified
+warn-reasons:
+- branch has no upstream
+- worktree has staged, unstaged, or untracked changes
+checked:
+  git status -sb --untracked-files=all
+  git worktree list --porcelain
+  git branch -vv
+  git ls-remote --heads origin <branch> main master

@@ -1,0 +1,114 @@
+[
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"http://127.0.0.1:8474/\",\"viewport\":[390,844],\"h1\":[{\"text\":\"Open protocol for luxury product authentication\",\"rect\":{\"x\":24,\"y\":292.046875,\"width\":342,\"height\":132,\"top\":292.046875,\"right\":366,\"bottom\":424.046875,\"left\":24},\"opacity\":\"1\"}],\"overflow\":false}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"/docs\",\"viewport\":[390,844],\"h1\":\"Introduction to Galileo\",\"overflow\":false}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"/docs/architecture\",\"viewport\":[390,844],\"h1\":\"Hybrid Architecture\",\"overflow\":false}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"/docs/quick-start\",\"viewport\":[390,844],\"h1\":\"Integration quick start\",\"overflow\":false}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"/docs/compliance/espr\",\"viewport\":[390,844],\"h1\":\"Digital product passport for luxury\",\"overflow\":false}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":true,\"hasTouch\":true,\"isLandscape\":false,\"width\":390,\"height\":844}\n## Console messages\n<no console messages found>"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"/docs/compliance/espr\",\"viewport\":[1440,1000],\"h1\":\"Digital product passport for luxury\",\"overflow\":false,\"firstParagraph\":\"A digital product passport brings product information into a record that people can access through a data carrier. For a luxury business, planning starts with the applicable product rules and the evidence behind each field, not with a blanket claim of ESPR compliance.\"}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":1000}\n## Console messages\n<no console messages found>"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"/docs\",\"viewport\":[1440,1000],\"h1\":\"Introduction to Galileo\",\"overflow\":false,\"firstParagraph\":\"Galileo documents an open protocol for linking luxury products to identity, provenance and ownership records. Start here to understand its principles before choosing an architecture or planning an integration.\"}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":1000}\n## Console messages\n<no console messages found>"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"/docs/architecture\",\"viewport\":[1440,1000],\"h1\":\"Hybrid Architecture\",\"overflow\":false,\"firstParagraph\":\"Use this guide to decide which data belongs on-chain, which stays off-chain, and how a resolver connects the two. It summarizes the published design; each integration must verify which components and controls are implemented.\"}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":1000}\n## Console messages\n<no console messages found>"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Script ran on page and returned:\n```json\n{\"url\":\"/docs/quick-start\",\"viewport\":[1440,1000],\"h1\":\"Integration quick start\",\"overflow\":false,\"firstParagraph\":\"Use this walkthrough to map an item to Galileo's published specifications. It is a planning example, not a runnable SDK tutorial or a guarantee that every illustrated endpoint is deployed. Review the architecture first to decide where each record belongs.\"}\n```"
+      }
+    ]
+  },
+  {
+    "content": [
+      {
+        "type": "text",
+        "text": "Emulating viewport: {\"deviceScaleFactor\":1,\"isMobile\":false,\"hasTouch\":false,\"isLandscape\":false,\"width\":1440,\"height\":1000}\n## Console messages\n<no console messages found>"
+      }
+    ]
+  }
+]

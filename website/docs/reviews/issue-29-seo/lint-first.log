@@ -1,0 +1,27 @@
+
+> website@0.1.0 lint
+> eslint
+
+
+/Users/pierrebeunardeau/dev/internal/galileo-luxury-standard/.worktrees/issue-29-seo-canonicals/website/src/app/docs/architecture/page.tsx
+  20:9  error  Do not use an `<a>` element to navigate to `/specifications/architecture/hybrid-architecture/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  20:9  error  Do not use an `<a>` element to navigate to `/specifications/architecture/hybrid-architecture/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+/Users/pierrebeunardeau/dev/internal/galileo-luxury-standard/.worktrees/issue-29-seo-canonicals/website/src/app/docs/compliance/espr/page.tsx
+  38:9  error  Do not use an `<a>` element to navigate to `/specifications/compliance/guides/espr-readiness/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  38:9  error  Do not use an `<a>` element to navigate to `/specifications/compliance/guides/espr-readiness/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+/Users/pierrebeunardeau/dev/internal/galileo-luxury-standard/.worktrees/issue-29-seo-canonicals/website/src/app/docs/page.tsx
+  33:13  error  Do not use an `<a>` element to navigate to `/specifications/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages                         @next/next/no-html-link-for-pages
+  33:13  error  Do not use an `<a>` element to navigate to `/specifications/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages                         @next/next/no-html-link-for-pages
+  36:9   error  Do not use an `<a>` element to navigate to `/blog/2026-03-22-production-deployment/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+/Users/pierrebeunardeau/dev/internal/galileo-luxury-standard/.worktrees/issue-29-seo-canonicals/website/src/app/docs/quick-start/page.tsx
+   35:9   error  Do not use an `<a>` element to navigate to `/specifications/identity/DID-METHOD/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages       @next/next/no-html-link-for-pages
+   35:9   error  Do not use an `<a>` element to navigate to `/specifications/identity/DID-METHOD/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages       @next/next/no-html-link-for-pages
+  106:9   error  Do not use an `<a>` element to navigate to `/specifications/resolver/access-control/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages   @next/next/no-html-link-for-pages
+  106:9   error  Do not use an `<a>` element to navigate to `/specifications/resolver/access-control/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages   @next/next/no-html-link-for-pages
+  113:20  error  Do not use an `<a>` element to navigate to `/specifications/token/ownership-transfer/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  113:20  error  Do not use an `<a>` element to navigate to `/specifications/token/ownership-transfer/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+✖ 13 problems (13 errors, 0 warnings)

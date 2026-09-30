@@ -1,0 +1,23 @@
+Base: f06ac5d166707943302fbd88a63ac82985377ea8
+
+website/src/app/layout.tsx
+    url: "https://www.galileoprotocol.io",
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    canonical: "/",
+
+website/src/app/sitemap.ts
+    lastModified: options.lastModified ?? new Date(),
+      lastModified: new Date(post.frontmatter.modified),
+          lastModified: spec.lastUpdated ? new Date(spec.lastUpdated) : undefined,
+
+website/src/app/docs/compliance/page.tsx
+            <td className="text-green-500">Compliant</td>
+            <td>2027</td>
+            <td className="text-[var(--precision-blue)]">Ready</td>
+        <li><strong>Mandatory Fields</strong> — All ESPR-required attributes included</li>
+
+website/src/app/specifications/[category]/[...slug]/page.tsx
+  const subcategory = slug.length > 1 ? slug[0] : undefined;
+  const actualSlug = slug.length > 1 ? slug[1] : slug[0];
+  const subcategory = slug.length > 1 ? slug[0] : undefined;
+  const actualSlug = slug.length > 1 ? slug[1] : slug[0];

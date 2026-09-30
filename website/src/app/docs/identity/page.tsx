@@ -1,7 +1,8 @@
-export const metadata = {
+import { pageMetadata } from "@/lib/page-metadata";
+export const metadata = pageMetadata("/docs/identity", {
   title: 'Identity | Galileo Documentation',
   description: 'Learn about the Galileo identity system based on W3C DIDs.',
-};
+});
 
 export default function IdentityPage() {
   return (

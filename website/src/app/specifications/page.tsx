@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import {
   getSpecCategories,
   getSpecifications,
@@ -9,11 +10,11 @@ import { FilterableSpecGrid } from "@/components/specifications/FilterableSpecGr
 // Page Component
 // ============================================================================
 
-export const metadata = {
+export const metadata = pageMetadata("/specifications", {
   title: "Technical Specifications",
   description:
     "Browse all Galileo Protocol technical specifications across identity, token, data, infrastructure, and compliance domains. Includes schemas and implementation guides.",
-};
+});
 
 export default async function SpecificationsPage() {
   const categories = await getSpecCategories();
