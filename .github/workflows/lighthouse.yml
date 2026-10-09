@@ -3,8 +3,7 @@ name: Lighthouse CI
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,8 +17,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-        with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
       - uses: actions/setup-node@v4
         with:
@@ -66,7 +63,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: lighthouse-${{ github.event.pull_request.head.sha || github.sha }}
+          name: lighthouse-${{ github.sha }}
           path: .lighthouseci/
           include-hidden-files: true
           if-no-files-found: error

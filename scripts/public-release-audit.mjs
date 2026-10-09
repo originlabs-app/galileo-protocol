@@ -100,12 +100,11 @@ export async function auditIdentity(commit, verifyMerge) {
   return [`${sha}: unapproved contribution identity or unverified GitHub merge`];
 }
 
-export function auditContext(head, env, event) {
+export function auditContext(head, env) {
   if (env.GITHUB_ACTIONS !== 'true') return [];
-  const expected = env.GITHUB_EVENT_NAME === 'pull_request' ? event?.pull_request?.head?.sha :
-    env.GITHUB_EVENT_NAME === 'push' ? env.GITHUB_SHA : undefined;
+  const expected = ['push', 'workflow_dispatch'].includes(env.GITHUB_EVENT_NAME) ? env.GITHUB_SHA : undefined;
   return /^[a-f0-9]{40}$/.test(expected ?? '') && expected === head ? [] :
-    ['Checkout must match the pull request head or pushed commit being tested'];
+    ['Checkout must match the commit being tested'];
 }
 
 export function auditFiles(files, read = file => readFileSync(file)) {
@@ -167,9 +166,7 @@ async function main() {
   const git = args => execFileSync('git', args, { encoding: 'utf8', maxBuffer: 20 * 1024 * 1024 });
   const files = git(['ls-files', '-z']).split('\0').filter(Boolean);
   const head = git(['rev-parse', 'HEAD']).trim();
-  const event = process.env.GITHUB_ACTIONS === 'true' && process.env.GITHUB_EVENT_NAME === 'pull_request' ?
-    JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')) : {};
-  const failures = auditContext(head, process.env, event);
+  const failures = auditContext(head, process.env);
   if (git(['rev-parse', '--is-shallow-repository']).trim() !== 'false') {
     failures.push('Full commit history is required for the identity audit');
   }
