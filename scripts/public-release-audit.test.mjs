@@ -128,18 +128,17 @@ test('relocated internal transcripts remain private', () => {
   assert.deepEqual(auditFiles(['docs/architecture.md'], () => 'The outbox worker processes jobs. ClaudeBot may crawl the public site.'), []);
 });
 
-test('pull requests and pushes bind the audit to the tested commit', () => {
-  const event = { pull_request: { head: { sha } } };
-  assert.deepEqual(auditContext(sha, { GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: 'pull_request', GITHUB_SHA: parents[0] }, event), []);
-  assert.ok(auditContext(parents[0], { GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: 'pull_request' }, event).length > 0);
-  assert.deepEqual(auditContext(sha, { GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: 'push', GITHUB_SHA: sha }, {}), []);
-  assert.ok(auditContext(sha, { GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: 'push', GITHUB_SHA: parents[0] }, {}).length > 0);
-  assert.ok(auditContext(sha, { GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: 'pull_request' }, {}).length > 0);
+test('pushes and manual runs bind the audit to the tested commit', () => {
+  for (const eventName of ['push', 'workflow_dispatch']) {
+    assert.deepEqual(auditContext(sha, { GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: eventName, GITHUB_SHA: sha }), []);
+    assert.ok(auditContext(sha, { GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: eventName, GITHUB_SHA: parents[0] }).length > 0);
+  }
+  assert.ok(auditContext(sha, { GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: 'pull_request' }).length > 0);
 });
 
-test('CLI rejects staged secrets, private files and foreign identities in PR and push contexts', () => {
+test('CLI rejects staged secrets, private files and foreign identities in push and manual contexts', () => {
   const script = fileURLToPath(new URL('./public-release-audit.mjs', import.meta.url));
-  for (const eventName of ['pull_request', 'push']) {
+  for (const eventName of ['workflow_dispatch', 'push']) {
     for (const scenario of ['clean', 'secret', 'private', 'identity']) {
       const cwd = mkdtempSync(join(tmpdir(), 'public-audit-'));
       try {
@@ -160,10 +159,8 @@ test('CLI rejects staged secrets, private files and foreign identities in PR and
           git(['add', 'AGENTS.md']);
         }
         const head = git(['rev-parse', 'HEAD']).trim();
-        const eventPath = join(cwd, 'event.json');
-        writeFileSync(eventPath, JSON.stringify({ pull_request: { head: { sha: head } } }));
         const result = spawnSync(process.execPath, [script], { cwd, encoding: 'utf8', env: {
-          ...env, GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: eventName, GITHUB_SHA: head, GITHUB_EVENT_PATH: eventPath,
+          ...env, GITHUB_ACTIONS: 'true', GITHUB_EVENT_NAME: eventName, GITHUB_SHA: head,
         } });
         assert.equal(result.status, scenario === 'clean' ? 0 : 1, `${eventName}/${scenario}: ${result.stderr}`);
       } finally { rmSync(cwd, { recursive: true, force: true }); }

@@ -13,7 +13,7 @@
 
 ## CI/CD
 
-GitHub Actions (`.github/workflows/ci.yml`) — runs on push/PR to `main`:
+GitHub Actions (`.github/workflows/ci.yml`) — runs on push to `main` and on manual dispatch; no check waits on a pull request (local tests per batch, full suite on a server at night):
 
 ```
 1. Lint         — pnpm lint
