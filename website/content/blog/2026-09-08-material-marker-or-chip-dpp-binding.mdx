@@ -1,7 +1,7 @@
 ---
 title: Material Marker or NFC Chip? A Supplier Trial Plan
 date: '2026-09-08'
-modified: '2026-09-12'
+modified: '2026-10-21'
 author: Pierre Beunardeau
 excerpt: >-
   Compare material markers and NFC chips with proposed supplier tests for copied
@@ -66,9 +66,9 @@ In its [31 August 2026 company update](https://newsroom.smx.tech/articles/121461
 
 Request evidence for your material, finish and intended intervention before relying on the supplier's claim.
 
-A chip offers a different testable mechanism. [NXP's NTAG 424 DNA TT datasheet](https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf), Rev. 3.0 of 31 January 2019, describes Secure Dynamic Messaging, or SDM, a protected read message. Section 9.3 explains how a read counter and verifying-server rules can limit replay, the reuse of an earlier valid reading. This is one chip and configuration, not a property of all NFC tags.
+A chip offers a different testable mechanism. [NXP's NTAG 424 DNA TT datasheet](https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf#page=35), Rev. 3.0 of 31 January 2019, describes Secure Dynamic Messaging, or SDM, a protected read message. Section 9.3 explains how a read counter and verifying-server rules can limit replay, the reuse of an earlier valid reading. This is one chip and configuration, not a property of all NFC tags.
 
-NXP also describes TagTamper, a wire-loop opening check. Section 10 says it is disabled at delivery and needs activation. Measurements depend on documented power, activation and command events. A loop result therefore depends on both configuration and physical mounting; it cannot establish that every transplantation will be detected.
+NXP also describes TagTamper, a wire-loop opening check. [Section 10](https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf#page=44) says it is disabled at delivery and needs activation. Measurements depend on documented power, activation and command events. A loop result therefore depends on both configuration and physical mounting; it cannot establish that every transplantation will be detected.
 
 These sources support different questions, not a ranking. The proposed trials below compare what the complete supplier service lets your team observe and decide.
 
@@ -117,7 +117,7 @@ Have your own assessor retain the evidence and the link between each physical sa
 
 **Proposed manipulation:** retain a valid reading, submit it again, then try an older reading after a newer one. Run the same record-submission exercise for the marker service where it accepts saved results. Ask what proves that the supplied measurement belongs to this sample and this session. If only the supplier can submit readings, require a witnessed trial of that boundary.
 
-For a configured SDM chip, retain the response, counter, server verdict and rule applied, without exposing secret keys. [NXP section 9.3](https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf) calls for tracking counters and rejecting previously seen or out-of-order values, while acknowledging residual risk. Verifying the chip does not authenticate the whole product. A fresh response also does not exclude every real-time relay, where a reading is forwarded from a genuine chip elsewhere.
+For a configured SDM chip, retain the response, counter, server verdict and rule applied, without exposing secret keys. [NXP section 9.3](https://www.nxp.com/docs/en/data-sheet/NT4H2421Tx.pdf#page=35) calls for tracking counters and rejecting previously seen or out-of-order values, while acknowledging residual risk. Verifying the chip does not authenticate the whole product. A fresh response also does not exclude every real-time relay, where a reading is forwarded from a genuine chip elsewhere.
 
 **Conditional decision:** accept the tested replay control only if the observed server behaviour meets the agreed rule. A screen showing the same product page twice is insufficient evidence either way. For a marker, rejection of an old report would test the reporting service, not prove the material marking cannot be copied.
 
