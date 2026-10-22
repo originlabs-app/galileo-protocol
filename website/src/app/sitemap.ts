@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
 import { getSpecCategories, getSpecifications } from "@/lib/specifications";
 
+import { pageModified } from "@/lib/page-modified";
+
 const baseUrl = "https://www.galileoprotocol.io";
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
@@ -12,7 +14,7 @@ function entry(
 ): SitemapEntry {
   return {
     url: `${baseUrl}${path}`,
-    lastModified: options.lastModified ?? new Date(),
+    lastModified: options.lastModified ?? pageModified[path],
     changeFrequency: options.changeFrequency ?? "monthly",
     priority: options.priority ?? 0.5,
   };
