@@ -9,6 +9,7 @@ import {
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata = {
+  alternates: { canonical: "/" },
   title: "The Open Standard for Luxury Authentication",
   description:
     "Galileo Protocol is the open standard for luxury product authentication. Blockchain-powered digital product passports to protect brands against counterfeiting.",

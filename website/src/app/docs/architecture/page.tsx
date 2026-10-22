@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/architecture" },
   title: 'Architecture | Galileo Documentation',
   description: 'Understand the hybrid on-chain/off-chain architecture of Galileo.',
 };

@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/contributing" },
   title: "Contributing Guide",
   description:
     "How to contribute to the Galileo Luxury Standard. Learn about the RFC process, DCO sign-off requirements, review periods, and recognition.",

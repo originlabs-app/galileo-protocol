@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/identity" },
   title: 'Identity | Galileo Documentation',
   description: 'Learn about the Galileo identity system based on W3C DIDs.',
 };

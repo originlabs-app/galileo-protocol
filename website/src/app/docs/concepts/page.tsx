@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/concepts" },
   title: 'Core Concepts | Galileo Documentation',
   description: 'Understand the key terminology and concepts in Galileo.',
 };

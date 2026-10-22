@@ -44,6 +44,7 @@ export async function generateMetadata({
   const specs = await getSpecifications(category);
 
   return {
+    alternates: { canonical: `/specifications/${category}` },
     title: `${capitalizeCategory(category)} Specifications | Galileo`,
     description: `Browse ${specs.length} specifications in the ${capitalizeCategory(category)} category.`,
   };

@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/license" },
   title: "License",
   description:
     "Apache 2.0 license details for the Galileo Luxury Standard. Understand what you can do, your obligations, the patent grant, and why this license fits luxury brands.",

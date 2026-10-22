@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/compliance" },
   title: 'Compliance | Galileo Documentation',
   description: 'Regulatory compliance guides for GDPR, MiCA, and ESPR.',
 };

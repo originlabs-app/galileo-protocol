@@ -1,6 +1,7 @@
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata = {
+  alternates: { canonical: "/privacy" },
   title: "Privacy Policy",
   description:
     "Privacy policy for galileoprotocol.io. Learn how the Galileo Protocol website handles your data with minimal collection, no tracking cookies, and full transparency.",

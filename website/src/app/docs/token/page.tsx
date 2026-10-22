@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/token" },
   title: 'Token | Galileo Documentation',
   description: 'ERC-3643 token architecture for luxury product ownership.',
 };

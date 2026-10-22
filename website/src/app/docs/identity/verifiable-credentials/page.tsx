@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/identity/verifiable-credentials" },
   title: 'Verifiable Credentials | Galileo Documentation',
   description: 'W3C Verifiable Credentials for product and entity claims.',
 };

@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/token/ownership-transfer" },
   title: 'Ownership Transfer | Galileo Documentation',
   description: 'How ownership transfers work in Galileo tokens.',
 };

@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/governance/charter" },
   title: "Governance Charter",
   description:
     "Full governance charter for the Galileo Luxury Standard. Defines the Governing Board, TSC structure, membership categories, veto mechanism, anti-dominance rules, and amendment procedures.",

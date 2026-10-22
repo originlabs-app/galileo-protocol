@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/identity/did-method" },
   title: 'DID Method | Galileo Documentation',
   description: 'The did:galileo method specification for product and entity identifiers.',
 };

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata = {
+  alternates: { canonical: "/maison" },
   title: "La Maison",
   description:
     "Discover Galileo Network, the organization behind the Galileo Protocol open standard. Our mission: protect luxury brand heritage and human craftsmanship.",

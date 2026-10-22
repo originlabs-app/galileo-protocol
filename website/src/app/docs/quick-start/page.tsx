@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/quick-start" },
   title: "Quick Start | Galileo Documentation",
   description: "Get started with Galileo in 5 minutes.",
 };

@@ -7,6 +7,7 @@ import { VetoCallout } from '@/components/governance/VetoCallout';
 import { Footer } from '@/components/layout/Footer';
 
 export const metadata = {
+  alternates: { canonical: "/governance/tsc" },
   title: 'Technical Steering Committee | Galileo Luxury Standard',
   description: 'The TSC is the meritocratic council that holds final authority over technical decisions for the Galileo Luxury Standard. Learn about seat composition, elections, and responsibilities.',
 };

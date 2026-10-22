@@ -10,6 +10,7 @@ import { FilterableSpecGrid } from "@/components/specifications/FilterableSpecGr
 // ============================================================================
 
 export const metadata = {
+  alternates: { canonical: "/specifications" },
   title: "Technical Specifications",
   description:
     "Browse all Galileo Protocol technical specifications across identity, token, data, infrastructure, and compliance domains. Includes schemas and implementation guides.",

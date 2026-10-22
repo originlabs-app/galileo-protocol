@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/compliance/gdpr" },
   title: 'GDPR Guide | Galileo Documentation',
   description: 'Implementing GDPR compliance with Galileo.',
 };

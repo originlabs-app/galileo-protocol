@@ -7,6 +7,7 @@ import { QuickLinks } from "@/components/governance/QuickLinks";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata = {
+  alternates: { canonical: "/governance" },
   title: "Governance",
   description:
     "Explore the Galileo Protocol governance model. A neutral framework enabling competing luxury brands to collaborate on shared authentication infrastructure via the TSC.",

@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/compliance/mica" },
   title: 'MiCA Guide | Galileo Documentation',
   description: 'Preparing for MiCA compliance with Galileo.',
 };

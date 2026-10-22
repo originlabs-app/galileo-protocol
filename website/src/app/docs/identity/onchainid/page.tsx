@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/identity/onchainid" },
   title: 'ONCHAINID | Galileo Documentation',
   description: 'On-chain identity contracts for participant verification.',
 };

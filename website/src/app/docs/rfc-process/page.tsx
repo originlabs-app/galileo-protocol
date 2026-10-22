@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/rfc-process" },
   title: "RFC Process",
   description:
     "How to propose specification changes to the Galileo Luxury Standard. Complete guide to the RFC lifecycle: draft, champion assignment, review, and TSC decision via lazy consensus.",

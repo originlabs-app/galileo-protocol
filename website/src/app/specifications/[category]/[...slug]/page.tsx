@@ -72,6 +72,7 @@ export async function generateMetadata({
   }
 
   return {
+    alternates: { canonical: `/specifications/${category}/${slug.join("/")}` },
     title: `${spec.metadata.title} | Galileo Specifications`,
     description: `${spec.metadata.title} - Version ${spec.metadata.version} (${spec.metadata.status})`,
   };

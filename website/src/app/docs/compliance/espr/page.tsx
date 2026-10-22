@@ -1,4 +1,5 @@
 export const metadata = {
+  alternates: { canonical: "/docs/compliance/espr" },
   title: "ESPR Guide | Galileo Documentation",
   description: "Digital Product Passport readiness for ESPR 2027.",
 };
