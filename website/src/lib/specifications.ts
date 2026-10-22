@@ -312,13 +312,7 @@ function formatFilenameAsTitle(filename: string): string {
     .trim();
 }
 
-/**
- * Capitalize a category name.
- * e.g., "identity" -> "Identity", "infrastructure" -> "Infrastructure"
- */
-export function capitalizeCategory(category: string): string {
-  return category.charAt(0).toUpperCase() + category.slice(1);
-}
+export { capitalizeCategory } from "./specification-labels";
 
 /**
  * Get spec count for a category (including subdirectories).

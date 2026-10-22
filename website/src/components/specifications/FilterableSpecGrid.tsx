@@ -12,11 +12,7 @@ import {
   Coins,
   Lock,
 } from 'lucide-react';
-function capitalizeCategory(category: string): string {
-  if (category === "dpia") return "Data protection impact assessment";
-  if (category === "crypto") return "Cryptography";
-  return category.charAt(0).toUpperCase() + category.slice(1);
-}
+import { capitalizeCategory } from "@/lib/specification-labels";
 
 // ============================================================================
 // Types
@@ -78,7 +74,7 @@ function CategoryCard({ name, count, previewSpecs }: CategoryCardProps) {
       </div>
 
       {/* Title */}
-      <h2 className="break-words text-lg font-semibold text-[var(--platinum)] mb-2 group-hover:text-[var(--cyan-primary)] transition-colors">
+      <h2 className="spec-category-title font-semibold text-[var(--platinum)] mb-2 group-hover:text-[var(--cyan-primary)] transition-colors">
         {capitalizeCategory(name)}
       </h2>
 
