@@ -83,8 +83,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry("/changelog", { changeFrequency: "weekly", priority: 0.6 }),
     entry("/roadmap", { priority: 0.6 }),
     entry("/tools", { priority: 0.6 }),
-    entry("/tools/faucet", { priority: 0.5 }),
-    entry("/tools/gas-estimator", { priority: 0.5 }),
     // Legal
     entry("/privacy", { changeFrequency: "yearly", priority: 0.3 }),
     entry("/terms", { changeFrequency: "yearly", priority: 0.3 }),
