@@ -65,7 +65,7 @@ function CategoryCard({ name, count, previewSpecs }: CategoryCardProps) {
   return (
     <Link
       href={`/specifications/${name}`}
-      className="group block p-6 rounded-lg border border-[var(--platinum)]/10 bg-[var(--obsidian)]/50 hover:border-[var(--cyan-primary)]/50 transition-all duration-300 angle-glow"
+      className="group block min-w-0 p-6 rounded-lg border border-[var(--platinum)]/10 bg-[var(--obsidian)]/50 hover:border-[var(--cyan-primary)]/50 transition-all duration-300 angle-glow"
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
@@ -78,7 +78,7 @@ function CategoryCard({ name, count, previewSpecs }: CategoryCardProps) {
       </div>
 
       {/* Title */}
-      <h2 className="text-lg font-semibold text-[var(--platinum)] mb-2 group-hover:text-[var(--cyan-primary)] transition-colors">
+      <h2 className="break-words text-lg font-semibold text-[var(--platinum)] mb-2 group-hover:text-[var(--cyan-primary)] transition-colors">
         {capitalizeCategory(name)}
       </h2>
 
