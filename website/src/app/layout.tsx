@@ -63,10 +63,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Galileo Protocol" }],
   creator: "Galileo Protocol",
-  robots: {
-    index: true,
-    follow: true,
-  },
   openGraph: {
     title: "Galileo Protocol | The Open Standard for Luxury Authentication",
     description:
