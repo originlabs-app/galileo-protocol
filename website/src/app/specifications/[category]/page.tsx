@@ -33,10 +33,11 @@ export async function generateMetadata({
 }: {
   params: Promise<{ category: string }>;
 }): Promise<Metadata> {
-  const { category } = await params;
+  const { category: requestedCategory } = await params;
   const categories = await getSpecCategories();
+  const category = categories.find((name) => name.toLowerCase() === requestedCategory.toLowerCase());
 
-  if (!categories.includes(category)) {
+  if (!category) {
     return {
       title: 'Category Not Found | Galileo',
     };
@@ -184,10 +185,11 @@ export default async function CategoryPage({
 }: {
   params: Promise<{ category: string }>;
 }) {
-  const { category } = await params;
+  const { category: requestedCategory } = await params;
   const categories = await getSpecCategories();
+  const category = categories.find((name) => name.toLowerCase() === requestedCategory.toLowerCase());
 
-  if (!categories.includes(category)) {
+  if (!category) {
     notFound();
   }
 

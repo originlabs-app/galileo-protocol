@@ -27,6 +27,9 @@ export interface SpecFile {
 }
 
 export interface SpecContent {
+  category: string;
+  slug: string;
+  subcategory?: string;
   type: 'markdown' | 'json' | 'jsonld';
   content: string;
   metadata: SpecMetadata;
@@ -129,44 +132,28 @@ export async function getSpecification(
   slug: string,
   subcategory?: string
 ): Promise<SpecContent | null> {
-  const basePath = subcategory
-    ? path.join(SPECS_ROOT, category, subcategory)
-    : path.join(SPECS_ROOT, category);
+  const categories = await getSpecCategories();
+  const actualCategory = categories.find((name) => name.toLowerCase() === category.toLowerCase());
+  if (!actualCategory) return null;
 
-  // Try each supported extension
-  for (const ext of SUPPORTED_EXTENSIONS) {
-    const filePath = path.join(basePath, `${slug}${ext}`);
+  const specs = await getSpecifications(actualCategory);
+  const matches = specs.filter((spec) =>
+    spec.slug.toLowerCase() === slug.toLowerCase() &&
+    (!subcategory || spec.subcategory?.toLowerCase() === subcategory.toLowerCase())
+  );
+  const spec = matches.find((item) => !item.subcategory) ?? matches[0];
+  if (!spec) return null;
 
-    try {
-      const content = await fs.readFile(filePath, 'utf8');
-      const metadata = parseFileMetadata(content, `${slug}${ext}`);
-      const type = getFileType(`${slug}${ext}`);
-
-      return {
-        type,
-        content,
-        metadata,
-      };
-    } catch {
-      // File doesn't exist with this extension, try next
-      continue;
-    }
-  }
-
-  // If not found in root, search subdirectories (for category pages without subcategory)
-  if (!subcategory) {
-    const categoryPath = path.join(SPECS_ROOT, category);
-    const entries = await fs.readdir(categoryPath, { withFileTypes: true });
-
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
-        const result = await getSpecification(category, slug, entry.name);
-        if (result) return result;
-      }
-    }
-  }
-
-  return null;
+  const filePath = path.join(SPECS_ROOT, spec.category, spec.subcategory ?? '', spec.filename);
+  const content = await fs.readFile(filePath, 'utf8');
+  return {
+    category: spec.category,
+    slug: spec.slug,
+    subcategory: spec.subcategory,
+    type: spec.type,
+    content,
+    metadata: parseFileMetadata(content, spec.filename),
+  };
 }
 
 // ============================================================================
