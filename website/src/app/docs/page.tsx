@@ -1,13 +1,14 @@
+import { withPageMetadata } from "@/lib/page-metadata";
 import { getTotalSpecCount } from "@/lib/specs-navigation";
 
-export const metadata = {
+export const metadata = withPageMetadata({
   title: "Introduction to Galileo Documentation",
   description:
     "Learn about the Galileo open standard for luxury product authenticity. Discover core principles, specifications, and how blockchain protects brand heritage.",
   alternates: {
     canonical: "/docs",
   },
-};
+});
 
 export default async function DocsIntroduction() {
   const totalSpecs = await getTotalSpecCount().catch(() => 65);

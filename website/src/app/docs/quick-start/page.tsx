@@ -1,8 +1,9 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
   alternates: { canonical: "/docs/quick-start" },
   title: "Quick Start | Galileo Documentation",
   description: "Get started with Galileo in 5 minutes.",
-};
+});
 
 export default function QuickStartPage() {
   return (

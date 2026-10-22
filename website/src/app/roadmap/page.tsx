@@ -1,15 +1,16 @@
+import { withPageMetadata } from "@/lib/page-metadata";
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { Metadata } from 'next';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageMetadata({
   title: 'Roadmap',
   description:
     'The technical roadmap for Galileo Protocol — from foundation to open standard for luxury product traceability.',
   alternates: {
     canonical: '/roadmap',
   },
-};
+});
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

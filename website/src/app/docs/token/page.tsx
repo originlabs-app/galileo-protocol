@@ -1,8 +1,9 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
   alternates: { canonical: "/docs/token" },
   title: 'Token | Galileo Documentation',
   description: 'ERC-3643 token architecture for luxury product ownership.',
-};
+});
 
 export default function TokenPage() {
   return (

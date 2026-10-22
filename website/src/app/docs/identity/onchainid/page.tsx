@@ -1,8 +1,9 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
   alternates: { canonical: "/docs/identity/onchainid" },
   title: 'ONCHAINID | Galileo Documentation',
   description: 'On-chain identity contracts for participant verification.',
-};
+});
 
 export default function OnchainIDPage() {
   return (

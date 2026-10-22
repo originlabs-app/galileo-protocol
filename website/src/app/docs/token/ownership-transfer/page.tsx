@@ -1,8 +1,9 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
   alternates: { canonical: "/docs/token/ownership-transfer" },
   title: 'Ownership Transfer | Galileo Documentation',
   description: 'How ownership transfers work in Galileo tokens.',
-};
+});
 
 export default function OwnershipTransferPage() {
   return (

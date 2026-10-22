@@ -1,3 +1,4 @@
+import { withPageMetadata } from "@/lib/page-metadata";
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -43,11 +44,11 @@ export async function generateMetadata({
 
   const specs = await getSpecifications(category);
 
-  return {
+  return withPageMetadata({
     alternates: { canonical: `/specifications/${category}` },
     title: `${capitalizeCategory(category)} Specifications | Galileo`,
     description: `Browse ${specs.length} specifications in the ${capitalizeCategory(category)} category.`,
-  };
+  });
 }
 
 // ============================================================================

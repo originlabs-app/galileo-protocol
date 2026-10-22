@@ -1,9 +1,10 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
   alternates: { canonical: "/docs/rfc-process" },
   title: "RFC Process",
   description:
     "How to propose specification changes to the Galileo Luxury Standard. Complete guide to the RFC lifecycle: draft, champion assignment, review, and TSC decision via lazy consensus.",
-};
+});
 
 export default function RFCProcessPage() {
   return (

@@ -1,11 +1,12 @@
+import { withPageMetadata } from "@/lib/page-metadata";
 import { Footer } from "@/components/layout/Footer";
 
-export const metadata = {
+export const metadata = withPageMetadata({
   alternates: { canonical: "/legal" },
   title: "Legal Notice",
   description:
     "Legal notice (mentions legales) for galileoprotocol.io. Published by Galileo Network EURL, Bordeaux, France. Hosting, intellectual property, and contact information.",
-};
+});
 
 export default function LegalPage() {
   return (

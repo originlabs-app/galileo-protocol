@@ -1,9 +1,10 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
   alternates: { canonical: "/docs/governance/charter" },
   title: "Governance Charter",
   description:
     "Full governance charter for the Galileo Luxury Standard. Defines the Governing Board, TSC structure, membership categories, veto mechanism, anti-dominance rules, and amendment procedures.",
-};
+});
 
 export default function GovernanceCharterPage() {
   return (

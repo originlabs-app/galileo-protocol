@@ -1,8 +1,9 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
   alternates: { canonical: "/docs/concepts" },
   title: 'Core Concepts | Galileo Documentation',
   description: 'Understand the key terminology and concepts in Galileo.',
-};
+});
 
 export default function ConceptsPage() {
   return (
