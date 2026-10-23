@@ -125,16 +125,16 @@ export function SpecsSidebar({ navigation }: SpecsSidebarProps) {
           {/* Section header (collapsible) */}
           <button
             onClick={() => toggleSection(section.title)}
-            className="flex items-center justify-between w-full text-sm font-medium text-[var(--platinum)] mb-3 hover:text-[var(--cyan-primary)] transition-colors"
+            className="flex items-center justify-between gap-2 w-full text-left text-sm font-medium text-[var(--platinum)] mb-3 hover:text-[var(--cyan-primary)] transition-colors"
           >
-            <span className="flex items-center gap-2">
-              {section.title}
-              <span className="text-xs text-[var(--platinum-dim)]">
+            <span className="flex min-w-0 items-center gap-2">
+              <span>{section.title}</span>
+              <span className="shrink-0 text-xs text-[var(--platinum-dim)]">
                 ({section.items.length})
               </span>
             </span>
             <ChevronDown
-              className={`w-4 h-4 transition-transform duration-200 ${
+              className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
                 expanded.includes(section.title) ? "" : "-rotate-90"
               }`}
             />
