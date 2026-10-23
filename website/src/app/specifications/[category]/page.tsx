@@ -90,7 +90,7 @@ function SpecCard({ spec, category }: SpecCardProps) {
 
   return (
     <Link
-      href={`/specifications/${category}/${spec.slug}`}
+      href={`/specifications/${category}/${[spec.subcategory, spec.slug].filter(Boolean).join("/")}`}
       className="group block p-5 rounded-lg border border-[var(--platinum)]/10 bg-[var(--obsidian)]/50 hover:border-[var(--cyan-primary)]/50 transition-all duration-300 angle-glow"
     >
       <div className="flex items-start justify-between gap-4 mb-3">
