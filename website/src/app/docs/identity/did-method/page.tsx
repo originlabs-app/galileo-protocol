@@ -1,7 +1,9 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
+  alternates: { canonical: "/docs/identity/did-method" },
   title: 'DID Method | Galileo Documentation',
   description: 'The did:galileo method specification for product and entity identifiers.',
-};
+});
 
 export default function DIDMethodPage() {
   return (

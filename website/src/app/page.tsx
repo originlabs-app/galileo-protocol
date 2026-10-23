@@ -1,3 +1,4 @@
+import { withPageMetadata } from "@/lib/page-metadata";
 import {
   AbysseHero,
   DiscoverSection,
@@ -8,11 +9,12 @@ import {
 } from "@/components/abysse";
 import { Footer } from "@/components/layout/Footer";
 
-export const metadata = {
+export const metadata = withPageMetadata({
+  alternates: { canonical: "/" },
   title: "The Open Standard for Luxury Authentication",
   description:
     "Galileo Protocol is the open standard for luxury product authentication. Blockchain-powered digital product passports to protect brands against counterfeiting.",
-};
+});
 
 export default function Home() {
   return (

@@ -12,14 +12,18 @@ function entry(
 ): SitemapEntry {
   return {
     url: `${baseUrl}${path}`,
-    lastModified: options.lastModified ?? new Date(),
+    ...(options.lastModified ? { lastModified: options.lastModified } : {}),
     changeFrequency: options.changeFrequency ?? "monthly",
     priority: options.priority ?? 0.5,
   };
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogPosts = getAllPosts().map((post) =>
+  const posts = getAllPosts();
+  const blogModified = posts.length
+    ? new Date(Math.max(...posts.map((post) => new Date(post.frontmatter.modified).getTime())))
+    : undefined;
+  const blogPosts = posts.map((post) =>
     entry(`/blog/${post.slug}`, {
       lastModified: new Date(post.frontmatter.modified),
       changeFrequency: "monthly",
@@ -77,12 +81,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry("/governance/tsc", { priority: 0.5 }),
     // Ecosystem
     entry("/maison", { priority: 0.6 }),
-    entry("/blog", { changeFrequency: "weekly", priority: 0.7 }),
+    entry("/blog", { lastModified: blogModified, changeFrequency: "weekly", priority: 0.7 }),
     entry("/changelog", { changeFrequency: "weekly", priority: 0.6 }),
     entry("/roadmap", { priority: 0.6 }),
     entry("/tools", { priority: 0.6 }),
-    entry("/tools/faucet", { priority: 0.5 }),
-    entry("/tools/gas-estimator", { priority: 0.5 }),
     // Legal
     entry("/privacy", { changeFrequency: "yearly", priority: 0.3 }),
     entry("/terms", { changeFrequency: "yearly", priority: 0.3 }),

@@ -1,11 +1,13 @@
+import { withPageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 
-export const metadata = {
+export const metadata = withPageMetadata({
+  alternates: { canonical: "/maison" },
   title: "La Maison",
   description:
     "Discover Galileo Network, the organization behind the Galileo Protocol open standard. Our mission: protect luxury brand heritage and human craftsmanship.",
-};
+});
 
 export default function MaisonPage() {
   return (

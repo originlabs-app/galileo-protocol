@@ -1,7 +1,9 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
+  alternates: { canonical: "/docs/compliance/espr" },
   title: "ESPR Guide | Galileo Documentation",
   description: "Digital Product Passport readiness for ESPR 2027.",
-};
+});
 
 export default function ESPRGuidePage() {
   return (

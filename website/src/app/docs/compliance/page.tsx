@@ -1,7 +1,9 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
+  alternates: { canonical: "/docs/compliance" },
   title: 'Compliance | Galileo Documentation',
   description: 'Regulatory compliance guides for GDPR, MiCA, and ESPR.',
-};
+});
 
 export default function CompliancePage() {
   return (

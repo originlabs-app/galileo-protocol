@@ -1,3 +1,4 @@
+import { withPageMetadata } from "@/lib/page-metadata";
 import { GovernanceHero } from "@/components/governance/GovernanceHero";
 import { MissionStatement } from "@/components/governance/MissionStatement";
 import { GovernancePillars } from "@/components/governance/GovernancePillars";
@@ -6,11 +7,12 @@ import { TransparencyCommitment } from "@/components/governance/TransparencyComm
 import { QuickLinks } from "@/components/governance/QuickLinks";
 import { Footer } from "@/components/layout/Footer";
 
-export const metadata = {
+export const metadata = withPageMetadata({
+  alternates: { canonical: "/governance" },
   title: "Governance",
   description:
     "Explore the Galileo Protocol governance model. A neutral framework enabling competing luxury brands to collaborate on shared authentication infrastructure via the TSC.",
-};
+});
 
 export default function GovernancePage() {
   return (

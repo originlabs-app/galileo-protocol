@@ -1,13 +1,14 @@
+import { withPageMetadata } from "@/lib/page-metadata";
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withPageMetadata({
   title: 'Tools',
   description: 'Developer tools for the Galileo Protocol ecosystem on Base Sepolia.',
   alternates: {
     canonical: '/tools',
   },
-};
+});
 
 const tools = [
   {

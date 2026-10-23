@@ -1,7 +1,9 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
+  alternates: { canonical: "/docs/architecture" },
   title: 'Architecture | Galileo Documentation',
   description: 'Understand the hybrid on-chain/off-chain architecture of Galileo.',
-};
+});
 
 export default function ArchitecturePage() {
   return (

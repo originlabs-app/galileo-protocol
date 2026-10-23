@@ -1126,6 +1126,13 @@ code, pre {
   border-bottom: 1px solid rgba(229, 229, 229, 0.1);
 }
 
+.prose .spec-category-title {
+  font-size: 1.5rem;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
 .prose h3 {
   font-family: var(--font-outfit);
   font-size: 1.25rem;

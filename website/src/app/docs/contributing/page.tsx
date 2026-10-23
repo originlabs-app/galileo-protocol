@@ -1,8 +1,10 @@
-export const metadata = {
+import { withPageMetadata } from "@/lib/page-metadata";
+export const metadata = withPageMetadata({
+  alternates: { canonical: "/docs/contributing" },
   title: "Contributing Guide",
   description:
     "How to contribute to the Galileo Luxury Standard. Learn about the RFC process, DCO sign-off requirements, review periods, and recognition.",
-};
+});
 
 export default function ContributingPage() {
   return (

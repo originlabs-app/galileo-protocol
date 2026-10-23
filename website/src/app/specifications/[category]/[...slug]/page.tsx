@@ -1,3 +1,4 @@
+import { withPageMetadata } from "@/lib/page-metadata";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -71,10 +72,11 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return withPageMetadata({
+    alternates: { canonical: `/specifications/${spec.category}/${[spec.subcategory, spec.slug].filter(Boolean).join("/")}` },
     title: `${spec.metadata.title} | Galileo Specifications`,
     description: `${spec.metadata.title} - Version ${spec.metadata.version} (${spec.metadata.status})`,
-  };
+  });
 }
 
 // ============================================================================
