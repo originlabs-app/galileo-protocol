@@ -1,0 +1,26 @@
+{
+  "server": 54515,
+  "chrome": 13617,
+  "stopped_previous_server": 13616,
+  "owned_pids_before_shutdown": [
+    13617,
+    13663,
+    13666,
+    13672,
+    13731,
+    13739,
+    13935,
+    15237,
+    54515
+  ],
+  "shutdown_port_checks": {
+    "8474": {
+      "exit": 1,
+      "output": ""
+    },
+    "9301": {
+      "exit": 1,
+      "output": ""
+    }
+  }
+}

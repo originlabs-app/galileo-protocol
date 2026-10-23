@@ -1,115 +1,54 @@
-import { getTotalSpecCount } from "@/lib/specs-navigation";
+import Link from "next/link";
+import { pageMetadata } from "@/lib/page-metadata";
 
-export const metadata = {
-  title: "Introduction to Galileo Documentation",
-  description:
-    "Learn about the Galileo open standard for luxury product authenticity. Discover core principles, specifications, and how blockchain protects brand heritage.",
-  alternates: {
-    canonical: "/docs",
-  },
-};
+export const metadata = pageMetadata("/docs", {
+  title: "Galileo Protocol: Principles and Documentation",
+  description: "Understand Galileo's product identity and provenance principles, review the protocol specifications, and choose a path from architecture to integration.",
+});
 
-export default async function DocsIntroduction() {
-  const totalSpecs = await getTotalSpecCount().catch(() => 65);
+export default function DocsIntroduction() {
   return (
     <>
       <h1>Introduction to Galileo</h1>
-
       <p className="text-xl text-[var(--platinum)] leading-relaxed">
-        Galileo is an open standard that enables luxury brands to protect
-        heritage and craftsmanship through interoperable, blockchain-based
-        product authentication.
+        Galileo documents an open protocol for linking luxury products to identity,
+        provenance and ownership records. Start here to understand its principles
+        before choosing an architecture or planning an integration.
       </p>
-
-      <h2>Why Galileo?</h2>
+      <h2>What a product record can tell you</h2>
       <p>
-        The luxury industry faces unprecedented challenges: counterfeiting costs
-        brands billions annually, new regulations like ESPR mandate Digital
-        Product Passports, and consumers demand transparency. Existing solutions
-        are proprietary silos that don&apos;t interoperate.
+        A record lets a verifier inspect who issued information about an item and
+        which lifecycle events were recorded. Its usefulness depends on the issuer,
+        the evidence supplied and the link between the record and the physical item.
+        A digital record alone does not establish physical authenticity.
+      </p>
+      <h2>Core principles</h2>
+      <ul>
+        <li><strong>Open specifications:</strong> review the published requirements and schemas before adopting them.</li>
+        <li><strong>Separate data and proofs:</strong> the proposed hybrid design keeps detailed records off-chain and anchors references on-chain.</li>
+        <li><strong>Explicit access:</strong> design which information each participant can read and update.</li>
+        <li><strong>Defined responsibilities:</strong> decide who issues records, verifies evidence and handles corrections.</li>
+      </ul>
+      <h2>Specifications and demonstrated work</h2>
+      <p>
+        The <Link href="/specifications">specification library</Link> describes identity,
+        token transfers, product data, resolution and compliance patterns. A documented
+        requirement is not proof that every deployment implements it. The existing{" "}
+        <Link href="/blog/2026-03-22-production-deployment">deployment report</Link> describes
+        the dashboard and scanner release; assess the actual integration separately.
       </p>
       <p>
-        Galileo solves this by providing a neutral, open standard that any brand
-        can adopt. Like HTTP for the web, Galileo creates a common language for
-        luxury product data.
+        ERC-3643 is used in the token design for identity-based transfer rules. It is
+        not a universal product-passport registry or a guarantee of ESPR compliance.
+        For that separate question, read the{" "}
+        <Link href="/docs/compliance/espr">digital product passport guide for luxury</Link>.
       </p>
-
-      <h2>Core Principles</h2>
-      <ul>
-        <li>
-          <strong>Open & Neutral</strong> — Apache 2.0 licensed, governed by a
-          Technical Steering Committee with anti-dominance rules preventing any
-          single organization from control.
-        </li>
-        <li>
-          <strong>Privacy-First</strong> — GDPR-compliant hybrid architecture
-          keeps personal data off-chain while anchoring ownership proofs
-          on-chain.
-        </li>
-        <li>
-          <strong>Regulation-Ready</strong> — Designed from the ground up for
-          ESPR (Digital Product Passports), MiCA (crypto asset regulation), and
-          GDPR compliance.
-        </li>
-        <li>
-          <strong>Interoperable</strong> — Built on W3C standards (DIDs,
-          Verifiable Credentials), GS1 Digital Link, and ERC-3643 for maximum
-          compatibility.
-        </li>
-      </ul>
-
-      <h2>What&apos;s in the Standard?</h2>
-      <p>Galileo v1.0.0 includes {totalSpecs} specifications covering:</p>
-      <ul>
-        <li>
-          <strong>Identity</strong> — DID method, ONCHAINID integration,
-          Verifiable Credentials
-        </li>
-        <li>
-          <strong>Token</strong> — ERC-3643 extension for luxury products,
-          compliance modules
-        </li>
-        <li>
-          <strong>Data</strong> — ESPR-ready DPP schema, EPCIS 2.0 lifecycle
-          events
-        </li>
-        <li>
-          <strong>Infrastructure</strong> — GS1 resolver, access control, audit
-          trails
-        </li>
-        <li>
-          <strong>Compliance</strong> — GDPR, MiCA, and ESPR implementation
-          guides
-        </li>
-      </ul>
-
-      <h2>Who is Galileo For?</h2>
-      <ul>
-        <li>
-          <strong>Luxury Brands</strong> — Implement authentic product
-          certificates
-        </li>
-        <li>
-          <strong>Technology Providers</strong> — Build compliant solutions on
-          open standards
-        </li>
-        <li>
-          <strong>Regulators</strong> — Understand how the standard meets
-          requirements
-        </li>
-        <li>
-          <strong>Researchers</strong> — Study blockchain applications in luxury
-        </li>
-      </ul>
-
-      <h2>Next Steps</h2>
-      <p>
-        Ready to dive in? Start with the{" "}
-        <a href="/docs/quick-start">Quick Start Guide</a> to understand the
-        basic concepts, or explore the{" "}
-        <a href="/docs/architecture">Architecture Overview</a> for a technical
-        deep-dive.
-      </p>
+      <h2>From principles to implementation</h2>
+      <ol>
+        <li>Review the <Link href="/docs/concepts">core concepts</Link> and agree on the evidence your users need.</li>
+        <li>Use the <Link href="/docs/architecture">architecture guide</Link> to place data, proofs and access controls.</li>
+        <li>Follow the <Link href="/docs/quick-start">integration quick start</Link> to map an example item to the specifications.</li>
+      </ol>
     </>
   );
 }

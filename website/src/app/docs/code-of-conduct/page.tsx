@@ -1,8 +1,9 @@
-export const metadata = {
+import { pageMetadata } from "@/lib/page-metadata";
+export const metadata = pageMetadata("/docs/code-of-conduct", {
   title: "Code of Conduct",
   description:
     "Community standards for the Galileo Luxury Standard. Based on Contributor Covenant 2.1, adapted for luxury industry collaboration with four-level enforcement and appeals process.",
-};
+});
 
 export default function CodeOfConductPage() {
   return (

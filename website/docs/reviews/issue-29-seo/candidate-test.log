@@ -1,0 +1,10 @@
+
+> website@0.1.0 test:seo
+> python3 scripts/check-seo.py --baseline docs/reviews/issue-29-seo/base.json
+
+{
+  "urls": 109,
+  "errors": 0,
+  "broken_internal_links": 84,
+  "sample_errors": []
+}

@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -10,6 +11,8 @@ import {
   type SpecFile,
 } from '@/lib/specifications';
 import { StatusBadge } from '@/components/specifications/StatusBadge';
+
+export const dynamicParams = false;
 
 // ============================================================================
 // Static Generation
@@ -43,10 +46,10 @@ export async function generateMetadata({
 
   const specs = await getSpecifications(category);
 
-  return {
+  return pageMetadata(`/specifications/${category}`, {
     title: `${capitalizeCategory(category)} Specifications | Galileo`,
     description: `Browse ${specs.length} specifications in the ${capitalizeCategory(category)} category.`,
-  };
+  });
 }
 
 // ============================================================================
@@ -87,7 +90,7 @@ function SpecCard({ spec, category }: SpecCardProps) {
 
   return (
     <Link
-      href={`/specifications/${category}/${spec.slug}`}
+      href={`/specifications/${category}/${spec.subcategory ? `${spec.subcategory}/` : ""}${spec.slug}`}
       className="group block p-5 rounded-lg border border-[var(--platinum)]/10 bg-[var(--obsidian)]/50 hover:border-[var(--cyan-primary)]/50 transition-all duration-300 angle-glow"
     >
       <div className="flex items-start justify-between gap-4 mb-3">

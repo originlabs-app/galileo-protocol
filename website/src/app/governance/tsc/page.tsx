@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/page-metadata";
 import { TSCHero } from '@/components/governance/TSCHero';
 import { CouncilSeats } from '@/components/governance/CouncilSeats';
 import { SeatTypes } from '@/components/governance/SeatTypes';
@@ -6,10 +7,10 @@ import { ResponsibilitiesGrid } from '@/components/governance/ResponsibilitiesGr
 import { VetoCallout } from '@/components/governance/VetoCallout';
 import { Footer } from '@/components/layout/Footer';
 
-export const metadata = {
+export const metadata = pageMetadata("/governance/tsc", {
   title: 'Technical Steering Committee | Galileo Luxury Standard',
   description: 'The TSC is the meritocratic council that holds final authority over technical decisions for the Galileo Luxury Standard. Learn about seat composition, elections, and responsibilities.',
-};
+});
 
 export default function TSCPage() {
   return (

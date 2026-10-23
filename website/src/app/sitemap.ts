@@ -12,7 +12,7 @@ function entry(
 ): SitemapEntry {
   return {
     url: `${baseUrl}${path}`,
-    lastModified: options.lastModified ?? new Date(),
+    ...(options.lastModified ? { lastModified: options.lastModified } : {}),
     changeFrequency: options.changeFrequency ?? "monthly",
     priority: options.priority ?? 0.5,
   };
