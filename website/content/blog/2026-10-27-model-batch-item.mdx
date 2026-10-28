@@ -1,0 +1,68 @@
+---
+title: 'Product Codes: Model, Batch or the Item You Are Buying?'
+date: '2026-10-27'
+modified: '2026-10-27'
+author: Pierre Beunardeau
+excerpt: 'A product code may identify a reference, a batch or an individual item. Learn which record a resale buyer needs before relying on its history.'
+description: 'Model, batch and serial identifiers describe different levels of a product record. A resale buyer needs evidence tied to the individual item.'
+tags:
+  - identity
+  - provenance
+  - resale
+published: true
+---
+A product reference can tell you which kind of bag a seller offers without identifying the particular bag you will receive. Before relying on a repair record, condition assessment or ownership history, check that the record concerns the individual item offered for sale.
+
+This distinction matters when an assistant compares listings for you. Matching the right model is useful for finding candidates. It is insufficient for deciding whether a particular candidate has the history the seller claims.
+
+## Three levels of identification
+
+GS1 Digital Link is a standard for expressing product identifiers in web addresses. Its [URI Syntax standard, release 1.7.0](https://ref.gs1.org/standards/digital-link/uri-syntax/), ratified in August 2026 and checked on 27 October, distinguishes a GTIN from qualifiers such as a batch or serial number. GTIN means Global Trade Item Number: a trade item reference, which may be more specific than a broad marketing model name.
+
+The useful question is the scope of the identifier, not how sophisticated its label looks.
+
+| Level | What the record addresses | Suitable information | What it does not establish |
+| --- | --- | --- | --- |
+| Product reference | Items sharing that trade item reference | Common product information | Which individual item was repaired |
+| Batch or lot | A group within the reference | Information applying to that group | Which member of the group is for sale |
+| Individual item | One instance, using the reference plus a serial number | Records intended for that instance | Whether those records are accurate or attached to the right physical object |
+
+A batch is not another word for an individual item. If several objects belong to the same batch, a batch-level record cannot distinguish their separate lives after sale.
+
+## What the web address tells you
+
+In GS1 Digital Link syntax, `01` introduces the GTIN, `10` a batch or lot qualifier, and `21` a serial-number qualifier. The standard includes examples of GTIN alone, GTIN with batch, and GTIN with serial number. These are different identification scopes, even when the pages they open look similar.
+
+You do not need to decode a long address at checkout. A seller or platform should explain whether its record describes the reference, a batch or this individual item. Ask for that distinction before treating a product page as an item history.
+
+An address naming an individual item is still an address. It does not, by itself, authenticate a signature, establish who made a claim or prevent someone copying a label onto another object. Our [article on repeated Chanel serial codes](/blog/2026-09-02-chanel-serial-code-not-identity) addresses that separate problem: copying an identifier. Here, the earlier question is whether the identifier was ever intended to distinguish individual items at all.
+
+## A repair record attached at the wrong level
+
+**Illustrative scenario, not a report of a real sale:** a resale listing shows a product reference and links to a repair receipt. Another listing for the same reference shows the same receipt. The bags may be the same model, but that does not mean both underwent that repair.
+
+The buyer needs the receipt's item reference, the identity of the repairer and a way to connect the inspected bag to that reference. If the receipt only names the product model, the honest conclusion is that the repair cannot yet be attributed to the offered bag. This is a missing link in the evidence, not proof that either bag is counterfeit.
+
+The same reasoning applies to a condition report. A page describing the leather used for a product reference cannot tell you whether this particular bag has a damaged corner. Reference-level information remains useful; it answers a different question.
+
+## Give a buying assistant an evidence boundary
+
+The following is our suggested buying workflow, not a new requirement in the GS1 standard.
+
+1. **Match the reference.** Ask the assistant to find the requested product and distinguish variants that matter to the purchase. This produces a shortlist.
+2. **Identify the offered item.** Require the seller to state which individual record belongs to the object being sold. If only a model page exists, keep the history unverified.
+3. **Attribute each claim.** Separate the brand's product description, a repairer's receipt and the seller's current condition assessment. A shared identifier does not give every author the same authority.
+4. **Check the physical connection.** Ask how the record is matched to the object at inspection and delivery. A copied code or substituted item can break that connection.
+5. **Keep unresolved claims visible.** An assistant should say that an individual repair or ownership history is unconfirmed, rather than fill the gap with model information.
+
+Our [guide to verifiable checks by a buying agent](/blog/2026-09-20-ai-agent-buys-bag-verifiable-checks) develops the wider purchasing decision. The identification scope should be settled before those checks use an item history.
+
+## What a brand or resale platform should display
+
+Put the scope next to the information: product information, batch information or item history. Then identify who supplied the record and when. This makes a missing item-level history understandable without pretending the product information is useless.
+
+For an individual buyer, the practical request is simple: show me the record for the object I will receive, explain who stands behind each claim, and show how that record stays connected to the object. A correctly formatted code helps organise the answer. It cannot supply the missing evidence.
+
+## Source
+
+[GS1 Digital Link Standard: URI Syntax, release 1.7.0](https://ref.gs1.org/standards/digital-link/uri-syntax/), especially key qualifiers and the GTIN examples. Ratified August 2026; consulted 27 October 2026. The buying workflow and illustrative scenario above are editorial applications of the distinction, not GS1 claims about luxury resale.
